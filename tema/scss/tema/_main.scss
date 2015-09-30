@@ -1,0 +1,1313 @@
+#log{
+	width:278px;
+	height: auto;
+ 	position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+	
+	.login{
+		margin-top: 15px;
+		padding:25px;
+		background: #fbfbfb;
+		border: 1px solid #f5f5f5;
+		overflow: hidden;
+		label{
+			margin-bottom: 10px;
+			display: block;
+			font-size: 1em;
+		}
+	    input[type="text"],
+	    input[type="password"]{
+	    	width: 100%;
+	    	padding:5px;
+	    	margin-bottom: 10px;
+	    	border: 1px solid #cccccc;
+	    	font-style: italic;
+	    	font-size: 0.8em;
+	    }
+	    input[type="submit"]{
+			border:none;
+			margin-bottom: 10px;
+			color:#fff;
+			width: 100%;
+			padding: 6px 14px;
+			/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ff1500+0,c0000b+100 */
+			background: #ff1500; /* Old browsers */
+			background: -moz-linear-gradient(top,  #ff1500 0%, #c0000b 100%); /* FF3.6+ */
+			background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ff1500), color-stop(100%,#c0000b)); /* Chrome,Safari4+ */
+			background: -webkit-linear-gradient(top,  #ff1500 0%,#c0000b 100%); /* Chrome10+,Safari5.1+ */
+			background: -o-linear-gradient(top,  #ff1500 0%,#c0000b 100%); /* Opera 11.10+ */
+			background: -ms-linear-gradient(top,  #ff1500 0%,#c0000b 100%); /* IE10+ */
+			background: linear-gradient(to bottom,  #ff1500 0%,#c0000b 100%); /* W3C */
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff1500', endColorstr='#c0000b',GradientType=0 ); /* IE6-9 */
+	    }
+
+	    a{
+	    	font-size: 0.7em;
+	    	text-align: left;
+	    	color: #333;
+	    	text-decoration: underline;
+	    	margin-right: 15px;
+	    }
+    }
+}
+
+
+
+#data--input{
+	border-top: 1px solid #cccccc;
+	border-bottom: 1px solid #cccccc;
+	margin-top:15px;
+	background: url(../img/strip.jpg) no-repeat;
+	background-position: right;
+
+	h3{
+		margin: 14px 0px;
+	}
+
+}
+
+.info--cliente{
+	width: 100%;
+	background: #F7F7F7;
+	height: auto;
+    overflow: hidden;
+    padding-bottom:25px;
+	border-bottom: 1px solid #cccccc;
+
+	label{
+		width: 100%;
+		display: block;
+		margin: 15px 0;
+		color: $red;
+		font-weight: 800;
+		font-size: 0.8em;
+		    -webkit-transition: all 0.30s ease-in-out;
+		    -moz-transition: all 0.30s ease-in-out;
+		    -ms-transition: all 0.30s ease-in-out;
+		    -o-transition: all 0.30s ease-in-out;
+	}
+
+	input[type="text"]{
+		width: 100%;
+		padding: 5px;
+		font-size: 0.8em;
+	}
+	.cut{
+		width: 30% !important;
+		margin-right: 3px;
+	}
+	.descrip{
+		width: 70% !important;
+		margin: 0;
+	}
+	.add{
+		width: 25% !important;
+		border:none;
+		color:#fff;
+		padding: 4px;
+		/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ff1500+0,c0000b+100 */
+		background: #ff1500; /* Old browsers */
+		background: -moz-linear-gradient(top,  #ff1500 0%, #c0000b 100%); /* FF3.6+ */
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ff1500), color-stop(100%,#c0000b)); /* Chrome,Safari4+ */
+		background: -webkit-linear-gradient(top,  #ff1500 0%,#c0000b 100%); /* Chrome10+,Safari5.1+ */
+		background: -o-linear-gradient(top,  #ff1500 0%,#c0000b 100%); /* Opera 11.10+ */
+		background: -ms-linear-gradient(top,  #ff1500 0%,#c0000b 100%); /* IE10+ */
+		background: linear-gradient(to bottom,  #ff1500 0%,#c0000b 100%); /* W3C */
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff1500', endColorstr='#c0000b',GradientType=0 ); /* IE6-9 */
+
+	}
+	.generar{
+		width: 100% !important;
+		border: none;
+		color: #fff;
+	    padding: 6px;
+	    margin-top: 33px; 
+		font-size: 0.8em;
+		/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ff1500+0,c0000b+100 */
+		background: #ff1500; /* Old browsers */
+		background: -moz-linear-gradient(top,  #ff1500 0%, #c0000b 100%); /* FF3.6+ */
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ff1500), color-stop(100%,#c0000b)); /* Chrome,Safari4+ */
+		background: -webkit-linear-gradient(top,  #ff1500 0%,#c0000b 100%); /* Chrome10+,Safari5.1+ */
+		background: -o-linear-gradient(top,  #ff1500 0%,#c0000b 100%); /* Opera 11.10+ */
+		background: -ms-linear-gradient(top,  #ff1500 0%,#c0000b 100%); /* IE10+ */
+		background: linear-gradient(to bottom,  #ff1500 0%,#c0000b 100%); /* W3C */
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff1500', endColorstr='#c0000b',GradientType=0 ); /* IE6-9 */
+		-webkit-border-radius: 4px;
+		-moz-border-radius: 4px;
+		border-radius: 4px;
+		outline: none;
+	}
+
+//tooltip
+
+[data-tooltip],
+.tooltip {
+  position: relative;
+  cursor: pointer;
+}
+
+/* Base styles for the entire tooltip */
+[data-tooltip]:before,
+[data-tooltip]:after,
+.tooltip:before,
+.tooltip:after {
+  position: absolute;
+  visibility: hidden;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+  opacity: 0;
+  -webkit-transition: 
+	  opacity 0.2s ease-in-out,
+		visibility 0.2s ease-in-out,
+		-webkit-transform 0.2s cubic-bezier(0.71, 1.7, 0.77, 1.24);
+	-moz-transition:    
+		opacity 0.2s ease-in-out,
+		visibility 0.2s ease-in-out,
+		-moz-transform 0.2s cubic-bezier(0.71, 1.7, 0.77, 1.24);
+	transition:         
+		opacity 0.2s ease-in-out,
+		visibility 0.2s ease-in-out,
+		transform 0.2s cubic-bezier(0.71, 1.7, 0.77, 1.24);
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform:    translate3d(0, 0, 0);
+  transform:         translate3d(0, 0, 0);
+  pointer-events: none;
+}
+
+/* Show the entire tooltip on hover and focus */
+[data-tooltip]:hover:before,
+[data-tooltip]:hover:after,
+[data-tooltip]:focus:before,
+[data-tooltip]:focus:after,
+.tooltip:hover:before,
+.tooltip:hover:after,
+.tooltip:focus:before,
+.tooltip:focus:after {
+  visibility: visible;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+  opacity: 1;
+}
+
+/* Base styles for the tooltip's directional arrow */
+.tooltip:before,
+[data-tooltip]:before {
+  z-index: 1001;
+  border: 6px solid transparent;
+  background: transparent;
+  content: "";
+}
+
+/* Base styles for the tooltip's content area */
+.tooltip:after,
+[data-tooltip]:after {
+  z-index: 1000;
+  padding: 8px;
+  width: 160px;
+  background-color: #000;
+  background-color: hsla(0, 0%, 20%, 0.9);
+  color: #fff;
+  content: attr(data-tooltip);
+  font-size: 14px;
+  line-height: 1.2;
+}
+
+/* Directions */
+
+/* Top (default) */
+[data-tooltip]:before,
+[data-tooltip]:after,
+.tooltip:before,
+.tooltip:after,
+.tooltip-top:before,
+.tooltip-top:after {
+  bottom: 100%;
+  left: 50%;
+}
+
+[data-tooltip]:before,
+.tooltip:before,
+.tooltip-top:before {
+  margin-left: -6px;
+  margin-bottom: -12px;
+  border-top-color: #000;
+  border-top-color: hsla(0, 0%, 20%, 0.9);
+}
+
+/* Horizontally align top/bottom tooltips */
+[data-tooltip]:after,
+.tooltip:after,
+.tooltip-top:after {
+  margin-left: -137px;
+}
+
+[data-tooltip]:hover:before,
+[data-tooltip]:hover:after,
+[data-tooltip]:focus:before,
+[data-tooltip]:focus:after,
+.tooltip:hover:before,
+.tooltip:hover:after,
+.tooltip:focus:before,
+.tooltip:focus:after,
+.tooltip-top:hover:before,
+.tooltip-top:hover:after,
+.tooltip-top:focus:before,
+.tooltip-top:focus:after {
+  -webkit-transform: translateY(-12px);
+  -moz-transform:    translateY(-12px);
+  transform:         translateY(-12px); 
+}
+
+/* Left */
+.tooltip-left:before,
+.tooltip-left:after {
+  right: 100%;
+  bottom: 50%;
+  left: auto;
+}
+
+.tooltip-left:before {
+  margin-left: 0;
+  margin-right: -12px;
+  margin-bottom: 0;
+  border-top-color: transparent;
+  border-left-color: #000;
+  border-left-color: hsla(0, 0%, 20%, 0.9);
+}
+
+.tooltip-left:hover:before,
+.tooltip-left:hover:after,
+.tooltip-left:focus:before,
+.tooltip-left:focus:after {
+  -webkit-transform: translateX(-12px);
+  -moz-transform:    translateX(-12px);
+  transform:         translateX(-12px); 
+}
+
+/* Bottom */
+.tooltip-bottom:before,
+.tooltip-bottom:after {
+  top: 100%;
+  bottom: auto;
+  left: 50%;
+}
+
+.tooltip-bottom:before {
+  margin-top: -12px;
+  margin-bottom: 0;
+  border-top-color: transparent;
+  border-bottom-color: #000;
+  border-bottom-color: hsla(0, 0%, 20%, 0.9);
+}
+
+.tooltip-bottom:hover:before,
+.tooltip-bottom:hover:after,
+.tooltip-bottom:focus:before,
+.tooltip-bottom:focus:after {
+  -webkit-transform: translateY(12px);
+  -moz-transform:    translateY(12px);
+  transform:         translateY(12px); 
+}
+
+/* Right */
+.tooltip-right:before,
+.tooltip-right:after {
+  bottom: 50%;
+  left: 100%;
+}
+
+.tooltip-right:before {
+  margin-bottom: 0;
+  margin-left: -12px;
+  border-top-color: transparent;
+  border-right-color: #000;
+  border-right-color: hsla(0, 0%, 20%, 0.9);
+}
+
+.tooltip-right:hover:before,
+.tooltip-right:hover:after,
+.tooltip-right:focus:before,
+.tooltip-right:focus:after {
+  -webkit-transform: translateX(12px);
+  -moz-transform:    translateX(12px);
+  transform:         translateX(12px); 
+}
+
+/* Move directional arrows down a bit for left/right tooltips */
+.tooltip-left:before,
+.tooltip-right:before {
+  top: 3px;
+}
+
+/* Vertically center tooltip content for left/right tooltips */
+.tooltip-left:after,
+.tooltip-right:after {
+  margin-left: 0;
+  margin-bottom: -16px;
+}
+
+
+
+
+
+	.pago{
+		width: 100% !important;
+		padding: 5px;
+		border: none;
+		height: 33px;
+		border: 1px solid #A6A6A6;
+   		-webkit-appearance: none;
+   		border-radius: none;
+   		background: #fff url(../img/select-triangle.gif) no-repeat;
+		background-position: 165px 12px;
+		border-radius:0;
+		font-size: 0.8em;
+	}
+}
+
+
+#buscar{
+	form.seek{
+		float: right;
+		input[type="search"]{
+			font-size: 0.9em;
+			padding: 5px;
+			font-style: italic;
+		}
+
+		button[type="button"]{
+		border: none;
+		font-size: 0.9em;
+		color:#fff;
+
+		padding:7px;
+    	margin-top: 20px;
+		/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ff1500+0,c0000b+100 */
+		background: #ff1500; /* Old browsers */
+		background: -moz-linear-gradient(top,  #ff1500 0%, #c0000b 100%); /* FF3.6+ */
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ff1500), color-stop(100%,#c0000b)); /* Chrome,Safari4+ */
+		background: -webkit-linear-gradient(top,  #ff1500 0%,#c0000b 100%); /* Chrome10+,Safari5.1+ */
+		background: -o-linear-gradient(top,  #ff1500 0%,#c0000b 100%); /* Opera 11.10+ */
+		background: -ms-linear-gradient(top,  #ff1500 0%,#c0000b 100%); /* IE10+ */
+		background: linear-gradient(to bottom,  #ff1500 0%,#c0000b 100%); /* W3C */
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff1500', endColorstr='#c0000b',GradientType=0 ); /* IE6-9 */
+		-webkit-border-radius: 4px;
+		-moz-border-radius: 4px;
+		border-radius: 4px;
+		}
+	}
+}
+
+
+
+#data--orden{
+	position: relative;
+	width: 100%;
+	border-top: 1px solid #cccccc;
+	margin-top: 70px;
+
+	h4{
+		text-transform: uppercase;
+		color: #4b4b4b;
+		font-size: 1.5em;
+		position: absolute;
+		top: -50px;
+		background:#fff;
+		padding-right: 20px;
+	}
+	#data--orden--compra{
+		text-align: right;
+		margin-top: 30px;
+		ul{
+			margin: 0;
+			padding: 0;
+			list-style: none;
+		}
+		li{
+			color: #666666;
+			span.datos{
+				color: #404040;
+				font-weight: 600;
+			}
+		}
+	}
+}
+
+#datos--prooveedor{
+	width: 100%;
+	border-top: 1px solid #cccccc;
+	border-bottom: 1px solid #cccccc;
+	margin-top: 30px;
+	padding: 15px;
+	background: #F7F7F7;
+	overflow: hidden;
+	color: $red;
+	font-weight:600;
+	font-size: 0.9em;
+
+	p{
+		color: #404040;
+		font-weight: 600;
+		span.uno,.dos{
+			font-weight: normal;
+			margin-left: 10px;
+		}
+		span.dos{
+			font-weight: normal;
+			margin-left: 65px;
+		}
+		span.tres{
+			font-weight: normal;
+			margin-left: 35px;
+		}
+		span.cuatro{
+			font-weight: normal;
+			margin-left: 30px;
+		}
+		span.cinco{
+			font-weight: normal;
+			margin-left: 10px;
+		}
+	}
+
+	#left,#right{
+		float: left;
+	}
+	#right{
+		margin-left: 150px;
+		position:relative;
+		p.tel-r{
+			margin-top: 85px;
+			span.cinco-dos{
+				font-weight: normal;
+				margin-left: 10px;
+				margin-top: 30px;
+			}
+		}
+	}
+
+}
+
+#campana{
+	margin-top:35px;
+
+	#item-1,
+	#item-2,
+	#item-3,
+	#item-4,
+	#item-5,
+	#titulo--orden-1,
+	#titulo--orden-2,
+	#titulo--orden-3,
+	#titulo--orden-4,
+	#titulo--orden-5,
+	#titulo--orden-6,
+	#titulo--orden-6T,
+	#titulo--orden-6S,
+	#oc-item-1,
+	#oc-item-2,
+	#oc-item-3,
+	#oc-item-4,
+	#oc-item-5,{
+		float: left;
+		text-align: center;
+		background: #e8e8e8;
+		padding:12px;
+		color: $red;
+		height: 50px;
+		font-size: 0.9em;
+		border-top: 1px solid #cccccc;
+		border-bottom: 1px solid #cccccc;
+	}
+	#item-1{
+		width: 20%;
+		line-height: 2;
+		border-left: 1px solid #cccccc !important;
+		border-right: 1px solid #cccccc !important;
+	}
+	#item-2{
+		width: 40%;
+		line-height: 2;
+		border-right: 1px solid #cccccc !important;
+	}
+	#item-3{
+		width: 10%;
+		line-height: 2;
+		border-right: 1px solid #cccccc !important;
+	}
+	#item-4{
+		width: 10%;
+		line-height: 1;
+		border-right: 1px solid #cccccc !important;
+	}
+	#item-5{
+		width: 20%;
+		line-height: 2;
+		border-right: 1px solid #cccccc !important;
+	}
+
+	#oc-item-1{
+		width: 20%;
+		line-height: 2;
+		border-left: 1px solid #cccccc !important;
+		border-right: 1px solid #cccccc !important;
+		font-weight: 800;
+		font-size: 0.7em;
+	}
+	#oc-item-2{
+		width: 40%;
+		line-height: 2;
+		border-right: 1px solid #cccccc !important;
+		font-weight: 800;
+		font-size: 0.7em;
+	}
+	#oc-item-3{
+		width: 8%;
+		line-height: 2;
+		border-right: 1px solid #cccccc !important;
+		font-weight: 800;
+		font-size: 0.7em;
+	}
+	#oc-item-4{
+		width: 12%;
+		line-height: 2;
+		border-right: 1px solid #cccccc !important;
+		font-weight: 800;
+		font-size: 0.7em;
+	}
+	#oc-item-5{
+		width: 20%;
+		line-height: 2;
+		border-right: 1px solid #cccccc !important;
+		font-weight: 800;
+		font-size: 0.7em;
+	}
+
+
+//mis ordenes de compra
+	#titulo--orden-1,{
+		width: 10%;
+		line-height: 2;
+		border-left: 1px solid #cccccc !important;
+		border-right: 1px solid #cccccc !important;
+	}
+	#titulo--orden-2,{
+		width: 10%;
+		line-height: 2;
+		border-right: 1px solid #cccccc !important;
+	}
+	#titulo--orden-3,{
+		width: 35%;
+		line-height: 2;
+		border-right: 1px solid #cccccc !important;
+	}
+	#titulo--orden-4,{
+		width: 15%;
+		line-height: 2;
+		border-right: 1px solid #cccccc !important;
+	}
+	#titulo--orden-5,{
+		width: 15%;
+		line-height: 2;
+		border-right: 1px solid #cccccc !important;
+	}
+	#titulo--orden-6{
+		width: 15%;
+		line-height: 1;
+		border-right: 1px solid #cccccc !important;
+
+	}
+	#titulo--orden-6T{
+		width: 7%;
+		line-height: 2;
+		border-right: 1px solid #cccccc !important;
+
+	}
+	#titulo--orden-6S{
+		width: 8%;
+		line-height: 2;
+		border-right: 1px solid #cccccc !important;
+	}
+
+	#desglose-1,
+	#desglose-2,
+	#desglose-3,
+	#desglose-4,
+	#desglose-5,
+	#oc-desglose-1,
+	#oc-desglose-2,
+	#oc-desglose-3,
+	#oc-desglose-4,
+	#oc-desglose-5{
+		float: left;
+		text-align: center;
+		padding:12px;
+		color: #000;
+		height: 50px;
+		font-size: 0.9em;
+		border-bottom: 1px solid #cccccc;
+		font-size: 11px;
+	}
+	#desglose-1{
+		width: 20%;
+		line-height: 2;
+		border-left: 1px solid #cccccc !important;
+		border-right: 1px solid #cccccc !important;
+	}
+	#desglose-2{
+		width: 40%;
+		line-height: 2;
+		border-right: 1px solid #cccccc !important;
+	}
+	#desglose-3{
+		width: 10%;
+		line-height: 2;
+		border-right: 1px solid #cccccc !important;
+	}
+	#desglose-4{
+		width: 10%;
+		line-height: 2;
+		border-right: 1px solid #cccccc !important;
+
+	}
+	#desglose-5{
+		width: 20%;
+		line-height: 2;
+		border-right: 1px solid #cccccc !important;
+		font-size: 1em;
+	}
+
+
+	#oc-desglose-1{
+		width: 20%;
+		line-height: 2;
+		border-left: 1px solid #cccccc !important;
+		border-right: 1px solid #cccccc !important;
+	}
+	#oc-desglose-2{
+		width: 40%;
+		line-height: 2;
+		border-right: 1px solid #cccccc !important;
+	}
+	#oc-desglose-3{
+		width: 8%;
+		line-height: 2;
+		border-right: 1px solid #cccccc !important;
+	}
+	#oc-desglose-4{
+		width: 12%;
+		line-height: 2;
+		border-right: 1px solid #cccccc !important;
+
+	}
+	#oc-desglose-5{
+		width: 20%;
+		line-height: 2;
+		border-right: 1px solid #cccccc !important;
+		font-size: 1em;
+	}
+
+
+
+	//mis ordenes de compra
+	#orden--1,
+	#orden--2,
+	#orden--3,
+	#orden--4,
+	#orden--5,
+	#orden--6,
+	#orden--6T,
+	#orden--6S{
+		float: left;
+		text-align: center;
+		padding:12px;
+		color: #000;
+		height: 50px;
+		font-size: 0.9em;
+		border-bottom: 1px solid #cccccc;
+		font-size: 0.8em;
+	}
+
+
+	#orden--1{
+		width: 10%;
+		line-height: 2;
+		border-left: 1px solid #cccccc !important;
+		border-right: 1px solid #cccccc !important;
+	}
+	#orden--2{
+		width: 10%;
+		line-height: 2;
+		border-right: 1px solid #cccccc !important;
+	}
+	#orden--3{
+		width: 35%;
+		line-height: 2;
+		border-right: 1px solid #cccccc !important;
+	}
+	#orden--4{
+		width: 15%;
+		line-height: 2;
+		border-right: 1px solid #cccccc !important;
+	}
+	#orden--5{
+		width: 15%;
+		line-height: 2;
+		border-right: 1px solid #cccccc !important;
+	}
+	#orden--6{
+		width: 15%;
+		line-height: 2;
+		border-right: 1px solid #cccccc !important;
+	}
+	#orden--6T{
+		width: 7%;
+		line-height: 2;
+		border-right: 1px solid #cccccc !important;
+	}
+	#orden--6S{
+		width: 8%;
+		line-height: 2;
+		border-right: 1px solid #cccccc !important;
+
+	}
+
+	span.yes,
+	span.no{
+		width: 16px;
+		height: 13px;
+		margin-top: 2px;
+    	float: left;
+	}
+	span.edit{
+		width: 16px;
+		height: 16px;
+		margin-top: 2px;
+		float: right;
+	}
+
+
+//tooltip
+
+[data-tooltip],
+.tooltip {
+  position: relative;
+  cursor: pointer;
+}
+
+/* Base styles for the entire tooltip */
+[data-tooltip]:before,
+[data-tooltip]:after,
+.tooltip:before,
+.tooltip:after {
+  position: absolute;
+  visibility: hidden;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+  opacity: 0;
+  -webkit-transition: 
+	  opacity 0.2s ease-in-out,
+		visibility 0.2s ease-in-out,
+		-webkit-transform 0.2s cubic-bezier(0.71, 1.7, 0.77, 1.24);
+	-moz-transition:    
+		opacity 0.2s ease-in-out,
+		visibility 0.2s ease-in-out,
+		-moz-transform 0.2s cubic-bezier(0.71, 1.7, 0.77, 1.24);
+	transition:         
+		opacity 0.2s ease-in-out,
+		visibility 0.2s ease-in-out,
+		transform 0.2s cubic-bezier(0.71, 1.7, 0.77, 1.24);
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform:    translate3d(0, 0, 0);
+  transform:         translate3d(0, 0, 0);
+  pointer-events: none;
+}
+
+/* Show the entire tooltip on hover and focus */
+[data-tooltip]:hover:before,
+[data-tooltip]:hover:after,
+[data-tooltip]:focus:before,
+[data-tooltip]:focus:after,
+.tooltip:hover:before,
+.tooltip:hover:after,
+.tooltip:focus:before,
+.tooltip:focus:after {
+  visibility: visible;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+  opacity: 1;
+}
+
+/* Base styles for the tooltip's directional arrow */
+.tooltip:before,
+[data-tooltip]:before {
+  z-index: 1001;
+  border: 6px solid transparent;
+  background: transparent;
+  content: "";
+}
+
+/* Base styles for the tooltip's content area */
+.tooltip:after,
+[data-tooltip]:after {
+  z-index: 1000;
+  padding: 8px;
+  width: 160px;
+  background-color: #000;
+  background-color: hsla(0, 0%, 20%, 0.9);
+  color: #fff;
+  content: attr(data-tooltip);
+  font-size: 14px;
+  line-height: 1.2;
+}
+
+/* Directions */
+
+/* Top (default) */
+[data-tooltip]:before,
+[data-tooltip]:after,
+.tooltip:before,
+.tooltip:after,
+.tooltip-top:before,
+.tooltip-top:after {
+  bottom: 100%;
+  left: 50%;
+}
+
+[data-tooltip]:before,
+.tooltip:before,
+.tooltip-top:before {
+  margin-left: -6px;
+  margin-bottom: -12px;
+  border-top-color: #000;
+  border-top-color: hsla(0, 0%, 20%, 0.9);
+}
+
+/* Horizontally align top/bottom tooltips */
+[data-tooltip]:after,
+.tooltip:after,
+.tooltip-top:after {
+  margin-left: -137px;
+}
+
+[data-tooltip]:hover:before,
+[data-tooltip]:hover:after,
+[data-tooltip]:focus:before,
+[data-tooltip]:focus:after,
+.tooltip:hover:before,
+.tooltip:hover:after,
+.tooltip:focus:before,
+.tooltip:focus:after,
+.tooltip-top:hover:before,
+.tooltip-top:hover:after,
+.tooltip-top:focus:before,
+.tooltip-top:focus:after {
+  -webkit-transform: translateY(-12px);
+  -moz-transform:    translateY(-12px);
+  transform:         translateY(-12px); 
+}
+
+/* Left */
+.tooltip-left:before,
+.tooltip-left:after {
+  right: 100%;
+  bottom: 50%;
+  left: auto;
+}
+
+.tooltip-left:before {
+  margin-left: 0;
+  margin-right: -12px;
+  margin-bottom: 0;
+  border-top-color: transparent;
+  border-left-color: #000;
+  border-left-color: hsla(0, 0%, 20%, 0.9);
+}
+
+.tooltip-left:hover:before,
+.tooltip-left:hover:after,
+.tooltip-left:focus:before,
+.tooltip-left:focus:after {
+  -webkit-transform: translateX(-12px);
+  -moz-transform:    translateX(-12px);
+  transform:         translateX(-12px); 
+}
+
+/* Bottom */
+.tooltip-bottom:before,
+.tooltip-bottom:after {
+  top: 100%;
+  bottom: auto;
+  left: 50%;
+}
+
+.tooltip-bottom:before {
+  margin-top: -12px;
+  margin-bottom: 0;
+  border-top-color: transparent;
+  border-bottom-color: #000;
+  border-bottom-color: hsla(0, 0%, 20%, 0.9);
+}
+
+.tooltip-bottom:hover:before,
+.tooltip-bottom:hover:after,
+.tooltip-bottom:focus:before,
+.tooltip-bottom:focus:after {
+  -webkit-transform: translateY(12px);
+  -moz-transform:    translateY(12px);
+  transform:         translateY(12px); 
+}
+
+/* Right */
+.tooltip-right:before,
+.tooltip-right:after {
+  bottom: 50%;
+  left: 100%;
+}
+
+.tooltip-right:before {
+  margin-bottom: 0;
+  margin-left: -12px;
+  border-top-color: transparent;
+  border-right-color: #000;
+  border-right-color: hsla(0, 0%, 20%, 0.9);
+}
+
+.tooltip-right:hover:before,
+.tooltip-right:hover:after,
+.tooltip-right:focus:before,
+.tooltip-right:focus:after {
+  -webkit-transform: translateX(12px);
+  -moz-transform:    translateX(12px);
+  transform:         translateX(12px); 
+}
+
+/* Move directional arrows down a bit for left/right tooltips */
+.tooltip-left:before,
+.tooltip-right:before {
+  top: 3px;
+}
+
+/* Vertically center tooltip content for left/right tooltips */
+.tooltip-left:after,
+.tooltip-right:after {
+  margin-left: 0;
+  margin-bottom: -16px;
+}
+
+
+//lightbox--inline
+
+	form#choose{
+		select.select-choose{
+		-webkit-appearance: none;			
+		-moz-appearance: none;	
+		background:url(../img/select-triangle.gif) no-repeat;		
+		}
+
+	}
+
+}
+
+#neto{
+	float: right;
+	margin-top: 20px;
+	text-align: right;
+	p.neto,p.iva{
+		color: #000;
+		margin: 0;
+		font-weight: 800;
+		margin-bottom: 10px;
+	}
+
+	.valores-select{
+		width: 100% !important;
+		padding: 5px;
+		height: 33px;
+		border: 1px solid #A6A6A6;
+   		-webkit-appearance: none;
+   		-moz-appearance: none;
+   		border-radius: none;
+   		background: #fff url(../img/select-triangle.gif) no-repeat;
+		background-position: 140px 12px;
+		border-radius:0;
+		font-size: 0.8em;
+	}
+
+	p.totality{
+		color: #000;
+		text-align: center;
+		border: 1px solid #000;
+		padding: 8px;
+		margin-top: 30px;
+    	margin-bottom: 0;
+    	text-transform: uppercase;
+    	font-weight: 800;
+	} 
+
+	.imprimir{
+		width: 100% !important;
+		border: none;
+		color: #fff;
+	    padding: 6px;
+	    margin-top: 33px; 
+		font-size: 0.8em;
+		//background-image: url(../img/print.png) repeat;
+		/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ff1500+0,c0000b+100 */
+		background: #ff1500; /* Old browsers */
+		background: -moz-linear-gradient(top,  #ff1500 0%, #c0000b 100%); /* FF3.6+ */
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ff1500), color-stop(100%,#c0000b)); /* Chrome,Safari4+ */
+		background: -webkit-linear-gradient(top,  #ff1500 0%,#c0000b 100%); /* Chrome10+,Safari5.1+ */
+		background: -o-linear-gradient(top,  #ff1500 0%,#c0000b 100%); /* Opera 11.10+ */
+		background: -ms-linear-gradient(top,  #ff1500 0%,#c0000b 100%); /* IE10+ */
+		background: linear-gradient(to bottom,  #ff1500 0%,#c0000b 100%); /* W3C */
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff1500', endColorstr='#c0000b',GradientType=0 ); /* IE6-9 */
+		-webkit-border-radius: 4px;
+		-moz-border-radius: 4px;
+		border-radius: 4px;
+	}
+}
+
+#neto2{
+	width: 100%;
+	margin-top: 40px;
+	text-align: right;
+	p.n1{
+		color: #000;
+		font-weight: 600;
+		position: relative;
+	}
+
+	p.n2{
+		color: #000;
+		font-weight: 600;
+		position: relative;
+	}
+	span.peso{
+		position: absolute;
+		right: 150px;
+		top: 0;
+	}
+	span.valor1{
+		padding: 10px 10px 10px 90px;
+		border-top: 1px solid #c1c1c1;
+		border-left: 1px solid #c1c1c1;
+		border-right: 1px solid #c1c1c1;
+		background:#f7f7f7;
+		margin-left: 10px;
+
+	}
+	span.valor2{
+		padding: 10px 10px 10px 90px;
+		border-top: 1px solid #000;
+		border-left: 1px solid #c1c1c1;
+		border-right: 1px solid #c1c1c1;
+		background:#f7f7f7;
+		margin-left: 10px;
+
+	}
+	span.valorT{
+		padding: 10px 10px 10px 90px;
+		border-top: 1px solid #000;
+		border-left: 1px solid #c1c1c1;
+		border-right: 1px solid #c1c1c1;
+		border-bottom: 1px solid #c1c1c1;
+		background:#f7f7f7;
+		margin-left: 10px;
+
+	}
+
+}
+
+//hoja OC impresa
+
+	#oc--datos{
+		color: #000;
+		margin-bottom: 15px;
+		p.d{
+			font-size: 0.9em;
+			font-weight: 800;
+			margin:0;
+		}
+		#oc-proo{
+			text-align: left;
+			margin-top:15px;
+			ul{
+				margin: 0;
+				padding:0;
+				list-style: none;
+				position:relative
+			}
+			li{
+				border-bottom: 1px solid #000;
+				margin-bottom: 15px;
+				font-weight: 600;
+				font-size: 0.9em;
+    			padding-left: 100px;
+
+
+				span.flot-1,span.flot-2,span.flot-3,span.flot-4,span.flot-5,span.flot-rut,span.flot-tel,span.flot-rut-data,span.flot-tel-data{
+					position: absolute;
+					background: white;
+					padding: 5px 5px 5px 0px;
+				}
+				span.flot-1{
+					top: -6px;
+					left: 0;
+				}
+				span.flot-rut{
+					top: -6px;
+					left: 600px;
+				}
+				span.flot-rut-data{
+					top: -6px;
+					left: 650px;
+					padding: none !important; 
+					background: none !important;
+				}
+				span.flot-2{
+					top: 34px;
+					left: 0;
+					padding-right: 60px !important;
+				}
+				span.flot-3{
+					top: 72px;
+					left: 0;
+					padding-right: 30px !important;
+				}
+				span.flot-4{
+					top: 110px;
+					left: 0;
+					padding-right: 30px !important;
+				}
+
+				span.flot-tel{
+					top: 145px;
+					left: 670px;
+				}
+				span.flot-tel-data{
+					top: 145px;
+					left: 750px !important;
+					padding: none !important; 
+					background: none !important;
+				}
+				span.flot-5{
+					top: 145px;
+					left: 0;
+					padding-right: 18px !important;
+				}
+
+
+			}
+		}
+	}
+
+				.right--r{
+					padding-left: 180px !important;
+				}
+				.no-margin{
+					margin-top: 0 !important;
+				}
+
+
+
+#firmas{
+    margin-top: 60px;
+	#firma-1,#firma-2{
+		width: 50%;
+		float: left;
+		text-align: center;
+	}
+}
+
+#inline1,#inline2{
+	height: auto;
+	text-align: center;
+	form#edit-recep,form#upload{
+		padding:8px;
+		width: 100%;
+		height: auto;
+		overflow: hidden;
+
+		h1{
+			font-size: 1em;
+			text-align: center;
+			margin: 0px 0px 20px 0px;
+		}
+		input[type="text"]{
+			width: 100%;
+			padding:8px;
+			margin-bottom: 20px;
+		}
+		button[type="button"]{
+			width: 100%;
+			height:30px;
+			color: #fff;
+			font-size: 0.8em;
+			background: #ff1500; /* Old browsers */
+			background: -moz-linear-gradient(top,  #ff1500 0%, #c0000b 100%); /* FF3.6+ */
+			background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ff1500), color-stop(100%,#c0000b)); /* Chrome,Safari4+ */
+			background: -webkit-linear-gradient(top,  #ff1500 0%,#c0000b 100%); /* Chrome10+,Safari5.1+ */
+			background: -o-linear-gradient(top,  #ff1500 0%,#c0000b 100%); /* Opera 11.10+ */
+			background: -ms-linear-gradient(top,  #ff1500 0%,#c0000b 100%); /* IE10+ */
+			background: linear-gradient(to bottom,  #ff1500 0%,#c0000b 100%); /* W3C */
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff1500', endColorstr='#c0000b',GradientType=0 ); /* IE6-9 */
+			-webkit-border-radius: 4px;
+			-moz-border-radius: 4px;
+			border-radius: 4px;
+			border: none;
+		}
+
+	}
+
+	form#upload{
+
+ /* Estilo del área del input[file] */
+        .drag-drop {
+            height: 100px;
+            width: 100px;
+			background: url(../img/up-hover.gif);
+            text-align: center;
+            color: white;
+            position: relative;
+            margin: 0 auto 1em;
+    		padding: 1em;
+        }
+
+        .drag-drop span.desc {
+            display: block;
+            font-size: .7em;
+            padding: 0 .5em;
+            color: #000;
+        }
+
+        input[type="file"] {
+                height: 100px;
+                opacity: 0;
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%; 
+                z-index: 3;
+        }
+
+        button.acept{
+        	width: 60% !important;
+        }
+
+        /* Estilo del área del input[file] con :hover */
+
+        .drag-drop:hover, input[type="file"]:hover {
+			background: url(../img/up.gif);
+            cursor: pointer;
+        }
+
+
+
+	}
+
+}
+

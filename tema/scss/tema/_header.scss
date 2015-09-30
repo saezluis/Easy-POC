@@ -1,0 +1,120 @@
+header{
+	a.logo{
+		width: 100%;
+		height: auto;
+		display: block;
+	}
+	nav{
+		width: 60%;
+		margin-top: 50px;
+		position: relative;
+		float: right;
+		ul{
+			list-style: none;
+			margin: 0;
+			padding: 0px;
+		}
+		li{
+			display: inline-block;
+			margin-right:0px;
+		}
+		a{
+			font-size: 0.8em;
+			color: $gray;
+			padding:6px 12px;
+			font-weight: 800;
+			text-decoration: none;
+			background: url(../img/bg-menu.jpg) repeat-x;
+			&:hover{
+				color: $red;
+			}
+		}
+	}
+	.counter{
+		width: 25px;
+		height: 25px;
+		position: absolute;
+		border-radius: 100%;
+		background: $red;
+		color:#fff;
+		font-size: 0.8em;
+		text-align: center;
+		line-height: 25px;
+	    top: 35px;
+	    right: 35px;
+	}
+
+	h2{
+		font-size: 1.2em;
+		margin: 0;
+	}
+
+	.active{
+		color: $red;
+	}
+}
+
+header.cotizacion{
+	#cot--logo{
+		width: 120px;
+		height: 117px;
+		float: left;
+    	margin-top: 20px;
+	}
+	#cotiza--datos{
+		// float: left;
+		margin-top: 40px;
+    	margin-left: 30px;
+		p.data--sa{
+			margin: 0;
+			font-weight: 800;
+			color: #000;
+			font-size: 0.8em;
+		}
+		p.data--co{
+			margin: 0;
+			font-size: 0.8em;
+			color: #000;
+		}
+	}
+
+	#datos--fac{
+		text-align: right;
+		margin-top: 40px;
+		ul{
+			margin: 0;
+			padding:0;
+			list-style: none;
+		}
+		li{
+			color: #4b4b4b;
+			font-size:0.8em;
+
+			span.num-f{
+				margin-left:30px;
+			}
+			span.num-p{
+				margin-left:20px;
+			}
+			span.num-l{
+				margin-left:40px;
+			}
+		}
+	}
+	h2{
+		font-size: 2.3em;
+		text-align: center;
+		color: #000;
+		text-transform: uppercase;
+		font-weight: 400;
+	}
+	p.coti--fecha{
+		text-align: right;
+		font-size: 0.9em;
+		span.dia,
+		span.mes,
+		span.ano{
+			margin-left: 5px;
+		}
+	}
+}

@@ -1,0 +1,1 @@
+$(document).ready(function(){$(".various").fancybox({maxWidth:200,fitToView:!1,height:"auto",autoSize:!1,closeClick:!1,openEffect:"elastic",closeEffect:"elastic"})});

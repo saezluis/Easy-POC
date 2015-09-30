@@ -1,0 +1,22 @@
+#footer{
+	background: #e8e8e8;
+	margin-top: 25px;
+	height:80px;
+
+	#logo-footer,#copy{
+		float: left;
+		width: 50%;
+	}
+	#logo-footer{
+		margin-top: 11px;
+	}
+	#copy{
+		p{
+			color: #6e6e6e;
+			text-align: right;
+			line-height:6;
+			font-size: 0.8em;
+		}
+	}
+
+}
