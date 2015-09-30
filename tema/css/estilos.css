@@ -1642,7 +1642,7 @@ header a.logo {
   display: block; }
 header nav {
   width: 60%;
-  margin-top: 50px;
+  margin-top: 80px;
   position: relative;
   float: right; }
   header nav ul {
@@ -1671,8 +1671,8 @@ header .counter {
   font-size: 0.8em;
   text-align: center;
   line-height: 25px;
-  top: 35px;
-  right: 35px; }
+  top: 65px;
+  right: 5px; }
 header h2 {
   font-size: 1.2em;
   margin: 0; }
@@ -2367,7 +2367,7 @@ header.cotizacion p.coti--fecha {
     line-height: 2;
     border-right: 1px solid #cccccc !important; }
   #campana #orden--3 {
-    width: 35%;	
+    width: 35%;
     line-height: 2;
     border-right: 1px solid #cccccc !important; }
   #campana #orden--4 {
@@ -2549,6 +2549,16 @@ header.cotizacion p.coti--fecha {
     -webkit-appearance: none;
     -moz-appearance: none;
     background: url(../img/select-triangle.gif) no-repeat; }
+  .logout {
+    color: #FFF;
+    width: 80px;
+    height: 30px;
+    position: absolute;
+    right: 0;
+    display: block;
+    text-decoration: none;
+    text-align: center;
+    background: transparent linear-gradient(to bottom, #FF1500 0%, #C0000B 100%) repeat scroll 0% 0%; }
 
 #neto {
   float: right;
@@ -2792,6 +2802,5 @@ header.cotizacion p.coti--fecha {
     #inline1 form#upload .drag-drop:hover, #inline1 form#upload input[type="file"]:hover, #inline2 form#upload .drag-drop:hover, #inline2 form#upload input[type="file"]:hover {
       background: url(../img/up.gif);
       cursor: pointer; }
-	  
-	  
+
 
