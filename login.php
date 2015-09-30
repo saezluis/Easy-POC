@@ -20,6 +20,8 @@
 	
 	<input name="myusername" type="text" id="correo" placeholder="ej: usuario@algo.cl">
 	
+	Se agrego esta modificacion el dia miercoles 30 en la tarde
+	
 	<input name="mypassword" type="password" id="contrasena" placeholder="ej: 123456">
 	-->
   </head>
