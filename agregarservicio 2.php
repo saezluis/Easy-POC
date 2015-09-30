@@ -2,6 +2,9 @@
 <html lang="es">
   <head>
   
+
+	<div class="algo"></div>
+
   <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,maximun-scale=1">
     <link rel="stylesheet" href="tema/css/prueba.css">	
