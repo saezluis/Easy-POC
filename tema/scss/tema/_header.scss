@@ -4,9 +4,29 @@ header{
 		height: auto;
 		display: block;
 	}
+
+//BOTON LOGOUT
+
+	.logout{
+		//logout
+
+
+
+	margin-bottom: 10px;
+	color: #FFF;
+	width: 80px;
+	height:30px;
+	text-decoration:none;
+	position: absolute;
+	right:0;
+	text-align:center;
+	background: transparent linear-gradient(to bottom, #FF1500 0%, #C0000B 100%) repeat scroll 0% 0%;
+
+	}
+
 	nav{
 		width: 60%;
-		margin-top: 50px;
+		margin-top: 80px;
 		position: relative;
 		float: right;
 		ul{
@@ -40,7 +60,7 @@ header{
 		font-size: 0.8em;
 		text-align: center;
 		line-height: 25px;
-	    top: 35px;
+	    top: 65px;
 	    right: 35px;
 	}
 

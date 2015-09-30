@@ -955,7 +955,7 @@
 		"inputAbbreviatedPath": "\/tema\/scss\/estilos.scss",
 		"outputAbbreviatedPath": "\/tema\/css\/estilos.css",
 		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
+		"outputPathIsSetByUser": 1,
 		"outputStyle": 0,
 		"shouldRunAutoprefixer": 0,
 		"shouldRunBless": 0,
