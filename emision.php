@@ -2,7 +2,10 @@
 <html lang="es">
   <head>
     <title> </title>
+	<!--
     <meta charset="utf-8">
+	-->
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1,maximun-scale=1">
     <link rel="stylesheet" href="tema/css/estilos.css">	
     <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
@@ -81,6 +84,17 @@
 		
   </head>
   <body>
+	<?php
+		//header("Content-Type: text/html;charset=utf-8");
+		//$conexion=mysqli_connect("localhost","pmdigita_admin","Prodigy12","pmdigita_test") or die("Problemas con la conexión");	
+		$conexion=mysqli_connect("localhost","root","123","test") or die("Problemas con la conexión");		
+		$acentos = $conexion->query("SET NAMES 'utf8'");
+		
+		$revisar=mysqli_query($conexion,"select * from ordenes where visto_bueno = \"no\" AND orden_sap IS NULL OR orden_recepcion IS NULL") or
+		die("Problemas en el select:".mysqli_error($conexion));
+		
+		$num_rows = mysqli_num_rows($revisar);
+	?>
     <header class="grupo">
       <div class="caja base-50 no-padding">
         <h1> <a href="#" class="logo"> <img src="tema/img/logo.jpg" alt="POC"></a></h1>
@@ -98,10 +112,13 @@
 			<li> </li>
 			<li> </li>
 			<li> </li>
-			<li> <a href="#" class="active" >Por revisar</a></li>
+			<li> <a href="por-revisar-sap.php" class="active" >Por revisar</a></li>
           </ul>
         </nav>
-        <div class="counter">15</div>
+		<!--
+		<div class="counter">15</div>
+		-->
+		<?php echo "<div class=\"counter\">$num_rows</div>"; ?>        
       </div>
       <div class="caja base-100 no-padding">
         <h2>Bienvenido al nuevo sistema de emisión de órdenes de compra.</h2>
@@ -127,6 +144,7 @@
 			if (isset($_POST['typeahead'])){
 		    $busqueda = $_POST['typeahead'];
 			}
+			
 			//echo $busqueda;			
 			//$nro_orden = "142-424-555";
 			$razon_social = "";
@@ -136,7 +154,10 @@
 			$contacto = "";
 			$rut = "";
 			$nombre = "";
+			//$con=mysqli_connect("localhost","pmdigita_admin","Prodigy12","pmdigita_test") or die("Problemas con la conexión");	
 			$con=mysqli_connect("localhost","root","123","test") or die("Problemas con la conexión");		
+			$acentos = $con->query("SET NAMES 'utf8'");
+			
 			$consulta_mysql=mysqli_query($con,"select * from proveedor where nombre = '$busqueda'") or die("Problemas en el select:");	    
 			if($row=mysqli_fetch_array($consulta_mysql))
 			{
@@ -149,7 +170,9 @@
 			  $nombre = $row['nombre'];
 			}
 			//echo $detalle;
-			//echo "la wea";			
+			//echo "la wea";		
+			//echo ($razon_social);
+			
 		  ?>
           <div class="caja base-20">
             <label>Rut</label>
@@ -241,10 +264,10 @@
 			<button type="submit" class="generar" style="margin-top: 52px;" formaction="agregarservicio.php">Agregar Servicios</button>
           </div>
 		  <div class="caja base-20">
-			
+			<!--
 			<button type="button"  style="margin-top: 52px;" ><a href="logout.php" >Logout</a></button>
 			
-			<!--
+			
             <label>Monto neto</label>
             <input type="text" name="monto_neto">
 			<button type="submit" class="generar" formaction="orden-compra.php">GENERAR OC</button>

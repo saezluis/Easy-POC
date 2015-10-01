@@ -9,12 +9,12 @@
 //$conexion=mysqli_connect("localhost","pmdigita_admin","Prodigy12","pmdigita_test") or die("Problemas con la conexión");	
 $conexion=mysqli_connect("localhost","root","123","test") or die("Problemas con la conexion");
 
-mysqli_query($conexion,"update ordenes set orden_sap='$_REQUEST[nro_orden_send]' where numero_orden='$_REQUEST[nro_orden_send_hidden]'") or
+mysqli_query($conexion,"update ordenes set orden_recepcion='$_REQUEST[nro_recepcion_send]' where numero_orden='$_REQUEST[nro_ordenRecep_send_hidden]'") or
   die("Problemas en el select:".mysqli_error($conexion));
 
 mysqli_close($conexion);
   
-header('Location: perfil-sap.php');  
+header('Location: por-revisar-sap.php');  
 	/*
 mysqli_query($conexion,"insert into ordenes(id_proveedor,fecha,visto_bueno,campana,nro_presupuesto_proveedor,nro_factura_proveedor,
 jefe_autorizacion,area_pago,descripcion) values ('$_REQUEST[typeahead]',

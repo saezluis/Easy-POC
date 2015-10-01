@@ -112,7 +112,10 @@
 		$("#boton2-e").hide();
 		$("#label-1").hide();	
 		$("#label-2").hide();	
-		$("#label-3").hide();	
+		$("#label-3").hide();
+		
+		<?php $vardisplay = "blockk"; ?>;		
+		
 		});
 		
 		// ---- Boton MOSTRAR 3 ----
@@ -414,7 +417,7 @@
 			</div>	
 			
 			<!--- ---  Servicio 02 ---  --->	
-			<div class="caja base-100">
+			<?php echo "<div class=\"caja base-100\" style=\"display:$vardisplay\">"; ?>
 			  <div class="caja base-20">
 				<label id="label-1">Descripción del servicio</label>				
 				<input id="campo2" type="text" name="descripcion2" value="">

@@ -14,7 +14,7 @@ mysqli_query($conexion,"update ordenes set orden_sap='$_REQUEST[nro_orden_send]'
 
 mysqli_close($conexion);
   
-header('Location: perfil-sap.php');  
+header('Location: por-revisar-sap.php');  
 	/*
 mysqli_query($conexion,"insert into ordenes(id_proveedor,fecha,visto_bueno,campana,nro_presupuesto_proveedor,nro_factura_proveedor,
 jefe_autorizacion,area_pago,descripcion) values ('$_REQUEST[typeahead]',

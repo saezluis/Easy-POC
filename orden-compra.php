@@ -16,7 +16,7 @@
 		if(select.options[select.selectedIndex].id == "iva"){
 			var calculariva = (parseFloat(totalget) * 19) / 100;
 			var totalfinal = parseFloat(totalget) + calculariva;
-			document.getElementById("totalfinalcampo").value = totalfinal;
+			document.getElementById("totalfinalcampo").value = Math.round(totalfinal);
 			//alert('click en iva');
 			//
 			//alert(totalget);
@@ -29,7 +29,7 @@
 			//alert('click en boleta');
 			var calcularboleta = (parseFloat(totalget) * 10) / 100;
 			var totalfinal = parseFloat(totalget) + calcularboleta;
-			document.getElementById("totalfinalcampo").value = totalfinal;
+			document.getElementById("totalfinalcampo").value = Math.round(totalfinal);
 			//var nameValue = document.getElementById("uniqueID").value;
 		} 
 		if(select.options[select.selectedIndex].id == "exento"){
@@ -45,7 +45,10 @@
   </head>
 <body>
 <?php
+
+//$conexion=mysqli_connect("localhost","pmdigita_admin","Prodigy12","pmdigita_test") or die("Problemas con la conexión");	
 $conexion=mysqli_connect("localhost","root","123","test") or die("Problemas con la conexion");
+$acentos = $conexion->query("SET NAMES 'utf8'");
 
 //Crear un campo descripcion y concatenar todos los descripcion que me llegan de agregar servicio
 
@@ -264,7 +267,9 @@ echo "La razon social del proveedor es: ".$razon_social;
 
 		<?php
 		
+		//$conexion=mysqli_connect("localhost","pmdigita_admin","Prodigy12","pmdigita_test") or die("Problemas con la conexión");	
 		$conexion=mysqli_connect("localhost","root","123","test") or die("Problemas con la conexión");
+		$acentos = $conexion->query("SET NAMES 'utf8'");
 		
 		$registros=mysqli_query($conexion,"select * from servicios where id_orden = $last_id") or
 		die("Problemas en el select:".mysqli_error($conexion));
@@ -288,8 +293,8 @@ echo "La razon social del proveedor es: ".$razon_social;
 		
 		}
 		
-		$totaliva = ($total * 19) / 100;
-		$totalivaf = number_format($totaliva,2);
+		$totaliva = round(($total * 19) / 100);
+		$totalivaf = number_format($totaliva,0);
 		mysqli_close($conexion);
 		
 		?>

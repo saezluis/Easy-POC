@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html lang="es">
   <head>
-    <title> </title>
+    <title>Ordenes por revisar</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,maximun-scale=1">
     <link rel="stylesheet" href="tema/css/estilos.css">
@@ -31,21 +31,14 @@
   <body>
 	
 	<?php
-		//$conexion=mysqli_connect("localhost","pmdigita_admin","Prodigy12","pmdigita_test") or die("Problemas con la conexión");	
+		////$conexion=mysqli_connect("localhost","pmdigita_admin","Prodigy12","pmdigita_test") or die("Problemas con la conexión");	
 		$conexion=mysqli_connect("localhost","root","123","test") or die("Problemas con la conexión");
-		$acentos = $conexion->query("SET NAMES 'utf8'");
 		
 		//$registros=mysqli_query($conexion,"select numero_orden,fecha,orden_sap,orden_recepcion,visto_bueno from ordenes where visto_bueno = \"no\"") or
 		//die("Problemas en el select:".mysqli_error($conexion));
 		
-		$registros=mysqli_query($conexion,"select * from ordenes where visto_bueno = \"no\" AND orden_sap IS NOT NULL AND orden_recepcion IS NOT NULL") or
+		$registros=mysqli_query($conexion,"select * from ordenes where orden_sap IS NULL OR orden_recepcion IS NULL") or
 		die("Problemas en el select:".mysqli_error($conexion));
-		
-		$revisar=mysqli_query($conexion,"select * from ordenes where visto_bueno = \"no\" AND orden_sap IS NULL OR orden_recepcion IS NULL") or
-		die("Problemas en el select:".mysqli_error($conexion));
-		
-		$num_rows = mysqli_num_rows($revisar);
-		//echo "$num_rows Rows\n";
 		
 		//$registrosserv=mysqli_query($conexion,"select * from servicios where id_orden = \"147\"") or
 		//die("Problemas en el select:".mysqli_error($conexion));				
@@ -60,14 +53,18 @@
       	<a class="logout" href="logout.php" >Logout</a>
         <nav>
           <ul>
-            <li> <a href="emision.php">Emisor de órdenes de compra</a></li>
-            <li> <a href="por-revisar-sap.php" class="active" >Por revisar</a></li>
+            <li> <a href="perfil-sap.php" >Historial de órdenes</a></li>
+            <!--
+			<li> <a href="#" class="active" >Por revisar</a></li>
+			-->
           </ul>
         </nav>
-        <?php echo "<div class=\"counter\">$num_rows</div>"; ?>
+		<!--
+        <div class="counter">15</div>
+		-->
       </div>
       <div class="caja base-100 no-padding">
-        <h2>En esta sección podrás encontrar el historial de todas tus órdenes de compra emitidas.</h2>
+        <h2>En esta sección podrás encontrar el historial de todas tus órdenes por revisar.</h2>
       </div>
     </header>
     <div id="data--input" class="grupo">
@@ -92,8 +89,6 @@
 		$buscar = $_POST["palabra"];
 		//$conexion=mysqli_connect("localhost","pmdigita_admin","Prodigy12","pmdigita_test") or die("Problemas con la conexión");	
 		$conexion=mysqli_connect("localhost","root","123","test") or die("Problemas con la conexión");
-		$acentos = $conexion->query("SET NAMES 'utf8'");
-		
 		//echo $buscar;
 		//Ojo esto es para buscar una orden en especifica
 		$consulta_mysql=mysqli_query($conexion,"SELECT * FROM ordenes WHERE numero_orden = '$buscar' ") or		
@@ -108,7 +103,7 @@
 	<div id="campana" class="grupo">
 		<div class="caja-100">
 			<div id="tabla">
-				<div id="titulo--orden-1">Nº de OC</div>
+				<div id="titulo--orden-1">N° de OC</div>
 				<div id="titulo--orden-2">Fecha</div>
 				<div id="titulo--orden-3">Detalle</div>
 				<div id="titulo--orden-4">OC SAP</div>
@@ -135,7 +130,8 @@
 			  //------------------- Aqui trabajo con orden SAP -------------------
 			  echo "<div id=\"orden--4\">".$registro['orden_sap']."<span class=\"yes\"><img src=\"tema/img/yes.gif\" alt=\"\"></span><span class=\"edit\"><a href=\"#ordensap\" data-tooltip=\"Editar\" class=\"various\"><img src=\"tema/img/edit.gif\" alt=\"\">";
 					echo "<div id=\"ordensap\" name=\"\" style=\"display: none;\">";
-					  echo "<form id=\"edit-recep\" method=\"POST\" action=\"grabar-orden-sap.php\">";
+					  //Ojo aqui redirecciono con una pagina php diferente para no perder el la pagina donde estoy editando
+					  echo "<form id=\"edit-recep\" method=\"POST\" action=\"grabar-orden-sap-rev.php\">";
 						echo "<h1>Ingresa número de OC SAP</h1>";
 						// Este campo oculto lleva el nro orden para poder hacer el insert en BD
 						echo "<input type=\"hidden\" name=\"nro_orden_send_hidden\" value=\"$registro[numero_orden]\">";
@@ -147,7 +143,8 @@
 			//------------------- Aqui trabajo con orden Recepcion -------------------
 			  echo "<div id=\"orden--5\">".$registro['orden_recepcion']."<span class=\"no\"><img src=\"tema/img/no.gif\" alt=\"\"></span><span class=\"edit\"><a href=\"#ordenrecep\" data-tooltip=\"Editar\" class=\"various\"><img src=\"tema/img/edit.gif\" alt=\"\">";
 					echo "<div id=\"ordenrecep\" style=\"display: none;\">";
-					  echo "<form id=\"edit-recep\" method=\"POST\" action=\"grabar-recepcion-sap.php\">";
+					//Ojo aqui redirecciono con una pagina php diferente para no perder el la pagina donde estoy editando
+					  echo "<form id=\"edit-recep\" method=\"POST\" action=\"grabar-recepcion-sap-rev.php\">";
 						echo "<h1>Ingresa número de OC RECEPCION</h1>";
 						// Este campo oculto lleva el nro orden para poder hacer el insert en BD
 						echo "<input type=\"hidden\" name=\"nro_ordenRecep_send_hidden\" value=\"$registro[numero_orden]\" >";
@@ -171,7 +168,7 @@
 		  
 	?>	  		
 	
-	<p> </p>
+	<p> </p>
 	
 	<?php }   }  // fin if  ?>	
 	
@@ -182,7 +179,7 @@
     <div id="campana" class="grupo">
       <div class="caja-100">
         <div id="tabla">
-          <div id="titulo--orden-1">Nº de OC</div>
+          <div id="titulo--orden-1">N° de OC</div>
           <div id="titulo--orden-2">Fecha</div>
           <div id="titulo--orden-3">Detalle</div>
           <div id="titulo--orden-4">OC SAP</div>
@@ -245,7 +242,8 @@
 			  //------------------- Aqui trabajo con orden SAP -------------------
 			  echo "<div id=\"orden--4\">".$reg['orden_sap']."<span class=\"yes\"><img src=\"tema/img/yes.gif\" alt=\"\"></span><span class=\"edit\"><a href=\"#$n_orden\" data-tooltip=\"Editar\" class=\"various\"><img src=\"tema/img/edit.gif\" alt=\"\">";
 					echo "<div id=\"$n_orden\" name=\"\" style=\"display: none;\">";
-					  echo "<form id=\"edit-recep\" method=\"POST\" action=\"grabar-orden-sap.php\">";
+					//Ojo aqui redirecciono con una pagina php diferente para no perder el la pagina donde estoy editando
+					  echo "<form id=\"edit-recep\" method=\"POST\" action=\"grabar-orden-sap-rev.php\">";
 						echo "<h1>Ingresa número de OC SAP</h1>";
 						// Este campo oculto lleva el nro orden para poder hacer el insert en BD
 						echo "<input type=\"hidden\" name=\"nro_orden_send_hidden\" value=\"$reg[numero_orden]\">";
@@ -257,7 +255,8 @@
 			//------------------- Aqui trabajo con orden Recepcion -------------------
 			  echo "<div id=\"orden--5\">".$reg['orden_recepcion']."<span class=\"no\"><img src=\"tema/img/no.gif\" alt=\"\"></span><span class=\"edit\"><a href=\"#$n_orden2\" data-tooltip=\"Editar\" class=\"various\"><img src=\"tema/img/edit.gif\" alt=\"\">";
 					echo "<div id=\"$n_orden2\" style=\"display: none;\">";
-					  echo "<form id=\"edit-recep\" method=\"POST\" action=\"grabar-recepcion-sap.php\">";
+					//Ojo aqui redirecciono con una pagina php diferente para no perder el la pagina donde estoy editando
+					  echo "<form id=\"edit-recep\" method=\"POST\" action=\"grabar-recepcion-sap-rev.php\">";
 						echo "<h1>Ingresa número de OC RECEPCION</h1>";
 						// Este campo oculto lleva el nro orden para poder hacer el insert en BD
 						echo "<input type=\"hidden\" name=\"nro_ordenRecep_send_hidden\" value=\"$reg[numero_orden]\" >";
@@ -268,15 +267,13 @@
 			  echo "<div id=\"orden--6T\">3 días</div>";
 			  echo "<div id=\"orden--6S\"><a href=\"#inline2\" data-tooltip=\"Subir archivo\" class=\"various\"><img src=\"tema/img/upload.gif\" alt=\"\"></a>";
 				echo "<div id=\"inline2\" style=\"display: none;\">";
-				  // ------ Comienzo del subir archivos -----
-				  echo "<form id=\"upload\" action=\"getfile.php\" method=\"POST\" enctype=\"multipart/form-data\">";
+				  echo "<form id=\"upload\">";
 					echo "<h1>Subir un archivo</h1>";
 					echo "<div class=\"drag-drop\">";
-					  echo "<input id=\"file\" name=\"userfile\" type=\"file\">";
+					  echo "<input id=\"photo\" type=\"file\" multiple=\"multiple\">";
 					echo "</div>";
-					echo "<button type=\"submit\" name=\"upload\" value=\"upload\" class=\"acept\">Aceptar</button>";
+					echo "<button type=\"button\" value=\"subir\" class=\"acept\">Aceptar</button>";
 				  echo "</form>";
-				  // ----- Aqui finaliza el subir archivos -----
 				echo "</div>";
 			  echo "</div>";
 			echo "</div>";	
