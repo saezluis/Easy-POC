@@ -188,12 +188,45 @@ echo "<br>";
 echo "La razon social del proveedor es: ".$razon_social;
 */
 ?>
-	<header class="grupo">
+	<header class="cotizacion grupo">
+			<!--
 		  <div class="caja base-50 no-padding">
 			<h1> <a href="emision.php" class="logo"> <img src="tema/img/logo.jpg" alt="POC"></a></h1>
 		  </div>      
 		  <div class="caja base-100 no-padding">        
 		  </div>
+		  -->
+		<div class="caja base-50 no-padding">
+			<div id="cot--logo"> <img src="tema/img/logo.gif" alt="POC"></div>
+			<div id="cotiza--datos">
+				<p class="data--sa">Easy s.a.</p>
+				<p class="data--co">96.671.750-5</p>
+				<p class="data--co">Av. Keneddy 09001, piso 5, Las Condes</p>
+				<p class="data--co">9590300</p>
+			</div>
+		</div>
+      <div class="caja base-50 no-padding">
+        <div id="datos--fac">
+          <ul>
+			<?php echo "<li>N° <span class=\"num-f\">$last_id</span></li>"; ?>
+            <!--  <li>Nº<span class="num-f">7570</span></li> -->
+			<?php echo "<li>Presupuesto <span class=\"num-p\">$nro_presupuesto</span></li>"; ?>            
+            <!--  <li>Presupuesto<span class="num-p">102949</span></li> -->
+            <?php echo "<li>Nº Factura <span class=\"num-l\">$nro_factura</span></li>"; ?>
+			<!--  <li>Nº de factura<span class="num-l">773</span></li> -->			
+          </ul>
+        </div>
+      </div>
+      <div class="caja base-100 no-padding">
+		<?php 
+			$dia = date('d', time());
+			$mes = date('m', time());
+			$anio = date('y', time()); 
+		?>
+        <p class="coti--fecha">Santiago,<span class="dia"><?php echo $dia; ?></span><span class="mes"><?php echo $mes; ?></span><span class="ano"><?php echo "20".$anio; ?></span></p>
+        <h2>Orden de compra marketing</h2>
+      </div>
+	  
 	</header>  
 	<!--
 	Datos que llegan desde emision: 				Nombre en base de datos (Tabla: ordenes)
@@ -213,45 +246,24 @@ echo "La razon social del proveedor es: ".$razon_social;
 													-> orden_recepcion: falta origen de la data
 													-> visto_bueno: por defecto deberia guardar NO al ser una nueva orden
 	-->
-	<div id="data--orden" class="grupo">
-      <div class="caja-100">
-        <h4>orden de compra marketing</h4>
-        <div id="data--orden--compra">
-          <ul>
-			<!--  <li>Nº <span class="datos">0000000000</span></li>  -->
-			<?php echo "<li>N° <span class=\"datos\">$last_id</span></li>"; ?>            
-            <!--  <li>Presupuesto <span class="datos">0000000000</span></li>   -->
-			<?php echo "<li>Presupuesto <span class=\"datos\">$nro_presupuesto</span></li>"; ?>            
-            <!--   <li>Nº Factura <span class="datos">000000000</span></li> -->
-			<?php echo "<li>Nº Factura <span class=\"datos\">$nro_factura</span></li>"; ?>
-          </ul>
-        </div>
-      </div>
-    </div>	
-	<div id="datos--prooveedor" class="grupo">
-      <p>Datos Proveedor</p>
-      <div class="caja-40">
-        <div id="left">
-          <!--    <p>Razón social:<span class="uno">Comercial y Publicitaria Punto Medio Ltda.</span></p>   -->
-		  <?php echo "<p>Razón social:<span class=\"uno\">$razon_social</span></p>"; ?>
-          <!--    <p>Giro:<span class="dos">Publicidad</span></p>   -->
-		  <?php echo "<p>Giro:<span class=\"dos\">$giro</span></p>"; ?>
-          <!--   <p>Direción:<span class="tres">Augusto  Leguia Sur 134, Las Condes</span></p>    -->
-		  <?php echo "<p>Direción:<span class=\"tres\">$direccion</span></p>"; ?>
-          <!--   <p>Contacto:<span class="cuatro">Felipe AyÇaguer</span></p>  -->
-		  <?php echo "<p>Contacto:<span class=\"cuatro\">$contacto</span></p>"; ?>
-          <p>Condiciones de pago:<span class="cinco">30 días</span></p>
-        </div>
-      </div>
-      <div class="caja-40">
-        <div id="right">
-          <!--    <p>RUT:<span class="uno">77.942.700-5</span></p>   -->
-		  <?php echo "<p>RUT:<span class=\"uno\">$RUT</span></p>"; ?>
-          <!--    <p class="tel-r">Teléfono:<span class="cinco-dos">2 2323162</span></p>  -->
-		  <?php echo "<p class=\"tel-r\">Teléfono:<span class=\"cinco-dos\">$telefono</span></p>"; ?>
-        </div>
+	
+	
+	
+	<div id="oc--datos" class="no-padding grupo">
+      <p class="d">Datos del Proveedor</p>
+      <div id="oc-proo">
+        <ul>
+          <li> <?php echo " ".$razon_social; ?><span class="flot-1">Razón social:</span></li>
+          <li><?php echo " ".$giro; ?><span class="flot-2">Giro:</span></li>
+          <li><?php echo " ".$direccion; ?><span class="flot-3">Dirección:</span></li>
+          <li><?php echo " ".$contacto; ?><span class="flot-4">Contacto:</span></li>
+          <li class="right--r"> 30 días<span class="flot-5">Condiciones de pago:</span></li>
+        </ul>
       </div>
     </div>
+	
+	
+	
 	
 	<div id="campana" class="grupo">
       <div class="caja-100">

@@ -1717,11 +1717,11 @@ header.cotizacion #datos--fac {
     color: #4b4b4b;
     font-size: 0.8em; }
     header.cotizacion #datos--fac li span.num-f {
-      margin-left: 30px; }
+      margin-left: 60px; }
     header.cotizacion #datos--fac li span.num-p {
-      margin-left: 20px; }
+      margin-left: 22px; }
     header.cotizacion #datos--fac li span.num-l {
-      margin-left: 40px; }
+      margin-left: 8px; }
 header.cotizacion h2 {
   font-size: 2.3em;
   text-align: center;
