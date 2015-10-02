@@ -254,10 +254,10 @@ echo "La razon social del proveedor es: ".$razon_social;
       <p class="d">Datos del Proveedor</p>
       <div id="oc-proo">
         <ul>
-          <li> <?php echo " ".$razon_social; ?><span class="flot-1">Razón social:</span><span class="rut-social">RUT: 15.789.452-9</span></li>
+          <li> <?php echo " ".$razon_social; ?><span class="flot-1">Razón social:</span><span class="rut-social">RUT: <?php echo " ".$RUT; ?></span></li>
           <li><?php echo " ".$giro; ?><span class="flot-2">Giro:</span></li>
           <li><?php echo " ".$direccion; ?><span class="flot-3">Dirección:</span></li>
-          <li><?php echo " ".$contacto; ?><span class="flot-4">Contacto:</span><span class="telefono-contacto">Teléfono: +56 2 2224556</span></li>
+          <li><?php echo " ".$contacto; ?><span class="flot-4">Contacto:</span><span class="telefono-contacto">Teléfono: <?php echo " ".$telefono; ?></span></li>
           <li class="right--r"> 30 días<span class="flot-5">Condiciones de pago:</span></li>
         </ul>
       </div>

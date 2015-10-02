@@ -208,7 +208,11 @@
           </div>
 		   <div class="caja base-20">
             <label>Jefe de autorización</label>
-            <input type="text" name="jefe_autorizacion">
+            <!-- <input type="text" name="jefe_autorizacion">  -->
+			<select id="" name="jefe_autorizacion" class="pago">
+              <option value="Daniela Mosquera">Daniela Mosquera</option>
+              <option value="Sofia Pascal">Sofia Pascal</option>
+			</select>  
           </div>
 		  <div class="caja base-20">
             <label>Nº Presupuesto proveedor</label>
