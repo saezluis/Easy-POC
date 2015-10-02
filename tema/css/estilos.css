@@ -2201,7 +2201,7 @@ header.cotizacion p.coti--fecha {
     padding: 12px;
     color: #cf0508;
     height: 50px;
-    font-size: 0.9em;
+    font-size: 0.8em;
     border-top: 1px solid #cccccc;
     border-bottom: 1px solid #cccccc; }
   #campana #item-1 {
@@ -2676,7 +2676,7 @@ header.cotizacion p.coti--fecha {
       border-bottom: 1px solid #000;
       margin-bottom: 15px;
       font-weight: 600;
-      font-size: 0.9em;
+      font-size: 0.8em;
       padding-left: 100px; }
       #oc--datos #oc-proo li span.flot-1, #oc--datos #oc-proo li span.flot-2, #oc--datos #oc-proo li span.flot-3, #oc--datos #oc-proo li span.flot-4, #oc--datos #oc-proo li span.flot-5, #oc--datos #oc-proo li span.flot-rut, #oc--datos #oc-proo li span.flot-tel, #oc--datos #oc-proo li span.flot-rut-data, #oc--datos #oc-proo li span.flot-tel-data {
         position: absolute;

@@ -6,7 +6,8 @@
 
 <?php 
 
-
+	//echo "numero de orden ".$_REQUEST['nro_orden_form'];
+	$nombrefile = $_REQUEST['nro_orden_form'];
 
 // Configuration - Your Options
       $allowed_filetypes = array('.jpg','.gif','.bmp','.png'); // These will be the types of file that will pass the validation.
@@ -32,7 +33,7 @@
     $hora = time(); // this will give the file current time so avoid files having the same name
 	$filename = $hora . $filename;
    // Upload the file to your specified path.
-   if(move_uploaded_file($_FILES["userfile"]["tmp_name"],$upload_path . $filename))
+   if(move_uploaded_file($_FILES["userfile"]["tmp_name"],$upload_path . $nombrefile.$ext))
          //echo time(). ' Your file upload was successful, view the file <a href="' . $upload_path . $filename . '" title="Your File">here</a>'; // It worked.
 		 echo "Carga completada";
       else

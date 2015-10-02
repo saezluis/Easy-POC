@@ -41,7 +41,12 @@
 		//obtener valores del formulario
 		//var nameValue = document.getElementById("uniqueID").value;
 	}
-	</script>	
+	</script>
+	<style>
+		h3 {
+			text-align: center;
+		} 	
+	</style>	
   </head>
 <body>
 <?php
@@ -224,7 +229,7 @@ echo "La razon social del proveedor es: ".$razon_social;
 			$anio = date('y', time()); 
 		?>
         <p class="coti--fecha">Santiago,<span class="dia"><?php echo $dia; ?></span><span class="mes"><?php echo $mes; ?></span><span class="ano"><?php echo "20".$anio; ?></span></p>
-        <h2>Orden de compra marketing</h2>
+        <h3>Orden de compra marketing</h3>
       </div>
 	  
 	</header>  

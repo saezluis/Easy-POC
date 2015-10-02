@@ -229,15 +229,19 @@
 		
 		<?php
 		$n_orden2 = 1000;
+		$more_foo = 2000;
 		while ($reg=mysqli_fetch_array($registros))
 		{			
 			//nro OC -- fecha -- detalle -- OC SAP -- OC RECEPCION -- dias 	
 			$fecha = $reg['fecha'];
 			$fecha_format = date("d/m/y",strtotime($fecha));
 			$n_orden = "";
-			$n_orden = $reg['numero_orden'];			
+			$n_orden = $reg['numero_orden'];						
+			$n_orden2 = $n_orden2 + 1;	
 			
-			$n_orden2 = $n_orden2 + 1;								
+			$nro_orden_foo = $reg['numero_orden'];
+			$more_foo = $more_foo + 1;
+			
 			echo "<div id=\"tabla\">";
 			  echo "<div id=\"orden--1\">".$reg['numero_orden']."</div>";
 			  echo "<div id=\"orden--2\">".$fecha_format."</div>";
@@ -266,16 +270,18 @@
 					  echo "</form>";
 					echo "</div></a></span></div>";
 			  echo "<div id=\"orden--6T\">3 días</div>";
-			  echo "<div id=\"orden--6S\"><a href=\"#inline2\" data-tooltip=\"Subir archivo\" class=\"various\"><img src=\"tema/img/upload.gif\" alt=\"\"></a>";
-				echo "<div id=\"inline2\" style=\"display: none;\">";
+			  echo "<div id=\"orden--6S\"><a href=\"#$more_foo\" data-tooltip=\"Subir archivo\" class=\"various\"><img src=\"tema/img/upload.gif\" alt=\"\"></a>";
+				echo "<div id=\"$more_foo\" style=\"display: none;\">";
 				  // ------ Comienzo del subir archivos -----
 				  echo "<form id=\"upload\" action=\"getfile.php\" method=\"POST\" enctype=\"multipart/form-data\">";
 					echo "<h1>Subir un archivo</h1>";
-					echo "<div class=\"drag-drop\">";
+					echo "<div class=\"drag-drop\">";					  
 					  echo "<input id=\"file\" name=\"userfile\" type=\"file\">";
 					echo "</div>";
 					echo "<button type=\"submit\" name=\"upload\" value=\"upload\" class=\"acept\">Aceptar</button>";
+					echo "<input type=\"text\" name=\"nro_orden_form\" value=\"$nro_orden_foo\" hidden=hidden>";
 				  echo "</form>";
+				  //OJO los archivos llevan el nro de orden para poder luego ubicarlos y bajarlos
 				  // ----- Aqui finaliza el subir archivos -----
 				echo "</div>";
 			  echo "</div>";
