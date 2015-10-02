@@ -42,6 +42,14 @@
 		//var nameValue = document.getElementById("uniqueID").value;
 	}
 	</script>
+	
+	<script type = "text/javascript" >
+		history.pushState(null, null, 'orden-compra.php');
+		window.addEventListener('popstate', function(event) {
+			history.pushState(null, null, 'orden-compra.php');
+		});
+    </script>
+	
 		<link href="print.css" rel="stylesheet" type="text/css" media="print" />
   </head>
 <body>

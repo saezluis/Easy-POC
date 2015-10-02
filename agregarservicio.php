@@ -261,6 +261,13 @@
 	});
     </script>
 	
+	<script type = "text/javascript" >
+		history.pushState(null, null, 'agregarservicio.php');
+		window.addEventListener('popstate', function(event) {
+			history.pushState(null, null, 'agregarservicio.php');
+		});
+    </script>
+	
   </head>
   <body>
 	<?php

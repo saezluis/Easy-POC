@@ -81,7 +81,14 @@
 		margin: 0;
 	}
 	</style>
-		
+	
+	<script type = "text/javascript" >
+		history.pushState(null, null, 'emision.php');
+		window.addEventListener('popstate', function(event) {
+			history.pushState(null, null, 'emision.php');
+		});
+    </script>
+	
   </head>
   <body>
 	<?php
