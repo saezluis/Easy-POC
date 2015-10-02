@@ -1707,7 +1707,9 @@ header.cotizacion #cotiza--datos {
     font-size: 0.8em;
     color: #000; }
 header.cotizacion #datos--fac {
-  text-align: right;
+  width: 40%;
+  float: right;
+  text-align: left;
   margin-top: 40px; }
   header.cotizacion #datos--fac ul {
     margin: 0;
@@ -1715,13 +1717,13 @@ header.cotizacion #datos--fac {
     list-style: none; }
   header.cotizacion #datos--fac li {
     color: #4b4b4b;
-    font-size: 0.8em; }
+    font-size: 0.7em; }
     header.cotizacion #datos--fac li span.num-f {
-      margin-left: 60px; }
+      margin-left: 80px; }
     header.cotizacion #datos--fac li span.num-p {
-      margin-left: 22px; }
+      margin-left: 20px; }
     header.cotizacion #datos--fac li span.num-l {
-      margin-left: 8px; }
+      margin-left: 40px; }
 header.cotizacion h2 {
   font-size: 2.3em;
   text-align: center;
@@ -2201,7 +2203,7 @@ header.cotizacion p.coti--fecha {
     padding: 12px;
     color: #cf0508;
     height: 50px;
-    font-size: 0.8em;
+    font-size: 0.9em;
     border-top: 1px solid #cccccc;
     border-bottom: 1px solid #cccccc; }
   #campana #item-1 {
@@ -2676,7 +2678,7 @@ header.cotizacion p.coti--fecha {
       border-bottom: 1px solid #000;
       margin-bottom: 15px;
       font-weight: 600;
-      font-size: 0.8em;
+      font-size: 0.9em;
       padding-left: 100px; }
       #oc--datos #oc-proo li span.flot-1, #oc--datos #oc-proo li span.flot-2, #oc--datos #oc-proo li span.flot-3, #oc--datos #oc-proo li span.flot-4, #oc--datos #oc-proo li span.flot-5, #oc--datos #oc-proo li span.flot-rut, #oc--datos #oc-proo li span.flot-tel, #oc--datos #oc-proo li span.flot-rut-data, #oc--datos #oc-proo li span.flot-tel-data {
         position: absolute;
@@ -2717,6 +2719,17 @@ header.cotizacion p.coti--fecha {
         top: 145px;
         left: 0;
         padding-right: 18px !important; }
+      #oc--datos #oc-proo li .rut-social,
+      #oc--datos #oc-proo li .telefono-contacto {
+        position: absolute;
+        position: absolute;
+        left: 500px;
+        background: #fff;
+        padding: 10px; }
+      #oc--datos #oc-proo li .rut-social {
+        top: -9px; }
+      #oc--datos #oc-proo li .telefono-contacto {
+        bottom: 25px; }
 
 .right--r {
   padding-left: 180px !important; }

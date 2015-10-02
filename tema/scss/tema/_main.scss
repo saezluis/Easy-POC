@@ -1149,6 +1149,7 @@
     			padding-left: 100px;
 
 
+
 				span.flot-1,span.flot-2,span.flot-3,span.flot-4,span.flot-5,span.flot-rut,span.flot-tel,span.flot-rut-data,span.flot-tel-data{
 					position: absolute;
 					background: white;
@@ -1199,7 +1200,20 @@
 					left: 0;
 					padding-right: 18px !important;
 				}
-
+				.rut-social,
+				.telefono-contacto{
+					position: absolute;
+				    position: absolute;
+				    left: 500px;
+				    background:#fff;
+				    padding:10px;
+				}
+				.rut-social{
+					top:-9px;
+				}
+				.telefono-contacto{
+					bottom:25px;
+				}
 
 			}
 		}

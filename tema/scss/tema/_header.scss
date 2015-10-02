@@ -99,7 +99,9 @@ header.cotizacion{
 	}
 
 	#datos--fac{
-		text-align: right;
+		width: 40%;
+    	float: right;
+		text-align: left;
 		margin-top: 40px;
 		ul{
 			margin: 0;
@@ -108,10 +110,10 @@ header.cotizacion{
 		}
 		li{
 			color: #4b4b4b;
-			font-size:0.8em;
+			font-size:0.7em;
 
 			span.num-f{
-				margin-left:30px;
+				margin-left:80px;
 			}
 			span.num-p{
 				margin-left:20px;
