@@ -45,7 +45,11 @@
 	<style>
 		h3 {
 			text-align: center;
+<<<<<<< HEAD
 			color:red;
+=======
+			background: yellow;
+>>>>>>> 895e9b2ae49f1054639dcf932cd49114080821fd
 		} 	
 	</style>	
   </head>
