@@ -268,6 +268,8 @@
 		});
     </script>
 	
+		
+	
   </head>
   <body>
 	<?php
@@ -380,6 +382,18 @@
             <!--    <input type="text" name="nro_factura">    -->
 			<?php echo "<input type=\"text\" name=\"nro_factura\" value=\"$nro_factura\" readonly>"; ?>
           </div>
+		  
+		  <div class="caja base-20">
+		  
+		  </div>
+		  
+		  <div class="caja base-20">
+		  
+		  </div>
+		  
+		  <div class="caja base-20">
+				<button type="submit" class="generar" formaction="orden-compra.php">GENERAR OC</button>
+			</div>
 		  
 		  <?php echo "<input type=\"hidden\" name=\"area_pagoland_send\" value=\"$area_pago\">"; ?>
 		  <!-- reojete reojete reojete desaparecer esto de aqui y meterlo a BD 
@@ -554,11 +568,8 @@
 			  <div class="caja base-20">							
 			  </div>			  
 			</div>
+									
 			
-			
-			<div class="caja base-20">
-				<button type="submit" class="generar" formaction="orden-compra.php">GENERAR OC</button>
-			</div>
         </form>		
       </div>
     </div>

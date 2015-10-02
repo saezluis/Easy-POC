@@ -316,6 +316,7 @@ echo "La razon social del proveedor es: ".$razon_social;
 		
 		$totaliva = round(($total * 19) / 100);
 		$totalivaf = number_format($totaliva,0);
+		
 		mysqli_close($conexion);
 		
 		?>
