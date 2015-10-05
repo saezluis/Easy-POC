@@ -2184,6 +2184,11 @@ header.cotizacion p.coti--fecha {
   #campana #item-3,
   #campana #item-4,
   #campana #item-5,
+  #campana #item-1-print,
+  #campana #item-2-print,
+  #campana #item-3-print,
+  #campana #item-4-print,
+  #campana #item-5-print,
   #campana #titulo--orden-1,
   #campana #titulo--orden-2,
   #campana #titulo--orden-3,
@@ -2224,6 +2229,27 @@ header.cotizacion p.coti--fecha {
     line-height: 1;
     border-right: 1px solid #cccccc !important; }
   #campana #item-5 {
+    width: 20%;
+    line-height: 2;
+    border-right: 1px solid #cccccc !important; }
+  #campana #item-1-print {
+    width: 20%;
+    line-height: 2;
+    border-left: 1px solid #cccccc !important;
+    border-right: 1px solid #cccccc !important; }
+  #campana #item-2-print {
+    width: 40%;
+    line-height: 2;
+    border-right: 1px solid #cccccc !important; }
+  #campana #item-3-print {
+    width: 10%;
+    line-height: 2;
+    border-right: 1px solid #cccccc !important; }
+  #campana #item-4-print {
+    width: 10%;
+    line-height: 1;
+    border-right: 1px solid #cccccc !important; }
+  #campana #item-5-print {
     width: 20%;
     line-height: 2;
     border-right: 1px solid #cccccc !important; }

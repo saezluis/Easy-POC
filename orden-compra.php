@@ -50,7 +50,60 @@
 		});
     </script>
 	
+		<!--
 		<link href="print.css" rel="stylesheet" type="text/css" media="print" />
+		-->
+		
+		<style type="text/css" media="print">
+			header.cotizacion #datos--fac{
+				width: 50% !important;
+			}
+		    header.cotizacion #datos--fac li {
+				font-size: 10px !important;
+       		}
+       		#oc--datos #oc-proo li{
+       			font-size: 0.7em;
+       		}
+       		#oc--datos #oc-proo li span.flot-2{
+       			top: 25px !important;
+       		}
+       		#oc--datos #oc-proo li span.flot-3{
+       			top: 60px !important;
+       		}
+       		#oc--datos #oc-proo li span.flot-4{
+       			top: 90px !important;
+       		}
+       		#oc--datos #oc-proo li span.flot-5{
+       			top: 125px !important;
+       		}
+
+       		.right--r{
+       			padding-left: 160px !important;
+       		}
+			#item-1-print, #item-2-print, #item-3-print, #item-4-print, #item-5-print{
+				
+				font-size: 10px !important;
+				padding: 5px !important;
+				height: 30px !important;
+			}
+			#desglose-1, #desglose-2, #desglose-3, #desglose-4, #desglose-5{
+				
+				font-size: 10px !important;
+				padding: 5px !important;
+				height: 30px !important;
+
+			}
+       		.valores-select{
+       			display: none;
+       		}
+    		.imprimir{
+    			display: none;
+    		}
+			#neto input.no-hay{
+				border:none !important;
+			}
+		</style>
+		
   </head>
 <body>
 <?php
@@ -277,11 +330,11 @@ echo "La razon social del proveedor es: ".$razon_social;
 	<div id="campana" class="grupo">
       <div class="caja-100">
         <div id="tabla">
-          <div id="item-1">Campaña</div>
-          <div id="item-2">Detalle</div>
-          <div id="item-3">Cantidad</div>
-          <div id="item-4">Precio Unitario</div>
-          <div id="item-5">Precio Total</div>
+          <div id="item-1-print">Campaña</div>
+          <div id="item-2-print">Detalle</div>
+          <div id="item-3-print">Cantidad</div>
+          <div id="item-4-print">Precio Unitario</div>
+          <div id="item-5-print">Precio Total</div>
         </div>
 		<!-- Esto va en un PHP -->
 		<!-- Mientras exista una descripcion asociada al id_orden va a construir datos aqui -->
@@ -324,8 +377,8 @@ echo "La razon social del proveedor es: ".$razon_social;
 		<?php echo "<input type=\"text\" value=\"$total\" id=\"totalhidden\" hidden=hidden>";	?>		
 		
         <div id="neto">
-          <p class="neto">NETO $<?php echo "<input type=\"text\" size=\"10\" value=\"$total\"  readonly>"; ?></p>
-          <p class="iva">IVA $ <?php echo "<input type=\"text\" size=\"10\" value=\"$totalivaf\"  readonly>"; ?> </p>
+          <p class="neto">NETO $<?php echo "<input class=\"no-hay\" type=\"text\" size=\"10\" value=\"$total\"  readonly>"; ?></p>
+          <p class="iva">IVA $ <?php echo "<input class=\"no-hay\" type=\"text\" size=\"10\" value=\"$totalivaf\"  readonly>"; ?> </p>
 		  <!-- OJO revisar el comportamiento del CSS en el campo del select -->
           <select id="xxx" name="xxxyyy" class="valores-select" onchange="calcular(this)">
             <option value="#" id="elija">Elija</option>
@@ -333,7 +386,7 @@ echo "La razon social del proveedor es: ".$razon_social;
             <option value="boleta" id="boleta">10% BOLETA</option>
             <option value="#" id="exento">EXENTO DE IVA</option>
           </select>
-          <p class="totality">Total $ <?php echo "<input type=\"text\" size=\"10\" value=\"\" id=\"totalfinalcampo\" readonly>"; ?></p>
+          <p class="totality">Total $ <?php echo "<input class=\"no-hay\" type=\"text\" size=\"10\" value=\"\" id=\"totalfinalcampo\" readonly>"; ?></p>
           <button type="button" class="imprimir" onclick="window.print(); window.location='emision.php';">IMPRIMIR</button>
 		  <!--
 		  <button type="button" class="imprimir" >CANCELAR</button>
