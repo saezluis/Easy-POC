@@ -2066,7 +2066,8 @@ header.cotizacion p.coti--fecha {
     font-size: 0.8em; }
 
 #buscar form.seek {
-  float: right; }
+  float: right;
+  margin-top: 30px; }
   #buscar form.seek input[type="search"] {
     font-size: 0.9em;
     padding: 5px;

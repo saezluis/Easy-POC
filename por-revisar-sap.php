@@ -132,12 +132,12 @@
 					echo "<div id=\"ordensap\" name=\"\" style=\"display: none;\">";
 					  //Ojo aqui redirecciono con una pagina php diferente para no perder el la pagina donde estoy editando
 					  echo "<form id=\"edit-recep\" method=\"POST\" action=\"grabar-orden-sap-rev.php\">";
-						echo "<h1>Ingresa número de OC SAP</h1>";
+						echo "<h1 style=\"font-size: 1.5em;\">Ingresa número de OC SAP</h1>";
 						// Este campo oculto lleva el nro orden para poder hacer el insert en BD
 						echo "<input type=\"hidden\" name=\"nro_orden_send_hidden\" value=\"$registro[numero_orden]\">";
 						//id=\"$reg[numero_orden]\"
-						echo "<input type=\"text\" name=\"nro_orden_send\" value=\"\">";
-						echo "<button type=\"submit\" value=\"grabar\">Grabar</button>";
+						echo "<input style=\"width: 100%; padding: 5px;\"; type=\"text\" name=\"nro_orden_send\" value=\"\">";
+						echo "<button style=\"width: 100%;margin-top: 10px; background: transparent linear-gradient(to bottom, #FF1500 0%, #C0000B 100%) repeat scroll 0% 0%; color:#fff; border:none;\" type=\"submit\" value=\"grabar\">Grabar</button>";
 					  echo "</form>";
 					echo "</div></a></span></div>";
 			//------------------- Aqui trabajo con orden Recepcion -------------------
@@ -145,11 +145,11 @@
 					echo "<div id=\"ordenrecep\" style=\"display: none;\">";
 					//Ojo aqui redirecciono con una pagina php diferente para no perder el la pagina donde estoy editando
 					  echo "<form id=\"edit-recep\" method=\"POST\" action=\"grabar-recepcion-sap-rev.php\">";
-						echo "<h1>Ingresa número de OC RECEPCION</h1>";
+						echo "<h1 style=\"font-size: 1.5em;\">Ingresa número de OC RECEPCION</h1>";
 						// Este campo oculto lleva el nro orden para poder hacer el insert en BD
 						echo "<input type=\"hidden\" name=\"nro_ordenRecep_send_hidden\" value=\"$registro[numero_orden]\" >";
-						echo "<input type=\"text\" name=\"nro_recepcion_send\" value=\"\">";
-						echo "<button type=\"submit\" value=\"grabar\">Grabar</button>";
+						echo "<input style=\"width: 100%; padding: 5px;\"; type=\"text\" name=\"nro_recepcion_send\" value=\"\">";
+						echo "<button style=\"width: 100%;margin-top: 10px; background: transparent linear-gradient(to bottom, #FF1500 0%, #C0000B 100%) repeat scroll 0% 0%; color:#fff; border:none;\" type=\"submit\" value=\"grabar\">Grabar</button>";
 					  echo "</form>";
 					echo "</div></a></span></div>";
 			  echo "<div id=\"orden--6T\">3 días</div>";
@@ -244,12 +244,12 @@
 					echo "<div id=\"$n_orden\" name=\"\" style=\"display: none;\">";
 					//Ojo aqui redirecciono con una pagina php diferente para no perder el la pagina donde estoy editando
 					  echo "<form id=\"edit-recep\" method=\"POST\" action=\"grabar-orden-sap-rev.php\">";
-						echo "<h1>Ingresa número de OC SAP</h1>";
+						echo "<h1 style=\"font-size: 1.5em;\">Ingresa número de OC SAP</h1>";
 						// Este campo oculto lleva el nro orden para poder hacer el insert en BD
 						echo "<input type=\"hidden\" name=\"nro_orden_send_hidden\" value=\"$reg[numero_orden]\">";
 						//id=\"$reg[numero_orden]\"
-						echo "<input type=\"text\" name=\"nro_orden_send\" value=\"\">";
-						echo "<button type=\"submit\" value=\"grabar\">Grabar</button>";
+						echo "<input style=\"width: 100%; padding: 5px;\"; type=\"text\" name=\"nro_orden_send\" value=\"\">";
+						echo "<button style=\"width: 100%;margin-top: 10px; background: transparent linear-gradient(to bottom, #FF1500 0%, #C0000B 100%) repeat scroll 0% 0%; color:#fff; border:none;\" type=\"submit\" value=\"grabar\">Grabar</button>";
 					  echo "</form>";
 					echo "</div></a></span></div>";
 			//------------------- Aqui trabajo con orden Recepcion -------------------
@@ -257,11 +257,11 @@
 					echo "<div id=\"$n_orden2\" style=\"display: none;\">";
 					//Ojo aqui redirecciono con una pagina php diferente para no perder el la pagina donde estoy editando
 					  echo "<form id=\"edit-recep\" method=\"POST\" action=\"grabar-recepcion-sap-rev.php\">";
-						echo "<h1>Ingresa número de OC RECEPCION</h1>";
+						echo "<h1 style=\"font-size: 1.5em;\">Ingresa número de OC RECEPCION</h1>";
 						// Este campo oculto lleva el nro orden para poder hacer el insert en BD
 						echo "<input type=\"hidden\" name=\"nro_ordenRecep_send_hidden\" value=\"$reg[numero_orden]\" >";
-						echo "<input type=\"text\" name=\"nro_recepcion_send\" value=\"\">";
-						echo "<button type=\"submit\" value=\"grabar\">Grabar</button>";
+						echo "<input style=\"width: 100%; padding: 5px;\"; type=\"text\" name=\"nro_recepcion_send\" value=\"\">";
+						echo "<button style=\"width: 100%;margin-top: 10px; background: transparent linear-gradient(to bottom, #FF1500 0%, #C0000B 100%) repeat scroll 0% 0%; color:#fff; border:none;\" type=\"submit\" value=\"grabar\">Grabar</button>";
 					  echo "</form>";
 					echo "</div></a></span></div>";
 			  echo "<div id=\"orden--6T\">3 días</div>";
