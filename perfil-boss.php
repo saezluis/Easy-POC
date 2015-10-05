@@ -152,30 +152,23 @@
 		while ($reg=mysqli_fetch_array($registros))
 		{
 		  echo "<div id=\"tabla\">";
-		  echo "<div id=\"orden--1\">".$reg['numero_orden']."</div>";
-		  //$fecha1="2008-10-20";
-		  //$fecha2=date("d-m-Y",strtotime($fecha1));
-		  $fecha = $reg['fecha'];
-		  $fecha_format = date("d/m/y",strtotime($fecha));
-		  $dia = date("d",strtotime($fecha));
+		  echo "<div id=\"orden--1\">".$reg['numero_orden']."</div>";	
 		  
-		  //$fecha1 = strtotime($fecha);
+		  //Aqui se calculan los dias que van transcurriendo desde la emision de la OC
+		  $fecha = $reg['fecha'];		  
+		  $todate = date("Y-m-d",strtotime($fecha));		  
+		  $fecha_format = date("d-m-Y",strtotime($fecha));		  		  		  
 		  date_default_timezone_set('America/Santiago');
-		  $fecha2 = date('d/m/y', time());
-		  $fechacalculada =  $fecha2 - $fecha_format;	
-		  $dia2 = $fechacalculada / 86400;
-		  //$dia3 = number_format($dia2, 2, '.', '');
-		  $dia3 = round($dia2);
-		  //$dia3 = date("d",strtotime($dia2));
-		  //$dia_actual = date("d");
-		  //$dia_remanente = 
-		  //echo "<div id=\"orden--2\">".$reg['fecha']."</div>";
+		  $fromdate = date('Y-m-d', time());		  
+		  $calculate_seconds = strtotime($fromdate) - strtotime($todate); // Numero de segundos entre las dos fechas
+		  $days = floor($calculate_seconds / (24 * 60 * 60 )); // Conversion a dias	
+		  
 		  echo "<div id=\"orden--2\">".$fecha_format."</div>";
 		  echo "<div id=\"orden--3\">".$reg['descripcion']."</div>";
 		  echo "<div id=\"orden--4\">".$reg['orden_sap']."<span class=\"yes\"><img src=\"tema/img/yes.gif\" alt=\"\"></span>"."</div>";
 		  echo "<div id=\"orden--5\">".$reg['orden_recepcion']."<span class=\"no\"><img src=\"tema/img/no.gif\" alt=\"\"></span>"."</div>";
 		  //echo "Fecha:".$reg['fecha']."<br>";
-		  echo "<div id=\"orden--6T\">".$dia2." dias"."</div>";
+		  echo "<div id=\"orden--6T\">".$days." dias"."</div>";
 		  //<div id="orden--6T">3 días</div>
 		  echo "<div id=\"orden--6S\">";
             echo "<form class=\"choose\">";
