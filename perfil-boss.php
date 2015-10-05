@@ -238,19 +238,20 @@
 		//Falta centrar y darle estilo al selector de paginas
 		
 		echo "<div class=\"caja-100\">";
+			echo "<div class=\"paginator\">";
 		
 		//muestro los distintos índices de las páginas, si es que hay varias páginas 
 		if ($total_paginas > 1){ 
 		for ($i=1;$i<=$total_paginas;$i++){ 
 			if ($pagina == $i) 
 				//si muestro el índice de la página actual, no coloco enlace 
-				echo $pagina . " "; 
+				echo "<span class=\"pag--cube\">" . $pagina . "</span>" . " "; 
 			else 
 				//si el índice no corresponde con la página mostrada actualmente, coloco el enlace para ir a esa página 				
-				echo "<a href='perfil-boss.php?pagina=" . $i . "'>" . $i . "</a> "; 
-			} 
+				echo "<a href='perfil-boss.php?pagina=" . $i . "'>"  . $i .  "</a> " ; 
+			}   
 		}	
-		
+			echo "</div>";				
 		echo "</div>";
 		
 		?>

@@ -2184,11 +2184,6 @@ header.cotizacion p.coti--fecha {
   #campana #item-3,
   #campana #item-4,
   #campana #item-5,
-  #campana #item-1-print,
-  #campana #item-2-print,
-  #campana #item-3-print,
-  #campana #item-4-print,
-  #campana #item-5-print,
   #campana #titulo--orden-1,
   #campana #titulo--orden-2,
   #campana #titulo--orden-3,
@@ -2232,27 +2227,6 @@ header.cotizacion p.coti--fecha {
     width: 20%;
     line-height: 2;
     border-right: 1px solid #cccccc !important; }
-  #campana #item-1-print {
-    width: 20%;
-    line-height: 2;
-    border-left: 1px solid #cccccc !important;
-    border-right: 1px solid #cccccc !important; }
-  #campana #item-2-print {
-    width: 40%;
-    line-height: 2;
-    border-right: 1px solid #cccccc !important; }
-  #campana #item-3-print {
-    width: 10%;
-    line-height: 2;
-    border-right: 1px solid #cccccc !important; }
-  #campana #item-4-print {
-    width: 10%;
-    line-height: 1;
-    border-right: 1px solid #cccccc !important; }
-  #campana #item-5-print {
-    width: 20%;
-    line-height: 2;
-    border-right: 1px solid #cccccc !important; }
   #campana #oc-item-1 {
     width: 20%;
     line-height: 2;
@@ -2284,6 +2258,37 @@ header.cotizacion p.coti--fecha {
     border-right: 1px solid #cccccc !important;
     font-weight: 800;
     font-size: 0.7em; }
+  #campana .paginator {
+    display: block;
+    float: left;
+    margin: 20px auto;
+    text-align: center;
+    width: 100%; }
+    #campana .paginator span.pag--cube {
+      display: inline-block;
+      padding: 0px 9px;
+      margin-right: 4px;
+      border-radius: 3px;
+      border: solid 1px #c0c0c0;
+      background: #e9e9e9;
+      border: none;
+      background: #616161;
+      box-shadow: inset 0px 0px 8px rgba(0, 0, 0, 0.5), 0px 1px 0px rgba(255, 255, 255, 0.8);
+      color: #f0f0f0;
+      text-shadow: 0px 0px 3px rgba(0, 0, 0, 0.5); }
+    #campana .paginator a {
+      display: inline-block;
+      padding: 0px 9px;
+      margin-right: 4px;
+      border-radius: 3px;
+      border: solid 1px #c0c0c0;
+      background: #e9e9e9;
+      box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.8), 0px 1px 3px rgba(0, 0, 0, 0.1);
+      font-size: .875em;
+      font-weight: bold;
+      text-decoration: none;
+      color: #717171;
+      text-shadow: 0px 1px 0px white; }
   #campana #titulo--orden-1 {
     width: 10%;
     line-height: 2;
