@@ -28,7 +28,7 @@
 		//$registros=mysqli_query($conexion,"select numero_orden,fecha,orden_sap,orden_recepcion,visto_bueno from ordenes where visto_bueno = \"no\"") or
 		//die("Problemas en el select:".mysqli_error($conexion));
 		
-		$registros=mysqli_query($conexion,"select * from ordenes where visto_bueno = \"no\"") or
+		$registros=mysqli_query($conexion,"select * from ordenes where visto_bueno = \"si\"") or
 		die("Problemas en el select:".mysqli_error($conexion));
 		
 		//$registrosserv=mysqli_query($conexion,"select * from servicios where id_orden = \"147\"") or
@@ -53,7 +53,7 @@
 		//calculo el total de páginas 
 		$total_paginas = ceil($num_total_registros / $TAMANO_PAGINA); 
 		
-		$ssql = "select * from ordenes where visto_bueno = \"no\" limit " . $inicio . "," . $TAMANO_PAGINA; 
+		$ssql = "select * from ordenes where visto_bueno = \"si\" limit " . $inicio . "," . $TAMANO_PAGINA; 
 		$rs = mysqli_query($conexion,$ssql); 
 		
 		//-------------- FIN Paginador ------------------
@@ -69,7 +69,7 @@
       	<a class="logout" href="logout.php" >Logout</a>
         <nav>
           <ul>
-            <li> <a href="perfil-boss-vb-si.php">Historial de órdenes de compra con VºBº</a></li>
+            <li> <a href="perfil-boss.php">Historial de órdenes de compra sin VºBº</a></li>
             <!-- 	<li> <a href="#" class="active">Perfil</a></li>  -->
           </ul>
         </nav>
@@ -80,7 +80,7 @@
       </div>
     </header>
     <div id="data--input" class="grupo">
-      <h3>Mis órdenes de compra <img src="tema/img/no.gif"> </h3>
+      <h3>Mis órdenes de compra <img src="tema/img/si.gif"></h3>
     </div>
     <div id="buscar" class="grupo">
       <div class="caja-80">
@@ -134,15 +134,14 @@
 		  //$fecha2=date("d-m-Y",strtotime($fecha1));
 		  $fecha = $registro['fecha'];
 		  $fecha_format = date("d/m/y",strtotime($fecha));
-		  $dia = date("d",strtotime($fecha));		
-		  $visto_bd = $registro['visto_bueno'];
+		  $dia = date("d",strtotime($fecha));		  		  
 		  //$dia_actual = date("d");
 		  //$dia_remanente = 
 		  //echo "<div id=\"orden--2\">".$reg['fecha']."</div>";
 		  echo "<div id=\"orden--2\">".$fecha_format."</div>";
 		  echo "<div id=\"orden--3\">".$registro['descripcion']."</div>";
-		  echo "<div id=\"orden--4\">".$registro['orden_sap']."<span class=\"yes\"><img src=\"tema/img/$visto_bd.gif\" alt=\"\"></span>"."</div>";
-		  echo "<div id=\"orden--5\">".$registro['orden_recepcion']."<span class=\"no\"><img src=\"tema/img/$visto_bd.gif\" alt=\"\"></span>"."</div>";
+		  echo "<div id=\"orden--4\">".$registro['orden_sap']."<span class=\"yes\"><img src=\"tema/img/yes.gif\" alt=\"\"></span>"."</div>";
+		  echo "<div id=\"orden--5\">".$registro['orden_recepcion']."<span class=\"no\"><img src=\"tema/img/no.gif\" alt=\"\"></span>"."</div>";
 		  //echo "Fecha:".$reg['fecha']."<br>";
 		  echo "<div id=\"orden--6T\">".$dia." dias"."</div>";
 		  //<div id="orden--6T">3 días</div>
@@ -184,8 +183,6 @@
 		  echo "<div id=\"tabla\">";
 		  echo "<div id=\"orden--1\">".$reg['numero_orden']."</div>";	
 		  $n_orden = $reg['numero_orden'];
-		  $visto_bd = $reg['visto_bueno'];
-		  //echo $visto_bd;
 		  
 		  //Aqui se calculan los dias que van transcurriendo desde la emision de la OC
 		  $fecha = $reg['fecha'];		  
@@ -198,13 +195,13 @@
 		  
 		  echo "<div id=\"orden--2\">".$fecha_format."</div>";
 		  echo "<div id=\"orden--3\">".$reg['descripcion']."</div>";
-		  echo "<div id=\"orden--4\">".$reg['orden_sap']."<span class=\"yes\"><img src=\"tema/img/$visto_bd.gif\" alt=\"\"></span>"."</div>";
-		  echo "<div id=\"orden--5\">".$reg['orden_recepcion']."<span class=\"no\"><img src=\"tema/img/$visto_bd.gif\" alt=\"\"></span>"."</div>";
+		  echo "<div id=\"orden--4\">".$reg['orden_sap']."<span class=\"yes\"><img src=\"tema/img/yes.gif\" alt=\"\"></span>"."</div>";
+		  echo "<div id=\"orden--5\">".$reg['orden_recepcion']."<span class=\"no\"><img src=\"tema/img/yes.gif\" alt=\"\"></span>"."</div>";
 		  //echo "Fecha:".$reg['fecha']."<br>";
 		  echo "<div id=\"orden--6T\">".$days." dias"."</div>";
 		  //<div id="orden--6T">3 días</div>
 		  echo "<div id=\"orden--6S\">";
-            echo "<form method=\"POST\" id=\"$n_orden\" class=\"choose\" action=\"update-perfil-boss.php\" >";
+            echo "<form method=\"POST\" id=\"$n_orden\" class=\"choose\" action=\"update-perfil-boss-vb-si.php\" >";
               echo "<select name=\"revision\" form=\"$n_orden\" onchange=\"this.form.submit()\">";
 			  //echo "<select name=\"revision\" form=\"$n_orden\" onchange=\"jsfunction()\">";
                 echo "<option value=\"elija\">Elija</option>";
@@ -247,7 +244,7 @@
 				echo $pagina . " "; 
 			else 
 				//si el índice no corresponde con la página mostrada actualmente, coloco el enlace para ir a esa página 				
-				echo "<a href='perfil-boss.php?pagina=" . $i . "'>" . $i . "</a> "; 
+				echo "<a href='perfil-boss-vb-si.php?pagina=" . $i . "'>" . $i . "</a> "; 
 			} 
 		}	
 		
