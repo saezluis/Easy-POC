@@ -27,9 +27,9 @@
 	*/
 	</script>
 	<script type = "text/javascript" >
-		history.pushState(null, null, 'orden-compra.php');
+		history.pushState(null, null, 'perfil-sap.php');
 		window.addEventListener('popstate', function(event) {
-			history.pushState(null, null, 'orden-compra.php');
+			history.pushState(null, null, 'perfil-sap.php');
 		});
     </script>
 	
