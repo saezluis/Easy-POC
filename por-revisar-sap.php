@@ -226,6 +226,7 @@
 		
 		<?php
 		$n_orden2 = 1000;
+		$more_fooo = 40;
 		while ($reg=mysqli_fetch_array($registros))
 		{			
 			//nro OC -- fecha -- detalle -- OC SAP -- OC RECEPCION -- dias 	
@@ -234,7 +235,11 @@
 			$n_orden = "";
 			$n_orden = $reg['numero_orden'];			
 			
-			$n_orden2 = $n_orden2 + 1;								
+			$n_orden2 = $n_orden2 + 1;		
+
+			$nro_orden_fooo = $reg['numero_orden'];
+			$more_fooo = $more_fooo + 1;
+			
 			echo "<div id=\"tabla\">";
 			  echo "<div id=\"orden--1\">".$reg['numero_orden']."</div>";
 			  echo "<div id=\"orden--2\">".$fecha_format."</div>";
@@ -265,14 +270,16 @@
 					  echo "</form>";
 					echo "</div></a></span></div>";
 			  echo "<div id=\"orden--6T\">3 días</div>";
-			  echo "<div id=\"orden--6S\"><a href=\"#inline2\" data-tooltip=\"Subir archivo\" class=\"various\"><img src=\"tema/img/upload.gif\" alt=\"\"></a>";
-				echo "<div id=\"inline2\" style=\"display: none;\">";
-				  echo "<form id=\"upload\">";
+			  echo "<div id=\"orden--6S\"><a href=\"#$more_fooo\" data-tooltip=\"Subir archivo\" class=\"various\"><img src=\"tema/img/upload.gif\" alt=\"\"></a>";
+				echo "<div id=\"$more_fooo\" style=\"display: none;\">";
+				// ------ Comienzo del subir archivos -----
+				  echo "<form id=\"upload\" action=\"getfile.php\" method=\"POST\" enctype=\"multipart/form-data\">";
 					echo "<h1 style=\"font-size: 1.5em;\">Subir un archivo</h1>";
-					echo "<div class=\"drag-drop\">";
-					  echo "<input id=\"photo\" type=\"file\" multiple=\"multiple\">";
+					echo "<div class=\"drag-drop\" style=\"height: 100px; width: 100px; background: url(tema/img/up-hover.gif); text-align: center; color: white; position: relative; margin: 0 auto 1em; padding: 1em;\">";
+					  echo "<input style=\"height: 100px;opacity: 0;position: absolute;top: 0;left: 0;width: 100%; cursor:pointer; z-index: 3;\" id=\"file\" name=\"userfile\" type=\"file\">";
 					echo "</div>";
-					echo "<button type=\"button\" value=\"subir\" class=\"acept\">Aceptar</button>";
+					echo "<button style=\"width: 95%; text-align:center; margin-top: 10px; background: transparent linear-gradient(to bottom, #FF1500 0%, #C0000B 100%) repeat scroll 0% 0%; color:#fff; border:none;\" type=\"submit\" name=\"upload\" value=\"upload\" class=\"acept\">Aceptar</button>";
+					echo "<input type=\"text\" name=\"nro_orden_form\" value=\"$nro_orden_fooo\" hidden=hidden>";
 				  echo "</form>";
 				echo "</div>";
 			  echo "</div>";
