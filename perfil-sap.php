@@ -27,10 +27,12 @@
 	*/
 	</script>
 	<script type = "text/javascript" >
+	
 		history.pushState(null, null, 'perfil-sap.php');
 		window.addEventListener('popstate', function(event) {
 			history.pushState(null, null, 'perfil-sap.php');
 		});
+		
     </script>
 	
   </head>
@@ -44,7 +46,7 @@
 		//$registros=mysqli_query($conexion,"select numero_orden,fecha,orden_sap,orden_recepcion,visto_bueno from ordenes where visto_bueno = \"no\"") or
 		//die("Problemas en el select:".mysqli_error($conexion));
 		
-		$registros=mysqli_query($conexion,"select * from ordenes where visto_bueno = \"no\" AND orden_sap IS NOT NULL AND orden_recepcion IS NOT NULL") or
+		$registros=mysqli_query($conexion,"select * from ordenes where orden_sap IS NOT NULL AND orden_recepcion IS NOT NULL") or
 		die("Problemas en el select:".mysqli_error($conexion));
 		
 		$revisar=mysqli_query($conexion,"select * from ordenes where visto_bueno = \"no\" AND orden_sap IS NULL OR orden_recepcion IS NULL") or
@@ -54,7 +56,31 @@
 		//echo "$num_rows Rows\n";
 		
 		//$registrosserv=mysqli_query($conexion,"select * from servicios where id_orden = \"147\"") or
-		//die("Problemas en el select:".mysqli_error($conexion));				
+		//die("Problemas en el select:".mysqli_error($conexion));	
+
+		//-------------- INICIO Paginador ------------------
+		
+		//Limito la busqueda a 10 registros por pagina
+		$TAMANO_PAGINA = 10; 
+		
+		//examino la página a mostrar y el inicio del registro a mostrar 
+		@$pagina = $_GET["pagina"]; 
+		if (!$pagina) { 
+			$inicio = 0; 
+			$pagina=1; 
+		} 
+		else { 
+			$inicio = ($pagina - 1) * $TAMANO_PAGINA; 
+		}
+		
+		$num_total_registros = mysqli_num_rows($registros); 
+		//calculo el total de páginas 
+		$total_paginas = ceil($num_total_registros / $TAMANO_PAGINA); 
+		
+		$ssql = "select * from ordenes where orden_sap IS NOT NULL AND orden_recepcion IS NOT NULL limit " . $inicio . "," . $TAMANO_PAGINA; 
+		$rs = mysqli_query($conexion,$ssql); 
+		
+		//-------------- FIN Paginador ------------------	
 		
 	?>
 	
@@ -236,7 +262,7 @@
 		<?php
 		$n_orden2 = 1000;
 		$more_foo = 2000;
-		while ($reg=mysqli_fetch_array($registros))
+		while ($reg=mysqli_fetch_array($rs))
 		{			
 			//nro OC -- fecha -- detalle -- OC SAP -- OC RECEPCION -- dias 	
 			$fecha = $reg['fecha'];
@@ -293,6 +319,30 @@
 			  echo "</div>";
 			echo "</div>";	
 		}
+		
+		
+		mysqli_free_result($rs); 
+		mysqli_close($conexion);
+		
+		//Falta centrar y darle estilo al selector de paginas
+		
+		echo "<div class=\"caja-100\">";
+			echo "<div class=\"paginator\">";
+		
+		//muestro los distintos índices de las páginas, si es que hay varias páginas 
+		if ($total_paginas > 1){ 
+		for ($i=1;$i<=$total_paginas;$i++){ 
+			if ($pagina == $i) 
+				//si muestro el índice de la página actual, no coloco enlace 
+				echo "<span class=\"pag--cube\">" . $pagina . "</span>" . " "; 
+			else 
+				//si el índice no corresponde con la página mostrada actualmente, coloco el enlace para ir a esa página 				
+				echo "<a href='perfil-sap.php?pagina=" . $i . "'>"  . $i .  "</a> " ; 
+			}   
+		}	
+			echo "</div>";				
+		echo "</div>";
+		
 		?>
 		
       </div>
