@@ -156,7 +156,7 @@
 			  echo "<div id=\"orden--6S\"><a href=\"#inline2\" data-tooltip=\"Subir archivo\" class=\"various\"><img src=\"tema/img/upload.gif\" alt=\"\"></a>";
 				echo "<div id=\"inline2\" style=\"display: none;\">";
 				  echo "<form id=\"upload\">";
-					echo "<h1>Subir un archivo</h1>";
+					echo "<h1 style=\"font-size: 1.5em;\">Subir un archivo</h1>";
 					echo "<div class=\"drag-drop\">";
 					  echo "<input id=\"photo\" type=\"file\" multiple=\"multiple\">";
 					echo "</div>";
@@ -268,7 +268,7 @@
 			  echo "<div id=\"orden--6S\"><a href=\"#inline2\" data-tooltip=\"Subir archivo\" class=\"various\"><img src=\"tema/img/upload.gif\" alt=\"\"></a>";
 				echo "<div id=\"inline2\" style=\"display: none;\">";
 				  echo "<form id=\"upload\">";
-					echo "<h1>Subir un archivo</h1>";
+					echo "<h1 style=\"font-size: 1.5em;\">Subir un archivo</h1>";
 					echo "<div class=\"drag-drop\">";
 					  echo "<input id=\"photo\" type=\"file\" multiple=\"multiple\">";
 					echo "</div>";
