@@ -7,36 +7,9 @@
     <link rel="stylesheet" href="tema/css/prueba.css">	
     <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
     <script src="tema/js/scripts.js"></script>
-	<!-- Nuevos Scripts
 	
-	<link rel="stylesheet" href="tema/css/tipeo.css">
-	-->
-
-	<!--cambio aqui-->
-	<!--cambio aqui-->
 	
-	<!--cambio aqui-->
-
-	<!--hice mi cambio-->
 	
-	<!--
-	1
-	2
-	3
-	4
-	5
-	-->
-
-
-	<!--weon es pelua la cosa-->
-	
-	<!-- algo nuevo -->
-	
-	<!-- ahora estoy trabajando en esto -->
-
-	<!-- improbable-->
-
-	<!--te paso la pelota-->
 
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>    
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
@@ -141,7 +114,6 @@
 		$("#label-2").hide();	
 		$("#label-3").hide();
 		
-		<?php $vardisplay = "blockk"; ?>;		
 		
 		});
 		
@@ -465,7 +437,7 @@
 			</div>	
 			
 			<!--- ---  Servicio 02 ---  --->	
-			<?php echo "<div class=\"caja base-100\" style=\"display:$vardisplay\">"; ?>
+			<div class="caja base-100">
 			  <div class="caja base-20">
 				<label id="label-1">Descripción del servicio</label>				
 				<input id="campo2" type="text" name="descripcion2" value="">

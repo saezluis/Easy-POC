@@ -107,7 +107,7 @@
   </head>
 <body>
 <?php
-
+error_reporting(E_ALL & ~E_NOTICE);
 //$conexion=mysqli_connect("localhost","pmdigita_admin","Prodigy12","pmdigita_test") or die("Problemas con la conexión");	
 $conexion=mysqli_connect("localhost","root","123","test") or die("Problemas con la conexion");
 $acentos = $conexion->query("SET NAMES 'utf8'");
@@ -137,6 +137,8 @@ if ($_REQUEST['descripcion1']!=""){
 		}
 	}		
 }
+
+$nro_presupuesto_set = $_REQUEST['nro_presupuesto'];
 
 mysqli_query($conexion,"insert into ordenes(id_proveedor,fecha,visto_bueno,campana,nro_presupuesto_proveedor,nro_factura_proveedor,
 jefe_autorizacion,area_pago,descripcion) values ('$_REQUEST[typeahead]',
@@ -225,7 +227,7 @@ $consulta_orden=mysqli_query($conexion,"select * from ordenes where numero_orden
 			  $nro_factura = $row['nro_factura_proveedor'];
 			}
 
-//hacer otra consulta para traer los datos del proveedor			
+	
 			
 $consulta_proveedor=mysqli_query($conexion,"select * from proveedor where nombre = '$_REQUEST[typeahead]'") or die("Problemas en el select:");	    
 			if($row=mysqli_fetch_array($consulta_proveedor))
@@ -241,23 +243,10 @@ $consulta_proveedor=mysqli_query($conexion,"select * from proveedor where nombre
 			
 mysqli_close($conexion);
 
-/*
-echo "El registo fue dado de alta."."<br>";
-echo "Ultimo registro insertado ".$last_id;
-echo "<br>";
-echo "El presupuesto del proveedor es: ".$nro_presupuesto;
-echo "<br>";
-echo "La razon social del proveedor es: ".$razon_social;
-*/
+
 ?>
 	<header class="cotizacion grupo">
-			<!--
-		  <div class="caja base-50 no-padding">
-			<h1> <a href="emision.php" class="logo"> <img src="tema/img/logo.jpg" alt="POC"></a></h1>
-		  </div>      
-		  <div class="caja base-100 no-padding">        
-		  </div>
-		  -->
+			
 		<div class="caja base-50 no-padding">
 			<div id="cot--logo"> <img src="tema/img/logo.gif" alt="POC"></div>
 			<div id="cotiza--datos">
@@ -271,11 +260,11 @@ echo "La razon social del proveedor es: ".$razon_social;
         <div id="datos--fac">
           <ul>
 			<?php echo "<li>N° <span class=\"num-f\">$last_id</span></li>"; ?>
-            <!--  <li>Nº<span class="num-f">7570</span></li> -->
-			<?php echo "<li>Presupuesto <span class=\"num-p\">$nro_presupuesto</span></li>"; ?>            
-            <!--  <li>Presupuesto<span class="num-p">102949</span></li> -->
+            
+			<?php echo "<li>Presupuesto <span class=\"num-p\">$nro_presupuesto_set</span></li>"; ?>            
+            
             <?php echo "<li>Nº Factura <span class=\"num-l\">$nro_factura</span></li>"; ?>
-			<!--  <li>Nº de factura<span class="num-l">773</span></li> -->			
+			
           </ul>
         </div>
       </div>
@@ -290,27 +279,7 @@ echo "La razon social del proveedor es: ".$razon_social;
       </div>
 	  
 	</header>  
-	<!--
-	Datos que llegan desde emision: 				Nombre en base de datos (Tabla: ordenes)
-		typeahead: nombre proveedor 				-> id_proveedor
-		fecha_documento: fecha de la orden			-> fecha
-		campana: nombre de la campaña				-> campana
-		outputtext: descripcion de los servicios 	-> detalle
-		cantidad: monto de la orden					-> cantidad
-		nro_presupuesto: numero de presupuesto		-> nro_presupuesto_proveedor
-		nro_factura: numero de factura				-> nro_factura_proveedor
-		monto_neto: monto neto						-> monto_neto
-		jefe_autorizacion: jefe de autorizacion		-> jefe_autorizacion
-		area_pago: area de pago						-> area_pago
 		
-													-> numero_orden: autogenerado por cada orden													
-													-> orden_sap: falta origen de la data
-													-> orden_recepcion: falta origen de la data
-													-> visto_bueno: por defecto deberia guardar NO al ser una nueva orden
-	-->
-	
-	
-	
 	<div id="oc--datos" class="no-padding grupo">
       <p class="d">Datos del Proveedor</p>
       <div id="oc-proo">
@@ -336,8 +305,7 @@ echo "La razon social del proveedor es: ".$razon_social;
           <div id="item-4-print">Precio Unitario</div>
           <div id="item-5-print">Precio Total</div>
         </div>
-		<!-- Esto va en un PHP -->
-		<!-- Mientras exista una descripcion asociada al id_orden va a construir datos aqui -->
+		
 
 		<?php
 		
@@ -373,13 +341,13 @@ echo "La razon social del proveedor es: ".$razon_social;
 		mysqli_close($conexion);
 		
 		?>
-		<!-- Aqui capturo el valor total de la orden que me llega de la pagina anterior -->
+		
 		<?php echo "<input type=\"text\" value=\"$total\" id=\"totalhidden\" hidden=hidden>";	?>		
 		
         <div id="neto">
           <p class="neto">NETO $<?php echo "<input class=\"no-hay\" type=\"text\" size=\"10\" value=\"$total\"  readonly>"; ?></p>
           <p class="iva">IVA $ <?php echo "<input class=\"no-hay\" type=\"text\" size=\"10\" value=\"$totalivaf\"  readonly>"; ?> </p>
-		  <!-- OJO revisar el comportamiento del CSS en el campo del select -->
+		  
           <select id="xxx" name="xxxyyy" class="valores-select" onchange="calcular(this)">
             <option value="#" id="elija">Elija</option>
             <option value="iva" id="iva">IVA</option>
@@ -388,9 +356,7 @@ echo "La razon social del proveedor es: ".$razon_social;
           </select>
           <p class="totality">Total $ <?php echo "<input class=\"no-hay\" type=\"text\" size=\"10\" value=\"\" id=\"totalfinalcampo\" readonly>"; ?></p>
           <button type="button" class="imprimir" onclick="window.print(); window.location='emision.php';">IMPRIMIR</button>
-		  <!--
-		  <button type="button" class="imprimir" >CANCELAR</button>
-		  -->
+		  
 		  <form action="cancelar.php" method="post">
 			<?php echo "<input type=\"text\" name=\"ultimoid\" value=\"$last_id\" hidden=hidden>"; ?>		  
 			<button type="submit" class="imprimir" >CANCELAR</button>

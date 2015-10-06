@@ -17,22 +17,16 @@
     <link rel="stylesheet" href="tema/js/source/jquery.fancybox.css?v=2.1.5">
     <script src="tema/js/source/jquery.fancybox.pack.js?v=2.1.5"></script>
 	
-	
-	
   </head>
   <body>
 	<?php
 	
 		$conexion=mysqli_connect("localhost","root","123","test") or die("Problemas con la conexión");
-		
-		//$registros=mysqli_query($conexion,"select numero_orden,fecha,orden_sap,orden_recepcion,visto_bueno from ordenes where visto_bueno = \"no\"") or
-		//die("Problemas en el select:".mysqli_error($conexion));
+				
 		
 		$registros=mysqli_query($conexion,"select * from ordenes where visto_bueno = \"no\"") or
 		die("Problemas en el select:".mysqli_error($conexion));
-		
-		//$registrosserv=mysqli_query($conexion,"select * from servicios where id_orden = \"147\"") or
-		//die("Problemas en el select:".mysqli_error($conexion));			
+						
 
 		//-------------- INICIO Paginador ------------------
 		
@@ -103,14 +97,13 @@
 	<?php
 		$buscar = $_POST["palabra"];
 		$conexion=mysqli_connect("localhost","root","123","test") or die("Problemas con la conexión");
-		//echo $buscar;
+		
 		//Ojo esto es para buscar una orden en especifica
 		$consulta_mysql=mysqli_query($conexion,"SELECT * FROM ordenes WHERE numero_orden = '$buscar' ") or		
-		//$consulta_mysql=mysqli_query($conexion,"SELECT * FROM ordenes WHERE numero_orden = '142-424-555'") or
 		die("Problemas en el select:".mysqli_error($conexion));
-		
-		//$consulta_mysql= mysql_query ("SELECT * FROM ordenes WHERE numero_orden like '%$buscar%'");
+				
 		while($registro = mysqli_fetch_array($consulta_mysql)) {
+			
 	?> 
 	<br>	
 	<div id="campana" class="grupo">
@@ -125,27 +118,31 @@
           <div id="titulo--orden-6S">VºBº</div>
         </div>   
 	</div>	
-	<?php
-		//if ($reg=mysqli_fetch_array($registros))
+	<?php		
 		
 		  echo "<div id=\"tabla\">";
-		  echo "<div id=\"orden--1\">".$registro['numero_orden']."</div>";
-		  //$fecha1="2008-10-20";
-		  //$fecha2=date("d-m-Y",strtotime($fecha1));
-		  $fecha = $registro['fecha'];
-		  $fecha_format = date("d/m/y",strtotime($fecha));
-		  $dia = date("d",strtotime($fecha));		
+		  echo "<div id=\"orden--1\">".$registro['numero_orden']."</div>";		  	
 		  $visto_bd = $registro['visto_bueno'];
-		  //$dia_actual = date("d");
-		  //$dia_remanente = 
-		  //echo "<div id=\"orden--2\">".$reg['fecha']."</div>";
+		  
+		  //Aqui se calculan los dias que van transcurriendo desde la emision de la OC
+		  $fecha = $registro['fecha'];		  
+		  $todate = date("Y-m-d",strtotime($fecha));		  
+		  $fecha_format = date("d-m-Y",strtotime($fecha));		  		  		  
+		  date_default_timezone_set('America/Santiago');
+		  $fromdate = date('Y-m-d', time());		  
+		  $calculate_seconds = strtotime($fromdate) - strtotime($todate); // Numero de segundos entre las dos fechas
+		  $days = floor($calculate_seconds / (24 * 60 * 60 )); // Conversion a dias	
+		  
 		  echo "<div id=\"orden--2\">".$fecha_format."</div>";
 		  echo "<div id=\"orden--3\">".$registro['descripcion']."</div>";
 		  echo "<div id=\"orden--4\">".$registro['orden_sap']."<span class=\"yes\"><img src=\"tema/img/$visto_bd.gif\" alt=\"\"></span>"."</div>";
-		  echo "<div id=\"orden--5\">".$registro['orden_recepcion']."<span class=\"no\"><img src=\"tema/img/$visto_bd.gif\" alt=\"\"></span>"."</div>";
-		  //echo "Fecha:".$reg['fecha']."<br>";
-		  echo "<div id=\"orden--6T\">".$dia." dias"."</div>";
-		  //<div id="orden--6T">3 días</div>
+		  echo "<div id=\"orden--5\">".$registro['orden_recepcion']."<span class=\"no\"><img src=\"tema/img/$visto_bd.gif\" alt=\"\"></span>"."</div>";		  
+		  //Aqui manipulo la fecha para que si pasa de 5 dias se muestre en rojo
+		  if ($days>=5){
+			echo "<div id=\"orden--6T\" style=\"color:#FF0000 \">".$days." dias"."</div>";
+		  } else {
+			  echo "<div id=\"orden--6T\" >".$days." dias"."</div>";
+		  }		  
 		  echo "<div id=\"orden--6S\">";
             echo "<form class=\"choose\">";
               echo "<select name=\"revision\" form=\"revision\">";
@@ -178,14 +175,13 @@
         </div>   		        
 		
 		<?php
-		//if ($reg=mysqli_fetch_array($registros))
+		
 		while ($reg=mysqli_fetch_array($rs))
 		{
 		  echo "<div id=\"tabla\">";
 		  echo "<div id=\"orden--1\">".$reg['numero_orden']."</div>";	
 		  $n_orden = $reg['numero_orden'];
-		  $visto_bd = $reg['visto_bueno'];
-		  //echo $visto_bd;
+		  $visto_bd = $reg['visto_bueno'];		  
 		  
 		  //Aqui se calculan los dias que van transcurriendo desde la emision de la OC
 		  $fecha = $reg['fecha'];		  
@@ -199,14 +195,16 @@
 		  echo "<div id=\"orden--2\">".$fecha_format."</div>";
 		  echo "<div id=\"orden--3\">".$reg['descripcion']."</div>";
 		  echo "<div id=\"orden--4\">".$reg['orden_sap']."<span class=\"yes\"><img src=\"tema/img/$visto_bd.gif\" alt=\"\"></span>"."</div>";
-		  echo "<div id=\"orden--5\">".$reg['orden_recepcion']."<span class=\"no\"><img src=\"tema/img/$visto_bd.gif\" alt=\"\"></span>"."</div>";
-		  //echo "Fecha:".$reg['fecha']."<br>";
-		  echo "<div id=\"orden--6T\">".$days." dias"."</div>";
-		  //<div id="orden--6T">3 días</div>
+		  echo "<div id=\"orden--5\">".$reg['orden_recepcion']."<span class=\"no\"><img src=\"tema/img/$visto_bd.gif\" alt=\"\"></span>"."</div>";		  
+		  //Aqui manipulo la fecha para que si pasa de 5 dias se muestre en rojo
+		  if ($days>=5){
+			echo "<div id=\"orden--6T\" style=\"color:#FF0000 \">".$days." dias"."</div>";
+		  } else {
+			  echo "<div id=\"orden--6T\" >".$days." dias"."</div>";
+		  }		  
 		  echo "<div id=\"orden--6S\">";
             echo "<form method=\"POST\" id=\"$n_orden\" class=\"choose\" action=\"update-perfil-boss.php\" >";
-              echo "<select name=\"revision\" form=\"$n_orden\" onchange=\"this.form.submit()\">";
-			  //echo "<select name=\"revision\" form=\"$n_orden\" onchange=\"jsfunction()\">";
+              echo "<select name=\"revision\" form=\"$n_orden\" onchange=\"this.form.submit()\">";			  
                 echo "<option value=\"elija\">Elija</option>";
                 echo "<option value=\"si.$n_orden\">Si</option>";
                 echo "<option value=\"no.$n_orden\">No</option>";
@@ -216,27 +214,10 @@
 		  echo "</div>";	
 		  }
 		
-		//echo "Esto lleva el get revision: ".@$_GET["revision"];
-		//echo "<br>";
-		//echo "Magia xd, Esto lleva nro de orden: ".$n_orden;
-		/*
-		echo "Visto bueno: ".substr(@$_POST["revision"],0,2);
-		echo " nro orden: ".substr(@$_POST["revision"],3,6);
-		
-		$visto = substr(@$_POST["revision"],0,2);
-		$nro_or = substr(@$_POST["revision"],3,6);
-		if ($visto!=""){
-			echo "Ahora visto si esta lleno";
-			mysqli_query($conexion,"UPDATE ordenes SET visto_bueno=\"si\" where numero_orden = \"$nro_or\"") or
-			die("Problemas en el select:".mysqli_error($conexion));		
-			
-		}
-		*/
+				
 		mysqli_free_result($rs); 
 		mysqli_close($conexion);
-		
-		//Falta centrar y darle estilo al selector de paginas
-		
+					
 		echo "<div class=\"caja-100\">";
 			echo "<div class=\"paginator\">";
 		
@@ -257,13 +238,7 @@
 		?>
 		
       </div>	  	  
-    </div>
-	
-	
-
-	
-	
-	
+    </div>					
 	
     <div id="footer" class="total">
       <div class="grupo">

@@ -16,16 +16,7 @@
     <script src="tema/js/scripts.js"></script>
     <link rel="stylesheet" href="tema/js/source/jquery.fancybox.css?v=2.1.5">
     <script src="tema/js/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-	
-	<script>
-	/*
-    $(function() {
-		$('#botoneditar').click(function() {
-			$("#hidecamp").hide();
-		}
-	}
-	*/
-	</script>
+		
 	
   </head>
   <body>
@@ -33,15 +24,11 @@
 	<?php
 		////$conexion=mysqli_connect("localhost","pmdigita_admin","Prodigy12","pmdigita_test") or die("Problemas con la conexión");	
 		$conexion=mysqli_connect("localhost","root","123","test") or die("Problemas con la conexión");
-		
-		//$registros=mysqli_query($conexion,"select numero_orden,fecha,orden_sap,orden_recepcion,visto_bueno from ordenes where visto_bueno = \"no\"") or
-		//die("Problemas en el select:".mysqli_error($conexion));
+				
 		
 		$registros=mysqli_query($conexion,"select * from ordenes where orden_sap IS NULL OR orden_recepcion IS NULL") or
 		die("Problemas en el select:".mysqli_error($conexion));
-		
-		//$registrosserv=mysqli_query($conexion,"select * from servicios where id_orden = \"147\"") or
-		//die("Problemas en el select:".mysqli_error($conexion));				
+							
 		
 		//-------------- INICIO Paginador ------------------
 		
@@ -115,11 +102,10 @@
 		$conexion=mysqli_connect("localhost","root","123","test") or die("Problemas con la conexión");
 		//echo $buscar;
 		//Ojo esto es para buscar una orden en especifica
-		$consulta_mysql=mysqli_query($conexion,"SELECT * FROM ordenes WHERE numero_orden = '$buscar' ") or		
-		//$consulta_mysql=mysqli_query($conexion,"SELECT * FROM ordenes WHERE numero_orden = '142-424-555'") or
+		$consulta_mysql=mysqli_query($conexion,"SELECT * FROM ordenes WHERE numero_orden = '$buscar' ") or				
 		die("Problemas en el select:".mysqli_error($conexion));
 		
-		//$consulta_mysql= mysql_query ("SELECT * FROM ordenes WHERE numero_orden like '%$buscar%'");
+		
 		while($registro = mysqli_fetch_array($consulta_mysql)) {
 	?> 
 	<br>	
@@ -138,11 +124,18 @@
 	 
 	
 	<?php
-		//if ($reg=mysqli_fetch_array($registros))
+		
 			$n_orden2 = 1000;
 			
-			$fecha = $registro['fecha'];
-			$fecha_format = date("d/m/y",strtotime($fecha));			
+			//Aqui se calculan los dias que van transcurriendo desde la emision de la OC
+			$fecha = $reg['fecha'];		  
+			$todate = date("Y-m-d",strtotime($fecha));		  
+			$fecha_format = date("d-m-Y",strtotime($fecha));		  		  		  
+			date_default_timezone_set('America/Santiago');
+			$fromdate = date('Y-m-d', time());		  
+			$calculate_seconds = strtotime($fromdate) - strtotime($todate); // Numero de segundos entre las dos fechas
+			$days = floor($calculate_seconds / (24 * 60 * 60 )); // Conversion a dias		
+			
 			$n_orden = "";
 			$n_orden = $registro['numero_orden'];			
 			
@@ -176,7 +169,12 @@
 						echo "<button style=\"width: 100%;margin-top: 10px; background: transparent linear-gradient(to bottom, #FF1500 0%, #C0000B 100%) repeat scroll 0% 0%; color:#fff; border:none;\" type=\"submit\" value=\"grabar\">Grabar</button>";
 					  echo "</form>";
 					echo "</div></a></span></div>";
-			  echo "<div id=\"orden--6T\">3 días</div>";
+			  //Aqui manipulo la fecha para que si pasa de 5 dias se muestre en rojo
+			  if ($days>=5){
+				echo "<div id=\"orden--6T\" style=\"color:#FF0000\">".$days." dias"."</div>";
+			  } else {
+				  echo "<div id=\"orden--6T\" >".$days." dias"."</div>";
+			  }	
 			  echo "<div id=\"orden--6S\"><a href=\"#inline2\" data-tooltip=\"Subir archivo\" class=\"various\"><img src=\"tema/img/upload.gif\" alt=\"\"></a>";
 				echo "<div id=\"inline2\" style=\"display: none;\">";
 				  echo "<form id=\"upload\">";
@@ -211,51 +209,22 @@
           <div id="titulo--orden-6T"> <img src="tema/img/time.gif" alt=""></div>
           <div id="titulo--orden-6S"> <img src="tema/img/upload.gif" alt=""></div>
         </div>
-		
-		<!--
-        <div id="tabla">
-          <div id="orden--1">xxx-xxx-xxx</div>
-          <div id="orden--2">xxx-xxx-xxx</div>
-          <div id="orden--3"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. </div>
-          <div id="orden--4">xxx-xxx-xxx<span class="yes"><img src="tema/img/yes.gif" alt=""></span><span class="edit"><a href="#inline1" data-tooltip="Editar" class="various"><img src="tema/img/edit.gif" alt="">
-                <div id="inline1" style="display: none;">
-                  <form id="edit-recep">
-                    <h1>Ingresa número de OC</h1>
-                    <input type="text">
-                    <button type="button" value="grabar">Grabar</button>
-                  </form>
-                </div></a></span></div>
-          <div id="orden--5">xxx-xxx-xxx<span class="no"><img src="tema/img/no.gif" alt=""></span><span class="edit"><a href="#inline1" data-tooltip="Editar" class="various"><img src="tema/img/edit.gif" alt="">
-                <div id="inline1" style="display: none;">
-                  <form id="edit-recep">
-                    <h1>Ingresa número de OC</h1>
-                    <input type="text">
-                    <button type="button" value="grabar">Grabar</button>
-                  </form>
-                </div></a></span></div>
-          <div id="orden--6T">3 días</div>
-          <div id="orden--6S"><a href="#inline2" data-tooltip="Subir archivo" class="various"><img src="tema/img/upload.gif" alt=""></a>
-            <div id="inline2" style="display: none;">
-              <form id="upload">
-                <h1>Subir un archivo</h1>
-                <div class="drag-drop">
-                  <input id="photo" type="file" multiple="multiple">
-                </div>
-                <button type="button" value="subir" class="acept">Aceptar</button>
-              </form>
-            </div>
-          </div>
-        </div>
-		-->
+				
 		
 		<?php
 		$n_orden2 = 1000;
 		$more_fooo = 40;
 		while ($reg=mysqli_fetch_array($rs))
 		{			
-			//nro OC -- fecha -- detalle -- OC SAP -- OC RECEPCION -- dias 	
-			$fecha = $reg['fecha'];
-			$fecha_format = date("d/m/y",strtotime($fecha));
+			//Aqui se calculan los dias que van transcurriendo desde la emision de la OC
+			$fecha = $reg['fecha'];		  
+			$todate = date("Y-m-d",strtotime($fecha));		  
+			$fecha_format = date("d-m-Y",strtotime($fecha));		  		  		  
+			date_default_timezone_set('America/Santiago');
+			$fromdate = date('Y-m-d', time());		  
+			$calculate_seconds = strtotime($fromdate) - strtotime($todate); // Numero de segundos entre las dos fechas
+			$days = floor($calculate_seconds / (24 * 60 * 60 )); // Conversion a dias	
+			
 			$n_orden = "";
 			$n_orden = $reg['numero_orden'];			
 			
@@ -293,7 +262,13 @@
 						echo "<button style=\"width: 100%;margin-top: 10px; background: transparent linear-gradient(to bottom, #FF1500 0%, #C0000B 100%) repeat scroll 0% 0%; color:#fff; border:none;\" type=\"submit\" value=\"grabar\">Grabar</button>";
 					  echo "</form>";
 					echo "</div></a></span></div>";
-			  echo "<div id=\"orden--6T\">3 días</div>";
+			//------------------- Aqui trabajo con la parte de los dias remanentes ------------------------		
+			  //Aqui manipulo la fecha para que si pasa de 5 dias se muestre en rojo
+			  if ($days>=5){
+				echo "<div id=\"orden--6T\" style=\"color:#FF0000\">".$days." dias"."</div>";
+			  } else {
+				  echo "<div id=\"orden--6T\" >".$days." dias"."</div>";
+			  }	
 			  echo "<div id=\"orden--6S\"><a href=\"#$more_fooo\" data-tooltip=\"Subir archivo\" class=\"various\"><img src=\"tema/img/upload.gif\" alt=\"\"></a>";
 				echo "<div id=\"$more_fooo\" style=\"display: none;\">";
 				// ------ Comienzo del subir archivos -----

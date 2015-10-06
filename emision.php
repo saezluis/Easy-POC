@@ -210,11 +210,65 @@
             <input type="text" name="fecha_documento"  id="datepicker" >            
           </div>
           <div class="caja base-20">
-            <label>Campaña*</label>
-            <input type="text" name="campana">
+            <label>Campaña*</label>			
+			<!--	<input type="text" name="campana"> 	-->
+			<select id="xxx" name="campana" class="pago">
+              <option value="#">Elija</option>
+              <option value="Actividad Digital">Actividad Digital</option>
+              <option value="Actividad Interna">Actividad Interna</option>
+			  <option value="Actividad Locales">Actividad Locales</option>
+			  <option value="Agua Caliente">Agua Caliente</option>
+			  <option value="Ahorro de Energía">Ahorro de Energía</option>
+			  <option value="Ajustes Campañas">Ajustes Campañas</option>
+			  <option value="Aniversario Cencosud">Aniversario Cencosud</option>
+			  <option value="Auspicios">Auspicios</option>
+			  <option value="Banco de Chile">Banco de Chile</option>
+			  <option value="Campaña Alexis Sanchez">Campaña Alexis Sanchez</option>
+			  <option value="Campaña Arauco">Campaña Arauco</option>
+			  <option value="Campaña Calefacción">Campaña Calefacción</option>
+			  <option value="Campaña Camping">Campaña Camping</option>
+			  <option value="Campaña Eco Easy">Campaña Eco Easy</option>
+			  <option value="Campaña Iluminación">Campaña Iluminación</option>
+			  <option value="Campaña Muebles">Campaña Muebles</option>
+			  <option value="Campaña Navidad">Campaña Navidad</option>
+			  <option value="Campaña Organización">Campaña Organización</option>
+			  <option value="Campaña Parrillas">Campaña Parrillas</option>
+			  <option value="Campaña Seguridad">Campaña Seguridad</option>
+			  <option value="Campaña Terrazas">Campaña Terrazas</option>
+			  <option value="Campañas Construcción">Campañas Construcción</option>
+			  <option value="Comisiones">Comisiones</option>
+			  <option value="Día Del Níspero">Día Del Níspero</option>
+			  <option value="Estudios">Estudios</option>
+			  <option value="Eventos Comerciales">Eventos Comerciales</option>
+			  <option value="Fe de erratas">Fe de erratas</option>
+			  <option value="Ferretería del Experto">Ferretería del Experto</option>
+			  <option value="Gasto Fijo Catálogos">Gasto Fijo Catálogos</option>
+			  <option value="Guía del Experto">Guía del Experto</option>
+			  <option value="Guía Jardin">Guía Jardin</option>
+			  <option value="Guia Terminaciones">Guia Terminaciones</option>
+			  <option value="Imperdibles">Imperdibles</option>
+			  <option value="Inauguración Locales">Inauguración Locales</option>
+			  <option value="Institucional">Institucional</option>
+			  <option value="Liquidación">Liquidación</option>
+			  <option value="Marketing Interno">Marketing Interno</option>
+			  <option value="Mes del Experto">Mes del Experto</option>
+			  <option value="Mes del Hogar">Mes del Hogar</option>	
+			  <option value="Mundo Experto">Mundo Experto</option>
+			  <option value="Ofertas Exclusivas Tarjetas">Ofertas Exclusivas Tarjetas</option>
+			  <option value="Originales">Originales</option>
+			  <option value="Otros Gastos Marketing">Otros Gastos Marketing</option>
+			  <option value="Precios para Expertos">Precios para Expertos</option>
+			  <option value="Prepárate para el invierno">Prepárate para el invierno</option>
+			  <option value="Proyecto Baño y Cocina">Proyecto Baño y Cocina</option>
+			  <option value="Rostros">Rostros</option>
+			  <option value="RSE">RSE</option>
+			  <option value="Temporada del Experto">Temporada del Experto</option>
+			  <option value="Visual">Visual</option>
+			  <option value="Weekend Tarjetas">Weekend Tarjetas</option>		  
+            </select>
           </div>
 		   <div class="caja base-20">
-            <label>Jefe de autorización</label>
+            <label>Autorizante</label>
             <!-- <input type="text" name="jefe_autorizacion">  -->
 			<select id="" name="jefe_autorizacion" class="pago">
               <option value="Daniela Mosquera">Daniela Mosquera</option>
@@ -230,7 +284,7 @@
             <input type="text" name="nro_factura">
           </div>
           <div class="caja base-20">
-            <label>Área de pago</label>
+            <label>Centro de costo</label>
             <select id="xxx" name="area_pago" class="pago">
               <option value="#">Elija</option>
               <option value="CEE1007700">Marketing Institucional</option>
@@ -242,6 +296,9 @@
 			  <option value="CEE1008800">e-commerce</option>
 			  <option value="CEE1007701">Visual</option>
 			  <option value="CEE1007702 ">Catálogos</option>
+			  <option value="Recupero ">Recupero</option>
+			  <option value="Proveedor ">Proveedor</option>
+			  <option value="Tarjetas ">Tarjetas</option>
             </select>
             <label> </label>            
           </div>
