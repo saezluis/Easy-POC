@@ -170,11 +170,27 @@
 		        
 		
 		<?php
-		//if ($reg=mysqli_fetch_array($registros))
+		
+		$dir = "uploads/";
+		$items = array();
+		
+		// Aqui leo el contenido del directorio uploads
+		if (is_dir($dir)) {
+			if ($dh = opendir($dir)) {
+				while (($file = readdir($dh)) !== false) {										
+					$items[] = $file;					
+				}
+				closedir($dh);
+			}
+		}
+		
+		
 		while ($reg=mysqli_fetch_array($rs))
 		{
 		  
 		  $nro_orden = $reg['numero_orden'];
+		  $nro_orden_comp = $nro_orden . ".pdf";
+		  //echo "la mamada que construi: " . $nro_orden_comp;
 		  
 		  //Aqui se calculan los dias que van transcurriendo desde la emision de la OC
 		  $fecha = $reg['fecha'];		  
@@ -198,10 +214,19 @@
 		  } else {
 			  echo "<div id=\"orden--6T\" >".$days." dias"."</div>";
 		  }		
-		  
-		  echo "<div id=\"orden--6S\"><a href=\"./uploads/$nro_orden.pdf\" data-tooltip=\"Descargar archivo\" class=\"various\" download><img src=\"tema/img/download.gif\" alt=\"\"></a></div>";
-		  echo "</div>";
 		  		  
+		  //Aqui valido que la orden tenga archivos para poder descargarlos	
+		  if (in_array($nro_orden_comp,@$items)){  			  
+			  echo "<div id=\"orden--6S\"><a href=\"./uploads/$nro_orden.pdf\" data-tooltip=\"Descargar archivo\" class=\"various\" download><img src=\"tema/img/download.gif\" alt=\"\"></a></div>";
+		  }else{
+			  echo "<div id=\"orden--6S\"></div>";
+		  }
+		  
+		  echo "</div>";
+		  
+		  //echo "Iterando en los items: " . @$items[$it];
+		  //$it = $it	+ 1;
+		  
 		}
 		
 		

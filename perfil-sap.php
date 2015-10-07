@@ -140,6 +140,19 @@
 		//if ($reg=mysqli_fetch_array($registros))
 			$n_orden2 = 1000;
 			
+		$dir = "uploads/";
+		$items_b = array();
+		
+		// Aqui leo el contenido del directorio uploads
+		if (is_dir($dir)) {
+			if ($dh = opendir($dir)) {
+				while (($file = readdir($dh)) !== false) {										
+					$items_b[] = $file;					
+				}
+				closedir($dh);
+			}
+		}
+			
 			//Aqui se calculan los dias que van transcurriendo desde la emision de la OC
 			$fecha = $registro['fecha'];		  
 			$todate = date("Y-m-d",strtotime($fecha));		  
@@ -151,6 +164,8 @@
 			
 			$n_orden = "";
 			$n_orden = $registro['numero_orden'];			
+			
+			$nro_orden_comp = $n_orden . ".pdf";
 			
 			$n_orden2 = $n_orden2 + 1;								
 			echo "<div id=\"tabla\">";
@@ -185,17 +200,12 @@
 				  echo "<div id=\"orden--6T\" >".$days." dias"."</div>";
 			  }	
 			  
-			  echo "<div id=\"orden--6S\"><a href=\"#inline2\" data-tooltip=\"Subir archivo\" class=\"various\"><img src=\"tema/img/upload.gif\" alt=\"\"></a>";
-				echo "<div id=\"inline2\" style=\"display: none;\">";
-				  echo "<form id=\"upload\">";
-					echo "<h1 style=\"font-size: 1.5em;\">Subir un archivo</h1>";
-					echo "<div class=\"drag-drop\">";
-					  echo "<input id=\"photo\" type=\"file\" multiple=\"multiple\">";
-					echo "</div>";
-					echo "<button type=\"button\" value=\"subir\" class=\"acept\">Aceptar</button>";
-				  echo "</form>";
-				echo "</div>";
-			  echo "</div>";
+			  if (in_array($nro_orden_comp,@$items_b)){  			  
+				echo "<div id=\"orden--6S\"><a href=\"./uploads/$n_orden.pdf\" data-tooltip=\"Ver Documento\" class=\"various\" ><img src=\"tema/img/ver-doc.gif\" alt=\"\"></a></div>";
+					}else{
+				echo "<div id=\"orden--6S\"></div>";
+			  }
+			  
 			echo "</div>";	 
 		  
 	?>	  		
@@ -223,6 +233,20 @@
 		<?php
 		$n_orden2 = 1000;
 		$more_foo = 2000;
+		
+		$dir = "uploads/";
+		$items = array();
+		
+		// Aqui leo el contenido del directorio uploads
+		if (is_dir($dir)) {
+			if ($dh = opendir($dir)) {
+				while (($file = readdir($dh)) !== false) {										
+					$items[] = $file;					
+				}
+				closedir($dh);
+			}
+		}
+		
 		while ($reg=mysqli_fetch_array($rs))
 		{			
 			//Aqui se calculan los dias que van transcurriendo desde la emision de la OC
@@ -238,6 +262,8 @@
 			$n_orden = "";
 			$n_orden = $reg['numero_orden'];						
 			$n_orden2 = $n_orden2 + 1;	
+			
+			$nro_orden_comp = $n_orden . ".pdf";
 			
 			$nro_orden_foo = $reg['numero_orden'];
 			$more_foo = $more_foo + 1;
@@ -257,7 +283,7 @@
 					  echo "</form>";
 					echo "</div></a></span></div>";
 			//------------------- Aqui trabajo con orden Recepcion -------------------
-			  echo "<div id=\"orden--5\">".$reg['orden_recepcion']."<span class=\"no\"><img src=\"tema/img/no.gif\" alt=\"\"></span><span class=\"edit\"><a href=\"#$n_orden2\" data-tooltip=\"Editar\" class=\"various\"><img src=\"tema/img/edit.gif\" alt=\"\">";
+			  echo "<div id=\"orden--5\">".$reg['orden_recepcion']."<span class=\"no\"><img src=\"tema/img/yes.gif\" alt=\"\"></span><span class=\"edit\"><a href=\"#$n_orden2\" data-tooltip=\"Editar\" class=\"various\"><img src=\"tema/img/edit.gif\" alt=\"\">";
 					echo "<div id=\"$n_orden2\" style=\"display: none;\">";
 					  echo "<form id=\"edit-recep\" method=\"POST\" action=\"grabar-recepcion-sap.php\">";
 						echo "<h1 style=\"font-size: 1.5em;\">Ingresa número de OC RECEPCION</h1>";						
@@ -272,21 +298,15 @@
 			  } else {
 				  echo "<div id=\"orden--6T\" >".$days." dias"."</div>";
 			  }	
-			  echo "<div id=\"orden--6S\"><a href=\"#$more_foo\" data-tooltip=\"Subir archivo\" class=\"various\"><img src=\"tema/img/upload.gif\" alt=\"\"></a>";
-				echo "<div id=\"$more_foo\" style=\"display: none;\">";
-				  // ------ Comienzo del subir archivos -----
-				  echo "<form id=\"upload\" action=\"getfile.php\" method=\"POST\" enctype=\"multipart/form-data\">";
-					echo "<h1 style=\"font-size: 1.5em;\">Subir un archivo</h1>";
-					echo "<div class=\"drag-drop\" style=\"height: 100px; width: 100px; background: url(tema/img/up-hover.gif); text-align: center; color: white; position: relative; margin: 0 auto 1em; padding: 1em;\">";
-					  echo "<input style=\"height: 100px;opacity: 0;position: absolute;top: 0;left: 0;width: 100%; cursor:pointer; z-index: 3;\" id=\"file\" name=\"userfile\" type=\"file\">";
-					echo "</div>";
-					echo "<button style=\"width: 95%; text-align:center; margin-top: 10px; background: transparent linear-gradient(to bottom, #FF1500 0%, #C0000B 100%) repeat scroll 0% 0%; color:#fff; border:none;\" type=\"submit\" name=\"upload\" value=\"upload\" class=\"acept\">Aceptar</button>";
-					echo "<input type=\"text\" name=\"nro_orden_form\" value=\"$nro_orden_foo\" hidden=hidden>";
-				  echo "</form>";
-				  //OJO los archivos llevan el nro de orden para poder luego ubicarlos y bajarlos
-				  // ----- Aqui finaliza el subir archivos -----
-				echo "</div>";
-			  echo "</div>";
+			  
+			  //OJO: Aqui solo tengo que mostrar la OC, osea hacer link al PDF que ya esta en uploads
+			  
+			  if (in_array($nro_orden_comp,@$items)){  			  
+			  echo "<div id=\"orden--6S\"><a href=\"./uploads/$n_orden.pdf\" data-tooltip=\"Ver Documento\" class=\"various\" ><img src=\"tema/img/ver-doc.gif\" alt=\"\"></a></div>";
+		  }else{
+			  echo "<div id=\"orden--6S\"></div>";
+		  }
+			  
 			echo "</div>";	
 		}
 		

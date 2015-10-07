@@ -49,7 +49,7 @@
 		//calculo el total de páginas 
 		$total_paginas = ceil($num_total_registros / $TAMANO_PAGINA); 
 		
-		$ssql = "select * from ordenes where orden_sap IS NULL OR orden_recepcion IS NULL limit " . $inicio . "," . $TAMANO_PAGINA; 
+		$ssql = "select * from ordenes where orden_sap IS NULL OR orden_recepcion IS NULL OR archivo = 'no' limit " . $inicio . "," . $TAMANO_PAGINA; 
 		$rs = mysqli_query($conexion,$ssql); 
 		
 		//-------------- FIN Paginador ------------------	
@@ -238,7 +238,7 @@
 			  echo "<div id=\"orden--2\">".$fecha_format."</div>";
 			  echo "<div id=\"orden--3\">".$reg['descripcion']."</div>";
 			  //------------------- Aqui trabajo con orden SAP -------------------
-			  echo "<div id=\"orden--4\">".$reg['orden_sap']."<span class=\"yes\"><img src=\"tema/img/yes.gif\" alt=\"\"></span><span class=\"edit\"><a href=\"#$n_orden\" data-tooltip=\"Editar\" class=\"various\"><img src=\"tema/img/edit.gif\" alt=\"\">";
+			  echo "<div id=\"orden--4\">".$reg['orden_sap']."<span class=\"yes\"><img src=\"tema/img/no.gif\" alt=\"\"></span><span class=\"edit\"><a href=\"#$n_orden\" data-tooltip=\"Editar\" class=\"various\"><img src=\"tema/img/edit.gif\" alt=\"\">";
 					echo "<div id=\"$n_orden\" name=\"\" style=\"display: none;\">";
 					//Ojo aqui redirecciono con una pagina php diferente para no perder el la pagina donde estoy editando
 					  echo "<form id=\"edit-recep\" method=\"POST\" action=\"grabar-orden-sap-rev.php\">";

@@ -141,7 +141,7 @@ if ($_REQUEST['descripcion1']!=""){
 $nro_presupuesto_set = $_REQUEST['nro_presupuesto'];
 
 mysqli_query($conexion,"insert into ordenes(id_proveedor,fecha,visto_bueno,campana,nro_presupuesto_proveedor,nro_factura_proveedor,
-jefe_autorizacion,area_pago,descripcion) values ('$_REQUEST[typeahead]',
+jefe_autorizacion,area_pago,descripcion,archivo) values ('$_REQUEST[typeahead]',
 												'$_REQUEST[fecha_documento]',
 												'no',
 												'$_REQUEST[campana]',																								 
@@ -149,7 +149,8 @@ jefe_autorizacion,area_pago,descripcion) values ('$_REQUEST[typeahead]',
 												'$_REQUEST[nro_factura]',												
 												'$_REQUEST[jefe_autorizacion]',
 												'$_REQUEST[area_pagoland_send]',
-												'$descripcionfull')")
+												'$descripcionfull',
+												'no')")
   or die("Debe llenar todos los campos");  
 
 //$last_id = mysqli_query($conexion,"SELECT LAST_INSERT_ID();"); 
@@ -345,7 +346,7 @@ mysqli_close($conexion);
 		<?php echo "<input type=\"text\" value=\"$total\" id=\"totalhidden\" hidden=hidden>";	?>		
 		
         <div id="neto">
-          <p class="neto">NETO $<?php echo "<input class=\"no-hay\" type=\"text\" size=\"10\" value=\"$total\"  readonly>"; ?></p>
+          <p class="neto">VALOR TOTAL NETO $<?php echo "<input class=\"no-hay\" type=\"text\" size=\"10\" value=\"$total\"  readonly>"; ?></p>
           <p class="iva">IVA $ <?php echo "<input class=\"no-hay\" type=\"text\" size=\"10\" value=\"$totalivaf\"  readonly>"; ?> </p>
 		  
           <select id="xxx" name="xxxyyy" class="valores-select" onchange="calcular(this)">
