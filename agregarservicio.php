@@ -285,6 +285,7 @@
 		$nro_presupuesto = $_REQUEST['nro_presupuesto'];
 		$nro_factura = $_REQUEST['nro_factura'];
 		$area_pago = $_REQUEST['area_pago'];
+		$registro_gastos = $_REQUEST['registro_gastos'];
 		//echo "Esto lleva area pago: ".$area_pago;
 		//echo $_REQUEST['rut-send'];
 		//$selected = $_POST['select'];
@@ -367,7 +368,7 @@
 			<?php echo "<input type=\"text\" name=\"campana\" value=\"$campana\" readonly>"; ?>
           </div>
 		   <div class="caja base-20">
-            <label>Jefe de autorización</label>
+            <label>Autorizante</label>
             <!--      <input type="text" name="jefe_autorizacion">   -->
 			<?php echo "<input type=\"text\" name=\"jefe_autorizacion\" value=\"$jefe_autorizacion\" readonly>"; ?>
           </div>
@@ -395,24 +396,8 @@
 			</div>
 		  
 		  <?php echo "<input type=\"hidden\" name=\"area_pagoland_send\" value=\"$area_pago\">"; ?>
-		  <!-- reojete reojete reojete desaparecer esto de aqui y meterlo a BD 
-          <div class="caja base-20">
-            <label>Área de pago</label>
-              <select id="xxx" name="area_pagoland" class="pago">   			
-              <option value="#">Elija</option>
-              <option value="CEE1007700">Marketing Institucional</option>  
-              <option value="CEE1007700">Marketing Construcción</option>   			  
-              <option value="CEE1007700">Marketing Hogar</option>
-			  <option value="CEE1007700">Marketing Regional</option>
-			  <option value="CEE1007752">Mundo Experto</option>
-			  <option value="CEE1008800">MKT Digital</option>
-			  <option value="CEE1008800">e-commerce</option>
-			  <option value="CEE1007701">Visual</option>
-			  <option value="CEE1007702 ">Catálogos</option>
-            </select>
-            <label> </label>            
-          </div>
-		   reojete reojete reojete desaparecer esto de aqui y meterlo a BD -->
+		  
+		  <?php echo "<input type=\"hidden\" name=\"registro_gastosland_send\" value=\"$registro_gastos\">"; ?>
 		  
 		  
 			<!--- --- Servicio 01  --- --->	

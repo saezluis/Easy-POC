@@ -271,8 +271,11 @@
             <label>Autorizante</label>
             <!-- <input type="text" name="jefe_autorizacion">  -->
 			<select id="" name="jefe_autorizacion" class="pago">
-              <option value="Daniela Mosquera">Daniela Mosquera</option>
-              <option value="Sofia Pascal">Sofia Pascal</option>
+				<option value="Cristian Ortiz">Cristian Ortiz</option>
+				<option value="Marcelo Giraldo">Marcelo Giraldo</option>
+				<option value="Roberto Moore">Roberto Moore</option>												
+				<option value="Sofia Pascal">Sofia Pascal</option>
+				<option value="Daniela Mosquera">Daniela Mosquera</option>             			
 			</select>  
           </div>
 		  <div class="caja base-20">
@@ -314,6 +317,101 @@
 		   Colocar dos campos vacios -->
           
 		  <div class="caja base-20">
+			<label>Registro</label>
+            <select id="xxx" name="registro_gastos" class="pago">
+              <option value="#">Elija</option>
+			  <option value="117  Fidelidad">Acciones Captación</option>
+			  <option value="117  Venta Empresa">Apoyo venta Empresa</option>
+			  <option value="112  Eventos/Promociones">Art. Promo Institucionales</option>
+			  <option value="112  Locales">Art. Promo Locales</option>
+			  <option value="1018 Estudios de Mercado">Asesoría The Lab</option>
+			  <option value="111  Eventos/Promociones">Auspicio de Evento</option>
+			  <option value="111  Locales">Auspicios Locales</option>
+			  <option value="113  Fidelidad">Beneficios Club</option>
+			  <option value="7406 Comisiones de Agencias">Comisiones Agencias Visuales</option>
+			  <option value="122  Fidelidad">Comision Agencias Fidelidad</option>
+			  <option value="122  Fidelidad">Comision CG3</option>  
+			  <option value="7405 Comisiones de Agencias">Comisiones Agencias Gráficas</option>
+			  <option value="7407 Comisiones">Comisiones Mediaplannig</option>
+			  <option value="122  Comisiones">Comisiones Agencia Creativa	</option>
+			  <option value="131  Catálogos">Correo Catálogos</option>
+			  <option value="874  Distribución, Inserción y Correo Impresos">Correo Volantes</option>
+			  <option value="109  Visual">Decoraciones Especiales</option>
+			  <option value="     Produccion Varias">Derechos Musicales Gingles</option>
+			  <option value="5826 Despachos">Despachos Impresos</option>
+			  <option value="5831 Despachos">Despachos materiales</option>
+			  <option value="123  Visual">Diseño - Afiches (Originales POP)</option>
+			  <option value="128  Produccion Varias">Diseño - Revistas (Producción)</option>
+			  <option value="94	  Catálogos">Distribución Catálogos (Cruce/Cassas)</option>
+			  <option value="876  Medios Varios">Elaboración de Gift Card</option>
+			  <option value="90	  Catálogos">Embolsado y Otros</option>
+			  <option value="1018 Estudios de Mercado">Estudios Especiales</option>
+			  <option value="1018 Estudios de Mercado">Estudio Tracking de Marca</option>
+			  <option value="7399 Eventos Varios">Eventos Musicales</option>
+			  <option value="7398 Eventos Varios">Eventos por Concursos</option>
+			  <option value="7401 Eventos Varios">Eventos por Cursos y Debates</option>
+			  <option value="7400 Eventos Varios">Eventos por Desfiles</option>
+			  <option value="98   Exhibición de Medios">Exhibición Prensa</option>
+			  <option value="99   Exhibición de Medios">Exhibición Prensa en Revistas</option>
+			  <option value="102  Exhibición de Medios">Exhibición Radio Local</option>
+			  <option value="102  Exhibición de Medios">Exhibición Radio Nacional</option>
+			  <option value="104  Exhibición de Medios">Exhibición Televisión</option>
+			  <option value="105  Exhibición de Medios">Exhibición Televisión Cable</option>
+			  <option value="107  Exhibición de Medios">Exhibición Vïa Pública</option>
+			  <option value="115  Impresos">Impresión Boletín</option>
+			  <option value="90	  Catálogos">Impresión Catálogos</option>
+			  <option value="5825 Locales">Impresión Cuartillas/Volantes/POP Activ Locales</option>
+			  <option value="7403 Eventos Promociones y POP">Impresión en PVC</option>
+			  <option value="5914 Eventos Promociones y POP">Impresión Lienzos Fachada Tiendas</option>
+			  <option value="118  Visual">Impresión Material POP Construcción</option>
+			  <option value="118  Visual">Impresión Material POP Hogar</option>
+			  <option value="204  Produccion Grafica Interna">Impresiones de Tarjetas</option>
+			  <option value="115  Impresos">Impresiones Mundo Experto Volantes/mailing directo/cartas</option>
+			  <option value="200  Eventos Varios">Inauguración Cocktails</option>
+			  <option value="5912 Catálogos">Inserción Catálogos</option>
+			  <option value="1011 Medios Digitales Internet">Internet</option>			  	  	
+			  <option value="7397 Eventos Varios">Kermeses Colegios</option>
+			  <option value="121  Visual">Lienzos de Fachada</option>
+			  <option value="1021 Fidelidad">Mantención Base Datos</option>
+			  <option value="1022 Marketing Interno">Marketing Interno</option>
+			  <option value="98   Locales">Medios Locales Adicionales</option>
+			  <option value="873  Rostros Celebrities">Modelos para Catálogos</option>
+			  <option value="1022 Exhibición de Medios">Otros Medios</option>
+			  <option value="5913 Medios Varios">Otros Medios Masivos</option>
+			  <option value="5915 Produccion Varias">Otros Produccion</option>
+			  <option value="5916 Produccion Varias">Producciones Fotográficas</option>
+			  <option value="872  Rostros Celebrities">Rostros</option>
+			  <option value="1024 Eventos Promociones y POP">POP Apertura de Local</option>
+			  <option value="7402 Eventos Promociones y POP">POP Campaña</option>
+			  <option value="119  Eventos Promociones y POP">POP Carteles</option>
+			  <option value="5829 Eventos Promociones y POP">POP Cupones</option>
+			  <option value="120  Visual">POP Decoración</option>
+			  <option value="113  Eventos/Promociones">Premios</option>
+			  <option value="127  Catálogos">Pre-Prensa Donnelley</option>
+			  <option value="100  Produccion de Medios">Producción Auspicios (PNT)</option>
+			  <option value="127  Catálogos">Producción Diseño Catálogos</option>
+			  <option value="1025 Eventos/Promociones">Producción Eventos/Promo</option>
+			  <option value="1025 Locales">Producción Eventos/Promo Locales</option>
+			  <option value="88	  Catálogos">Producción Fotográfica Catálogos</option>
+			  <option value="125  Locales">Producción Medios Locales</option>
+			  <option value="129  Produccion de Medios">Producción Originales</option>
+			  <option value="1015 Produccion de Medios">Producción Otros Medios</option>
+			  <option value="1015 Produccion de Medios">Producción Prensa</option>
+			  <option value="125  Produccion de Medios">Producción Radio</option>
+			  <option value="5830 Visual">Visual</option>
+			  <option value="126  Produccion de Medios">Producción Televisión</option>			  
+			  <option value="1016 Produccion de Medios">Producción Vía Pública</option>
+			  <option value="114  Eventos Promociones y POP">Promos Especiales</option>
+			  <option value="1020 Eventos/Promociones">Promotoras</option>
+			  <option value="1019 Eventos Promociones y POP">Promotoras Puntos de Venta</option>
+			  <option value="89	  Medios Varios">Publicidad en Cine</option>
+			  <option value="7404 Comisiones de Agencias">Publicidad No Tradicional</option>
+			  <option value="102  Exhibición de Medios">Radio Regional Base</option>
+			  <option value="102  Exhibición de Medios">Radio Regional Flight</option>
+			  <option value="9007 Gtos de Marketing por recuperar">Recupero</option>
+			  <option value="117  Fidelidad">Servicios adicionales</option>
+			  <option value="5827 Eventos Promociones y POP">Uniformes Promotoras</option> 
+			</select>  
 			<!--	
             <label>Descripción del servicio</label>
             <input type="text" name="inputtext" class="descrip" placeholder="Agregar Servicios">

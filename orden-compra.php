@@ -141,7 +141,7 @@ if ($_REQUEST['descripcion1']!=""){
 $nro_presupuesto_set = $_REQUEST['nro_presupuesto'];
 
 mysqli_query($conexion,"insert into ordenes(id_proveedor,fecha,visto_bueno,campana,nro_presupuesto_proveedor,nro_factura_proveedor,
-jefe_autorizacion,area_pago,descripcion,archivo) values ('$_REQUEST[typeahead]',
+jefe_autorizacion,area_pago,descripcion,archivo,registro_gasto) values ('$_REQUEST[typeahead]',
 												'$_REQUEST[fecha_documento]',
 												'no',
 												'$_REQUEST[campana]',																								 
@@ -150,7 +150,8 @@ jefe_autorizacion,area_pago,descripcion,archivo) values ('$_REQUEST[typeahead]',
 												'$_REQUEST[jefe_autorizacion]',
 												'$_REQUEST[area_pagoland_send]',
 												'$descripcionfull',
-												'no')")
+												'no',
+												'$_REQUEST[registro_gastosland_send]')")
   or die("Debe llenar todos los campos");  
 
 //$last_id = mysqli_query($conexion,"SELECT LAST_INSERT_ID();"); 
