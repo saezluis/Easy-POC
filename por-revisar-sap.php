@@ -105,6 +105,7 @@
 		$consulta_mysql=mysqli_query($conexion,"SELECT * FROM ordenes WHERE numero_orden = '$buscar' ") or				
 		die("Problemas en el select:".mysqli_error($conexion));
 		
+		$more_fuu = 0;
 		
 		while($registro = mysqli_fetch_array($consulta_mysql)) {
 	?> 
@@ -128,7 +129,7 @@
 			$n_orden2 = 1000;
 			
 			//Aqui se calculan los dias que van transcurriendo desde la emision de la OC
-			$fecha = $reg['fecha'];		  
+			$fecha = $registro['fecha'];		  
 			$todate = date("Y-m-d",strtotime($fecha));		  
 			$fecha_format = date("d-m-Y",strtotime($fecha));		  		  		  
 			date_default_timezone_set('America/Santiago');
@@ -139,13 +140,16 @@
 			$n_orden = "";
 			$n_orden = $registro['numero_orden'];			
 			
-			$n_orden2 = $n_orden2 + 1;								
+			$n_orden2 = $n_orden2 + 1;	
+
+			$more_fuu = $more_fuu + 1;
+			
 			echo "<div id=\"tabla\">";
 			  echo "<div id=\"orden--1\">".$registro['numero_orden']."</div>";
 			  echo "<div id=\"orden--2\">".$fecha_format."</div>";
 			  echo "<div id=\"orden--3\">".$registro['descripcion']."</div>";
 			  //------------------- Aqui trabajo con orden SAP -------------------
-			  echo "<div id=\"orden--4\">".$registro['orden_sap']."<span class=\"yes\"><img src=\"tema/img/yes.gif\" alt=\"\"></span><span class=\"edit\"><a href=\"#ordensap\" data-tooltip=\"Editar\" class=\"various\"><img src=\"tema/img/edit.gif\" alt=\"\">";
+			  echo "<div id=\"orden--4\">".$registro['orden_sap']."<span class=\"yes\"><img src=\"tema/img/no.gif\" alt=\"\"></span><span class=\"edit\"><a href=\"#ordensap\" data-tooltip=\"Editar\" class=\"various\"><img src=\"tema/img/edit.gif\" alt=\"\">";
 					echo "<div id=\"ordensap\" name=\"\" style=\"display: none;\">";
 					  //Ojo aqui redirecciono con una pagina php diferente para no perder el la pagina donde estoy editando
 					  echo "<form id=\"edit-recep\" method=\"POST\" action=\"grabar-orden-sap-rev.php\">";
@@ -175,6 +179,22 @@
 			  } else {
 				  echo "<div id=\"orden--6T\" >".$days." dias"."</div>";
 			  }	
+			  
+			  // ------ Comienzo del subir archivos -----
+			  echo "<div id=\"orden--6S\"><a href=\"#$more_fuu\" data-tooltip=\"Subir archivo\" class=\"various\"><img src=\"tema/img/upload.gif\" alt=\"\"></a>";
+				echo "<div id=\"$more_fuu\" style=\"display: none;\">";				
+				  echo "<form id=\"upload\" action=\"getfile.php\" method=\"POST\" enctype=\"multipart/form-data\">";
+					echo "<h1 style=\"font-size: 1.5em;\">Subir un archivo</h1>";
+					echo "<div class=\"drag-drop\" style=\"height: 100px; width: 100px; background: url(tema/img/up-hover.gif); text-align: center; color: white; position: relative; margin: 0 auto 1em; padding: 1em;\">";
+					  echo "<input style=\"height: 100px;opacity: 0;position: absolute;top: 0;left: 0;width: 100%; cursor:pointer; z-index: 3;\" id=\"file\" name=\"userfile\" type=\"file\">";
+					echo "</div>";
+					echo "<button style=\"width: 95%; text-align:center; margin-top: 10px; background: transparent linear-gradient(to bottom, #FF1500 0%, #C0000B 100%) repeat scroll 0% 0%; color:#fff; border:none;\" type=\"submit\" name=\"upload\" value=\"upload\" class=\"acept\">Aceptar</button>";
+					echo "<input type=\"text\" name=\"nro_orden_form\" value=\"$n_orden\" hidden=hidden>";
+				  echo "</form>";
+				echo "</div>";
+			  echo "</div>";
+			  
+			  /*
 			  echo "<div id=\"orden--6S\"><a href=\"#inline2\" data-tooltip=\"Subir archivo\" class=\"various\"><img src=\"tema/img/upload.gif\" alt=\"\"></a>";
 				echo "<div id=\"inline2\" style=\"display: none;\">";
 				  echo "<form id=\"upload\">";
@@ -186,6 +206,7 @@
 				  echo "</form>";
 				echo "</div>";
 			  echo "</div>";
+			  */
 			echo "</div>";	 
 		  
 	?>	  		
@@ -269,9 +290,10 @@
 			  } else {
 				  echo "<div id=\"orden--6T\" >".$days." dias"."</div>";
 			  }	
+			  
+			  // ------ Comienzo del subir archivos -----
 			  echo "<div id=\"orden--6S\"><a href=\"#$more_fooo\" data-tooltip=\"Subir archivo\" class=\"various\"><img src=\"tema/img/upload.gif\" alt=\"\"></a>";
-				echo "<div id=\"$more_fooo\" style=\"display: none;\">";
-				// ------ Comienzo del subir archivos -----
+				echo "<div id=\"$more_fooo\" style=\"display: none;\">";				
 				  echo "<form id=\"upload\" action=\"getfile.php\" method=\"POST\" enctype=\"multipart/form-data\">";
 					echo "<h1 style=\"font-size: 1.5em;\">Subir un archivo</h1>";
 					echo "<div class=\"drag-drop\" style=\"height: 100px; width: 100px; background: url(tema/img/up-hover.gif); text-align: center; color: white; position: relative; margin: 0 auto 1em; padding: 1em;\">";
@@ -282,6 +304,7 @@
 				  echo "</form>";
 				echo "</div>";
 			  echo "</div>";
+			  
 			echo "</div>";	
 		}
 		
