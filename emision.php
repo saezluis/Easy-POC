@@ -89,6 +89,79 @@
 		});
     </script>
 	
+	<script type="text/javascript">
+   <!--
+      // Form validation code will come here.
+      function validate()
+      {
+		
+         if( document.myform.typeahead.value == "" )
+         {
+            alert( "Por favor ingrese un Proveedor" );
+            document.myform.typeahead.focus() ;
+            return false;
+         }
+        
+         if( document.myform.fecha_documento.value == "" )
+         {
+            alert( "Por favor ingrese una fecha" );
+            document.myform.fecha_documento.focus() ;
+            return false;
+         }
+		 
+		 if( document.myform.nro_presupuesto.value == "" )
+         {
+            alert( "Por favor ingrese un número de presupuesto" );
+            document.myform.nro_presupuesto.focus() ;
+            return false;
+         }
+		 
+		 if( document.myform.nro_factura.value == "" )
+         {
+            alert( "Por favor ingrese un número de factura" );
+            document.myform.nro_factura.focus() ;
+            return false;
+         }
+        /* 
+         if( document.myForm.Zip.value == "" ||
+         isNaN( document.myForm.Zip.value ) ||
+         document.myForm.Zip.value.length != 5 )
+         {
+            alert( "Please provide a zip in the format #####." );
+            document.myForm.Zip.focus() ;
+            return false;
+         }
+         */
+         if( document.myform.campana.value == "-1" )
+         {
+            alert( "Por favor elija una Camapaña" );
+            return false;
+         }
+		 
+		 if( document.myform.jefe_autorizacion.value == "-1" )
+         {
+            alert( "Por favor elija un Autorizante" );
+            return false;
+         }
+		 
+		 if( document.myform.area_pago.value == "-1" )
+         {
+            alert( "Por favor elija un Centro de Costo" );
+            return false;
+         }
+		 
+		 if( document.myform.registro_gastos.value == "-1" )
+         {
+            alert( "Por favor elija un Registro" );
+            return false;
+         }
+		 
+		 
+         return( true );
+      }
+   //-->
+</script>
+	
   </head>
   <body>
 	<?php
@@ -212,8 +285,8 @@
           <div class="caja base-20">
             <label>Campaña*</label>			
 			<!--	<input type="text" name="campana"> 	-->
-			<select id="xxx" name="campana" class="pago">
-              <option value="#">Elija</option>
+			<select name="campana" class="pago required">
+              <option selected="" value="-1">Elija</option>
               <option value="Actividad Digital">Actividad Digital</option>
               <option value="Actividad Interna">Actividad Interna</option>
 			  <option value="Actividad Locales">Actividad Locales</option>
@@ -270,7 +343,8 @@
 		   <div class="caja base-20">
             <label>Autorizante</label>
             <!-- <input type="text" name="jefe_autorizacion">  -->
-			<select id="" name="jefe_autorizacion" class="pago">
+			<select  name="jefe_autorizacion" class="pago required">
+				<option selected="" value="-1">Elija</option>
 				<option value="Cristian Ortiz">Cristian Ortiz</option>
 				<option value="Marcelo Giraldo">Marcelo Giraldo</option>
 				<option value="Roberto Moore">Roberto Moore</option>												
@@ -288,8 +362,8 @@
           </div>
           <div class="caja base-20">
             <label>Centro de costo</label>
-            <select id="xxx" name="area_pago" class="pago">
-              <option value="#">Elija</option>
+            <select name="area_pago" class="pago required">
+              <option selected="" value="-1">Elija</option>
               <option value="CEE1007700">Marketing Institucional</option>
               <option value="CEE1007700">Marketing Construcción</option>
               <option value="CEE1007700">Marketing Hogar</option>
@@ -318,8 +392,8 @@
           
 		  <div class="caja base-20">
 			<label>Registro</label>
-            <select id="xxx" name="registro_gastos" class="pago">
-              <option value="#">Elija</option>
+            <select name="registro_gastos" class="pago required">
+              <option selected="" value="-1">Elija</option>
 			  <option value="117  Fidelidad">Acciones Captación</option>
 			  <option value="117  Venta Empresa">Apoyo venta Empresa</option>
 			  <option value="112  Eventos/Promociones">Art. Promo Institucionales</option>
@@ -427,7 +501,7 @@
             <label>Cantidad</label>
             <input type="text" name="cantidad">
 			-->
-			<button type="submit" class="generar" style="margin-top: 52px;" formaction="agregarservicio.php">Agregar Servicios</button>
+			<button type="submit" class="generar" style="margin-top: 52px;" onclick="return(validate())" formaction="agregarservicio.php">Agregar Servicios</button>
           </div>
 		  <div class="caja base-20">
 			<!--
