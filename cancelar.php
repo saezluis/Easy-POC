@@ -1,6 +1,6 @@
 <html>
   <head>
-	<meta http-equiv="refresh" content="0;perfil-sap.php">
+	<meta http-equiv="refresh" content="0;emision.php">
   </head>
 <?php
 

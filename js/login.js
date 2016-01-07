@@ -19,10 +19,12 @@ $(document).ready(function(){
 				window.location="perfil-boss.php";
 			  }
 			  if(username=="user"){
-				window.location="perfil-user.php";
+				//window.location="perfil-user.php";
+				window.location="emision.php";
 			  }
 			  if(username=="sap"){
-				window.location="emision.php";
+				//window.location="emision.php";
+				window.location="perfil-user.php";
 			  }
           }
           else {

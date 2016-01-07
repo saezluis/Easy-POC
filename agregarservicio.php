@@ -1,3 +1,40 @@
+<?php
+session_start();
+
+if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)
+{
+
+}
+else
+{
+	
+header('Content-Type: text/html; charset=UTF-8'); 
+	
+//echo "<br/>" . "Para tener una mejor experiencia de navegación te recomendamos que actualices tu navegador." . "<br/>";
+
+//echo "<br/>" . "Si el error persiste, puede deberse a las siguientes causas:" . "<br/>";
+
+//echo "<br/>" . " <h2> Estás a un click de Subirte, actualiza tu navegador <a href='http://windows.microsoft.com/es-cl/internet-explorer/download-ie'>aquí</a></h2>" . "<br/>";
+
+//echo "<br/>" . " * Estás usando una versión antigua de Internet Explorer, actualízalo." . "<br/>";
+
+//echo "<br/>" . "Entiendo las recomendaciones, volver al <a href='login.php'>Login</a>." . "<br/>";
+	
+echo "<br/>" . "Esta pagina es solo para usuarios registrados." . "<br/>";
+
+echo "<br/>" . "<a href='login.php'>Hacer Login</a>";
+
+exit;
+}
+$now = time(); // checking the time now when home page starts
+
+if($now > $_SESSION['expire'])
+{
+session_destroy();
+echo "<br/><br />" . "Su sesion a terminado, <a href='login.php'> Necesita Hacer Login</a>";
+exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="es">
   <head>
@@ -272,6 +309,8 @@
   </head>
   <body>
 	<?php
+	
+		$id_proveedor_send = $_REQUEST['id_proveedor_send'];
 		$rut = $_REQUEST['rut-send'];
 		//echo "la variable rut lleva: ".$rut;		
 		$razon_social = $_REQUEST['razon_social-send'];
@@ -289,6 +328,7 @@
 		//echo "Esto lleva area pago: ".$area_pago;
 		//echo $_REQUEST['rut-send'];
 		//$selected = $_POST['select'];
+		$id_controlP = $_REQUEST['control_presupuesto']; 
 		
 	?>
 	
@@ -372,23 +412,24 @@
             <!--      <input type="text" name="jefe_autorizacion">   -->
 			<?php echo "<input type=\"text\" name=\"jefe_autorizacion\" value=\"$jefe_autorizacion\" readonly>"; ?>
           </div>
-		  <div class="caja base-20">
+		  <div class="caja base-10">
             <label>Nº Presupuesto proveedor</label>
             <!--     <input type="text" name="nro_presupuesto">    -->
 			<?php echo "<input type=\"text\" name=\"nro_presupuesto\" value=\"$nro_presupuesto\" readonly>"; ?>
           </div>
-          <div class="caja base-20">
-            <label>Nº Factura proveedor</label>
+          <div class="caja base-10">
+            <label>Nº &nbsp;&nbsp;&nbsp; Factura proveedor</label>
             <!--    <input type="text" name="nro_factura">    -->
 			<?php echo "<input type=\"text\" name=\"nro_factura\" value=\"$nro_factura\" readonly>"; ?>
           </div>
 		  
 		  <div class="caja base-20">
-		  
+			<label>Centro de costo</label>
+			<?php echo "<input type=\"text\" name=\"nro_factura\" value=\"$nro_factura\" readonly>"; ?>
 		  </div>
 		  
 		  <div class="caja base-20">
-		  
+			
 		  </div>
 		  
 		  <div class="caja base-20">
@@ -398,6 +439,10 @@
 		  <?php echo "<input type=\"hidden\" name=\"area_pagoland_send\" value=\"$area_pago\">"; ?>
 		  
 		  <?php echo "<input type=\"hidden\" name=\"registro_gastosland_send\" value=\"$registro_gastos\">"; ?>
+		  
+		  <?php echo "<input type=\"hidden\" name=\"id_proveedor_send\" value=\"$id_proveedor_send\">"; ?>
+		  
+		  <?php echo "<input type=\"hidden\" name=\"id_controlP_send\" value=\"$id_controlP\">"; ?>
 		  
 		  
 			<!--- --- Servicio 01  --- --->	

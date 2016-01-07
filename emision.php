@@ -1,3 +1,40 @@
+<?php
+session_start();
+
+if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)
+{
+
+}
+else
+{
+	
+header('Content-Type: text/html; charset=UTF-8'); 
+	
+//echo "<br/>" . "Para tener una mejor experiencia de navegación te recomendamos que actualices tu navegador." . "<br/>";
+
+//echo "<br/>" . "Si el error persiste, puede deberse a las siguientes causas:" . "<br/>";
+
+//echo "<br/>" . " <h2> Estás a un click de Subirte, actualiza tu navegador <a href='http://windows.microsoft.com/es-cl/internet-explorer/download-ie'>aquí</a></h2>" . "<br/>";
+
+//echo "<br/>" . " * Estás usando una versión antigua de Internet Explorer, actualízalo." . "<br/>";
+
+//echo "<br/>" . "Entiendo las recomendaciones, volver al <a href='login.php'>Login</a>." . "<br/>";
+	
+echo "<br/>" . "Esta pagina es solo para usuarios registrados." . "<br/>";
+
+echo "<br/>" . "<a href='login.php'>Hacer Login</a>";
+
+exit;
+}
+$now = time(); // checking the time now when home page starts
+
+if($now > $_SESSION['expire'])
+{
+session_destroy();
+echo "<br/><br />" . "Su sesion a terminado, <a href='login.php'> Necesita Hacer Login</a>";
+exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="es">
   <head>
@@ -92,6 +129,11 @@
 	<script type="text/javascript">
    <!--
       // Form validation code will come here.
+	  
+		function copy(){
+			document.getElementById("textBoxId").value = document.getElementById("selectBoxId").value
+		}
+	  
       function validate()
       {
 		
@@ -109,12 +151,14 @@
             return false;
          }
 		 
+		 /*
 		 if( document.myform.nro_presupuesto.value == "" )
          {
             alert( "Por favor ingrese un número de presupuesto" );
             document.myform.nro_presupuesto.focus() ;
             return false;
          }
+		 */
 		 
 		 if( document.myform.nro_factura.value == "" )
          {
@@ -173,6 +217,22 @@
 		$revisar=mysqli_query($conexion,"select * from ordenes where visto_bueno = \"no\" AND orden_sap IS NULL OR orden_recepcion IS NULL") or
 		die("Problemas en el select:".mysqli_error($conexion));
 		
+		$registrosCampana=mysqli_query($conexion,"select * from campana") or
+		die("Problemas en el select:".mysqli_error($conexion));
+		
+		$registrosRegistro=mysqli_query($conexion,"select * from registro") or
+		die("Problemas en el select:".mysqli_error($conexion));
+		
+		$registrosCentroCosto=mysqli_query($conexion,"select * from centro_costo") or
+		die("Problemas en el select:".mysqli_error($conexion));
+		
+		$registrosAutorizante=mysqli_query($conexion,"select * from autorizante") or
+		die("Problemas en el select:".mysqli_error($conexion));
+		
+		$registrosControlPresupuesto=mysqli_query($conexion,"select * from control_presupuesto") or
+		die("Problemas en el select:".mysqli_error($conexion));
+		
+		
 		$num_rows = mysqli_num_rows($revisar);
 	?>
     <header class="grupo">
@@ -213,7 +273,7 @@
         <form id="search-form" method="POST" action="" class="info--cliente" name="myform" onsubmit="return validateForm()">
 		<button type="submit" value="Buscar" name="buscar" hidden=hidden></button>
           <div class="caja base-20">
-            <label>Ingrese proveedor *</label>
+            <label>Nombre proveedor *</label>
 			<!-- autocomplete="off" spellcheck="false" 
 			evento para cargar datos luego del click onmousedown="document.forms['search-form'].submit();"
 			-->
@@ -227,6 +287,7 @@
 			
 			//echo $busqueda;			
 			//$nro_orden = "142-424-555";
+			$id_proveedor = "";
 			$razon_social = "";
 			$giro = "";
 			$direccion = "";
@@ -241,6 +302,7 @@
 			$consulta_mysql=mysqli_query($con,"select * from proveedor where nombre = '$busqueda'") or die("Problemas en el select:");	    
 			if($row=mysqli_fetch_array($consulta_mysql))
 			{
+			  $id_proveedor = $row['id_proveedor'];
 			  $razon_social = $row['razon_social'];
 			  $giro = $row['giro'];
 			  $direccion = $row['direccion'];
@@ -252,6 +314,7 @@
 			//echo $detalle;
 			//echo "la wea";		
 			//echo ($razon_social);
+			echo "<input type=\"text\" name=\"id_proveedor_send\" value=\"$id_proveedor\" hidden=hidden>";
 			
 		  ?>
           <div class="caja base-20">
@@ -282,103 +345,79 @@
             <label>Fecha documento</label>
             <input type="text" name="fecha_documento"  id="datepicker" >            
           </div>
-          <div class="caja base-20">
+          <div class="caja base-20">			
+			<!--																						Camapaña -->
             <label>Campaña*</label>			
 			<!--	<input type="text" name="campana"> 	-->
 			<select name="campana" class="pago required">
               <option selected="" value="-1">Elija</option>
-              <option value="Actividad Digital">Actividad Digital</option>
-              <option value="Actividad Interna">Actividad Interna</option>
-			  <option value="Actividad Locales">Actividad Locales</option>
-			  <option value="Agua Caliente">Agua Caliente</option>
-			  <option value="Ahorro de Energía">Ahorro de Energía</option>
-			  <option value="Ajustes Campañas">Ajustes Campañas</option>
-			  <option value="Aniversario Cencosud">Aniversario Cencosud</option>
-			  <option value="Auspicios">Auspicios</option>
-			  <option value="Banco de Chile">Banco de Chile</option>
-			  <option value="Campaña Alexis Sanchez">Campaña Alexis Sanchez</option>
-			  <option value="Campaña Arauco">Campaña Arauco</option>
-			  <option value="Campaña Calefacción">Campaña Calefacción</option>
-			  <option value="Campaña Camping">Campaña Camping</option>
-			  <option value="Campaña Eco Easy">Campaña Eco Easy</option>
-			  <option value="Campaña Iluminación">Campaña Iluminación</option>
-			  <option value="Campaña Muebles">Campaña Muebles</option>
-			  <option value="Campaña Navidad">Campaña Navidad</option>
-			  <option value="Campaña Organización">Campaña Organización</option>
-			  <option value="Campaña Parrillas">Campaña Parrillas</option>
-			  <option value="Campaña Seguridad">Campaña Seguridad</option>
-			  <option value="Campaña Terrazas">Campaña Terrazas</option>
-			  <option value="Campañas Construcción">Campañas Construcción</option>
-			  <option value="Comisiones">Comisiones</option>
-			  <option value="Día Del Níspero">Día Del Níspero</option>
-			  <option value="Estudios">Estudios</option>
-			  <option value="Eventos Comerciales">Eventos Comerciales</option>
-			  <option value="Fe de erratas">Fe de erratas</option>
-			  <option value="Ferretería del Experto">Ferretería del Experto</option>
-			  <option value="Gasto Fijo Catálogos">Gasto Fijo Catálogos</option>
-			  <option value="Guía del Experto">Guía del Experto</option>
-			  <option value="Guía Jardin">Guía Jardin</option>
-			  <option value="Guia Terminaciones">Guia Terminaciones</option>
-			  <option value="Imperdibles">Imperdibles</option>
-			  <option value="Inauguración Locales">Inauguración Locales</option>
-			  <option value="Institucional">Institucional</option>
-			  <option value="Liquidación">Liquidación</option>
-			  <option value="Marketing Interno">Marketing Interno</option>
-			  <option value="Mes del Experto">Mes del Experto</option>
-			  <option value="Mes del Hogar">Mes del Hogar</option>	
-			  <option value="Mundo Experto">Mundo Experto</option>
-			  <option value="Ofertas Exclusivas Tarjetas">Ofertas Exclusivas Tarjetas</option>
-			  <option value="Originales">Originales</option>
-			  <option value="Otros Gastos Marketing">Otros Gastos Marketing</option>
-			  <option value="Precios para Expertos">Precios para Expertos</option>
-			  <option value="Prepárate para el invierno">Prepárate para el invierno</option>
-			  <option value="Proyecto Baño y Cocina">Proyecto Baño y Cocina</option>
-			  <option value="Rostros">Rostros</option>
-			  <option value="RSE">RSE</option>
-			  <option value="Temporada del Experto">Temporada del Experto</option>
-			  <option value="Visual">Visual</option>
-			  <option value="Weekend Tarjetas">Weekend Tarjetas</option>		  
+			  <?php
+				while($reg=mysqli_fetch_array($registrosCampana)){
+					$id_campana = $reg['id_campana'];
+					$id = $reg['id'];
+					$nombre_campana = $reg['nombre_campana'];
+					echo "<option value=\"$id_campana\">($id) $nombre_campana</option>";
+				}			 
+			  ?>			  
             </select>
+			<!--																						-------- -->
           </div>
 		   <div class="caja base-20">
             <label>Autorizante</label>
             <!-- <input type="text" name="jefe_autorizacion">  -->
 			<select  name="jefe_autorizacion" class="pago required">
-				<option selected="" value="-1">Elija</option>
-				<option value="Cristian Ortiz">Cristian Ortiz</option>
-				<option value="Marcelo Giraldo">Marcelo Giraldo</option>
-				<option value="Roberto Moore">Roberto Moore</option>												
-				<option value="Sofia Pascal">Sofia Pascal</option>
-				<option value="Daniela Mosquera">Daniela Mosquera</option>             			
+				<option selected="" value="-1">Elija</option>				
+				<?php
+					while($reg=mysqli_fetch_array($registrosAutorizante)){
+						$nombre_autorizante = $reg['nombre_autorizante'];
+						echo "<option value=\"$nombre_autorizante\">$nombre_autorizante</option>";
+					}
+				?>				
 			</select>  
           </div>
-		  <div class="caja base-20">
+		  <div class="caja base-10">
             <label>Nº Presupuesto proveedor</label>
             <input type="text" name="nro_presupuesto">
           </div>
-          <div class="caja base-20">
-            <label>Nº Factura proveedor</label>
+          <div class="caja base-10">
+            <label>Nº &nbsp;&nbsp;&nbsp; Factura  proveedor</label>
             <input type="text" name="nro_factura">
           </div>
+		  
           <div class="caja base-20">
+			<!--																						Centro de costo -->
             <label>Centro de costo</label>
             <select name="area_pago" class="pago required">
               <option selected="" value="-1">Elija</option>
-              <option value="CEE1007700">Marketing Institucional</option>
-              <option value="CEE1007700">Marketing Construcción</option>
-              <option value="CEE1007700">Marketing Hogar</option>
-			  <option value="CEE1007700">Marketing Regional</option>
-			  <option value="CEE1007752">Mundo Experto</option>
-			  <option value="CEE1008800">MKT Digital</option>
-			  <option value="CEE1008800">e-commerce</option>
-			  <option value="CEE1007701">Visual</option>
-			  <option value="CEE1007702 ">Catálogos</option>
-			  <option value="Recupero ">Recupero</option>
-			  <option value="Proveedor ">Proveedor</option>
-			  <option value="Tarjetas ">Tarjetas</option>
+			  <?php
+				while($reg=mysqli_fetch_array($registrosCentroCosto)){
+					$id_centro_costo = $reg['id_centro_costo'];
+					$descripcion = $reg['descripcion'];	
+					$codigo = $reg['codigo'];
+					$ceco = $reg['ceco'];
+					echo "<option value=\"$id_centro_costo\">($codigo) $descripcion</option>";
+				}
+			  ?>
             </select>
+			<!--																						----------- -->
             <label> </label>            
           </div>
+		  <!--																						Control Presupuesto -->
+		  <div class="caja base-20">
+			<label>Control Presupuesto</label>
+				<select name="control_presupuesto" class="pago required">
+					<option selected="" value="-1">Elija</option>
+				<?php
+					while($reg=mysqli_fetch_array($registrosControlPresupuesto)){
+						$id_controlP = $reg['id_controlP'];
+						$id_pre = $reg['id'];	
+						$control_presupuesto = $reg['control_presupuesto'];
+						echo "<option value=\"$id_controlP\">($id_pre) $control_presupuesto</option>";
+					}
+				?>
+				</select>
+			<!--																						----------- -->
+		  </div>
 		  <!-- Colocar dos campos vacios 
 		  <div class="caja base-20">
             <label>ESPACIO</label>
@@ -391,100 +430,23 @@
 		   Colocar dos campos vacios -->
           
 		  <div class="caja base-20">
+			<!--																						Registro Gasto -->
 			<label>Registro</label>
             <select name="registro_gastos" class="pago required">
               <option selected="" value="-1">Elija</option>
-			  <option value="117  Fidelidad">Acciones Captación</option>
-			  <option value="117  Venta Empresa">Apoyo venta Empresa</option>
-			  <option value="112  Eventos/Promociones">Art. Promo Institucionales</option>
-			  <option value="112  Locales">Art. Promo Locales</option>
-			  <option value="1018 Estudios de Mercado">Asesoría The Lab</option>
-			  <option value="111  Eventos/Promociones">Auspicio de Evento</option>
-			  <option value="111  Locales">Auspicios Locales</option>
-			  <option value="113  Fidelidad">Beneficios Club</option>
-			  <option value="7406 Comisiones de Agencias">Comisiones Agencias Visuales</option>
-			  <option value="122  Fidelidad">Comision Agencias Fidelidad</option>
-			  <option value="122  Fidelidad">Comision CG3</option>  
-			  <option value="7405 Comisiones de Agencias">Comisiones Agencias Gráficas</option>
-			  <option value="7407 Comisiones">Comisiones Mediaplannig</option>
-			  <option value="122  Comisiones">Comisiones Agencia Creativa	</option>
-			  <option value="131  Catálogos">Correo Catálogos</option>
-			  <option value="874  Distribución, Inserción y Correo Impresos">Correo Volantes</option>
-			  <option value="109  Visual">Decoraciones Especiales</option>
-			  <option value="     Produccion Varias">Derechos Musicales Gingles</option>
-			  <option value="5826 Despachos">Despachos Impresos</option>
-			  <option value="5831 Despachos">Despachos materiales</option>
-			  <option value="123  Visual">Diseño - Afiches (Originales POP)</option>
-			  <option value="128  Produccion Varias">Diseño - Revistas (Producción)</option>
-			  <option value="94	  Catálogos">Distribución Catálogos (Cruce/Cassas)</option>
-			  <option value="876  Medios Varios">Elaboración de Gift Card</option>
-			  <option value="90	  Catálogos">Embolsado y Otros</option>
-			  <option value="1018 Estudios de Mercado">Estudios Especiales</option>
-			  <option value="1018 Estudios de Mercado">Estudio Tracking de Marca</option>
-			  <option value="7399 Eventos Varios">Eventos Musicales</option>
-			  <option value="7398 Eventos Varios">Eventos por Concursos</option>
-			  <option value="7401 Eventos Varios">Eventos por Cursos y Debates</option>
-			  <option value="7400 Eventos Varios">Eventos por Desfiles</option>
-			  <option value="98   Exhibición de Medios">Exhibición Prensa</option>
-			  <option value="99   Exhibición de Medios">Exhibición Prensa en Revistas</option>
-			  <option value="102  Exhibición de Medios">Exhibición Radio Local</option>
-			  <option value="102  Exhibición de Medios">Exhibición Radio Nacional</option>
-			  <option value="104  Exhibición de Medios">Exhibición Televisión</option>
-			  <option value="105  Exhibición de Medios">Exhibición Televisión Cable</option>
-			  <option value="107  Exhibición de Medios">Exhibición Vïa Pública</option>
-			  <option value="115  Impresos">Impresión Boletín</option>
-			  <option value="90	  Catálogos">Impresión Catálogos</option>
-			  <option value="5825 Locales">Impresión Cuartillas/Volantes/POP Activ Locales</option>
-			  <option value="7403 Eventos Promociones y POP">Impresión en PVC</option>
-			  <option value="5914 Eventos Promociones y POP">Impresión Lienzos Fachada Tiendas</option>
-			  <option value="118  Visual">Impresión Material POP Construcción</option>
-			  <option value="118  Visual">Impresión Material POP Hogar</option>
-			  <option value="204  Produccion Grafica Interna">Impresiones de Tarjetas</option>
-			  <option value="115  Impresos">Impresiones Mundo Experto Volantes/mailing directo/cartas</option>
-			  <option value="200  Eventos Varios">Inauguración Cocktails</option>
-			  <option value="5912 Catálogos">Inserción Catálogos</option>
-			  <option value="1011 Medios Digitales Internet">Internet</option>			  	  	
-			  <option value="7397 Eventos Varios">Kermeses Colegios</option>
-			  <option value="121  Visual">Lienzos de Fachada</option>
-			  <option value="1021 Fidelidad">Mantención Base Datos</option>
-			  <option value="1022 Marketing Interno">Marketing Interno</option>
-			  <option value="98   Locales">Medios Locales Adicionales</option>
-			  <option value="873  Rostros Celebrities">Modelos para Catálogos</option>
-			  <option value="1022 Exhibición de Medios">Otros Medios</option>
-			  <option value="5913 Medios Varios">Otros Medios Masivos</option>
-			  <option value="5915 Produccion Varias">Otros Produccion</option>
-			  <option value="5916 Produccion Varias">Producciones Fotográficas</option>
-			  <option value="872  Rostros Celebrities">Rostros</option>
-			  <option value="1024 Eventos Promociones y POP">POP Apertura de Local</option>
-			  <option value="7402 Eventos Promociones y POP">POP Campaña</option>
-			  <option value="119  Eventos Promociones y POP">POP Carteles</option>
-			  <option value="5829 Eventos Promociones y POP">POP Cupones</option>
-			  <option value="120  Visual">POP Decoración</option>
-			  <option value="113  Eventos/Promociones">Premios</option>
-			  <option value="127  Catálogos">Pre-Prensa Donnelley</option>
-			  <option value="100  Produccion de Medios">Producción Auspicios (PNT)</option>
-			  <option value="127  Catálogos">Producción Diseño Catálogos</option>
-			  <option value="1025 Eventos/Promociones">Producción Eventos/Promo</option>
-			  <option value="1025 Locales">Producción Eventos/Promo Locales</option>
-			  <option value="88	  Catálogos">Producción Fotográfica Catálogos</option>
-			  <option value="125  Locales">Producción Medios Locales</option>
-			  <option value="129  Produccion de Medios">Producción Originales</option>
-			  <option value="1015 Produccion de Medios">Producción Otros Medios</option>
-			  <option value="1015 Produccion de Medios">Producción Prensa</option>
-			  <option value="125  Produccion de Medios">Producción Radio</option>
-			  <option value="5830 Visual">Visual</option>
-			  <option value="126  Produccion de Medios">Producción Televisión</option>			  
-			  <option value="1016 Produccion de Medios">Producción Vía Pública</option>
-			  <option value="114  Eventos Promociones y POP">Promos Especiales</option>
-			  <option value="1020 Eventos/Promociones">Promotoras</option>
-			  <option value="1019 Eventos Promociones y POP">Promotoras Puntos de Venta</option>
-			  <option value="89	  Medios Varios">Publicidad en Cine</option>
-			  <option value="7404 Comisiones de Agencias">Publicidad No Tradicional</option>
-			  <option value="102  Exhibición de Medios">Radio Regional Base</option>
-			  <option value="102  Exhibición de Medios">Radio Regional Flight</option>
-			  <option value="9007 Gtos de Marketing por recuperar">Recupero</option>
-			  <option value="117  Fidelidad">Servicios adicionales</option>
-			  <option value="5827 Eventos Promociones y POP">Uniformes Promotoras</option> 
+			  <?php
+				while($reg=mysqli_fetch_array($registrosRegistro)){
+					$id_registro = $reg['id_registro'];
+					$registro_gasto = $reg['registro_gasto'];
+					$id_gas = $reg['id'];
+					
+					echo "<option value=\"$id_registro\">($id_gas) $registro_gasto</option>";
+				}
+			  ?>
+			  <!--
+			  agregar aqui la data de BD
+			  -->
+			<!--																						----------- -->  
 			</select>  
 			<!--	
             <label>Descripción del servicio</label>

@@ -1,3 +1,40 @@
+<?php
+session_start();
+
+if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)
+{
+
+}
+else
+{
+	
+header('Content-Type: text/html; charset=UTF-8'); 
+	
+//echo "<br/>" . "Para tener una mejor experiencia de navegación te recomendamos que actualices tu navegador." . "<br/>";
+
+//echo "<br/>" . "Si el error persiste, puede deberse a las siguientes causas:" . "<br/>";
+
+//echo "<br/>" . " <h2> Estás a un click de Subirte, actualiza tu navegador <a href='http://windows.microsoft.com/es-cl/internet-explorer/download-ie'>aquí</a></h2>" . "<br/>";
+
+//echo "<br/>" . " * Estás usando una versión antigua de Internet Explorer, actualízalo." . "<br/>";
+
+//echo "<br/>" . "Entiendo las recomendaciones, volver al <a href='login.php'>Login</a>." . "<br/>";
+	
+echo "<br/>" . "Esta pagina es solo para usuarios registrados." . "<br/>";
+
+echo "<br/>" . "<a href='login.php'>Hacer Login</a>";
+
+exit;
+}
+$now = time(); // checking the time now when home page starts
+
+if($now > $_SESSION['expire'])
+{
+session_destroy();
+echo "<br/><br />" . "Su sesion a terminado, <a href='login.php'> Necesita Hacer Login</a>";
+exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="es">
   <head>
@@ -6,6 +43,22 @@
     <meta name="viewport" content="width=device-width,initial-scale=1,maximun-scale=1">
     <link rel="stylesheet" href="tema/css/estilos.css">
 	<script>	
+	
+	// Extend the default Number object with a formatMoney() method:
+	// usage: someVar.formatMoney(decimalPlaces, symbol, thousandsSeparator, decimalSeparator)
+	// defaults: (2, "$", ",", ".")
+	Number.prototype.formatMoney = function(places, symbol, thousand, decimal) {
+	places = !isNaN(places = Math.abs(places)) ? places : 2;
+	symbol = symbol !== undefined ? symbol : "$";
+	thousand = thousand || ",";
+	decimal = decimal || ".";
+	var number = this, 
+	    negative = number < 0 ? "-" : "",
+	    i = parseInt(number = Math.abs(+number || 0).toFixed(places), 10) + "",
+	    j = (j = i.length) > 3 ? j % 3 : 0;
+	return symbol + negative + (j ? i.substr(0, j) + thousand : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + thousand) + (places ? decimal + Math.abs(number - i).toFixed(places).slice(2) : "");
+	};
+	
 	function calcular(select) {
 		var totalget = document.getElementById("totalhidden").value;
 		
@@ -15,8 +68,16 @@
 		
 		if(select.options[select.selectedIndex].id == "iva"){
 			var calculariva = (parseFloat(totalget) * 19) / 100;
+			//var calculariva = (totalget * 19) / 100;
 			var totalfinal = parseFloat(totalget) + calculariva;
-			document.getElementById("totalfinalcampo").value = Math.round(totalfinal);
+			
+					
+			
+			var calcularivaFormat = parseFloat(calculariva).formatMoney(0,"",".",".");
+			var totalfinalFormat = parseFloat(totalfinal).formatMoney(0,"",".",".");
+			
+			document.getElementById("totalfinalcampo").value = totalfinalFormat;
+			document.getElementById("campo_subtotal").value = calcularivaFormat;
 			//alert('click en iva');
 			//
 			//alert(totalget);
@@ -30,11 +91,16 @@
 			var calcularboleta = (parseFloat(totalget) * 10) / 100;
 			var totalfinal = parseFloat(totalget) + calcularboleta;
 			document.getElementById("totalfinalcampo").value = Math.round(totalfinal);
+			document.getElementById("campo_subtotal").value = Math.round(calcularboleta);
 			//var nameValue = document.getElementById("uniqueID").value;
 		} 
 		if(select.options[select.selectedIndex].id == "exento"){
 			//alert('click en exento');
-			document.getElementById("totalfinalcampo").value = totalget;
+			
+			var totalgetFormat = parseFloat(totalget).formatMoney(0,"",".",".");
+			
+			document.getElementById("totalfinalcampo").value = totalgetFormat;
+			document.getElementById("campo_subtotal").value = "0";
 			//var nameValue = document.getElementById("uniqueID").value;
 		} 
 		//alert(select.options[select.selectedIndex].getAttribute("iva"));
@@ -140,19 +206,27 @@ if ($_REQUEST['descripcion1']!=""){
 
 $nro_presupuesto_set = $_REQUEST['nro_presupuesto'];
 
-mysqli_query($conexion,"insert into ordenes(id_proveedor,fecha,visto_bueno,campana,nro_presupuesto_proveedor,nro_factura_proveedor,
-jefe_autorizacion,area_pago,descripcion,archivo,registro_gasto) values ('$_REQUEST[typeahead]',
-												'$_REQUEST[fecha_documento]',
-												'no',
-												'$_REQUEST[campana]',																								 
-												'$_REQUEST[nro_presupuesto]',
-												'$_REQUEST[nro_factura]',												
-												'$_REQUEST[jefe_autorizacion]',
-												'$_REQUEST[area_pagoland_send]',
-												'$descripcionfull',
-												'no',
-												'$_REQUEST[registro_gastosland_send]')")
-  or die("Debe llenar todos los campos");  
+	$id_proveedor_send = $_REQUEST['id_proveedor_send'];
+	
+	//echo "Id proveedor send: ".$id_proveedor_send;
+	//echo "<br>";
+	//echo "<br>";
+
+	mysqli_query($conexion,"insert into ordenes(id_proveedor,fecha,visto_bueno,campana,nro_presupuesto_proveedor,nro_factura_proveedor,jefe_autorizacion,area_pago,descripcion,archivo,registro_gasto,control_presupuesto) 
+													values 
+													('$id_proveedor_send',
+													'$_REQUEST[fecha_documento]',
+													'no',
+													'$_REQUEST[campana]',																								 
+													'$_REQUEST[nro_presupuesto]',
+													'$_REQUEST[nro_factura]',												
+													'$_REQUEST[jefe_autorizacion]',
+													'$_REQUEST[area_pagoland_send]',
+													'$descripcionfull',
+													'no',
+													'$_REQUEST[registro_gastosland_send]',
+													'$_REQUEST[id_controlP_send]')")
+	  or die("Debe llenar todos los campos");  
 
 //$last_id = mysqli_query($conexion,"SELECT LAST_INSERT_ID();"); 
 
@@ -243,7 +317,7 @@ $consulta_proveedor=mysqli_query($conexion,"select * from proveedor where nombre
 			}			
 			
 			
-mysqli_close($conexion);
+//mysqli_close($conexion);
 
 
 ?>
@@ -331,38 +405,66 @@ mysqli_close($conexion);
           echo "<div id=\"desglose-1\">".$_REQUEST['campana']."</div>";
           echo "<div id=\"desglose-2\">".$reg['descripcion']."</div>";
           echo "<div id=\"desglose-3\">".$reg['cantidad']."</div>";
-          echo "<div id=\"desglose-4\">".number_format($reg['monto'],0)."</div>";
-          echo "<div id=\"desglose-5\">".$subtotal."</div>";
+          echo "<div id=\"desglose-4\">".number_format($reg['monto'],0, ",", ".")."</div>";
+          echo "<div id=\"desglose-5\">".number_format($subtotal,0, ",", ".")."</div>";
         echo "</div>";    
 		
 		}
 		
 		$totaliva = round(($total * 19) / 100);
-		$totalivaf = number_format($totaliva,0);
+		//$totalivaf = number_format($totaliva,0);
+		$totalivaf = number_format($totaliva,0, ",", ".");
+		//number_format($numero, 2, ",", ".");
 		
-		mysqli_close($conexion);
+		$registros=mysqli_query($conexion,"select * from servicios where id_orden = $last_id") or
+		die("Problemas en el select:".mysqli_error($conexion));
+		
+		//Hacer aqui un update
+		mysqli_query($conexion, "UPDATE ordenes SET monto_neto=$total WHERE numero_orden='$last_id'") or
+									die("Problemas en el select:".mysqli_error($conexion));
+		
+		
+		//mysqli_close($conexion);
 		
 		?>
 		
 		<?php echo "<input type=\"text\" value=\"$total\" id=\"totalhidden\" hidden=hidden>";	?>		
 		
+		<?php
+		
+			$total_format = number_format($total,0, ",", ".");
+			
+		?>
+		
         <div id="neto">
-          <p class="neto">VALOR TOTAL NETO $<?php echo "<input class=\"no-hay\" type=\"text\" size=\"10\" value=\"$total\"  readonly>"; ?></p>
-          <p class="iva">IVA $ <?php echo "<input class=\"no-hay\" type=\"text\" size=\"10\" value=\"$totalivaf\"  readonly>"; ?> </p>
+          <p class="neto">VALOR TOTAL NETO $<?php echo "<input class=\"no-hay\" type=\"text\" size=\"10\" value=\"$total_format\"  readonly>"; ?></p>
+          <p class="iva">
 		  
-          <select id="xxx" name="xxxyyy" class="valores-select" onchange="calcular(this)">
-            <option value="#" id="elija">Elija</option>
-            <option value="iva" id="iva">IVA</option>
-            <option value="boleta" id="boleta">10% BOLETA</option>
-            <option value="#" id="exento">EXENTO DE IVA</option>
-          </select>
-          <p class="totality">Total $ <?php echo "<input class=\"no-hay\" type=\"text\" size=\"10\" value=\"\" id=\"totalfinalcampo\" readonly>"; ?></p>
-          <button type="button" class="imprimir" onclick="window.print(); window.location='emision.php';">IMPRIMIR</button>
+			  <select id="xxx" name="xxxyyy" class="valores-select" onchange="calcular(this)">
+				<option value="#" id="elija">Elija</option>
+				<option value="iva" id="iva">IVA</option>
+				<option value="boleta" id="boleta">10% BOLETA</option>
+				<option value="#" id="exento">EXENTO DE IVA</option>
+			  </select>
+			  
+				<?php echo "<input class=\"no-hay\" type=\"text\" size=\"10\" value=\"\" id=\"campo_subtotal\" readonly>"; ?> 
 		  
+		  </p>
+		  
+		  <form action="update-total.php" method="post">
+			<p class="totality">Total $ <?php echo "<input class=\"no-hay\" name=\"total_final\" type=\"text\" size=\"10\" value=\"\" id=\"totalfinalcampo\" readonly>"; ?></p>
+			<button type="button" class="imprimir" onclick="window.print(); ">IMPRIMIR</button><!-- esto se lo quité: window.location='emision.php'; -->
+			<?php echo "<input type=\"text\" name=\"last_id_send\" value=\"$last_id\" hidden=hidden>"; ?>
+			
+			<button type="submit" class="imprimir" onClick="alert('OC guardada con éxito'); window.location.href = 'emision.php';" >GUARDAR</button>
+		</form>
+		
 		  <form action="cancelar.php" method="post">
 			<?php echo "<input type=\"text\" name=\"ultimoid\" value=\"$last_id\" hidden=hidden>"; ?>		  
 			<button type="submit" class="imprimir" >CANCELAR</button>
 			</form>
+			
+			
 
         </div>
       </div>
