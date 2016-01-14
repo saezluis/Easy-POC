@@ -116,7 +116,7 @@
 				//header("Location:emision.php");
 				
 				echo '<script type="text/javascript">';
-				echo 'window.location.href="perfil-user.php";';
+				echo 'window.location.href="perfil-sap.php";';
 				echo '</script>';
 				
 			}

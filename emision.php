@@ -246,19 +246,24 @@ exit;
 			<!--
             <li> <a href="#" class="active">Emisor de ódenes de compra</a></li>
 			-->
+			<!--
             <li> <a href="perfil-sap.php" >Historial de órdenes</a></li>
+			-->
 			<li> </li>
 			<li> </li>
 			<li> </li>
 			<li> </li>
 			<li> </li>
-			<li> <a href="por-revisar-sap.php" class="active" >Por revisar</a></li>
+			<li> <a href="historial-ordenes.php" >Historial de órdenes</a></li>
+			<!--
+				<li> <a href="por-revisar-sap.php" class="active" >Por revisar</a></li>
+			-->
           </ul>
         </nav>
 		<!--
 		<div class="counter">15</div>
 		-->
-		<?php echo "<div class=\"counter\">$num_rows</div>"; ?>        
+		<?php //echo "<div class=\"counter\">$num_rows</div>"; ?>        
       </div>
       <div class="caja base-100 no-padding">
         <h2>Bienvenido al nuevo sistema de emisión de órdenes de compra.</h2>
@@ -273,7 +278,7 @@ exit;
         <form id="search-form" method="POST" action="" class="info--cliente" name="myform" onsubmit="return validateForm()">
 		<button type="submit" value="Buscar" name="buscar" hidden=hidden></button>
           <div class="caja base-20">
-            <label>Nombre proveedor *</label>
+            <label>Nombre fantasía *</label>
 			<!-- autocomplete="off" spellcheck="false" 
 			evento para cargar datos luego del click onmousedown="document.forms['search-form'].submit();"
 			-->

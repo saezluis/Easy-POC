@@ -1,0 +1,16 @@
+---- Header ----
+Nombre del formulario: Costos Accion / Camapanña
+
+Accion / Camapanña: viene de BD y lleva codigo SAP
+
+Responsable: datos en la hoja excel
+
+Autorizante: datos en la hoja excel
+
+Nro Solicitud: autogenerada con codigo SN-"nro 
+
+V°B° Jefatura: es un campo con una linea
+
+---- BODY -------------------------------
+
+Area (Centro de Costo) CECO		Descripcion del servicio / Tarea	Registro de Gasto	(PEP)	Control Presupuesto (PEP)	PPTO Proyectado	PPTO real	Diferencia	N° OC

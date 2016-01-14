@@ -25,7 +25,7 @@
 		$conexion=mysqli_connect("localhost","root","123","test") or die("Problemas con la conexión");
 		$acentos = $conexion->query("SET NAMES 'utf8'");
 		
-		$registros=mysqli_query($conexion,"select * from ordenes where visto_bueno = \"si\" AND orden_sap IS NOT NULL AND orden_recepcion IS NOT NULL") or
+		$registros=mysqli_query($conexion,"select * from ordenes where visto_bueno = \"no\" AND orden_sap IS NOT NULL AND orden_recepcion IS NOT NULL") or
 		die("Problemas en el select:".mysqli_error($conexion));
 		
 		
@@ -48,7 +48,7 @@
 		//calculo el total de páginas 
 		$total_paginas = ceil($num_total_registros / $TAMANO_PAGINA); 
 		
-		$ssql = "select * from ordenes where visto_bueno = \"si\" AND orden_sap IS NOT NULL AND orden_recepcion IS NOT NULL limit " . $inicio . "," . $TAMANO_PAGINA; 
+		$ssql = "select * from ordenes where visto_bueno = \"no\" AND orden_sap IS NOT NULL AND orden_recepcion IS NOT NULL limit " . $inicio . "," . $TAMANO_PAGINA; 
 		$rs = mysqli_query($conexion,$ssql); 
 		
 		//-------------- FIN Paginador ------------------

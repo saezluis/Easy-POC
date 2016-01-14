@@ -60,9 +60,6 @@ exit;
 	};
 	
 	function calcular(select) {
-		
-		
-	
 		var totalget = document.getElementById("totalhidden").value;
 		
 		if(select.options[select.selectedIndex].id == "elija"){
@@ -81,15 +78,12 @@ exit;
 			
 			document.getElementById("totalfinalcampo").value = totalfinalFormat;
 			document.getElementById("campo_subtotal").value = calcularivaFormat;
-			document.getElementById("campo_subtotal_copy").value = calcularivaFormat;
 			//alert('click en iva');
 			//
 			//alert(totalget);
 			//var nameValue = document.getElementById("uniqueID").value;
 			//Me interesa establecer el valor del campo luego del calculo del IVA
 			//document.getElementById("campo2-c").value = '';
-			document.getElementById("tipo_impuesto").value = document.getElementById("iva").value;
-			
 		} 
 		
 		if(select.options[select.selectedIndex].id == "boleta"){
@@ -98,9 +92,7 @@ exit;
 			var totalfinal = parseFloat(totalget) + calcularboleta;
 			document.getElementById("totalfinalcampo").value = Math.round(totalfinal);
 			document.getElementById("campo_subtotal").value = Math.round(calcularboleta);
-			document.getElementById("campo_subtotal_copy").value = Math.round(calcularboleta);
 			//var nameValue = document.getElementById("uniqueID").value;
-			document.getElementById("tipo_impuesto").value = document.getElementById("boleta").value;
 		} 
 		if(select.options[select.selectedIndex].id == "exento"){
 			//alert('click en exento');
@@ -109,9 +101,7 @@ exit;
 			
 			document.getElementById("totalfinalcampo").value = totalgetFormat;
 			document.getElementById("campo_subtotal").value = "0";
-			document.getElementById("campo_subtotal_copy").value = "0";
 			//var nameValue = document.getElementById("uniqueID").value;
-			document.getElementById("tipo_impuesto").value = document.getElementById("exento").value;
 		} 
 		//alert(select.options[select.selectedIndex].getAttribute("iva"));
 		//obtener valores del formulario
@@ -120,10 +110,12 @@ exit;
 	</script>
 	
 	<script type = "text/javascript" >
-		history.pushState(null, null, 'orden-compra.php');
+	/*
+		history.pushState(null, null, 'consultar-orden.php');
 		window.addEventListener('popstate', function(event) {
-			history.pushState(null, null, 'orden-compra.php');
+			history.pushState(null, null, 'consultar-orden.php');
 		});
+		*/
     </script>
 	
 		<!--
@@ -180,20 +172,22 @@ exit;
 			}
 		</style>
 		
-		<script type = "text/javascript" >
-		/*
-			window.onload = function() {
-				var src = document.getElementById("campo_subtotal"),
-				dst = document.getElementById("two");
-				src.addEventListener('input', function() {
-				dst.value = src.value;
-				});
-			};
-		*/
-		</script>
-		
   </head>
 <body>
+	
+	<?php
+	
+		$numero_orden = $_GET['numero_orden'];
+
+		//echo "Landing";
+		//echo "<br>";
+		//echo "<br>";
+
+		//echo "Numero orden: ".$numero_orden;
+	
+	
+	?>
+	
 <?php
 error_reporting(E_ALL & ~E_NOTICE);
 //$conexion=mysqli_connect("localhost","pmdigita_admin","Prodigy12","pmdigita_test") or die("Problemas con la conexión");	
@@ -203,7 +197,7 @@ $acentos = $conexion->query("SET NAMES 'utf8'");
 //Crear un campo descripcion y concatenar todos los descripcion que me llegan de agregar servicio
 
 //$descripcionfull = "";
-
+/*
 if ($_REQUEST['descripcion1']!=""){		
 	$descripcionfull = $_REQUEST['descripcion1'];		
 	if ($_REQUEST['descripcion2']!=""){
@@ -225,15 +219,53 @@ if ($_REQUEST['descripcion1']!=""){
 		}
 	}		
 }
+*/
+	$registrosOrden=mysqli_query($conexion,"select * from ordenes where numero_orden = '$numero_orden'") or
+	die("Problemas en el select:".mysqli_error($conexion));
+	
+	if($reg=mysqli_fetch_array($registrosOrden)){
+		$fecha = $reg['fecha'];
+		$orden_sap = $reg['orden_sap'];
+		$orden_recepcion = $reg['orden_recepcion'];
+		$visto_bueno = $reg['visto_bueno'];
+			$campana = $reg['campana']; //-------------------------------------------------Campaña
+		$nro_presupuesto_proveedor = $reg['nro_presupuesto_proveedor'];
+		$nro_factura_proveedor = $reg['nro_factura_proveedor'];
+		$monto_neto = $reg['monto_neto'];
+		$jefe_autorizacion = $reg['jefe_autorizacion'];
+			$area_pago = $reg['area_pago']; //---------------------------------------------Area Pago
+		$id_proveedor = $reg['id_proveedor'];
+		$descripcion = $reg['descripcion'];
+			$registro_gasto = $reg['registro_gasto']; //-----------------------------------Registro Gasto
+			$control_presupuesto = $reg['control_presupuesto']; //-------------------------Control Presupuesto
+		$total_final = $reg['total_final'];
+		$id_user = $reg['id_user'];
+		$sub_total = $reg['sub_total'];
+		$tipo_impuesto = $reg['tipo_impuesto'];
+		
+	}
+	
+	$consulta_proveedor=mysqli_query($conexion,"select * from proveedor where id_proveedor = '$id_proveedor'") or die("Problemas en el select:");	    
+	
+	if($row=mysqli_fetch_array($consulta_proveedor)){
+		$rut = $row['rut'];
+		$nombre = $row['nombre'];
+		$razon_social = $row['razon_social'];		
+		$giro = $row['giro'];
+		$direccion = $row['direccion'];
+		$telefono = $row['telefono'];
+		$contacto = $row['contacto'];
+	}			
 
-$nro_presupuesto_set = $_REQUEST['nro_presupuesto'];
+	
+	$nro_presupuesto_set = $_REQUEST['nro_presupuesto'];
 
 	$id_proveedor_send = $_REQUEST['id_proveedor_send'];
 	
 	//echo "Id proveedor send: ".$id_proveedor_send;
 	//echo "<br>";
 	//echo "<br>";
-
+	/*
 	mysqli_query($conexion,"insert into ordenes(id_proveedor,fecha,visto_bueno,campana,nro_presupuesto_proveedor,nro_factura_proveedor,jefe_autorizacion,area_pago,descripcion,archivo,registro_gasto,control_presupuesto) 
 													values 
 													('$id_proveedor_send',
@@ -249,13 +281,13 @@ $nro_presupuesto_set = $_REQUEST['nro_presupuesto'];
 													'$_REQUEST[registro_gastosland_send]',
 													'$_REQUEST[id_controlP_send]')")
 	  or die("Debe llenar todos los campos");  
-
+	*/
 //$last_id = mysqli_query($conexion,"SELECT LAST_INSERT_ID();"); 
 
-$last_id = mysqli_insert_id($conexion); //Aqui se me devuelve el ultimo ID insertado
+//$last_id = mysqli_insert_id($conexion); //Aqui se me devuelve el ultimo ID insertado
 
 // ---------- Aqui es donde se agregan el primer servicio, es obligatorio ----------
-
+/*
 mysqli_query($conexion,"insert into servicios(descripcion,cantidad,monto,id_orden) values ('$_REQUEST[descripcion1]',
 												'$_REQUEST[cantidad1]',
 												'$_REQUEST[valor1]',
@@ -317,26 +349,17 @@ mysqli_query($conexion,"insert into servicios(descripcion,cantidad,monto,id_orde
 												'$_REQUEST[valor7]',
 												'$last_id')") or die("Problemas con el insert de los servicios");
   }   
-
+*/
+/*
 $consulta_orden=mysqli_query($conexion,"select * from ordenes where numero_orden = '$last_id'") or die("Problemas en el select:");	    
 			if($row=mysqli_fetch_array($consulta_orden))
 			{
 			  $nro_presupuesto = $row['nro_presupuesto_proveedor'];
 			  $nro_factura = $row['nro_factura_proveedor'];
 			}
-
+*/
 	
 			
-$consulta_proveedor=mysqli_query($conexion,"select * from proveedor where nombre = '$_REQUEST[typeahead]'") or die("Problemas en el select:");	    
-			if($row=mysqli_fetch_array($consulta_proveedor))
-			{
-			  $razon_social = $row['razon_social'];
-			  $giro = $row['giro'];
-			  $direccion = $row['direccion'];
-			  $contacto = $row['contacto'];
-			  $telefono = $row['telefono'];
-			  $RUT = $row['rut'];
-			}			
 			
 			
 //mysqli_close($conexion);
@@ -357,32 +380,42 @@ $consulta_proveedor=mysqli_query($conexion,"select * from proveedor where nombre
       <div class="caja base-50 no-padding">
         <div id="datos--fac">
           <ul>
-			<?php echo "<li>N° <span class=\"num-f\">$last_id</span></li>"; ?>
+			<?php echo "<li>N° <span class=\"num-f\">$numero_orden</span></li>"; ?>
             
-			<?php echo "<li>Presupuesto <span class=\"num-p\">$nro_presupuesto_set</span></li>"; ?>            
+			<?php echo "<li>Presupuesto <span class=\"num-p\">$nro_presupuesto_proveedor</span></li>"; ?>            
             
-            <?php echo "<li>Nº Factura <span class=\"num-l\">$nro_factura</span></li>"; ?>
+            <?php echo "<li>Nº Factura <span class=\"num-l\">$nro_factura_proveedor</span></li>"; ?>
 			
           </ul>
         </div>
       </div>
       <div class="caja base-100 no-padding">
 		<?php 
-			$dia = date('d', time());
-			$mes = date('m', time());
-			$anio = date('y', time()); 
+			//darle formato a la fecha OJO OJO OJO OJO OJO OJO OJO OJO OJO OJO OJO OJO OJO OJO OJO OJO OJO OJO OJO OJO OJO OJO 
+			//echo $fecha;
+			//$fecha
+			//echo date('d/m/Y',strtotime('2010-09-02T09:46:48.78'));
+			
+			$dia = date('d',strtotime($fecha));
+			$mes = date('m',strtotime($fecha));
+			$anio = date('Y',strtotime($fecha));
+			//$mes = date_format($fecha,"m");
+			//$anio = date_format($fecha,"Y");
+			
 		?>
-        <p class="coti--fecha">Santiago,<span class="dia"><?php echo $dia; ?></span><span class="mes"><?php echo $mes; ?></span><span class="ano"><?php echo "20".$anio; ?></span></p>
+        <p class="coti--fecha">Santiago,<span class="dia"><?php echo $dia; ?></span><span class="mes"><?php echo $mes; ?></span><span class="ano"><?php echo $anio; ?></span></p>
         <h3>Orden de compra marketing</h3>
       </div>
 	  
 	</header>  
-		
+	
+
+	
 	<div id="oc--datos" class="no-padding grupo">
       <p class="d">Datos del Proveedor</p>
       <div id="oc-proo">
         <ul>
-          <li> <?php echo " ".$razon_social; ?><span class="flot-1">Razón social:</span><span class="rut-social">RUT: <?php echo " ".$RUT; ?></span></li>
+          <li> <?php echo " ".$razon_social; ?><span class="flot-1">Razón social:</span><span class="rut-social">RUT: <?php echo " ".$rut; ?></span></li>
           <li><?php echo " ".$giro; ?><span class="flot-2">Giro:</span></li>
           <li><?php echo " ".$direccion; ?><span class="flot-3">Dirección:</span></li>
           <li><?php echo " ".$contacto; ?><span class="flot-4">Contacto:</span><span class="telefono-contacto">Teléfono: <?php echo " ".$telefono; ?></span></li>
@@ -411,21 +444,20 @@ $consulta_proveedor=mysqli_query($conexion,"select * from proveedor where nombre
 		$conexion=mysqli_connect("localhost","root","123","test") or die("Problemas con la conexión");
 		$acentos = $conexion->query("SET NAMES 'utf8'");
 		
-		$registros=mysqli_query($conexion,"select * from servicios where id_orden = $last_id") or
+		$registros=mysqli_query($conexion,"select * from servicios where id_orden = $numero_orden") or
 		die("Problemas en el select:".mysqli_error($conexion));
 		
 		$subtotal = 0;
 		$total = 0;
 		$totaliva = 0;
 		
-		$id_campana = $_REQUEST['campana'];
+		//$id_campana = $_REQUEST['campana'];
 		
-		$registrosCampana=mysqli_query($conexion,"select * from campana WHERE id_campana = $id_campana") or die("Problemas en el select:".mysqli_error($conexion));
+		$registrosCampana=mysqli_query($conexion,"select * from campana WHERE id_campana = $campana") or die("Problemas en el select:".mysqli_error($conexion));
 		
 		if($reg=mysqli_fetch_array($registrosCampana)){
 			$nombre_campana = $reg['nombre_campana'];
 		}
-		
 		
 		while ($reg=mysqli_fetch_array($registros))
 		{
@@ -447,6 +479,7 @@ $consulta_proveedor=mysqli_query($conexion,"select * from proveedor where nombre
 		$totalivaf = number_format($totaliva,0, ",", ".");
 		//number_format($numero, 2, ",", ".");
 		
+		/*
 		$registros=mysqli_query($conexion,"select * from servicios where id_orden = $last_id") or
 		die("Problemas en el select:".mysqli_error($conexion));
 		
@@ -456,7 +489,7 @@ $consulta_proveedor=mysqli_query($conexion,"select * from proveedor where nombre
 		
 		
 		//mysqli_close($conexion);
-		
+		*/
 		?>
 		
 		<?php echo "<input type=\"text\" value=\"$total\" id=\"totalhidden\" hidden=hidden>";	?>		
@@ -471,32 +504,31 @@ $consulta_proveedor=mysqli_query($conexion,"select * from proveedor where nombre
           <p class="neto">VALOR TOTAL NETO $<?php echo "<input class=\"no-hay\" type=\"text\" size=\"10\" value=\"$total_format\"  readonly>"; ?></p>
           <p class="iva">
 		  
-			  <select id="xxx" name="xxxyyy" class="valores-select" onchange="calcular(this)">
-				<option value="#" id="elija">Elija</option>
-				<option value="IVA" id="iva">IVA</option>
-				<option value="10% BOLETA" id="boleta">10% BOLETA</option>
-				<option value="EXENTO DE IVA" id="exento">EXENTO DE IVA</option>
+			  <select id="xxx" name="xxxyyy" class="valores-select" readonly>
+				<?php
+					echo "<option value=\"\">$tipo_impuesto</option>";
+				?>
 			  </select>
 			  
-				<?php echo "<input class=\"no-hay\" type=\"text\" size=\"10\" value=\"\" id=\"campo_subtotal\" >"; ?> 
+				<?php echo "<input class=\"no-hay\" type=\"text\" size=\"10\" value=\"$sub_total\" id=\"campo_subtotal\" readonly>"; ?> 
 		  
 		  </p>
 		  
 		  <form action="update-total.php" method="post">
-			<p class="totality">Total $ <?php echo "<input class=\"no-hay\" name=\"total_final\" type=\"text\" size=\"10\" value=\"\" id=\"totalfinalcampo\" readonly>"; ?></p>
+			<p class="totality">Total $ <?php echo "<input class=\"no-hay\" name=\"total_final\" type=\"text\" size=\"10\" value=\"$total_final\" id=\"totalfinalcampo\" readonly>"; ?></p>
 			<button type="button" class="imprimir" onclick="window.print(); ">IMPRIMIR</button><!-- esto se lo quité: window.location='emision.php'; -->
 			<?php echo "<input type=\"text\" name=\"last_id_send\" value=\"$last_id\" hidden=hidden>"; ?>
 			
-			<?php echo "<input type=\"text\" value=\"\" name=\"subtotal_send\" id=\"campo_subtotal_copy\" hidden=hidden>"; ?>
-			
-			<?php echo "<input type=\"text\" value=\"\" name=\"tipo_impuesto_send\" id=\"tipo_impuesto\" hidden=hidden>"; ?>
-			
-			<button type="submit" class="imprimir" onClick="alert('OC guardada con éxito'); " >GUARDAR</button> <!-- window.location.href = 'emision.php'; -->
+			<!--
+			<button type="submit" class="imprimir" onClick="alert('OC guardada con éxito'); window.location.href = 'emision.php';" >GUARDAR</button>
+			-->
 		</form>
 		
 		  <form action="cancelar.php" method="post">
 			<?php echo "<input type=\"text\" name=\"ultimoid\" value=\"$last_id\" hidden=hidden>"; ?>		  
+			<!--
 			<button type="submit" class="imprimir" >CANCELAR</button>
+			-->
 			</form>
 			
 			
