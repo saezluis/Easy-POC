@@ -32,7 +32,9 @@
 	
 	<?php
 		
-		$conexion=mysqli_connect("localhost","root","123","test") or die("Problemas con la conexión");
+		include "config.php";
+		
+		$conexion=mysqli_connect($host,$username,$password,$db_name) or die("Problemas con la conexión");
 		$acentos = $conexion->query("SET NAMES 'utf8'");
 	
 		$username = $_SESSION['username'];
@@ -43,7 +45,7 @@
 			$id_member = $reg['id'];
 		}
 		
-		//$conexion=mysqli_connect("localhost","pmdigita_admin","Prodigy12","pmdigita_test") or die("Problemas con la conexión");	
+		
 		
 		
 		//AND orden_sap IS NOT NULL AND orden_recepcion IS NOT NULL
@@ -123,10 +125,8 @@
 	?>
 	
 	<?php
-		$buscar = $_POST["palabra"];
-		//$conexion=mysqli_connect("localhost","pmdigita_admin","Prodigy12","pmdigita_test") or die("Problemas con la conexión");	
-		$conexion=mysqli_connect("localhost","root","123","test") or die("Problemas con la conexión");
-		$acentos = $conexion->query("SET NAMES 'utf8'");
+		$buscar = $_POST["palabra"];		
+
 		
 		//echo $buscar;
 		//Ojo esto es para buscar una orden en especifica
@@ -343,7 +343,7 @@
 				echo "<span class=\"pag--cube\">" . $pagina . "</span>" . " "; 
 			else 
 				//si el índice no corresponde con la página mostrada actualmente, coloco el enlace para ir a esa página 				
-				echo "<a href='perfil-sap.php?pagina=" . $i . "'>"  . $i .  "</a> " ; 
+				echo "<a href='historial-ordenes.php?pagina=" . $i . "'>"  . $i .  "</a> " ; 
 			}   
 		}	
 			echo "</div>";				

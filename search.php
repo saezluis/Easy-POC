@@ -2,7 +2,9 @@
     $key=$_GET['key'];
     $array = array();
 	
-	$con=mysqli_connect("localhost","root","123","test") or die("Problemas con la conexión");
+	include "config.php";
+	
+	$con=mysqli_connect($host,$username,$password,$db_name) or die("Problemas con la conexión");
 		//echo $buscar;
 	$consulta_mysql=mysqli_query($con,"select * from proveedor where nombre LIKE '%{$key}%'") or
 		//142-424-555

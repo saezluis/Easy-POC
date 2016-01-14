@@ -22,8 +22,10 @@
   <body>
 	
 	<?php
-		////$conexion=mysqli_connect("localhost","pmdigita_admin","Prodigy12","pmdigita_test") or die("Problemas con la conexión");	
-		$conexion=mysqli_connect("localhost","root","123","test") or die("Problemas con la conexión");
+		
+		include "config.php";
+		
+		$conexion=mysqli_connect($host,$username,$password,$db_name) or die("Problemas con la conexión");
 				
 		
 		$registros=mysqli_query($conexion,"select * from ordenes where orden_sap IS NULL OR orden_recepcion IS NULL") or
@@ -98,8 +100,7 @@
 	
 	<?php
 		$buscar = $_POST["palabra"];
-		//$conexion=mysqli_connect("localhost","pmdigita_admin","Prodigy12","pmdigita_test") or die("Problemas con la conexión");	
-		$conexion=mysqli_connect("localhost","root","123","test") or die("Problemas con la conexión");
+
 		//echo $buscar;
 		//Ojo esto es para buscar una orden en especifica
 		$consulta_mysql=mysqli_query($conexion,"SELECT * FROM ordenes WHERE numero_orden = '$buscar' ") or				

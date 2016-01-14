@@ -7,8 +7,10 @@
   <body>
   
 	<?php
-
-		$conexion=mysqli_connect("localhost","root","123","test") or die("Problemas con la conexión");
+		
+		include "config.php";
+		
+		$conexion=mysqli_connect($host,$username,$password,$db_name) or die("Problemas con la conexión");
 		
 		//echo "Visto bueno: ".substr(@$_POST["revision"],0,2);
 		//echo " nro orden: ".substr(@$_POST["revision"],3,6);

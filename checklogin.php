@@ -48,18 +48,18 @@
 	
 	session_start();
 
+		include "config.php";
 	
-	
-	 $host_db = "localhost";
-	 $user_db = "root";
-	 $pass_db = "123";
-	 $db_name = "test";
-	 $tbl_name = "members";
+	 //$host_db = "localhost";
+	 //$user_db = "root";
+	 //$pass_db = "123";
+	 //$db_name = "test";
+		$tbl_name = "members";
 
 		// Connect to server and select databse.
-		$con=mysqli_connect("$host_db", "$user_db", "$pass_db")or die("Cannot Connect to Data Base.");
+		$con=mysqli_connect($host, $username, $password)or die("Cannot Connect to Data Base.");
 
-		mysqli_select_db($con,"$db_name")or die("Cannot Select Data Base");
+		mysqli_select_db($con,$db_name)or die("Cannot Select Data Base");
 
 		// sent from form
 		$username = $_POST['myusername'];

@@ -6,8 +6,9 @@
 //nro_orden_send
 //lleva el valor de Orden SAP que voy a guardar en BD
 
-//$conexion=mysqli_connect("localhost","pmdigita_admin","Prodigy12","pmdigita_test") or die("Problemas con la conexión");	
-$conexion=mysqli_connect("localhost","root","123","test") or die("Problemas con la conexion");
+	include "config.php";
+	
+	$conexion=mysqli_connect($host,$username,$password,$db_name) or die("Problemas con la conexión");
 
 mysqli_query($conexion,"update ordenes set orden_sap='$_REQUEST[nro_orden_send]' where numero_orden='$_REQUEST[nro_orden_send_hidden]'") or
   die("Problemas en el select:".mysqli_error($conexion));

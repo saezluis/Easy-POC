@@ -190,9 +190,11 @@ exit;
 	
 <?php
 error_reporting(E_ALL & ~E_NOTICE);
-//$conexion=mysqli_connect("localhost","pmdigita_admin","Prodigy12","pmdigita_test") or die("Problemas con la conexión");	
-$conexion=mysqli_connect("localhost","root","123","test") or die("Problemas con la conexion");
-$acentos = $conexion->query("SET NAMES 'utf8'");
+	
+	include "config.php";
+	
+	$conexion=mysqli_connect($host,$username,$password,$db_name) or die("Problemas con la conexión");
+	$acentos = $conexion->query("SET NAMES 'utf8'");
 
 //Crear un campo descripcion y concatenar todos los descripcion que me llegan de agregar servicio
 
@@ -439,10 +441,6 @@ $consulta_orden=mysqli_query($conexion,"select * from ordenes where numero_orden
 		
 
 		<?php
-		
-		//$conexion=mysqli_connect("localhost","pmdigita_admin","Prodigy12","pmdigita_test") or die("Problemas con la conexión");	
-		$conexion=mysqli_connect("localhost","root","123","test") or die("Problemas con la conexión");
-		$acentos = $conexion->query("SET NAMES 'utf8'");
 		
 		$registros=mysqli_query($conexion,"select * from servicios where id_orden = $numero_orden") or
 		die("Problemas en el select:".mysqli_error($conexion));

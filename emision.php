@@ -210,8 +210,10 @@ exit;
   <body>
 	<?php
 		//header("Content-Type: text/html;charset=utf-8");
-		//$conexion=mysqli_connect("localhost","pmdigita_admin","Prodigy12","pmdigita_test") or die("Problemas con la conexión");	
-		$conexion=mysqli_connect("localhost","root","123","test") or die("Problemas con la conexión");		
+		
+		include "config.php";
+		
+		$conexion=mysqli_connect($host,$username,$password,$db_name) or die("Problemas con la conexión");
 		$acentos = $conexion->query("SET NAMES 'utf8'");
 		
 		$revisar=mysqli_query($conexion,"select * from ordenes where visto_bueno = \"no\" AND orden_sap IS NULL OR orden_recepcion IS NULL") or
@@ -300,11 +302,9 @@ exit;
 			$contacto = "";
 			$rut = "";
 			$nombre = "";
-			//$con=mysqli_connect("localhost","pmdigita_admin","Prodigy12","pmdigita_test") or die("Problemas con la conexión");	
-			$con=mysqli_connect("localhost","root","123","test") or die("Problemas con la conexión");		
-			$acentos = $con->query("SET NAMES 'utf8'");
 			
-			$consulta_mysql=mysqli_query($con,"select * from proveedor where nombre = '$busqueda'") or die("Problemas en el select:");	    
+			
+			$consulta_mysql=mysqli_query($conexion,"select * from proveedor where nombre = '$busqueda'") or die("Problemas en el select:");	    
 			if($row=mysqli_fetch_array($consulta_mysql))
 			{
 			  $id_proveedor = $row['id_proveedor'];

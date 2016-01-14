@@ -348,10 +348,14 @@ exit;
 			<li> </li>
 			<li> </li>
 			<li> </li>
+			<!--
 			<li> <a href="#" class="active" >Por revisar</a></li>
+			-->
           </ul>
         </nav>
+		<!--
         <div class="counter">15</div>
+		-->
       </div>
       <div class="caja base-100 no-padding">
         <h2>Bienvenido al nuevo sistema de emisión de órdenes de compra.</h2>

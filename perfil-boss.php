@@ -20,8 +20,10 @@
   </head>
   <body>
 	<?php
+		
+		include "config.php";
 	
-		$conexion=mysqli_connect("localhost","root","123","test") or die("Problemas con la conexión");
+		$conexion=mysqli_connect($host,$username,$password,$db_name) or die("Problemas con la conexión");
 				
 		
 		$registros=mysqli_query($conexion,"select * from ordenes where visto_bueno = \"no\"") or
@@ -96,7 +98,6 @@
 	
 	<?php
 		$buscar = $_POST["palabra"];
-		$conexion=mysqli_connect("localhost","root","123","test") or die("Problemas con la conexión");
 		
 		//Ojo esto es para buscar una orden en especifica
 		$consulta_mysql=mysqli_query($conexion,"SELECT * FROM ordenes WHERE numero_orden = '$buscar' ") or		
