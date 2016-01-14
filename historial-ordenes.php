@@ -140,7 +140,7 @@
 	<div id="campana" class="grupo">
 		<div class="caja-100">
 			<div id="tabla">
-				<div id="titulo--orden-1">Nº de OC / Ver OCx</div>
+				<div id="titulo--orden-1">Nº de OC / Ver OC</div>
 				<div id="titulo--orden-2">Fecha</div>
 				<div id="titulo--orden-3">Detalle</div>
 				<div id="titulo--orden-4">OC SAP</div>
@@ -183,7 +183,8 @@
 			
 			$n_orden2 = $n_orden2 + 1;								
 			echo "<div id=\"tabla\">";
-			  echo "<div id=\"orden--1\">".$registro['numero_orden']."</div>";
+			  echo "<div id=\"orden--1\"><a href=\"consultar-orden.php?numero_orden=",urlencode($n_orden)," \">$n_orden</a></div>";
+			  //echo "<div id=\"orden--1\">".$registro['numero_orden']."</div>";
 			  echo "<div id=\"orden--2\">".$fecha_format."</div>";
 			  echo "<div id=\"orden--3\">".$registro['descripcion']."</div>";
 			  //------------------- Aqui trabajo con orden SAP -------------------

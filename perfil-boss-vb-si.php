@@ -119,9 +119,12 @@
 	</div>	
 	<?php
 		//if ($reg=mysqli_fetch_array($registros))
-		
+		  $n_orden = "";
+		  $n_orden = $registro['numero_orden'];  
+	  
 		  echo "<div id=\"tabla\">";
-		  echo "<div id=\"orden--1\">".$registro['numero_orden']."</div>";
+		  //echo "<div id=\"orden--1\">".$registro['numero_orden']."</div>";
+		  echo "<div id=\"orden--1\"><a href=\"consultar-orden.php?numero_orden=",urlencode($n_orden)," \">$n_orden</a></div>";
 		  $visto_bd = $registro['visto_bueno'];
 		  
 		  //Aqui se calculan los dias que van transcurriendo desde la emision de la OC
@@ -178,9 +181,12 @@
 		
 		while ($reg=mysqli_fetch_array($rs))
 		{
+	      $n_orden = $reg['numero_orden'];
+		  
 		  echo "<div id=\"tabla\">";
-		  echo "<div id=\"orden--1\">".$reg['numero_orden']."</div>";	
-		  $n_orden = $reg['numero_orden'];
+		  //echo "<div id=\"orden--1\">".$reg['numero_orden']."</div>";	
+		  echo "<div id=\"orden--1\"><a href=\"consultar-orden.php?numero_orden=",urlencode($n_orden)," \">$n_orden</a></div>";
+		  
 		  
 		  //Aqui se calculan los dias que van transcurriendo desde la emision de la OC
 		  $fecha = $reg['fecha'];		  

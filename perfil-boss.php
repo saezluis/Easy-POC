@@ -109,7 +109,7 @@
 	<div id="campana" class="grupo">
       <div class="caja-100">
         <div id="tabla">
-          <div id="titulo--orden-1">Nº de OC</div>
+          <div id="titulo--orden-1">Nº de OC / Ver OC</div>
           <div id="titulo--orden-2">Fecha</div>
           <div id="titulo--orden-3">Detalle</div>
           <div id="titulo--orden-4">OC SAP</div>
@@ -119,10 +119,16 @@
         </div>   
 	</div>	
 	<?php		
-		
+			
+		  $n_orden = "";
+		  $n_orden = $registro['numero_orden'];
+		  
 		  echo "<div id=\"tabla\">";
-		  echo "<div id=\"orden--1\">".$registro['numero_orden']."</div>";		  	
+		  echo "<div id=\"orden--1\"><a href=\"consultar-orden.php?numero_orden=",urlencode($n_orden)," \">$n_orden</a></div>";
+		  //echo "<div id=\"orden--1\">".$registro['numero_orden']."</div>";		  	
 		  $visto_bd = $registro['visto_bueno'];
+		  
+		  
 		  
 		  //Aqui se calculan los dias que van transcurriendo desde la emision de la OC
 		  $fecha = $registro['fecha'];		  
@@ -165,7 +171,7 @@
     <div id="campana" class="grupo">
       <div class="caja-100">
         <div id="tabla">
-          <div id="titulo--orden-1">Nº de OC</div>
+          <div id="titulo--orden-1">Nº de OC / Ver OC</div>
           <div id="titulo--orden-2">Fecha</div>
           <div id="titulo--orden-3">Detalle</div>
           <div id="titulo--orden-4">OC SAP</div>
@@ -178,9 +184,11 @@
 		
 		while ($reg=mysqli_fetch_array($rs))
 		{
-		  echo "<div id=\"tabla\">";
-		  echo "<div id=\"orden--1\">".$reg['numero_orden']."</div>";	
 		  $n_orden = $reg['numero_orden'];
+		  echo "<div id=\"tabla\">";
+		  //echo "<div id=\"orden--1\">".$reg['numero_orden']."</div>";	
+		  echo "<div id=\"orden--1\"><a href=\"consultar-orden.php?numero_orden=",urlencode($n_orden)," \">$n_orden</a></div>";
+		  
 		  $visto_bd = $reg['visto_bueno'];		  
 		  
 		  //Aqui se calculan los dias que van transcurriendo desde la emision de la OC

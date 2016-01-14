@@ -510,7 +510,13 @@ $consulta_orden=mysqli_query($conexion,"select * from ordenes where numero_orden
 				?>
 			  </select>
 			  
-				<?php echo "<input class=\"no-hay\" type=\"text\" size=\"10\" value=\"$sub_total\" id=\"campo_subtotal\" readonly>"; ?> 
+				<?php 
+					
+					$sub_total_format = number_format($sub_total,0, ",", ".");
+					
+					echo "<input class=\"no-hay\" type=\"text\" size=\"10\" value=\"$sub_total_format\" id=\"campo_subtotal\" readonly>"; 
+					
+				?> 
 		  
 		  </p>
 		  
