@@ -159,53 +159,76 @@ exit;
             <label>V°B° Jefatura</label>
 			<input type="text">				
           </div>
-			
-			<br>
-			<br>
-			<hr>
-			<br>
-			
-           <div class="caja base-20">
-            <label>Area &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; CECO</label>
-			<span>MKT Digital (CEE1008800)</span>			
-          </div>
-		  
-		   <div class="caja base-25">
-            <label>Descripción del servicio / Tarea</label>
-			<span>jdjdjdjdjdjdjdjdjdjdjd</span>
-          </div>
-		  
-		   <div class="caja base-10">
-            <label>Registro de Gasto</label>
-			<span>Exhibición Vïa Pública</span>
-          </div>
-		  
-           <div class="caja base-10">
-            <label>Control Presupuesto</label>
-			<span>Exhibición de Medios</span>
-          </div>
-		  
-           <div class="caja base-10">
-            <label>PPTO Proyectado</label>
-			<span>12.000.000</span>			
-          </div>
-		  
-		   <div class="caja base-10">
-            <label>PPTO Real</label>
-			<span>10.000.000</span>
-          </div>
-		 
-		   <div class="caja base-10">
-            <label>Diferencia</label>
-			<span>2.000.000</span>
-          </div>
-		  
-          <div class="caja base-5">
-			<label>N° OC</label>
-			<span>2</span>
-          </div>
-
-		  
+			<!--aqui empezé-->
+		<!--aqui termine-->
+        </form>
+        <form action="" class="registro-campana">
+		    <section class="grupo">
+		      <table class="table">
+		        <thead>
+		          <tr class="cabecc">
+		            <th>Área</th>
+		            <th>CECO</th>
+		            <th>Desc. Servicio</th>
+		            <th>Reg. gasto</th>
+		            <th>PEP</th>
+		            <th>Control presup.</th>
+		            <th>PEP</th>
+		            <th>PPTO proyect.</th>
+		            <th>PPTO real</th>
+		            <th>Diferencia</th>
+		            <th>Nº OC</th>
+		          </tr>
+		        </thead>
+		        <tbody>
+		          <tr>
+		            <td class="area">Marketing Institucional</td>
+		            <td class="ceco">CEE1007752</td>
+		            <td class="desc-servicio">Impresos flyers</td>
+		            <td class="reg-gasto">Impresiones Mundo Experto Volantes/mailing directo/cartas/</td>
+		            <td class="pep">AM</td>
+		            <td class="control-presupuesto">Impresos</td>
+		            <td class="pep">IC</td>
+		            <td class="ppto-proyecto">$ 5.000.000</td>
+		            <td class="ppto-real">$ 7.000.000</td>
+		            <td class="diferencia">$ 2.000.000</td>
+		            <td class="nOC">123456789</td>
+		          </tr>
+		          <tr>
+		            <td class="area">Mundo Experto</td>
+		            <td class="ceco">CEE1007752</td>
+		            <td class="desc-servicio">Impresos flyers</td>
+		            <td class="reg-gasto">Impresiones </td>
+		            <td class="pep">AM</td>
+		            <td class="control-presupuesto">Impresos</td>
+		            <td class="pep">IC</td>
+		            <td class="ppto-proyecto">$ 155.000.000</td>
+		            <td class="ppto-real">$ 7.000.000</td>
+		            <td class="diferencia">$ 2.000.000</td>
+		            <td class="nOC">123456789</td>
+		          </tr>
+		        </tbody>
+		      </table>
+		      <section class="grupo borde-tabla">
+		        <table class="tot-base">
+		          <thead>
+		            <tr class="total-all">
+		              <th> </th>
+		              <th> </th>
+		              <th> </th>
+		              <th> </th>
+		              <th> </th>
+		              <th> </th>
+		              <th>Total</th>
+		              <th class="tot-1">$ 99.000.000</th>
+		              <th class="tot-1">$ 5.000.000</th>
+		              <th class="tot-1">$ 5.000.000</th>
+		              <th> </th>
+		            </tr>
+		          </thead>
+		        </table>
+		      </section>
+		    </section>
         </form>		
       </div>
     </div>

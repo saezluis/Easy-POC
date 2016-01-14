@@ -134,6 +134,7 @@ exit;
 			header.cotizacion #datos--fac{
 				width: 50% !important;
 			}
+
 		    header.cotizacion #datos--fac li {
 				font-size: 10px !important;
        		}
@@ -177,6 +178,9 @@ exit;
     		}
 			#neto input.no-hay{
 				border:none !important;
+			}
+			#firmas{
+				margin-top: 0 !important;
 			}
 		</style>
 		
@@ -396,7 +400,7 @@ $consulta_proveedor=mysqli_query($conexion,"select * from proveedor where nombre
 	
 	
 	
-	<div id="campana" class="grupo">
+	<div id="campana-print" class="grupo">
       <div class="caja-100">
         <div id="tabla">
           <div id="item-1-print">Campaña</div>
@@ -502,6 +506,12 @@ $consulta_proveedor=mysqli_query($conexion,"select * from proveedor where nombre
         </div>
       </div>
     </div>
-	<br><br><br><br><br><br><br><br>
+	<!-- <br><br><br><br><br><br><br><br> -->
+  <div id="firmas">
+    <div class="grupo">
+      <div id="firma-1"><img src="tema/img/firma-1.jpg" alt=""></div>
+      <div id="firma-2"><img src="tema/img/firma-2.jpg" alt=""></div><!-- <br><br><br><br><br><br><br><br><br><br><br><br><br>	 -->				
+    </div>
+  </div>
 </body>
 </html>
