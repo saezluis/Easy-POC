@@ -114,6 +114,8 @@ exit;
 		$ppto_real_suma="";
 		$ppto_real_suma_format=0;
 		$ppto_real_format=0;
+		$diferencia_total_sum=0;
+		$diferencia_total_sum_format=0;
 		
 		$conexion=mysqli_connect($host,$username,$password,$db_name) or die("Problemas con la conexión");
 		$acentos = $conexion->query("SET NAMES 'utf8'");
@@ -328,6 +330,12 @@ exit;
 							$ppto_real_suma = $ppto_real_suma + $ppto_real;
 							$ppto_real_suma_format = number_format($ppto_real_suma,0, ",", ".");
 							
+							$sub_t_diferencia = $ppto_real - $total_sin_dots;
+							$sub_t_diferencia_format = number_format($sub_t_diferencia,0, ",", ".");
+							
+							$diferencia_total_sum = $diferencia_total_sum + $sub_t_diferencia;
+							$diferencia_total_sum_format = number_format($diferencia_total_sum,0, ",", ".");
+							
 							echo "<tr>";
 							echo "<td class=\"area\">$descripcion</td>";
 							echo "<td class=\"ceco\">$ceco</td>";
@@ -338,7 +346,7 @@ exit;
 							echo "<td class=\"pep\">$id_cp</td>";
 							echo "<td class=\"ppto-proyecto\">$ $total_final</td>";
 							echo "<td class=\"ppto-real\"><input type=\"text\" name=\"$ppto_real_name_final\" value=\"$ppto_real_format\" class=\"pptoReal\"></input></td>";
-							echo "<td class=\"diferencia\">$ppto_real_name_final</td>";
+							echo "<td class=\"diferencia\">$ $sub_t_diferencia_format</td>";
 							echo "<td class=\"nOC\"><input type=\"text\" name=\"$nro_oc_name_final\" value=\"$numero_orden\" class=\"ccs_nroOC\" readonly></input></td>";
 							echo "</tr>";
 						}
@@ -360,7 +368,7 @@ exit;
 						<?php
 							echo "<th class=\"tot-1\">$ $suma_PPTO_format</th>";
 							echo "<th class=\"tot-1\">$ $ppto_real_suma_format</th>";
-							echo "<th class=\"tot-1\">$ 5.000.000</th>";
+							echo "<th class=\"tot-1\">$ $diferencia_total_sum_format</th>";
 						?>
 		              <!--
 					  <th><a href="costos-accion.php">actualizar</a> </th>

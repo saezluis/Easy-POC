@@ -34,7 +34,7 @@
 	
 	//$cont=0;
 	for ($x = 0; $x <= $rows; $x++) {
-		$ppt[] = $_REQUEST[$ppto_real_name_final[$x]];
+		$ppt[] = str_replace(".","",$_REQUEST[$ppto_real_name_final[$x]]);
 		
 		$nroOC[] = $_REQUEST[$nro_oc_name_final[$x]];
 		
@@ -49,6 +49,11 @@
 				insertPptoReal($ppt[$x],$nroOC[$x],$nro_solicitud_send);
 			}
 			*/
+			$estatus_OC = descartarOC($nroOC[$x]);
+			if($estatus_OC!='T'){
+				//echo "Inserto el registro, es la unica opcion"."<br>";
+				insertPptoReal($ppt[$x],$nroOC[$x],$nro_solicitud_send);
+			}
 		}
 	}
 	
@@ -92,6 +97,22 @@
 	//familyName("Jani");
 	
 	//funcion buscarOC, si encuentra OC, llamar a la funcion actualizarCAC
+	function descartarOC($nro_oc_buscar){
+		$v="";
+		include "config.php";
+		global $conexion;
+		global $acentos;
+	
+		$registrosCAC=mysqli_query($conexion,"select * from cac")or die("Problemas en el select:".mysqli_error($conexion));
+		
+		while($reg=mysqli_fetch_array($registrosCAC)){
+			$nro_oc_registro = $reg['nro_oc'];
+			if($nro_oc_registro==$nro_oc_buscar){
+				$v='T';
+			}
+		}
+		return $v;
+	}
 	
 	
 	function buscarOC($nro_oc_buscar,$ppto_real_snapshot){
