@@ -105,7 +105,7 @@
 				//header("Location:emision.php");
 				
 				echo '<script type="text/javascript">';
-				echo 'window.location.href="perfil-boss.php";';
+				echo 'window.location.href="seleccion-boss.php";';
 				echo '</script>';
 				
 			}

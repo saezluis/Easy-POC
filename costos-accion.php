@@ -130,9 +130,9 @@ exit;
 		
 		$rows = mysqli_num_rows($registrosOC);
 		
-		echo "Esta devolviendo este nro de OC: ".$rows;
+		/*echo "Esta devolviendo este nro de OC: ".$rows;
 		echo "<br>";
-		echo "<br>";
+		echo "<br>";*/
 		
 	?>
     <header class="grupo">
@@ -380,7 +380,7 @@ exit;
 						echo "<input type=\"text\" value=\"Dummy\" name=\"ppto0\" hidden=hidden />";
 						echo "<input type=\"text\" value=\"Decoy\" name=\"nroOC0\" hidden=hidden />";
 						
-						echo "<input type=\"text\" id=\"nroSolicitudBox\" value=\"\" name=\"nro_solicitud_send\" />";
+						echo "<input type=\"text\" id=\"nroSolicitudBox\" value=\"\" name=\"nro_solicitud_send\" hidden=hidden />";
 						
 						echo "<th><button type=\"submit\">actualizar</button></th>";
 					  ?>
