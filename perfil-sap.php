@@ -127,7 +127,7 @@
 			<div id="tabla">
 				<div id="titulo--orden-1">Nº de OC</div>
 				<div id="titulo--orden-2">Fecha</div>
-				<div id="titulo--orden-3">Detalle</div>
+				<div id="titulo--orden-3">Codigo PEP</div>
 				<div id="titulo--orden-4">OC SAP</div>
 				<div id="titulo--orden-5">OC RECEPCIÓN</div>
 				<div id="titulo--orden-6T"> <img src="tema/img/time.gif" alt=""></div>
@@ -222,7 +222,7 @@
         <div id="tabla">
           <div id="titulo--orden-1">Nº de OC</div>
           <div id="titulo--orden-2">Fecha</div>
-          <div id="titulo--orden-3">Detalle</div>
+          <div id="titulo--orden-3">Codigo PEP</div>
           <div id="titulo--orden-4">OC SAP</div>
           <div id="titulo--orden-5">OC RECEPCIÓN</div>
           <div id="titulo--orden-6T"> <img src="tema/img/time.gif" alt=""></div>
@@ -246,8 +246,7 @@
 			}
 		}
 		
-		while ($reg=mysqli_fetch_array($rs))
-		{			
+		while ($reg=mysqli_fetch_array($rs)){			
 			//Aqui se calculan los dias que van transcurriendo desde la emision de la OC
 			$fecha = $reg['fecha'];		  
 			$todate = date("Y-m-d",strtotime($fecha));		  
@@ -267,10 +266,45 @@
 			$nro_orden_foo = $reg['numero_orden'];
 			$more_foo = $more_foo + 1;
 			
+			//-------------------------- Creacion del codigo PEP ---------------------------------------------
+			$area_pago = $reg['area_pago'];
+			$registro_gasto = $reg['registro_gasto'];
+			$control_presupuesto = $reg['control_presupuesto'];
+			$campana = $reg['campana'];
+			
+			$registrosAreaPago=mysqli_query($conexion,"SELECT * FROM centro_costo WHERE id_centro_costo = $area_pago") or die ("Problemas en el select");
+							
+			if($reg2=mysqli_fetch_array($registrosAreaPago)){
+				$codigo_areaP = $reg2['codigo'];
+			}
+							
+			$registrosRegistro=mysqli_query($conexion,"SELECT * FROM registro WHERE id_registro = $registro_gasto") or die ("Problemas en el select");
+							
+			if($reg3=mysqli_fetch_array($registrosRegistro)){				
+				$id_sap_RG = $reg3['id'];
+			}
+							
+			$registrosControlPre=mysqli_query($conexion,"SELECT * FROM control_presupuesto WHERE id_controlP = $control_presupuesto") or die ("Problemas en el select");
+							
+			if($reg4=mysqli_fetch_array($registrosControlPre)){
+				$id_cp = $reg4['id'];
+			}
+			
+			$registrosCampana=mysqli_query($conexion,"SELECT * FROM campana WHERE id_campana = $campana") or die ("Problemas en el select");
+			
+			if($reg5=mysqli_fetch_array($registrosCampana)){
+				$id_campana = $reg5['id'];
+			}
+			
+			$codigoPep = $codigo_areaP."-".$id_sap_RG."-".$id_cp."-".$id_campana;
+			
+			//-------------------------- Creacion del codigo PEP ---------------------------------------------
+			
 			echo "<div id=\"tabla\">";
-			  echo "<div id=\"orden--1\">".$reg['numero_orden']."</div>";
+			  //echo "<div id=\"orden--1\">".$reg['numero_orden']."</div>";
+			  echo "<div id=\"orden--1\"><a href=\"consultar-orden.php?numero_orden=",urlencode($n_orden)," \">$n_orden</a></div>";
 			  echo "<div id=\"orden--2\">".$fecha_format."</div>";
-			  echo "<div id=\"orden--3\">".$reg['descripcion']."</div>";
+			  echo "<div id=\"orden--3\">".$codigoPep."</div>";
 			  //------------------- Aqui trabajo con orden SAP -------------------
 			  echo "<div id=\"orden--4\">".$reg['orden_sap']."<span class=\"yes\"><img src=\"tema/img/yes.gif\" alt=\"\"></span><span class=\"edit\"><a href=\"#$n_orden\" data-tooltip=\"Editar\" class=\"various\"><img src=\"tema/img/edit.gif\" alt=\"\">";
 					echo "<div id=\"$n_orden\" name=\"\" style=\"display: none;\">";
@@ -302,9 +336,9 @@
 			  
 			  if (in_array($nro_orden_comp,@$items)){  			  
 			  echo "<div id=\"orden--6S\"><a href=\"./uploads/$n_orden.pdf\" data-tooltip=\"Ver Documento\" class=\"various\" ><img src=\"tema/img/ver-doc.gif\" alt=\"\"></a></div>";
-		  }else{
-			  echo "<div id=\"orden--6S\"></div>";
-		  }
+			}else{
+				echo "<div id=\"orden--6S\"></div>";
+			}
 			  
 			echo "</div>";	
 		}
