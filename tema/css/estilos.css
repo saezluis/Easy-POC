@@ -3026,3 +3026,99 @@ form.registro-campana {
       background: #cccccc;
       color: #cc0000;
       border: 1px solid #f7f7f7; }
+
+section .table {
+  border: 1px solid red;
+  table-layout: fixed;
+  width: 100%; }
+  section .table .cabecc {
+    background: #F7F7F7;
+    text-align: center;
+    font-size: 0.85em !important;
+    color: #cc0000;
+    font-family: "Open Sans", sans-serif;
+    font-weight: light !important; }
+section .table th {
+  border: 1px solid #ccc;
+  text-align: center;
+  font-size: 0.75em;
+  padding: 2px; }
+section .table td {
+  font-size: 0.75em;
+  text-align: center;
+  padding: 4px;
+  border: 1px solid #ccc; }
+section .borde-tabla {
+  margin-top: 0.5em; }
+section .tot-base {
+  table-layout: fixed;
+  width: 100%; }
+  section .tot-base .tot-1 {
+    padding: 3px;
+    font-size: 0.9em;
+    background: #cccccc;
+    color: #cc0000;
+    border: 1px solid #f7f7f7; }
+
+section .table-sap {
+  table-layout: auto;
+  margin-top: 20px;
+  width: 100%; }
+  section .table-sap .cabecc-sap {
+    background: #F7F7F7;
+    text-align: center;
+    font-size: 0.85em !important;
+    color: #cc0000;
+    font-family: "Open Sans", sans-serif;
+    font-weight: light !important; }
+section .table-sap th {
+  border: 1px solid #ccc;
+  text-align: center;
+  font-size: 0.9em;
+  padding: 2px; }
+section .table-sap td {
+  font-size: 0.75em;
+  text-align: center;
+  padding: 4px;
+  border: 1px solid #ccc; }
+  section .table-sap td button.gou {
+    display: block;
+    border: none;
+    color: #fff;
+    margin: 0 auto;
+    text-align: center;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    background: #ff1500;
+    /* Old browsers */
+    background: -moz-linear-gradient(top, #ff1500 0%, #c0000b 100%);
+    /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ff1500), color-stop(100%, #c0000b));
+    /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #ff1500 0%, #c0000b 100%);
+    /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #ff1500 0%, #c0000b 100%);
+    /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #ff1500 0%, #c0000b 100%);
+    /* IE10+ */
+    background: linear-gradient(to bottom, #ff1500 0%, #c0000b 100%);
+    /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff1500', endColorstr='#c0000b',GradientType=0 );
+    /* IE6-9 */ }
+  section .table-sap td tbody tr td.ocrecepcion {
+    color: yellow; }
+section .borde-tabla {
+  margin-top: 0.5em; }
+section .tot-base {
+  table-layout: fixed;
+  width: 100%; }
+  section .tot-base .tot-1 {
+    padding: 3px;
+    font-size: 0.9em;
+    background: #cccccc;
+    color: #cc0000;
+    border: 1px solid #f7f7f7; }
+
+.marggen-tabl {
+  margin-top: 4px; }

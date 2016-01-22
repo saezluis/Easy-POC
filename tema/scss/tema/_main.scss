@@ -1490,5 +1490,147 @@ form.registro-campana{
 		}//fin
 	}//fin
 
+	//tabla sap
+
+
+
 
 }//fin form
+
+section{
+	.table{
+		border: 1px solid red;
+		table-layout: fixed;
+		width: 100%;
+
+		.cabecc{
+			background: #F7F7F7;
+			text-align: center;
+			font-size: 0.85em !important;
+			color: $color--2;
+			font-family: $body--font-family;
+			font-weight: light !important;
+
+		}
+	}
+	.table th{
+		border: 1px solid #ccc;
+		text-align: center;
+		font-size: 0.75em;
+		padding: 2px;
+	}
+	.table td{
+		font-size: 0.75em;
+		text-align: center;
+		padding: 4px;
+		border: 1px solid #ccc;
+	}
+
+	//total
+	.borde-tabla{
+		margin-top:0.5em;
+	}
+	.tot-base{
+		//border: 1px solid #F7F7F7;
+		table-layout: fixed;
+		width: 100%;
+		.tot-1{
+			padding: 3px;
+			font-size: 0.9em;
+			background: rgba(#ccc, 1);
+			color:$color--2;
+			border: 1px solid #f7f7f7;
+		}
+	}//fin
+}//fin
+
+section{
+	.table-sap{
+		//border: 1px solid red;
+		table-layout: auto;
+		margin-top:20px;
+		width: 100%;
+
+		.cabecc-sap{
+			background: #F7F7F7;
+			text-align: center;
+			font-size: 0.85em !important;
+			color: $color--2;
+			font-family: $body--font-family;
+			font-weight: light !important;
+
+		}
+	}
+	.table-sap th{
+		border: 1px solid #ccc;
+		text-align: center;
+		font-size: 0.9em;
+		padding: 2px;
+	}
+	.table-sap td{
+		font-size: 0.75em;
+		text-align: center;
+		padding: 4px;
+		border: 1px solid #ccc;
+
+		button.gou{
+			display: block;
+			border: none;
+			color:#fff;
+			margin:0 auto;
+			text-align: center;
+			-webkit-border-radius: 4px;
+			-moz-border-radius: 4px;
+			border-radius: 4px;
+			background: #ff1500; /* Old browsers */
+			background: -moz-linear-gradient(top,  #ff1500 0%, #c0000b 100%); /* FF3.6+ */
+			background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ff1500), color-stop(100%,#c0000b)); /* Chrome,Safari4+ */
+			background: -webkit-linear-gradient(top,  #ff1500 0%,#c0000b 100%); /* Chrome10+,Safari5.1+ */
+			background: -o-linear-gradient(top,  #ff1500 0%,#c0000b 100%); /* Opera 11.10+ */
+			background: -ms-linear-gradient(top,  #ff1500 0%,#c0000b 100%); /* IE10+ */
+			background: linear-gradient(to bottom,  #ff1500 0%,#c0000b 100%); /* W3C */
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff1500', endColorstr='#c0000b',GradientType=0 ); /* IE6-9 */
+		}
+
+		tbody tr td.ocrecepcion{
+			color:yellow;
+		}
+		
+	}
+
+			// td.ococrecepcion{
+			// 	text-align: center;
+			// 	width: 100%;
+			// 	display: block;
+			// 	span.yes-oc{
+			// 		float: left;
+			// 	}
+			// 	span.edit-oc{
+			// 		float: right;
+			// 	}
+			// }
+
+	//total
+	.borde-tabla{
+		margin-top:0.5em;
+	}
+	.tot-base{
+		//border: 1px solid #F7F7F7;
+		table-layout: fixed;
+		width: 100%;
+		.tot-1{
+			padding: 3px;
+			font-size: 0.9em;
+			background: rgba(#ccc, 1);
+			color:$color--2;
+			border: 1px solid #f7f7f7;
+		}
+	}//fin
+}//fin
+
+.marggen-tabl{
+	margin-top: 4px;
+}
+
+
+

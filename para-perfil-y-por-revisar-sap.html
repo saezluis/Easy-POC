@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <title> </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximun-scale=1">
+    <link rel="stylesheet" href="tema/css/estilos.css">
+    <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+    <script src="tema/js/scripts.js"></script>
+    <link rel="stylesheet" href="tema/js/source/jquery.fancybox.css?v=2.1.5">
+    <script src="tema/js/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  </head>
+  <body>
+    <header class="grupo">
+      <div class="caja base-50 no-padding">
+        <h1> <a href="#" class="logo"> <img src="tema/img/logo.jpg" alt="POC"></a></h1>
+      </div>
+      <div class="caja base-50 no-padding">
+        <nav>
+          <ul>
+            <li> <a href="index.html">Emisor de ódenes de compra</a></li>
+            <li> <a href="#" class="active">Perfil</a></li>
+          </ul>
+        </nav>
+        <div class="counter">15</div>
+      </div>
+      <div class="caja base-100 no-padding">
+        <h2>En esta sección podrás encontrar el historial de todas tus órdenes de compra emitidas.</h2>
+      </div>
+    </header>
+    <div id="data--input" class="grupo">
+      <h3>Mis órdenes de compra</h3>
+    </div>
+    <div id="buscar" class="grupo">
+      <div class="caja-80">
+        <form id="" method="" action="" class="seek"> 
+          <input type="search" placeholder="ingresa número de OC">
+          <button type="button" value="buscar OC">buscar</button>
+        </form>
+      </div>
+    </div>
+    <p>tabla para PERFIL SAP</p>
+    <section class="grupo">
+      <table class="table-sap">
+        <thead>
+          <tr class="cabecc-sap">
+            <th>Nº OC</th>
+            <th>Fecha</th>
+            <th>Código PEP</th>
+            <th>OC SAP</th>
+            <th> <img src="tema/img/upload.gif" alt="" class="marggen-tabl"></th>
+            <th>OC Recepción</th>
+            <th> <img src="tema/img/upload.gif" alt="" class="marggen-tabl"></th>
+            <th> <img src="tema/img/time.gif" alt="" class="marggen-tabl"></th>
+            <th>Enviar</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="area">1234567890</td>
+            <td class="ceco">22/01/2016</td>
+            <td class="desc-servicio">123-456-789-0aa-bb-cc-dd</td>
+            <td class="ocrecepcion">1234567890<span style="float:left;"><img src="tema/img/yes.gif" alt="" style="margin-top:3px;padding-left: 3px;"></span><span style="float:right;"><a href="#inline1" data-tooltip="Editar" class="various"><img src="tema/img/edit.gif" alt="" style="margin-right: 3px;">
+                  <div id="inline1" style="display: none;">
+                    <form id="edit-recep">
+                      <h1>Ingresa número de OC</h1>
+                      <input type="text">
+                      <button type="button" value="grabar">Grabar</button>
+                    </form>
+                  </div></a></span></td>
+            <td class="pep"> <a href="#inline2" data-tooltip="Subir archivo" class="various"><img src="tema/img/upload.gif" alt=""></a>
+              <div id="inline2" style="display: none;">
+                <form id="upload">
+                  <h1>Subir un archivo</h1>
+                  <div class="drag-drop">
+                    <input id="photo" type="file" multiple="multiple">
+                  </div>
+                  <button type="button" value="subir" class="acept">Aceptar</button>
+                </form>
+              </div>
+            </td>
+            <td class="ocsap">1234567890<span style="float:left;"><img src="tema/img/yes.gif" alt="" style="margin-top:3px;padding-left: 3px;"></span><span style="float:right;"><a href="#inline1" data-tooltip="Editar" class="various"><img src="tema/img/edit.gif" alt="" style="margin-right: 3px;">
+                  <div id="inline1" style="display: none;">
+                    <form id="edit-recep">
+                      <h1>Ingresa número de OC</h1>
+                      <input type="text">
+                      <button type="button" value="grabar">Grabar</button>
+                    </form>
+                  </div></a></span></td>
+            <td class="pep"> <a href="#inline2" data-tooltip="Subir archivo" class="various"><img src="tema/img/upload.gif" alt=""></a>
+              <div id="inline2" style="display: none;">
+                <form id="upload">
+                  <h1>Subir un archivo</h1>
+                  <div class="drag-drop">
+                    <input id="photo" type="file" multiple="multiple">
+                  </div>
+                  <button type="button" value="subir" class="acept">Aceptar</button>
+                </form>
+              </div>
+            </td>
+            <td class="ppto-proyecto">1234567890</td>
+            <td class="ppto-real"> 
+              <button type="submit" value="Enviar" class="gou">Enviar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+    <p>tabla para por revisar SAP</p>
+    <section class="grupo">
+      <table class="table-sap">
+        <thead>
+          <tr class="cabecc-sap">
+            <th>Nº OC</th>
+            <th>Fecha</th>
+            <th>Código PEP</th>
+            <th>OC SAP</th>
+            <th> <img src="tema/img/upload.gif" alt="" class="marggen-tabl"></th>
+            <th>OC Recepción</th>
+            <th> <img src="tema/img/upload.gif" alt="" class="marggen-tabl"></th>
+            <th> <img src="tema/img/time.gif" alt="" class="marggen-tabl"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="area">1234567890</td>
+            <td class="ceco">22/01/2016</td>
+            <td class="desc-servicio">123-456-789-0aa-bb-cc-dd</td>
+            <td class="ocrecepcion">1234567890<span style="float:left;"><img src="tema/img/yes.gif" alt="" style="margin-top:3px;padding-left: 3px;"></span><span style="float:right;"><a href="#inline1" data-tooltip="Editar" class="various"><img src="tema/img/edit.gif" alt="" style="margin-right: 3px;">
+                  <div id="inline1" style="display: none;">
+                    <form id="edit-recep">
+                      <h1>Ingresa número de OC</h1>
+                      <input type="text">
+                      <button type="button" value="grabar">Grabar</button>
+                    </form>
+                  </div></a></span></td>
+            <td class="pep"> <a href="#inline2" data-tooltip="Subir archivo" class="various"><img src="tema/img/upload.gif" alt=""></a>
+              <div id="inline2" style="display: none;">
+                <form id="upload">
+                  <h1>Subir un archivo</h1>
+                  <div class="drag-drop">
+                    <input id="photo" type="file" multiple="multiple">
+                  </div>
+                  <button type="button" value="subir" class="acept">Aceptar</button>
+                </form>
+              </div>
+            </td>
+            <td class="ocsap">1234567890<span style="float:left;"><img src="tema/img/yes.gif" alt="" style="margin-top:3px;padding-left: 3px;"></span><span style="float:right;"><a href="#inline1" data-tooltip="Editar" class="various"><img src="tema/img/edit.gif" alt="" style="margin-right: 3px;">
+                  <div id="inline1" style="display: none;">
+                    <form id="edit-recep">
+                      <h1>Ingresa número de OC</h1>
+                      <input type="text">
+                      <button type="button" value="grabar">Grabar</button>
+                    </form>
+                  </div></a></span></td>
+            <td class="pep"> <a href="#inline2" data-tooltip="Subir archivo" class="various"><img src="tema/img/upload.gif" alt=""></a>
+              <div id="inline2" style="display: none;">
+                <form id="upload">
+                  <h1>Subir un archivo</h1>
+                  <div class="drag-drop">
+                    <input id="photo" type="file" multiple="multiple">
+                  </div>
+                  <button type="button" value="subir" class="acept">Aceptar</button>
+                </form>
+              </div>
+            </td>
+            <td class="ppto-proyecto">1234567890</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+    <div id="footer" class="total">
+      <div class="grupo">
+        <div id="logo-footer" class="caja-50"><img src="tema/img/logo-footer.png" alt=""></div>
+        <div id="copy" class="caja-50">
+          <p>© 2015 Easy S.A.</p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
