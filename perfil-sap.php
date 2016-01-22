@@ -125,7 +125,7 @@
 	<div id="campana" class="grupo">
 		<div class="caja-100">
 			<div id="tabla">
-				<div id="titulo--orden-1">Nº de OC</div>
+				<div id="titulo--orden-1">Nº de OC / Ver OC</div>
 				<div id="titulo--orden-2">Fecha</div>
 				<div id="titulo--orden-3">Codigo PEP</div>
 				<div id="titulo--orden-4">OC SAP</div>
@@ -220,7 +220,7 @@
     <div id="campana" class="grupo">
       <div class="caja-100">
         <div id="tabla">
-          <div id="titulo--orden-1">Nº de OC</div>
+          <div id="titulo--orden-1">Nº de OC / Ver OC</div>
           <div id="titulo--orden-2">Fecha</div>
           <div id="titulo--orden-3">Codigo PEP</div>
           <div id="titulo--orden-4">OC SAP</div>
@@ -374,7 +374,7 @@
       <div class="grupo">
         <div id="logo-footer" class="caja-50"><img src="tema/img/logo-footer.png" alt=""></div>
         <div id="copy" class="caja-50">
-          <p>© 2015 Easy S.A.</p>
+          <p>© 2016 Easy S.A.</p>
         </div>
       </div>
     </div>
