@@ -82,7 +82,9 @@
       	<a class="logout" href="logout.php" >Logout</a>
         <nav>
           <ul>
+			<!--
             <li> <a href="emision.php">Emisor de órdenes de compra</a></li>
+			-->
             <li> <a href="por-revisar-sap.php" class="active" >Por revisar</a></li>
           </ul>
         </nav>
@@ -217,157 +219,173 @@
 	</div>	
 	
 	<!-- Aqui se carga toda la informacion del historial -->
-    <div id="campana" class="grupo">
-      <div class="caja-100">
-        <div id="tabla">
-          <div id="titulo--orden-1">Nº de OC / Ver OC</div>
-          <div id="titulo--orden-2">Fecha</div>
-          <div id="titulo--orden-3">Codigo PEP</div>
-          <div id="titulo--orden-4">OC SAP</div>
-          <div id="titulo--orden-5">OC RECEPCIÓN</div>
-          <div id="titulo--orden-6T"> <img src="tema/img/time.gif" alt=""></div>
-          <div id="titulo--orden-6S"> <img src="tema/img/upload.gif" alt=""></div>
-        </div>				
-		
+    <section class="grupo">
+      <table class="table-sap">
+        <thead>
+          <tr class="cabecc-sap">
+            <th>Nº OC</th>
+            <th>Fecha</th>
+            <th>Código PEP</th>
+            <th>OC SAP</th>
+            <th> <img src="tema/img/upload.gif" alt="" class="marggen-tabl"></th>
+            <th>OC Recepción</th>
+            <th> <img src="tema/img/upload.gif" alt="" class="marggen-tabl"></th>
+            <th> <img src="tema/img/time.gif" alt="" class="marggen-tabl"></th>
+            <th>Enviar</th>
+          </tr>
+        </thead>
 		<?php
-		$n_orden2 = 1000;
-		$more_foo = 2000;
+			$n_orden2 = 1000;
+				$more_foo = 2000;
 		
-		$dir = "uploads/";
-		$items = array();
+				$dir = "uploads/";
+				$items = array();
 		
-		// Aqui leo el contenido del directorio uploads
-		if (is_dir($dir)) {
-			if ($dh = opendir($dir)) {
-				while (($file = readdir($dh)) !== false) {										
-					$items[] = $file;					
+				// Aqui leo el contenido del directorio uploads
+				if (is_dir($dir)) {
+					if ($dh = opendir($dir)) {
+						while (($file = readdir($dh)) !== false) {										
+							$items[] = $file;					
+						}
+						closedir($dh);
+					}
 				}
-				closedir($dh);
-			}
-		}
-		
-		while ($reg=mysqli_fetch_array($rs)){			
-			//Aqui se calculan los dias que van transcurriendo desde la emision de la OC
-			$fecha = $reg['fecha'];		  
-			$todate = date("Y-m-d",strtotime($fecha));		  
-			$fecha_format = date("d-m-Y",strtotime($fecha));		  		  		  
-			date_default_timezone_set('America/Santiago');
-			$fromdate = date('Y-m-d', time());		  
-			$calculate_seconds = strtotime($fromdate) - strtotime($todate); // Numero de segundos entre las dos fechas
-			$days = floor($calculate_seconds / (24 * 60 * 60 )); // Conversion a dias	
+				
+			while ($reg=mysqli_fetch_array($rs)){			
+					//Aqui se calculan los dias que van transcurriendo desde la emision de la OC
+					$fecha = $reg['fecha'];		  
+					$todate = date("Y-m-d",strtotime($fecha));		  
+					$fecha_format = date("d-m-Y",strtotime($fecha));		  		  		  
+					date_default_timezone_set('America/Santiago');
+					$fromdate = date('Y-m-d', time());		  
+					$calculate_seconds = strtotime($fromdate) - strtotime($todate); // Numero de segundos entre las dos fechas
+					$days = floor($calculate_seconds / (24 * 60 * 60 )); // Conversion a dias	
 			
 			
-			$n_orden = "";
-			$n_orden = $reg['numero_orden'];						
-			$n_orden2 = $n_orden2 + 1;	
+					$n_orden = "";
+					$n_orden = $reg['numero_orden'];						
+					$n_orden2 = $n_orden2 + 1;	
+					
+					$nro_orden_comp = $n_orden . ".pdf";
+					
+					$nro_orden_foo = $reg['numero_orden'];
+					$more_foo = $more_foo + 1;
+					
+					//-------------------------- Creacion del codigo PEP ---------------------------------------------
+					$area_pago = $reg['area_pago'];
+					$registro_gasto = $reg['registro_gasto'];
+					$control_presupuesto = $reg['control_presupuesto'];
+					$campana = $reg['campana'];
 			
-			$nro_orden_comp = $n_orden . ".pdf";
-			
-			$nro_orden_foo = $reg['numero_orden'];
-			$more_foo = $more_foo + 1;
-			
-			//-------------------------- Creacion del codigo PEP ---------------------------------------------
-			$area_pago = $reg['area_pago'];
-			$registro_gasto = $reg['registro_gasto'];
-			$control_presupuesto = $reg['control_presupuesto'];
-			$campana = $reg['campana'];
-			
-			$registrosAreaPago=mysqli_query($conexion,"SELECT * FROM centro_costo WHERE id_centro_costo = $area_pago") or die ("Problemas en el select");
+					$registrosAreaPago=mysqli_query($conexion,"SELECT * FROM centro_costo WHERE id_centro_costo = $area_pago") or die ("Problemas en el select");
+									
+					if($reg2=mysqli_fetch_array($registrosAreaPago)){
+						$codigo_areaP = $reg2['codigo'];
+					}
 							
-			if($reg2=mysqli_fetch_array($registrosAreaPago)){
-				$codigo_areaP = $reg2['codigo'];
-			}
+					$registrosRegistro=mysqli_query($conexion,"SELECT * FROM registro WHERE id_registro = $registro_gasto") or die ("Problemas en el select");
+									
+					if($reg3=mysqli_fetch_array($registrosRegistro)){				
+						$id_sap_RG = $reg3['id'];
+					}
 							
-			$registrosRegistro=mysqli_query($conexion,"SELECT * FROM registro WHERE id_registro = $registro_gasto") or die ("Problemas en el select");
-							
-			if($reg3=mysqli_fetch_array($registrosRegistro)){				
-				$id_sap_RG = $reg3['id'];
+					$registrosControlPre=mysqli_query($conexion,"SELECT * FROM control_presupuesto WHERE id_controlP = $control_presupuesto") or die ("Problemas en el select");
+									
+					if($reg4=mysqli_fetch_array($registrosControlPre)){
+						$id_cp = $reg4['id'];
+					}
+			
+					$registrosCampana=mysqli_query($conexion,"SELECT * FROM campana WHERE id_campana = $campana") or die ("Problemas en el select");
+					
+					if($reg5=mysqli_fetch_array($registrosCampana)){
+						$id_campana = $reg5['id'];
+					}
+			
+					$codigoPep = $codigo_areaP."-".$id_sap_RG."-".$id_cp."-".$id_campana;			
+					//-------------------------- Creacion del codigo PEP ---------------------------------------------
+					
+				
+				echo "<tbody>";
+				  echo "<tr>";
+					echo "<td class=\"area\"><a href=\"consultar-orden.php?numero_orden=",urlencode($n_orden)," \">$n_orden</a></td>";					
+					echo "<td class=\"ceco\">".$fecha_format."</td>";
+					echo "<td class=\"desc-servicio\">".$codigoPep."</td>";
+					
+					//-------------- OC SAP
+					//echo "<div id=\"orden--4\">"     .$reg['orden_sap']."<span class=\"yes\">        <img src=\"tema/img/yes.gif\" alt=\"\">                                            </span><span class=\"edit\">         <a href=\"#$n_orden\" data-tooltip=\"Editar\" class=\"various\"> <img src=\"tema/img/edit.gif\" alt=\"\">";					
+					echo "<td class=\"ocrecepcion\">".$reg['orden_sap']."<span style=\"float:left;\"><img src=\"tema/img/yes.gif\" alt=\"\" style=\"margin-top:3px;padding-left: 3px;\"></span><span style=\"float:right;\"> <a href=\"#$n_orden\" data-tooltip=\"Editar\" class=\"various\">  <img src=\"tema/img/edit.gif\" alt=\"\" style=\"margin-right: 3px;\">";
+						  //echo "<div id=\"$n_orden\" name=\"\" style=\"display: none;\">";
+						  echo "<div id=\"$n_orden\" name=\"\" style=\"display: none;\">";
+								//echo "<form id=\"edit-recep\" method=\"POST\" action=\"grabar-orden-sap.php\">";
+								echo "<form id=\"edit-recep\" method=\"POST\" action=\"grabar-orden-sap.php\">";
+									//echo "<h1 style=\"font-size: 1.5em;\">Ingresa número de OC SAP</h1>";
+									echo "<h1 style=\"font-size: 1em;\">Ingresa nro OC SAP</h1>";
+									echo "<input type=\"hidden\" name=\"nro_orden_send_hidden\" value=\"$reg[numero_orden]\">";
+									//echo "<input style=\"width: 100%; padding: 5px;\"; type=\"text\" name=\"nro_orden_send\" value=\"\">";
+									echo "<input style=\"width: 100%; padding: 5px;\"; type=\"text\" name=\"nro_orden_send\" value=\"\">";
+									//echo "<button style=\"width: 100%;margin-top: 10px; background: transparent linear-gradient(to bottom, #FF1500 0%, #C0000B 100%) repeat scroll 0% 0%; color:#fff; border:none;\" type=\"submit\" value=\"grabar\">Grabar</button>";
+									echo "<button style=\"width: 100%;margin-top: 10px; background: transparent linear-gradient(to bottom, #FF1500 0%, #C0000B 100%) repeat scroll 0% 0%; color:#fff; border:none;\" type=\"submit\" value=\"grabar\">Grabar</button>";
+								echo "</form>";
+						  echo "</div></a></span></td>";
+					
+					if (in_array($nro_orden_comp,@$items)){  			  
+							echo "<td class=\"pep\"><a href=\"./uploads/$n_orden.pdf\" data-tooltip=\"Ver Documento\" class=\"various\" ><img src=\"tema/img/ver-doc.gif\" alt=\"\"></a>";
+							//echo "<td class=\"pep\"> <a href=\"#inline2\" data-tooltip=\"Subir archivo\" class=\"various\"><img src=\"tema/img/upload.gif\" alt=\"\"></a>";
+						}else{
+							echo "<td class=\"pep\"></td>";
+						}			  
+					//echo "</div>";
+					echo "</td>";
+					
+					  
+					  /*echo "<div id=\"inline2\" style=\"display: none;\">";
+						echo "<form id=\"upload\">";
+						  echo "<h1>Subir un archivo</h1>";
+						  echo "<div class=\"drag-drop\">";
+							echo "<input id=\"photo\" type=\"file\" multiple=\"multiple\">";
+						  echo "</div>";
+						  echo "<button type=\"button\" value=\"subir\" class=\"acept\">Aceptar</button>";
+						echo "</form>";
+					  echo "</div>";*/
+					  
+					
+					//-------------- OC SAP
+					
+					//-------------- OC RECEPCION
+					
+					echo "<td class=\"ocsap\">".$reg['orden_recepcion']."<span style=\"float:left;\"><img src=\"tema/img/yes.gif\" alt=\"\" style=\"margin-top:3px;padding-left: 3px;\"></span><span style=\"float:right;\"><a href=\"#inline1\" data-tooltip=\"Editar\" class=\"various\"><img src=\"tema/img/edit.gif\" alt=\"\" style=\"margin-right: 3px;\">";
+						  echo "<div id=\"inline1\" style=\"display: none;\">";
+							echo "<form id=\"edit-recep\">";
+							  echo "<h1>Ingresa número de OC</h1>";
+							  echo "<input type=\"text\">";
+							  echo "<button type=\"button\" value=\"grabar\">Grabar</button>";
+							echo "</form>";
+						  echo "</div></a></span></td>";
+						  
+					echo "<td class=\"pep\"> <a href=\"#inline2\" data-tooltip=\"Subir archivo\" class=\"various\"><img src=\"tema/img/upload.gif\" alt=\"\"></a>";
+					  echo "<div id=\"inline2\" style=\"display: none;\">";
+						echo "<form id=\"upload\">";
+						  echo "<h1>Subir un archivo</h1>";
+						  echo "<div class=\"drag-drop\">";
+							echo "<input id=\"photo\" type=\"file\" multiple=\"multiple\">";
+						  echo "</div>";
+						  echo "<button type=\"button\" value=\"subir\" class=\"acept\">Aceptar</button>";
+						echo "</form>";
+					  echo "</div>";
+					echo "</td>";
+					//-------------- OC RECEPCION
+					
+					echo "<td class=\"ppto-proyecto\">1234567890</td>";
+					echo "<td class=\"ppto-real\">";
+					  echo "<button type=\"submit\" value=\"Enviar\" class=\"gou\">Enviar</button>";
+					echo "</td>";
+				  echo "</tr>";
+				echo "</tbody>";
+			
 			}
-							
-			$registrosControlPre=mysqli_query($conexion,"SELECT * FROM control_presupuesto WHERE id_controlP = $control_presupuesto") or die ("Problemas en el select");
-							
-			if($reg4=mysqli_fetch_array($registrosControlPre)){
-				$id_cp = $reg4['id'];
-			}
-			
-			$registrosCampana=mysqli_query($conexion,"SELECT * FROM campana WHERE id_campana = $campana") or die ("Problemas en el select");
-			
-			if($reg5=mysqli_fetch_array($registrosCampana)){
-				$id_campana = $reg5['id'];
-			}
-			
-			$codigoPep = $codigo_areaP."-".$id_sap_RG."-".$id_cp."-".$id_campana;
-			
-			//-------------------------- Creacion del codigo PEP ---------------------------------------------
-			
-			echo "<div id=\"tabla\">";
-			  //echo "<div id=\"orden--1\">".$reg['numero_orden']."</div>";
-			  echo "<div id=\"orden--1\"><a href=\"consultar-orden.php?numero_orden=",urlencode($n_orden)," \">$n_orden</a></div>";
-			  echo "<div id=\"orden--2\">".$fecha_format."</div>";
-			  echo "<div id=\"orden--3\">".$codigoPep."</div>";
-			  //------------------- Aqui trabajo con orden SAP -------------------
-			  echo "<div id=\"orden--4\">".$reg['orden_sap']."<span class=\"yes\"><img src=\"tema/img/yes.gif\" alt=\"\"></span><span class=\"edit\"><a href=\"#$n_orden\" data-tooltip=\"Editar\" class=\"various\"><img src=\"tema/img/edit.gif\" alt=\"\">";
-					echo "<div id=\"$n_orden\" name=\"\" style=\"display: none;\">";
-					  echo "<form id=\"edit-recep\" method=\"POST\" action=\"grabar-orden-sap.php\">";
-						echo "<h1 style=\"font-size: 1.5em;\">Ingresa número de OC SAP</h1>";						
-						echo "<input type=\"hidden\" name=\"nro_orden_send_hidden\" value=\"$reg[numero_orden]\">";						
-						echo "<input style=\"width: 100%; padding: 5px;\"; type=\"text\" name=\"nro_orden_send\" value=\"\">";
-						echo "<button style=\"width: 100%;margin-top: 10px; background: transparent linear-gradient(to bottom, #FF1500 0%, #C0000B 100%) repeat scroll 0% 0%; color:#fff; border:none;\" type=\"submit\" value=\"grabar\">Grabar</button>";
-					  echo "</form>";
-					echo "</div></a></span></div>";
-			//------------------- Aqui trabajo con orden Recepcion -------------------
-			  echo "<div id=\"orden--5\">".$reg['orden_recepcion']."<span class=\"no\"><img src=\"tema/img/yes.gif\" alt=\"\"></span><span class=\"edit\"><a href=\"#$n_orden2\" data-tooltip=\"Editar\" class=\"various\"><img src=\"tema/img/edit.gif\" alt=\"\">";
-					echo "<div id=\"$n_orden2\" style=\"display: none;\">";
-					  echo "<form id=\"edit-recep\" method=\"POST\" action=\"grabar-recepcion-sap.php\">";
-						echo "<h1 style=\"font-size: 1.5em;\">Ingresa número de OC RECEPCION</h1>";						
-						echo "<input type=\"hidden\" name=\"nro_ordenRecep_send_hidden\" value=\"$reg[numero_orden]\" >";
-						echo "<input style=\"width: 100%; padding: 5px;\"; type=\"text\" name=\"nro_recepcion_send\" value=\"\">";
-						echo "<button style=\"width: 100%;margin-top: 10px; background: transparent linear-gradient(to bottom, #FF1500 0%, #C0000B 100%) repeat scroll 0% 0%; color:#fff; border:none;\" type=\"submit\" value=\"grabar\">Grabar</button>";
-					  echo "</form>";
-					echo "</div></a></span></div>";
-				  //Aqui manipulo la fecha para que si pasa de 5 dias se muestre en rojo
-			  if ($days>=5){
-				echo "<div id=\"orden--6T\" style=\"color:#FF0000\">".$days." dias"."</div>";
-			  } else {
-				  echo "<div id=\"orden--6T\" >".$days." dias"."</div>";
-			  }	
-			  
-			  //OJO: Aqui solo tengo que mostrar la OC, osea hacer link al PDF que ya esta en uploads
-			  
-			  if (in_array($nro_orden_comp,@$items)){  			  
-			  echo "<div id=\"orden--6S\"><a href=\"./uploads/$n_orden.pdf\" data-tooltip=\"Ver Documento\" class=\"various\" ><img src=\"tema/img/ver-doc.gif\" alt=\"\"></a></div>";
-			}else{
-				echo "<div id=\"orden--6S\"></div>";
-			}
-			  
-			echo "</div>";	
-		}
-		
-		
-		mysqli_free_result($rs); 
-		mysqli_close($conexion);
-						
-		echo "<div class=\"caja-100\">";
-			echo "<div class=\"paginator\">";
-		
-		//muestro los distintos índices de las páginas, si es que hay varias páginas 
-		if ($total_paginas > 1){ 
-		for ($i=1;$i<=$total_paginas;$i++){ 
-			if ($pagina == $i) 
-				//si muestro el índice de la página actual, no coloco enlace 
-				echo "<span class=\"pag--cube\">" . $pagina . "</span>" . " "; 
-			else 
-				//si el índice no corresponde con la página mostrada actualmente, coloco el enlace para ir a esa página 				
-				echo "<a href='perfil-sap.php?pagina=" . $i . "'>"  . $i .  "</a> " ; 
-			}   
-		}	
-			echo "</div>";				
-		echo "</div>";
-		
 		?>
-		
-      </div>
-    </div>
+      </table>
+    </section>
 	
 	
     <div id="footer" class="total">
