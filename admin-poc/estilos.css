@@ -1636,23 +1636,81 @@ h5 {
 h6 {
   font-size: 0.8em; }
 
+.nav-admin {
+  width: 100%;
+  margin-top: 1em; }
+  .nav-admin ul {
+    margin: 0;
+    padding: 0;
+    list-style: none; }
+    .nav-admin ul li {
+      display: inline-block;
+      margin-right: 15px; }
+      .nav-admin ul li:last-child {
+        margin-right: 0; }
+      .nav-admin ul li a {
+        text-decoration: none;
+        font-size: 0.9em; }
+      .nav-admin ul li .consultar {
+        background: url(../img/magnificense.png) no-repeat 0/16%;
+        padding-left: 1.2em; }
+      .nav-admin ul li .agregar {
+        background: url(../img/add.png) no-repeat 0/16%;
+        padding-left: 1.2em; }
+      .nav-admin ul li .modificar {
+        background: url(../img/edit.png) no-repeat 0 3px/16%;
+        padding-left: 1.2em; }
+      .nav-admin ul li .eliminar {
+        background: url(../img/delete.png) no-repeat 0/16%;
+        padding-left: 1.2em; }
+
+p {
+  font-size: 0.9em;
+  margin-top: 1em; }
+
+.filtroAbc {
+  width: 100%;
+  height: auto; }
+  .filtroAbc ul {
+    margin: 0;
+    padding: 0;
+    list-style: none; }
+    .filtroAbc ul li {
+      display: inline-block; }
+      .filtroAbc ul li a {
+        padding: 2px 10px;
+        text-decoration: none; }
+        .filtroAbc ul li a:hover {
+          background: #cf0508;
+          color: #fff; }
+      .filtroAbc ul li .hofil {
+        background: #cf0508;
+        color: #fff; }
+
+p.proBig {
+  font-size: 1.3em; }
+
+form.add {
+  width: 35%;
+  height: auto; }
+  form.add label {
+    width: 100%;
+    font-size: 0.9em;
+    margin: 10px 0;
+    display: block; }
+  form.add input[type="text"] {
+    width: 100%;
+    border: 1px solid #cf0508;
+    padding: 5px;
+    font-size: 0.8em; }
+
 header a.logo {
   width: 100%;
   height: auto;
   display: block; }
-header .logout {
-  margin-bottom: 10px;
-  color: #FFF;
-  width: 80px;
-  height: 30px;
-  text-decoration: none;
-  position: absolute;
-  right: 0;
-  text-align: center;
-  background: transparent linear-gradient(to bottom, #FF1500 0%, #C0000B 100%) repeat scroll 0% 0%; }
 header nav {
   width: 60%;
-  margin-top: 80px;
+  margin-top: 50px;
   position: relative;
   float: right; }
   header nav ul {
@@ -1681,7 +1739,7 @@ header .counter {
   font-size: 0.8em;
   text-align: center;
   line-height: 25px;
-  top: 65px;
+  top: 35px;
   right: 35px; }
 header h2 {
   font-size: 1.2em;
@@ -1707,9 +1765,7 @@ header.cotizacion #cotiza--datos {
     font-size: 0.8em;
     color: #000; }
 header.cotizacion #datos--fac {
-  width: 40%;
-  float: right;
-  text-align: left;
+  text-align: right;
   margin-top: 40px; }
   header.cotizacion #datos--fac ul {
     margin: 0;
@@ -1717,9 +1773,9 @@ header.cotizacion #datos--fac {
     list-style: none; }
   header.cotizacion #datos--fac li {
     color: #4b4b4b;
-    font-size: 0.7em; }
+    font-size: 0.8em; }
     header.cotizacion #datos--fac li span.num-f {
-      margin-left: 80px; }
+      margin-left: 30px; }
     header.cotizacion #datos--fac li span.num-p {
       margin-left: 20px; }
     header.cotizacion #datos--fac li span.num-l {
@@ -2093,8 +2149,7 @@ header.cotizacion p.coti--fecha {
     font-size: 0.8em; }
 
 #buscar form.seek {
-  float: right;
-  margin-top: 30px; }
+  float: right; }
   #buscar form.seek input[type="search"] {
     font-size: 0.9em;
     padding: 5px;
@@ -2194,12 +2249,7 @@ header.cotizacion p.coti--fecha {
         margin-top: 30px; }
 
 #campana {
-  margin-top: 35px; }
-
-#campana-print {
-  margin-top: 20px; }
-
-#campana, #campana-print {
+  margin-top: 35px;
   /* Base styles for the entire tooltip */
   /* Show the entire tooltip on hover and focus */
   /* Base styles for the tooltip's directional arrow */
@@ -2217,11 +2267,6 @@ header.cotizacion p.coti--fecha {
   #campana #item-3,
   #campana #item-4,
   #campana #item-5,
-  #campana #item-1-print,
-  #campana #item-2-print,
-  #campana #item-3-print,
-  #campana #item-4-print,
-  #campana #item-5-print,
   #campana #titulo--orden-1,
   #campana #titulo--orden-2,
   #campana #titulo--orden-3,
@@ -2234,29 +2279,7 @@ header.cotizacion p.coti--fecha {
   #campana #oc-item-2,
   #campana #oc-item-3,
   #campana #oc-item-4,
-  #campana #oc-item-5, #campana-print #item-1,
-  #campana-print #item-2,
-  #campana-print #item-3,
-  #campana-print #item-4,
-  #campana-print #item-5,
-  #campana-print #item-1-print,
-  #campana-print #item-2-print,
-  #campana-print #item-3-print,
-  #campana-print #item-4-print,
-  #campana-print #item-5-print,
-  #campana-print #titulo--orden-1,
-  #campana-print #titulo--orden-2,
-  #campana-print #titulo--orden-3,
-  #campana-print #titulo--orden-4,
-  #campana-print #titulo--orden-5,
-  #campana-print #titulo--orden-6,
-  #campana-print #titulo--orden-6T,
-  #campana-print #titulo--orden-6S,
-  #campana-print #oc-item-1,
-  #campana-print #oc-item-2,
-  #campana-print #oc-item-3,
-  #campana-print #oc-item-4,
-  #campana-print #oc-item-5 {
+  #campana #oc-item-5 {
     float: left;
     text-align: center;
     background: #e8e8e8;
@@ -2266,140 +2289,88 @@ header.cotizacion p.coti--fecha {
     font-size: 0.9em;
     border-top: 1px solid #cccccc;
     border-bottom: 1px solid #cccccc; }
-  #campana #item-1-print, #campana-print #item-1-print {
+  #campana #item-1 {
     width: 20%;
     line-height: 2;
     border-left: 1px solid #cccccc !important;
     border-right: 1px solid #cccccc !important; }
-  #campana #item-2-print, #campana-print #item-2-print {
+  #campana #item-2 {
     width: 40%;
     line-height: 2;
     border-right: 1px solid #cccccc !important; }
-  #campana #item-3-print, #campana-print #item-3-print {
+  #campana #item-3 {
     width: 10%;
     line-height: 2;
     border-right: 1px solid #cccccc !important; }
-  #campana #item-4-print, #campana-print #item-4-print {
-    width: 10%;
-    line-height: 1;
-    border-right: 1px solid #cccccc !important; }
-  #campana #item-5-print, #campana-print #item-5-print {
-    width: 20%;
-    line-height: 2;
-    border-right: 1px solid #cccccc !important; }
-  #campana #item-1, #campana-print #item-1 {
-    width: 20%;
-    line-height: 2;
-    border-left: 1px solid #cccccc !important;
-    border-right: 1px solid #cccccc !important; }
-  #campana #item-2, #campana-print #item-2 {
-    width: 40%;
-    line-height: 2;
-    border-right: 1px solid #cccccc !important; }
-  #campana #item-3, #campana-print #item-3 {
-    width: 10%;
-    line-height: 2;
-    border-right: 1px solid #cccccc !important; }
-  #campana #item-4, #campana-print #item-4 {
+  #campana #item-4 {
     width: 10%;
     line-height: 1;
     border-right: 1px solid #cccccc !important; }
-  #campana #item-5, #campana-print #item-5 {
+  #campana #item-5 {
     width: 20%;
     line-height: 2;
     border-right: 1px solid #cccccc !important; }
-  #campana #oc-item-1, #campana-print #oc-item-1 {
+  #campana #oc-item-1 {
     width: 20%;
     line-height: 2;
     border-left: 1px solid #cccccc !important;
     border-right: 1px solid #cccccc !important;
     font-weight: 800;
     font-size: 0.7em; }
-  #campana #oc-item-2, #campana-print #oc-item-2 {
+  #campana #oc-item-2 {
     width: 40%;
     line-height: 2;
     border-right: 1px solid #cccccc !important;
     font-weight: 800;
     font-size: 0.7em; }
-  #campana #oc-item-3, #campana-print #oc-item-3 {
+  #campana #oc-item-3 {
     width: 8%;
     line-height: 2;
     border-right: 1px solid #cccccc !important;
     font-weight: 800;
     font-size: 0.7em; }
-  #campana #oc-item-4, #campana-print #oc-item-4 {
+  #campana #oc-item-4 {
     width: 12%;
     line-height: 2;
     border-right: 1px solid #cccccc !important;
     font-weight: 800;
     font-size: 0.7em; }
-  #campana #oc-item-5, #campana-print #oc-item-5 {
+  #campana #oc-item-5 {
     width: 20%;
     line-height: 2;
     border-right: 1px solid #cccccc !important;
     font-weight: 800;
     font-size: 0.7em; }
-  #campana .paginator, #campana-print .paginator {
-    display: block;
-    float: left;
-    margin: 20px auto;
-    text-align: center;
-    width: 100%; }
-    #campana .paginator span.pag--cube, #campana-print .paginator span.pag--cube {
-      display: inline-block;
-      padding: 0px 9px;
-      margin-right: 4px;
-      border-radius: 3px;
-      border: solid 1px #c0c0c0;
-      background: #e9e9e9;
-      border: none;
-      background: #616161;
-      box-shadow: inset 0px 0px 8px rgba(0, 0, 0, 0.5), 0px 1px 0px rgba(255, 255, 255, 0.8);
-      color: #f0f0f0;
-      text-shadow: 0px 0px 3px rgba(0, 0, 0, 0.5); }
-    #campana .paginator a, #campana-print .paginator a {
-      display: inline-block;
-      padding: 0px 9px;
-      margin-right: 4px;
-      border-radius: 3px;
-      border: solid 1px #c0c0c0;
-      background: #e9e9e9;
-      box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.8), 0px 1px 3px rgba(0, 0, 0, 0.1);
-      font-size: .875em;
-      font-weight: bold;
-      text-decoration: none;
-      color: #717171;
-      text-shadow: 0px 1px 0px white; }
-  #campana #titulo--orden-1, #campana-print #titulo--orden-1 {
+  #campana #titulo--orden-1 {
     width: 10%;
-    line-height: 1;
+    line-height: 2;
     border-left: 1px solid #cccccc !important;
     border-right: 1px solid #cccccc !important; }
-  #campana #titulo--orden-2, #campana-print #titulo--orden-2 {
+  #campana #titulo--orden-2 {
     width: 10%;
     line-height: 2;
     border-right: 1px solid #cccccc !important; }
-  #campana #titulo--orden-3, #campana-print #titulo--orden-3 {
+  #campana #titulo--orden-3 {
     width: 35%;
     line-height: 2;
     border-right: 1px solid #cccccc !important; }
-  #campana #titulo--orden-4, #campana-print #titulo--orden-4 {
+  #campana #titulo--orden-4 {
     width: 15%;
     line-height: 2;
     border-right: 1px solid #cccccc !important; }
-  #campana #titulo--orden-5, #campana-print #titulo--orden-5 {
+  #campana #titulo--orden-5 {
     width: 15%;
     line-height: 2;
     border-right: 1px solid #cccccc !important; }
-  #campana #titulo--orden-6, #campana-print #titulo--orden-6 {
+  #campana #titulo--orden-6 {
     width: 15%;
     line-height: 1;
     border-right: 1px solid #cccccc !important; }
-  #campana #titulo--orden-6T, #campana-print #titulo--orden-6T {
+  #campana #titulo--orden-6T {
     width: 7%;
     line-height: 2;
     border-right: 1px solid #cccccc !important; }
-  #campana #titulo--orden-6S, #campana-print #titulo--orden-6S {
+  #campana #titulo--orden-6S {
     width: 8%;
     line-height: 2;
     border-right: 1px solid #cccccc !important; }
@@ -2412,16 +2383,7 @@ header.cotizacion p.coti--fecha {
   #campana #oc-desglose-2,
   #campana #oc-desglose-3,
   #campana #oc-desglose-4,
-  #campana #oc-desglose-5, #campana-print #desglose-1,
-  #campana-print #desglose-2,
-  #campana-print #desglose-3,
-  #campana-print #desglose-4,
-  #campana-print #desglose-5,
-  #campana-print #oc-desglose-1,
-  #campana-print #oc-desglose-2,
-  #campana-print #oc-desglose-3,
-  #campana-print #oc-desglose-4,
-  #campana-print #oc-desglose-5 {
+  #campana #oc-desglose-5 {
     float: left;
     text-align: center;
     padding: 12px;
@@ -2430,46 +2392,46 @@ header.cotizacion p.coti--fecha {
     font-size: 0.9em;
     border-bottom: 1px solid #cccccc;
     font-size: 11px; }
-  #campana #desglose-1, #campana-print #desglose-1 {
+  #campana #desglose-1 {
     width: 20%;
     line-height: 2;
     border-left: 1px solid #cccccc !important;
     border-right: 1px solid #cccccc !important; }
-  #campana #desglose-2, #campana-print #desglose-2 {
+  #campana #desglose-2 {
     width: 40%;
     line-height: 2;
     border-right: 1px solid #cccccc !important; }
-  #campana #desglose-3, #campana-print #desglose-3 {
+  #campana #desglose-3 {
     width: 10%;
     line-height: 2;
     border-right: 1px solid #cccccc !important; }
-  #campana #desglose-4, #campana-print #desglose-4 {
+  #campana #desglose-4 {
     width: 10%;
     line-height: 2;
     border-right: 1px solid #cccccc !important; }
-  #campana #desglose-5, #campana-print #desglose-5 {
+  #campana #desglose-5 {
     width: 20%;
     line-height: 2;
     border-right: 1px solid #cccccc !important;
     font-size: 1em; }
-  #campana #oc-desglose-1, #campana-print #oc-desglose-1 {
+  #campana #oc-desglose-1 {
     width: 20%;
     line-height: 2;
     border-left: 1px solid #cccccc !important;
     border-right: 1px solid #cccccc !important; }
-  #campana #oc-desglose-2, #campana-print #oc-desglose-2 {
+  #campana #oc-desglose-2 {
     width: 40%;
     line-height: 2;
     border-right: 1px solid #cccccc !important; }
-  #campana #oc-desglose-3, #campana-print #oc-desglose-3 {
+  #campana #oc-desglose-3 {
     width: 8%;
     line-height: 2;
     border-right: 1px solid #cccccc !important; }
-  #campana #oc-desglose-4, #campana-print #oc-desglose-4 {
+  #campana #oc-desglose-4 {
     width: 12%;
     line-height: 2;
     border-right: 1px solid #cccccc !important; }
-  #campana #oc-desglose-5, #campana-print #oc-desglose-5 {
+  #campana #oc-desglose-5 {
     width: 20%;
     line-height: 2;
     border-right: 1px solid #cccccc !important;
@@ -2481,14 +2443,7 @@ header.cotizacion p.coti--fecha {
   #campana #orden--5,
   #campana #orden--6,
   #campana #orden--6T,
-  #campana #orden--6S, #campana-print #orden--1,
-  #campana-print #orden--2,
-  #campana-print #orden--3,
-  #campana-print #orden--4,
-  #campana-print #orden--5,
-  #campana-print #orden--6,
-  #campana-print #orden--6T,
-  #campana-print #orden--6S {
+  #campana #orden--6S {
     float: left;
     text-align: center;
     padding: 12px;
@@ -2497,63 +2452,58 @@ header.cotizacion p.coti--fecha {
     font-size: 0.9em;
     border-bottom: 1px solid #cccccc;
     font-size: 0.8em; }
-  #campana #orden--1, #campana-print #orden--1 {
+  #campana #orden--1 {
     width: 10%;
     line-height: 2;
     border-left: 1px solid #cccccc !important;
     border-right: 1px solid #cccccc !important; }
-  #campana #orden--2, #campana-print #orden--2 {
+  #campana #orden--2 {
     width: 10%;
     line-height: 2;
     border-right: 1px solid #cccccc !important; }
-  #campana #orden--3, #campana-print #orden--3 {
+  #campana #orden--3 {
     width: 35%;
     line-height: 2;
     border-right: 1px solid #cccccc !important; }
-  #campana #orden--4, #campana-print #orden--4 {
+  #campana #orden--4 {
     width: 15%;
     line-height: 2;
     border-right: 1px solid #cccccc !important; }
-  #campana #orden--5, #campana-print #orden--5 {
+  #campana #orden--5 {
     width: 15%;
     line-height: 2;
     border-right: 1px solid #cccccc !important; }
-  #campana #orden--6, #campana-print #orden--6 {
+  #campana #orden--6 {
     width: 15%;
     line-height: 2;
     border-right: 1px solid #cccccc !important; }
-  #campana #orden--6T, #campana-print #orden--6T {
+  #campana #orden--6T {
     width: 7%;
     line-height: 2;
     border-right: 1px solid #cccccc !important; }
-  #campana #orden--6S, #campana-print #orden--6S {
+  #campana #orden--6S {
     width: 8%;
     line-height: 2;
     border-right: 1px solid #cccccc !important; }
   #campana span.yes,
-  #campana span.no, #campana-print span.yes,
-  #campana-print span.no {
+  #campana span.no {
     width: 16px;
     height: 13px;
     margin-top: 2px;
     float: left; }
-  #campana span.edit, #campana-print span.edit {
+  #campana span.edit {
     width: 16px;
     height: 16px;
     margin-top: 2px;
     float: right; }
   #campana [data-tooltip],
-  #campana .tooltip, #campana-print [data-tooltip],
-  #campana-print .tooltip {
+  #campana .tooltip {
     position: relative;
     cursor: pointer; }
   #campana [data-tooltip]:before,
   #campana [data-tooltip]:after,
   #campana .tooltip:before,
-  #campana .tooltip:after, #campana-print [data-tooltip]:before,
-  #campana-print [data-tooltip]:after,
-  #campana-print .tooltip:before,
-  #campana-print .tooltip:after {
+  #campana .tooltip:after {
     position: absolute;
     visibility: hidden;
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
@@ -2573,28 +2523,19 @@ header.cotizacion p.coti--fecha {
   #campana .tooltip:hover:before,
   #campana .tooltip:hover:after,
   #campana .tooltip:focus:before,
-  #campana .tooltip:focus:after, #campana-print [data-tooltip]:hover:before,
-  #campana-print [data-tooltip]:hover:after,
-  #campana-print [data-tooltip]:focus:before,
-  #campana-print [data-tooltip]:focus:after,
-  #campana-print .tooltip:hover:before,
-  #campana-print .tooltip:hover:after,
-  #campana-print .tooltip:focus:before,
-  #campana-print .tooltip:focus:after {
+  #campana .tooltip:focus:after {
     visibility: visible;
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
     filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
     opacity: 1; }
   #campana .tooltip:before,
-  #campana [data-tooltip]:before, #campana-print .tooltip:before,
-  #campana-print [data-tooltip]:before {
+  #campana [data-tooltip]:before {
     z-index: 1001;
     border: 6px solid transparent;
     background: transparent;
     content: ""; }
   #campana .tooltip:after,
-  #campana [data-tooltip]:after, #campana-print .tooltip:after,
-  #campana-print [data-tooltip]:after {
+  #campana [data-tooltip]:after {
     z-index: 1000;
     padding: 8px;
     width: 160px;
@@ -2609,28 +2550,19 @@ header.cotizacion p.coti--fecha {
   #campana .tooltip:before,
   #campana .tooltip:after,
   #campana .tooltip-top:before,
-  #campana .tooltip-top:after, #campana-print [data-tooltip]:before,
-  #campana-print [data-tooltip]:after,
-  #campana-print .tooltip:before,
-  #campana-print .tooltip:after,
-  #campana-print .tooltip-top:before,
-  #campana-print .tooltip-top:after {
+  #campana .tooltip-top:after {
     bottom: 100%;
     left: 50%; }
   #campana [data-tooltip]:before,
   #campana .tooltip:before,
-  #campana .tooltip-top:before, #campana-print [data-tooltip]:before,
-  #campana-print .tooltip:before,
-  #campana-print .tooltip-top:before {
+  #campana .tooltip-top:before {
     margin-left: -6px;
     margin-bottom: -12px;
     border-top-color: #000;
     border-top-color: rgba(51, 51, 51, 0.9); }
   #campana [data-tooltip]:after,
   #campana .tooltip:after,
-  #campana .tooltip-top:after, #campana-print [data-tooltip]:after,
-  #campana-print .tooltip:after,
-  #campana-print .tooltip-top:after {
+  #campana .tooltip-top:after {
     margin-left: -137px; }
   #campana [data-tooltip]:hover:before,
   #campana [data-tooltip]:hover:after,
@@ -2643,28 +2575,16 @@ header.cotizacion p.coti--fecha {
   #campana .tooltip-top:hover:before,
   #campana .tooltip-top:hover:after,
   #campana .tooltip-top:focus:before,
-  #campana .tooltip-top:focus:after, #campana-print [data-tooltip]:hover:before,
-  #campana-print [data-tooltip]:hover:after,
-  #campana-print [data-tooltip]:focus:before,
-  #campana-print [data-tooltip]:focus:after,
-  #campana-print .tooltip:hover:before,
-  #campana-print .tooltip:hover:after,
-  #campana-print .tooltip:focus:before,
-  #campana-print .tooltip:focus:after,
-  #campana-print .tooltip-top:hover:before,
-  #campana-print .tooltip-top:hover:after,
-  #campana-print .tooltip-top:focus:before,
-  #campana-print .tooltip-top:focus:after {
+  #campana .tooltip-top:focus:after {
     -webkit-transform: translateY(-12px);
     -moz-transform: translateY(-12px);
     transform: translateY(-12px); }
   #campana .tooltip-left:before,
-  #campana .tooltip-left:after, #campana-print .tooltip-left:before,
-  #campana-print .tooltip-left:after {
+  #campana .tooltip-left:after {
     right: 100%;
     bottom: 50%;
     left: auto; }
-  #campana .tooltip-left:before, #campana-print .tooltip-left:before {
+  #campana .tooltip-left:before {
     margin-left: 0;
     margin-right: -12px;
     margin-bottom: 0;
@@ -2674,20 +2594,16 @@ header.cotizacion p.coti--fecha {
   #campana .tooltip-left:hover:before,
   #campana .tooltip-left:hover:after,
   #campana .tooltip-left:focus:before,
-  #campana .tooltip-left:focus:after, #campana-print .tooltip-left:hover:before,
-  #campana-print .tooltip-left:hover:after,
-  #campana-print .tooltip-left:focus:before,
-  #campana-print .tooltip-left:focus:after {
+  #campana .tooltip-left:focus:after {
     -webkit-transform: translateX(-12px);
     -moz-transform: translateX(-12px);
     transform: translateX(-12px); }
   #campana .tooltip-bottom:before,
-  #campana .tooltip-bottom:after, #campana-print .tooltip-bottom:before,
-  #campana-print .tooltip-bottom:after {
+  #campana .tooltip-bottom:after {
     top: 100%;
     bottom: auto;
     left: 50%; }
-  #campana .tooltip-bottom:before, #campana-print .tooltip-bottom:before {
+  #campana .tooltip-bottom:before {
     margin-top: -12px;
     margin-bottom: 0;
     border-top-color: transparent;
@@ -2696,19 +2612,15 @@ header.cotizacion p.coti--fecha {
   #campana .tooltip-bottom:hover:before,
   #campana .tooltip-bottom:hover:after,
   #campana .tooltip-bottom:focus:before,
-  #campana .tooltip-bottom:focus:after, #campana-print .tooltip-bottom:hover:before,
-  #campana-print .tooltip-bottom:hover:after,
-  #campana-print .tooltip-bottom:focus:before,
-  #campana-print .tooltip-bottom:focus:after {
+  #campana .tooltip-bottom:focus:after {
     -webkit-transform: translateY(12px);
     -moz-transform: translateY(12px);
     transform: translateY(12px); }
   #campana .tooltip-right:before,
-  #campana .tooltip-right:after, #campana-print .tooltip-right:before,
-  #campana-print .tooltip-right:after {
+  #campana .tooltip-right:after {
     bottom: 50%;
     left: 100%; }
-  #campana .tooltip-right:before, #campana-print .tooltip-right:before {
+  #campana .tooltip-right:before {
     margin-bottom: 0;
     margin-left: -12px;
     border-top-color: transparent;
@@ -2717,23 +2629,18 @@ header.cotizacion p.coti--fecha {
   #campana .tooltip-right:hover:before,
   #campana .tooltip-right:hover:after,
   #campana .tooltip-right:focus:before,
-  #campana .tooltip-right:focus:after, #campana-print .tooltip-right:hover:before,
-  #campana-print .tooltip-right:hover:after,
-  #campana-print .tooltip-right:focus:before,
-  #campana-print .tooltip-right:focus:after {
+  #campana .tooltip-right:focus:after {
     -webkit-transform: translateX(12px);
     -moz-transform: translateX(12px);
     transform: translateX(12px); }
   #campana .tooltip-left:before,
-  #campana .tooltip-right:before, #campana-print .tooltip-left:before,
-  #campana-print .tooltip-right:before {
+  #campana .tooltip-right:before {
     top: 3px; }
   #campana .tooltip-left:after,
-  #campana .tooltip-right:after, #campana-print .tooltip-left:after,
-  #campana-print .tooltip-right:after {
+  #campana .tooltip-right:after {
     margin-left: 0;
     margin-bottom: -16px; }
-  #campana form#choose select.select-choose, #campana-print form#choose select.select-choose {
+  #campana form#choose select.select-choose {
     -webkit-appearance: none;
     -moz-appearance: none;
     background: url(../img/select-triangle.gif) no-repeat; }
@@ -2748,7 +2655,7 @@ header.cotizacion p.coti--fecha {
     font-weight: 800;
     margin-bottom: 10px; }
   #neto .valores-select {
-    width: 26% !important;
+    width: 100% !important;
     padding: 5px;
     height: 33px;
     border: 1px solid #A6A6A6;
@@ -2756,7 +2663,7 @@ header.cotizacion p.coti--fecha {
     -moz-appearance: none;
     border-radius: none;
     background: #fff url(../img/select-triangle.gif) no-repeat;
-    background-position: 50px 12px;
+    background-position: 140px 12px;
     border-radius: 0;
     font-size: 0.8em; }
   #neto p.totality {
@@ -2764,7 +2671,7 @@ header.cotizacion p.coti--fecha {
     text-align: center;
     border: 1px solid #000;
     padding: 8px;
-    margin-top: 10px;
+    margin-top: 30px;
     margin-bottom: 0;
     text-transform: uppercase;
     font-weight: 800; }
@@ -2895,17 +2802,6 @@ header.cotizacion p.coti--fecha {
         top: 145px;
         left: 0;
         padding-right: 18px !important; }
-      #oc--datos #oc-proo li .rut-social,
-      #oc--datos #oc-proo li .telefono-contacto {
-        position: absolute;
-        position: absolute;
-        left: 500px;
-        background: #fff;
-        padding: 10px; }
-      #oc--datos #oc-proo li .rut-social {
-        top: -9px; }
-      #oc--datos #oc-proo li .telefono-contacto {
-        bottom: 25px; }
 
 .right--r {
   padding-left: 180px !important; }
@@ -2914,9 +2810,9 @@ header.cotizacion p.coti--fecha {
   margin-top: 0 !important; }
 
 #firmas {
-  margin-top: 0px; }
+  margin-top: 60px; }
   #firmas #firma-1, #firmas #firma-2 {
-    width: 30%;
+    width: 50%;
     float: left;
     text-align: center; }
 
@@ -2992,40 +2888,8 @@ header.cotizacion p.coti--fecha {
       background: url(../img/up.gif);
       cursor: pointer; }
 
-form.registro-campana {
-  margin-top: 1em; }
-  form.registro-campana section .table {
-    border: 1px solid red;
-    table-layout: fixed;
-    width: 100%; }
-    form.registro-campana section .table .cabecc {
-      background: #F7F7F7;
-      text-align: center;
-      font-size: 0.85em !important;
-      color: #cc0000;
-      font-family: "Open Sans", sans-serif;
-      font-weight: light !important; }
-  form.registro-campana section .table th {
-    border: 1px solid #ccc;
-    text-align: center;
-    font-size: 0.75em;
-    padding: 2px; }
-  form.registro-campana section .table td {
-    font-size: 0.75em;
-    text-align: center;
-    padding: 4px;
-    border: 1px solid #ccc; }
-  form.registro-campana section .borde-tabla {
-    margin-top: 0.5em; }
-  form.registro-campana section .tot-base {
-    table-layout: fixed;
-    width: 100%; }
-    form.registro-campana section .tot-base .tot-1 {
-      padding: 3px;
-      font-size: 0.9em;
-      background: #cccccc;
-      color: #cc0000;
-      border: 1px solid #f7f7f7; }
+.izquierda--iz {
+  float: left !important; }
 
 section .table {
   border: 1px solid red;
@@ -3061,7 +2925,7 @@ section .tot-base {
     border: 1px solid #f7f7f7; }
 
 section .table-sap {
-  table-layout: fixed;/*auto*/
+  table-layout: auto;
   margin-top: 20px;
   width: 100%; }
   section .table-sap .cabecc-sap {
@@ -3122,71 +2986,3 @@ section .tot-base {
 
 .marggen-tabl {
   margin-top: 4px; }
-
-.nav-admin {
-  width: 100%;
-  margin-top: 1em; }
-  .nav-admin ul {
-    margin: 0;
-    padding: 0;
-    list-style: none; }
-    .nav-admin ul li {
-      display: inline-block;
-      margin-right: 15px; }
-      .nav-admin ul li:last-child {
-        margin-right: 0; }
-      .nav-admin ul li a {
-        text-decoration: none;
-        font-size: 0.9em; }
-      .nav-admin ul li .consultar {
-        background: url(../img/magnificense.png) no-repeat 0/16%;
-        padding-left: 1.2em; }
-      .nav-admin ul li .agregar {
-        background: url(../img/add.png) no-repeat 0/16%;
-        padding-left: 1.2em; }
-      .nav-admin ul li .modificar {
-        background: url(../img/edit.png) no-repeat 0 3px/16%;
-        padding-left: 1.2em; }
-      .nav-admin ul li .eliminar {
-        background: url(../img/delete.png) no-repeat 0/16%;
-        padding-left: 1.2em; }
-
-p {
-  font-size: 0.9em;
-  margin-top: 1em; }
-
-.filtroAbc {
-  width: 100%;
-  height: auto; }
-  .filtroAbc ul {
-    margin: 0;
-    padding: 0;
-    list-style: none; }
-    .filtroAbc ul li {
-      display: inline-block; }
-      .filtroAbc ul li a {
-        padding: 2px 10px;
-        text-decoration: none; }
-        .filtroAbc ul li a:hover {
-          background: #cf0508;
-          color: #fff; }
-      .filtroAbc ul li .hofil {
-        background: #cf0508;
-        color: #fff; }
-
-p.proBig {
-  font-size: 1.3em; }
-
-form.add {
-  width: 35%;
-  height: auto; }
-  form.add label {
-    width: 100%;
-    font-size: 0.9em;
-    margin: 10px 0;
-    display: block; }
-  form.add input[type="text"] {
-    width: 100%;
-    border: 1px solid #cf0508;
-    padding: 5px;
-    font-size: 0.8em; }  

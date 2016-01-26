@@ -120,7 +120,7 @@ exit;
 		$conexion=mysqli_connect($host,$username,$password,$db_name) or die("Problemas con la conexión");
 		$acentos = $conexion->query("SET NAMES 'utf8'");
 		
-		$registrosCamapana=mysqli_query($conexion,"SELECT * FROM campana") or die("Problemas en el select:");	
+		$registrosCamapana=mysqli_query($conexion,"SELECT * FROM campana") or die("Problemas en el select de registros campaña:".mysqli_error($conexion));
 		
 		@$id_campana_get2 = @$_REQUEST['campana'];
 		
@@ -207,7 +207,7 @@ exit;
 				<?php
 					@$id_campana_get = @$_REQUEST['campana'];
 					if($id_campana_get!='-1'){
-						@$registrosCampa=mysqli_query($conexion,"SELECT * from campana WHERE id_campana = '$id_campana_get'") or die ("Error en el select");
+						@$registrosCampa=mysqli_query($conexion,"SELECT * from campana WHERE id_campana = '$id_campana_get'") or die("Problemas en el select de registros campa:".mysqli_error($conexion));
 						if(@$reg=mysqli_fetch_array($registrosCampa)){
 							@$id = $reg['id'];
 							echo "<span>$id</span>";
@@ -233,7 +233,7 @@ exit;
 						$jefe_autorizacion = $reg['jefe_autorizacion'];
 					}
 					
-					$registrosUser=mysqli_query($conexion,"SELECT * FROM members WHERE id = '$id_user'") or die ("Problemas en el select");
+					$registrosUser=mysqli_query($conexion,"SELECT * FROM members WHERE id = '$id_user'") or die("Problemas en el select de registros user:".mysqli_error($conexion));
 						if($reg=mysqli_fetch_array($registrosUser)){
 							$nombre = $reg['nombre'];
 							$apellido = $reg['apellido'];
@@ -299,28 +299,28 @@ exit;
 							$variable_increment2 = $variable_increment2 + 1;
 							$nro_oc_name_final = $nro_oc.$variable_increment2;
 							
-							$registrosAreaPago=mysqli_query($conexion,"SELECT * FROM centro_costo WHERE id_centro_costo = '$area_pago'") or die ("Problemas en el select");
+							$registrosAreaPago=mysqli_query($conexion,"SELECT * FROM centro_costo WHERE id_centro_costo = '$area_pago'") or die("Problemas en el select de registros Area Pago:".mysqli_error($conexion));
 							
 							if($reg2=mysqli_fetch_array($registrosAreaPago)){
 								$descripcion = $reg2['descripcion'];
 								$ceco = $reg2['ceco'];
 							}
 							
-							$registrosRegistro=mysqli_query($conexion,"SELECT * FROM registro WHERE id_registro = $registro_gasto") or die ("Problemas en el select");
+							$registrosRegistro=mysqli_query($conexion,"SELECT * FROM registro WHERE id_registro = $registro_gasto") or die("Problemas en el select de Registros:".mysqli_error($conexion));
 							
 							if($reg3=mysqli_fetch_array($registrosRegistro)){
 								$registro_gasto_name = $reg3['registro_gasto'];
 								$id_sap_RG = $reg3['id'];
 							}
 							
-							$registrosControlPre=mysqli_query($conexion,"SELECT * FROM control_presupuesto WHERE id_controlP = $control_presupuesto") or die ("Problemas en el select");
+							$registrosControlPre=mysqli_query($conexion,"SELECT * FROM control_presupuesto WHERE id_controlP = $control_presupuesto") or die("Problemas en el select de Control Presupuesto:".mysqli_error($conexion));
 							
 							if($reg4=mysqli_fetch_array($registrosControlPre)){
 								$id_cp = $reg4['id'];
 								$control_pre_name = $reg4['control_presupuesto'];
 							}
 							
-							$registrosCac=mysqli_query($conexion,"SELECT * FROM cac WHERE nro_oc = $numero_orden") or die ("Problemas en el select");
+							$registrosCac=mysqli_query($conexion,"SELECT * FROM cac WHERE nro_oc = $numero_orden") or die("Problemas en el select de Registros CAC:".mysqli_error($conexion));
 							
 							if($reg5=mysqli_fetch_array($registrosCac)){
 								$ppto_real = $reg5['ppto_real'];

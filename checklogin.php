@@ -88,6 +88,14 @@
 		$_SESSION['start'] = time();
 		$_SESSION['expire'] = $_SESSION['start'] + (100 * 100 * 60) ;//ojo quitarle las 3 horas a la sesion
 	
+			if($tipo_user=='admin'){
+			
+				echo '<script type="text/javascript">';
+				echo 'window.location.href="administrador.php";';
+				echo '</script>';	
+				
+			}
+			
 			if($tipo_user=='user'){
 				
 				//echo "Entro a tipo user, exito..!";
