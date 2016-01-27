@@ -43,6 +43,8 @@
 	
 		if($reg=mysqli_fetch_array($registrosUsuario)){
 			$id_member = $reg['id'];
+			$nombre = $reg['nombre'];
+			$apellido = $reg['apellido'];
 		}
 		
 		
@@ -95,9 +97,9 @@
         <nav>
           <ul>
             <li> <a href="emision.php">Emisor de órdenes de compra</a></li>
-			<!--
-            <li> <a href="por-revisar-sap.php" class="active" >Por revisar</a></li>
-			-->
+			<?php
+            echo "<li><h4>Usuario: $nombre $apellido</h4></li>";
+			?>
           </ul>
         </nav>
         <?php //echo "<div class=\"counter\">$num_rows</div>"; ?>
@@ -146,7 +148,7 @@
 				<div id="titulo--orden-4">OC SAP</div>
 				<div id="titulo--orden-5">OC RECEPCIÓN</div>
 				<div id="titulo--orden-6T"> <img src="tema/img/time.gif" alt=""></div>
-				<div id="titulo--orden-6S"> <img src="tema/img/upload.gif" alt=""></div>
+				<div id="titulo--orden-6S">Editar OC</div>
 			</div>
 	 
 	
@@ -242,7 +244,7 @@
           <div id="titulo--orden-4">OC SAP</div>
           <div id="titulo--orden-5">OC RECEPCIÓN</div>
           <div id="titulo--orden-6T"> <img src="tema/img/time.gif" alt=""></div>
-          <div id="titulo--orden-6S"> <img src="tema/img/upload.gif" alt=""></div>
+          <div id="titulo--orden-6S">Editar OC</div>
         </div>				
 		
 		<?php
@@ -322,7 +324,7 @@
 			  if (in_array($nro_orden_comp,@$items)){  			  
 			  echo "<div id=\"orden--6S\"><a href=\"./uploads/$n_orden.pdf\" data-tooltip=\"Ver Documento\" class=\"various\" ><img src=\"tema/img/ver-doc.gif\" alt=\"\"></a></div>";
 		  }else{
-			  echo "<div id=\"orden--6S\"></div>";
+			  echo "<div id=\"orden--6S\"><a href=\"modificar-oc-detalle.php?oc_send=",urlencode($n_orden)," \">Editar</a></div>";
 		  }
 			  
 			echo "</div>";	

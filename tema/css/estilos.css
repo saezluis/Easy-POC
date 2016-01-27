@@ -2401,7 +2401,7 @@ header.cotizacion p.coti--fecha {
     border-right: 1px solid #cccccc !important; }
   #campana #titulo--orden-6S, #campana-print #titulo--orden-6S {
     width: 8%;
-    line-height: 2;
+    line-height: 1;
     border-right: 1px solid #cccccc !important; }
   #campana #desglose-1,
   #campana #desglose-2,

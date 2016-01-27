@@ -236,6 +236,17 @@ exit;
 		
 		
 		$num_rows = mysqli_num_rows($revisar);
+		
+		$username = $_SESSION['username'];
+		
+		$registrosUsuario = mysqli_query($conexion,"select * from members WHERE username = '$username'") or die("Problemas en el select:".mysqli_error($conexion));
+	
+		if($reg=mysqli_fetch_array($registrosUsuario)){
+			$id_member = $reg['id'];
+			$nombre = $reg['nombre'];
+			$apellido = $reg['apellido'];
+		}
+		
 	?>
     <header class="grupo">
       <div class="caja base-50 no-padding">
@@ -257,6 +268,9 @@ exit;
 			<li> </li>
 			<li> </li>
 			<li> <a href="historial-ordenes.php" >Historial de órdenes</a></li>
+			<?php
+				echo "<li><h4>Usuario: $nombre $apellido</h4></li>";
+			?>
 			<!--
 				<li> <a href="por-revisar-sap.php" class="active" >Por revisar</a></li>
 			-->

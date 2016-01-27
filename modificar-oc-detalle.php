@@ -1,3 +1,10 @@
+<?php
+  session_start();
+
+  if(!isset($_SESSION['username'])){
+    header("location:login.php");
+  }
+?>
 <!DOCTYPE html>
 <html lang="es">
   <head>
@@ -81,18 +88,37 @@
 		
 		$registrosOrdenes=mysqli_query($conexion,"select * from ordenes WHERE numero_orden=$nro_oc") or die("Problemas en el select:".mysqli_error($conexion));
 		
+		$username = $_SESSION['username'];
+		
+		$registrosUsuario = mysqli_query($conexion,"select * from members WHERE username = '$username'") or die("Problemas en el select:".mysqli_error($conexion));
+	
+		if($reg=mysqli_fetch_array($registrosUsuario)){
+			$id_member = $reg['id'];
+			$nombre = $reg['nombre'];
+			$apellido = $reg['apellido'];
+		}
+		
 	?>
     <header class="grupo">
       <div class="caja base-50 no-padding">
         <h1> <a href="administrador.php"" class="logo"> <img src="tema/img/logo.jpg" alt="POC"></a></h1>
       </div>
-      <div class="caja base-50 no-padding"><a href="logout.php" class="logout">Logout</a></div>
+		<div class="caja base-50 no-padding"><a href="logout.php" class="logout">Logout</a>
+			<nav>
+				<ul>            
+					<?php
+					echo "<li><h4>Usuario: $nombre $apellido</h4></li>";
+					?>
+				</ul>
+			</nav>
+		</div>
     </header>
     <div id="data--input" class="grupo">
       <h3>Administrador</h3>
 	  <h4>Modificar Orden de Compra</h4>
-	  <h6><a href="modificar-oc.php">Volver</a></h6>
+	  <input type="button" value="Volver" onclick="history.go(-1);">	  	  
     </div>
+	<br>
 	 <div class="grupo no-padding">
 		  <div class="caja base-100">
 			<?php			
@@ -351,7 +377,7 @@
 					  echo "<div style=\"float:left; padding:15px 0 0 15px; margin-top:15px;\" class=\"cancela-guarda\">";
 						echo "<input type=\"submit\" value=\"stuff\" style=\"margin-right:10px;\" hidden=hidden >";
 						echo "<input type=\"submit\" value=\"Modificar\" style=\"margin-right:10px;\" formaction=\"modificar-oc-procesar.php\" >";
-						echo "<input type=\"submit\" value=\"Cancelar\" formaction=\"modificar-oc.php\">";
+						echo "<input type=\"button\" value=\"Cancelar\" onclick=\"history.go(-1);\">";
 					  echo "</div>";
 					  
 					echo "</form>";
