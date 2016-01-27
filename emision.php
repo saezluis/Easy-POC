@@ -262,12 +262,8 @@ exit;
 			<!--
             <li> <a href="perfil-sap.php" >Historial de órdenes</a></li>
 			-->
-			<li> </li>
-			<li> </li>
-			<li> </li>
-			<li> </li>
-			<li> </li>
 			<li> <a href="historial-ordenes.php" >Historial de órdenes</a></li>
+			<br>
 			<?php
 				echo "<li><h4>Usuario: $nombre $apellido</h4></li>";
 			?>

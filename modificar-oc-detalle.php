@@ -113,8 +113,7 @@
 			</nav>
 		</div>
     </header>
-    <div id="data--input" class="grupo">
-      <h3>Administrador</h3>
+    <div id="data--input" class="grupo">      
 	  <h4>Modificar Orden de Compra</h4>
 	  <input type="button" value="Volver" onclick="history.go(-1);">	  	  
     </div>

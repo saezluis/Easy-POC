@@ -1,3 +1,17 @@
+<html>
+<head>
+	<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>	
+	
+	<script type="text/javascript">
+		$(document).ready(function(){
+			document.getElementById('dynLink').click();
+			//var linkPage = document.getElementById('dynLink').href;
+			//window.location.href = linkPage;
+		});
+	</script>
+
+</head>
+<body>
 <?php
 	
 	include "config.php";
@@ -9,11 +23,11 @@
 	
 	$nro_solicitud_send = $_REQUEST['nro_solicitud_send'];
 	
-	echo "rows: ".$rows;
+	//echo "rows: ".$rows;
 	echo "<br>";
 	echo "<br>";
 	
-	echo "Capturando la matrix";
+	//echo "Capturando la matrix";
 	echo "<br>";
 	echo "<br>";
 	
@@ -204,7 +218,28 @@
 	echo "<br>";
 	echo "<br>";
 	*/
-	echo "<br>"."<br>";
-	echo "<a href=\"costos-accion.php\">Volver</a>";
+	
+	
+	//echo "campaña: ".$_REQUEST['campana_send'];
+	$campana_get = $_REQUEST['campana_send'];
+	
+	echo "<form method=\"post\" action=\"costos-accion.php\">";
+	
+	echo "<a id=\"dynLink\" href=\"#\" onclick=\"$(this).closest('form').submit()\"></a>";
+	
+	echo "<input type=\"text\" value=\"$campana_get\" name=\"campana\" hidden=hidden>";
+	
+	echo "</form>";
+	//echo "<a href=\"costos-accion.php?campana=",urlencode($campana_get)," id=\"someclass\">GO HERE</a>";
+	
+	//echo "<div id=\"orden--1\"><a href=\"consultar-orden.php?numero_orden=",urlencode($n_orden)," \">$n_orden</a></div>";
+	
+	//echo "<br>"."<br>";
+	//echo "<a href=\"costos-accion.php\">Volver</a>";
 	
 ?>
+
+
+
+</body>
+</html>

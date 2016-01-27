@@ -2996,7 +2996,7 @@ form.registro-campana {
   margin-top: 1em; }
   form.registro-campana section .table {
     border: 1px solid red;
-    table-layout: fixed;
+    table-layout: auto;
     width: 100%; }
     form.registro-campana section .table .cabecc {
       background: #F7F7F7;

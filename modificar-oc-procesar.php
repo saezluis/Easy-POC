@@ -80,7 +80,16 @@
 												  
 									WHERE numero_orden='$nro_oc' ") or
 									die("Problemas en el select:".mysqli_error($conexion));
+									
+	mysqli_query($conexion, "UPDATE servicios SET descripcion='$descripcion',
+												  cantidad='$cantidad',
+												  monto='$monto'
+												  
+									WHERE nro_servicio='$nro_servicio' ") or
+									die("Problemas en el select:".mysqli_error($conexion));	
 	
-	echo "<h4>Orden modificada con éxito</h4>"
+	//echo "<h4>Orden modificada con éxito</h4>";
+	
+	header('Location: historial-ordenes.php');
 	
 ?>

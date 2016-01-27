@@ -58,7 +58,7 @@ exit;
 		}
 		
 		.pep {
-			width: 80px !important; 
+			width: 35px !important; 
 			height: 33px;
 		}
 		
@@ -68,11 +68,11 @@ exit;
 		}
 		
 		.pptoReal {
-			width: 90px;
+			width: 69px;
 		}
 		
 		.ccs_nroOC {
-			width: 90px;
+			width: 30px;
 			border: none;
 			text-align: center;
 		}
@@ -273,7 +273,9 @@ exit;
 		            <th>PPTO proyect.</th>
 		            <th>PPTO real</th>
 		            <th>Diferencia</th>
-		            <th>Nº OC</th>
+		            <th>NºOC</th>
+					<th>V°B°</th>
+					<th>Actualizar</th>
 		          </tr>
 		        </thead>
 		        <tbody>		          
@@ -286,6 +288,7 @@ exit;
 							$registro_gasto = $reg['registro_gasto'];
 							$control_presupuesto = $reg['control_presupuesto'];
 							$total_final = $reg['total_final'];
+							$campana_send = $reg['campana'];
 							
 							$total_sin_dots = str_replace(".","",$total_final);
 							$suma_PPTO = $suma_PPTO + $total_sin_dots;							
@@ -323,6 +326,7 @@ exit;
 							$registrosCac=mysqli_query($conexion,"SELECT * FROM cac WHERE nro_oc = $numero_orden") or die("Problemas en el select de Registros CAC:".mysqli_error($conexion));
 							
 							if($reg5=mysqli_fetch_array($registrosCac)){
+								$nro_oc = $reg5['nro_oc'];
 								$ppto_real = $reg5['ppto_real'];
 								$ppto_real_format = number_format($ppto_real,0, ",", ".");
 							}
@@ -344,11 +348,24 @@ exit;
 							echo "<td class=\"pep\">$id_sap_RG</td>";
 							echo "<td class=\"control-presupuesto\">$control_pre_name</td>";
 							echo "<td class=\"pep\">$id_cp</td>";
-							echo "<td class=\"ppto-proyecto\">$ $total_final</td>";
-							echo "<td class=\"ppto-real\"><input type=\"text\" name=\"$ppto_real_name_final\" value=\"$ppto_real_format\" class=\"pptoReal\"></input></td>";
+							echo "<td class=\"ppto-proyecto\">$ $total_final</td>";							
+							if($nro_oc==$numero_orden){
+								echo "<td class=\"ppto-real\"><input type=\"text\" name=\"$ppto_real_name_final\" value=\"$ppto_real_format\" class=\"pptoReal\"></input></td>";
+							}else{
+								echo "<td class=\"ppto-real\"><input type=\"text\" name=\"$ppto_real_name_final\" value=\"\" class=\"pptoReal\"></input></td>";
+							}
 							echo "<td class=\"diferencia\">$ $sub_t_diferencia_format</td>";
 							echo "<td class=\"nOC\"><input type=\"text\" name=\"$nro_oc_name_final\" value=\"$numero_orden\" class=\"ccs_nroOC\" readonly></input></td>";
+							echo "<td>
+							<select>
+								<option value=\"-1\">--</option>
+								<option value=\"si\">si</option>
+								<option value=\"no\">no</option>
+							</select>
+							</td>";
+							echo "<td><a href=\"#\" onclick=\"$(this).closest('form').submit()\">OK</a></td>";
 							echo "</tr>";
+							echo "<input type=\"text\" value=\"$campana_send\" name=\"campana_send\" hidden=hidden >";
 						}
 						
 					?>
@@ -359,16 +376,16 @@ exit;
 		          <thead>
 		            <tr class="total-all">
 		              <th> </th>
-		              <th> </th>
-		              <th> </th>
-		              <th> </th>
-		              <th> </th>
+		              <th style="width: 120px;"> </th>
+		              <th style="width: 80px;"> </th>
+		              <th style="width: 50px;"> </th>
+		              <th style="width: 50px;"> </th>
 		              <th> </th>
 		              <th>Total</th>
 						<?php
-							echo "<th class=\"tot-1\">$ $suma_PPTO_format</th>";
-							echo "<th class=\"tot-1\">$ $ppto_real_suma_format</th>";
-							echo "<th class=\"tot-1\">$ $diferencia_total_sum_format</th>";
+							echo "<th class=\"tot-1\" style=\"width:7%; font-size:11px !important;\"  >$ $suma_PPTO_format</th>";
+							echo "<th class=\"tot-1\" style=\"width:7%; font-size:11px !important;\">$ $ppto_real_suma_format</th>";
+							echo "<th class=\"tot-1\" style=\"width:7%; font-size:11px !important;\">$ $diferencia_total_sum_format</th>";
 						?>
 		              <!--
 					  <th><a href="costos-accion.php">actualizar</a> </th>
@@ -382,8 +399,9 @@ exit;
 						
 						echo "<input type=\"text\" id=\"nroSolicitudBox\" value=\"\" name=\"nro_solicitud_send\" hidden=hidden />";
 						
-						echo "<th><button type=\"submit\">actualizar</button></th>";
+						echo "<th></th>"; //<button type=\"submit\">actualizar</button>
 					  ?>
+					  
 		            </tr>
 		          </thead>
 		        </table>

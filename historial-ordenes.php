@@ -95,7 +95,7 @@
       <div class="caja base-50 no-padding">
       	<a class="logout" href="logout.php" >Logout</a>
         <nav>
-          <ul>
+          <ul>			
             <li> <a href="emision.php">Emisor de órdenes de compra</a></li>
 			<?php
             echo "<li><h4>Usuario: $nombre $apellido</h4></li>";
