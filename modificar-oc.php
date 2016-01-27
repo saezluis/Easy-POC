@@ -78,19 +78,19 @@
 					$nro_factura_proveedor = $reg['nro_factura_proveedor'];
 					$id_user = $reg['id_user'];
 					
-					$registrosProveedor=mysqli_query($conexion,"select * from proveedor WHERE id_proveedor=$id_proveedor") or die("Problemas en el select:".mysqli_error($conexion));
+					$registrosProveedor=mysqli_query($conexion,"select * from proveedor WHERE id_proveedor=$id_proveedor") or die("Problemas en el select Registros Proveedor:".mysqli_error($conexion));
 					
 					if($regPr=mysqli_fetch_array($registrosProveedor)){
 						$nombre_proveedor = $regPr['nombre'];
 					}
 					
-					$registrosCampana=mysqli_query($conexion,"select * from campana WHERE id_campana=$campana") or die("Problemas en el select:".mysqli_error($conexion));
+					$registrosCampana=mysqli_query($conexion,"select * from campana WHERE id_campana=$campana") or die("Problemas en el select Registros Campaña:".mysqli_error($conexion));
 					
 					if($regCa=mysqli_fetch_array($registrosCampana)){
 						$nombre_campana = $regCa['nombre_campana'];
 					}
 					
-					$registrosUser=mysqli_query($conexion,"select * from members WHERE id=$id_user") or die("Problemas en el select:".mysqli_error($conexion));
+					$registrosUser=mysqli_query($conexion,"select * from members WHERE id=$id_user") or die("Problemas en el select Registros User:".mysqli_error($conexion));
 					
 					if($regU=mysqli_fetch_array($registrosUser)){
 						$nombre = $regU['nombre'];
