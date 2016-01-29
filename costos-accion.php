@@ -77,6 +77,10 @@ exit;
 			text-align: center;
 		}
 		
+		.redText { 
+			background-color:red; 
+		}
+		
 	</style>
 	
 	<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
@@ -108,6 +112,7 @@ exit;
 		$jefe_autorizacion="";
 		$variable_increment = 0;
 		$variable_increment2 = 0;
+		$variable_increment3 = 0;
 		$suma_PPTO = 0;
 		$suma_PPTO_format = 0;
 		$ppto_real="";
@@ -252,8 +257,10 @@ exit;
           </div>
 		  
            <div class="caja base-20">
+			<!--
             <label>V°B° Jefatura</label>
-			<input type="text">				
+			<input type="text">	
+			-->
           </div>
 			<!--aqui empezé-->
 		<!--aqui termine-->
@@ -289,6 +296,12 @@ exit;
 							$control_presupuesto = $reg['control_presupuesto'];
 							$total_final = $reg['total_final'];
 							$campana_send = $reg['campana'];
+							$visto_bueno = $reg['visto_bueno'];
+							
+							$variable_increment3 = $variable_increment3 + 1;
+							$value_send_si = $numero_orden."-si";
+							$value_send_no = $numero_orden."-no";
+							$select_name = "vb".$variable_increment3;
 							
 							$total_sin_dots = str_replace(".","",$total_final);
 							$suma_PPTO = $suma_PPTO + $total_sin_dots;							
@@ -356,13 +369,15 @@ exit;
 							}
 							echo "<td class=\"diferencia\">$ $sub_t_diferencia_format</td>";
 							echo "<td class=\"nOC\"><input type=\"text\" name=\"$nro_oc_name_final\" value=\"$numero_orden\" class=\"ccs_nroOC\" readonly></input></td>";
-							echo "<td>
-							<select>
-								<option value=\"-1\">--</option>
-								<option value=\"si\">si</option>
-								<option value=\"no\">no</option>
-							</select>
-							</td>";
+							
+							echo "<td>";
+								echo "<select name=\"$select_name\" onchange=\"this.form.submit()\" >";
+									echo "<option class=\"redText\" value=\"\">$visto_bueno</option>";									
+									echo "<option value=\"$value_send_si\">si</option>";
+									echo "<option value=\"$value_send_no\">no</option>";
+								echo "</select>";
+							echo "</td>";
+							
 							echo "<td><a href=\"#\" onclick=\"$(this).closest('form').submit()\">OK</a></td>";
 							echo "</tr>";
 							echo "<input type=\"text\" value=\"$campana_send\" name=\"campana_send\" hidden=hidden >";
@@ -396,6 +411,7 @@ exit;
 						
 						echo "<input type=\"text\" value=\"Dummy\" name=\"ppto0\" hidden=hidden />";
 						echo "<input type=\"text\" value=\"Decoy\" name=\"nroOC0\" hidden=hidden />";
+						echo "<input type=\"text\" value=\"Misato\" name=\"vb0\" hidden=hidden />";
 						
 						echo "<input type=\"text\" id=\"nroSolicitudBox\" value=\"\" name=\"nro_solicitud_send\" hidden=hidden />";
 						

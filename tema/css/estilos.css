@@ -3061,7 +3061,7 @@ section .tot-base {
     border: 1px solid #f7f7f7; }
 
 section .table-sap {
-  table-layout: fixed;/*auto*/
+  table-layout: auto;/*fixed*/
   margin-top: 20px;
   width: 100%; }
   section .table-sap .cabecc-sap {

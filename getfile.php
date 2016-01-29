@@ -10,7 +10,7 @@
 	
 	$conexion=mysqli_connect($host,$username,$password,$db_name) or die("Problemas con la conexión");
 	
-	mysqli_query($conexion,"UPDATE ordenes SET archivo='si' WHERE numero_orden = $_REQUEST[nro_orden_form]") or die("Ocurrio un error al cargar el archivo");
+	//mysqli_query($conexion,"UPDATE ordenes SET archivo='si' WHERE numero_orden = $_REQUEST[nro_orden_form]") or die("Ocurrio un error al cargar el archivo");
 			
 	//echo "numero de orden ".$_REQUEST['nro_orden_form'];
 	$nombrefile = $_REQUEST['nro_orden_form'];
@@ -45,7 +45,7 @@
       else
          echo 'There was an error during the file upload.  Please try again.'; // It failed :(.
 
-	 header('Location: perfil-sap.php');  
+	 header('Location: por-revisar-sap.php');  
 	
 ?>
 

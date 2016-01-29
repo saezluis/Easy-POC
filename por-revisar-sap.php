@@ -220,22 +220,25 @@
 	</div>	
 	
 	<!-- Aqui se carga toda la informacion del historial -->
-    <div id="campana" class="grupo">
-      <div class="caja-100">
-        <div id="tabla">
-          <div id="titulo--orden-1">Nº de OC / Ver OC</div>
-          <div id="titulo--orden-2">Fecha</div>
-          <div id="titulo--orden-3">Codigo PEP</div>
-          <div id="titulo--orden-4">OC SAP</div>
-          <div id="titulo--orden-5">OC RECEPCIÓN</div>
-          <div id="titulo--orden-6T"> <img src="tema/img/time.gif" alt=""></div>
-          <div id="titulo--orden-6S"> <img src="tema/img/upload.gif" alt=""></div>
-        </div>
-				
+	<section class="grupo">
+      <table class="table-sap">
+        <thead>
+          <tr class="cabecc-sap">
+            <th>Nº OC</th>
+            <th>Fecha</th>
+            <th>Código PEP</th>
+            <th>OC SAP</th>
+            <th> <img src="tema/img/upload.gif" alt="" class="marggen-tabl"></th>
+            <th>OC Recepción</th>
+            <th> <img src="tema/img/upload.gif" alt="" class="marggen-tabl"></th>
+            <th> <img src="tema/img/time.gif" alt="" class="marggen-tabl"></th>
+          </tr>
+        </thead>		
 		
 		<?php
 		$n_orden2 = 1000;
 		$more_fooo = 40;
+		$fooo_or = 50;
 		while ($reg=mysqli_fetch_array($rs))
 		{			
 			//Aqui se calculan los dias que van transcurriendo desde la emision de la OC
@@ -254,6 +257,7 @@
 
 			$nro_orden_fooo = $reg['numero_orden'];
 			$more_fooo = $more_fooo + 1;
+			$fooo_or = $fooo_or + 1;
 			
 			//-------------------------- Creacion del codigo PEP ---------------------------------------------
 			$area_pago = $reg['area_pago'];
@@ -289,71 +293,87 @@
 			
 			//-------------------------- Creacion del codigo PEP ---------------------------------------------
 			
+			echo "<tbody>";
+				  echo "<tr>";
+					echo "<td class=\"area\"><a href=\"consultar-orden.php?numero_orden=",urlencode($n_orden)," \">$n_orden</a></td>";					
+					echo "<td class=\"ceco\">".$fecha_format."</td>";					
+					echo "<td class=\"desc-servicio\">$codigoPep</td>";
+					
+					//Modificar OC sap
+					echo "<td class=\"ocsap\">".$reg['orden_sap']."<span style=\"float:left;\"></span><span style=\"float:right;\"><a href=\"#$n_orden\" data-tooltip=\"Editar\" class=\"various\"><img src=\"tema/img/edit.gif\" alt=\"\" style=\"margin-right: 3px;\">";  //<img src=\"tema/img/no.gif\" alt=\"\" style=\"margin-top:3px;padding-left: 3px;\">
+						  echo "<div id=\"$n_orden\" style=\"display: none;\">";
+							echo "<form id=\"edit-recep\" method=\"POST\" action=\"grabar-orden-sap-rev.php\">";
+							  echo "<h1 style=\"font-size: 1em;\">Ingresa número de OC SAP</h1>";
+							  echo "<input type=\"hidden\" name=\"nro_orden_send_hidden\" value=\"$reg[numero_orden]\">";
+							  echo "<input type=\"hidden\" name=\"nro_orden_send_hidden\" value=\"$reg[numero_orden]\">";
+							  echo "<input style=\"width: 100%; padding: 5px;\"; type=\"text\" name=\"nro_orden_send\" value=\"\">";
+							  echo "<button style=\"width: 100%;margin-top: 10px; background: transparent linear-gradient(to bottom, #FF1500 0%, #C0000B 100%) repeat scroll 0% 0%; color:#fff; border:none;\" type=\"submit\" value=\"grabar\">Grabar</button>";
+							echo "</form>";
+						  echo "</div></a></span></td>";	
+					
+					//Uploader de archivos de OC SAP
+					echo "<td class=\"pep\"><a href=\"#$more_fooo\" data-tooltip=\"Subir archivo\" class=\"various\"><img src=\"tema/img/upload.gif\" alt=\"\"></a>";					  
+						echo "<div id=\"$more_fooo\" style=\"display: none;\">";					
+							echo "<form id=\"upload\" action=\"getfile.php\" method=\"POST\" enctype=\"multipart/form-data\">";					
+								echo "<h1 style=\"font-size: 1.5em;\">Subir un archivo</h1>";						  
+								echo "<div class=\"drag-drop\" style=\"height: 100px; width: 100px; background: url(tema/img/up-hover.gif); text-align: center; color: white; position: relative; margin: 0 auto 1em; padding: 1em;\">";	
+								echo "<input style=\"height: 100px;opacity: 0;position: absolute;top: 0;left: 0;width: 100%; cursor:pointer; z-index: 3;\" id=\"file\" name=\"userfile\" type=\"file\">";					
+						echo "</div>";
+								echo "<button style=\"width: 95%; text-align:center; margin-top: 10px; background: transparent linear-gradient(to bottom, #FF1500 0%, #C0000B 100%) repeat scroll 0% 0%; color:#fff; border:none;\" type=\"submit\" name=\"upload\" value=\"upload\" class=\"acept\">Aceptar</button>";
+								echo "<input type=\"text\" name=\"nro_orden_form\" value=\"$nro_orden_fooo\" hidden=hidden>";
+							echo "</form>";
+						echo "</div>";										
+					echo "</td>";
+					
+					//Modificar numero de OC Recepcion
+					echo "<td class=\"ocrecepcion\">".$reg['orden_recepcion']."<span style=\"float:left;\"></span><span style=\"float:right;\"><a href=\"#$n_orden2\" data-tooltip=\"Editar\" class=\"various\"><img src=\"tema/img/edit.gif\" alt=\"\" style=\"margin-right: 3px;\">"; //<img src=\"tema/img/yes.gif\" alt=\"\" style=\"margin-top:3px;padding-left: 3px;\">
+						  echo "<div id=\"$n_orden2\" style=\"display: none;\">";
+							echo "<form id=\"edit-recep\" method=\"POST\" action=\"grabar-recepcion-sap-rev.php\">";
+							  echo "<h1 style=\"font-size: 1em;\">Ingresa número de OC RECEPCION</h1>";
+							  echo "<input type=\"hidden\" name=\"nro_ordenRecep_send_hidden\" value=\"$reg[numero_orden]\" >";
+							  echo "<input style=\"width: 100%; padding: 5px;\"; type=\"text\" name=\"nro_recepcion_send\" value=\"\">";
+							  echo "<button style=\"width: 100%;margin-top: 10px; background: transparent linear-gradient(to bottom, #FF1500 0%, #C0000B 100%) repeat scroll 0% 0%; color:#fff; border:none;\" type=\"submit\" value=\"grabar\">Grabar</button>";
+							echo "</form>";
+						 echo "</div></a></span></td>";
+					
+					//aqui debo construir el segundo uploader de archivos, pero este sube OC recepcion
+					echo "<td class=\"pep\"><a href=\"#$fooo_or\" data-tooltip=\"Subir archivo\" class=\"various\"><img src=\"tema/img/upload.gif\" alt=\"\"></a>";					  
+						echo "<div id=\"$fooo_or\" style=\"display: none;\">";					
+							echo "<form id=\"upload\" action=\"getfile-or.php\" method=\"POST\" enctype=\"multipart/form-data\">";					
+								echo "<h1 style=\"font-size: 1.5em;\">Subir un archivo</h1>";						  
+								echo "<div class=\"drag-drop\" style=\"height: 100px; width: 100px; background: url(tema/img/up-hover.gif); text-align: center; color: white; position: relative; margin: 0 auto 1em; padding: 1em;\">";	
+								echo "<input style=\"height: 100px;opacity: 0;position: absolute;top: 0;left: 0;width: 100%; cursor:pointer; z-index: 3;\" id=\"file\" name=\"userfile\" type=\"file\">";					
+						echo "</div>";
+								echo "<button style=\"width: 95%; text-align:center; margin-top: 10px; background: transparent linear-gradient(to bottom, #FF1500 0%, #C0000B 100%) repeat scroll 0% 0%; color:#fff; border:none;\" type=\"submit\" name=\"upload\" value=\"upload\" class=\"acept\">Aceptar</button>";
+								echo "<input type=\"text\" name=\"nro_orden_form\" value=\"$nro_orden_fooo\" hidden=hidden>";
+							echo "</form>";
+						echo "</div>";										
+					echo "</td>";
+					
+					
+						
+					  echo "</div>";
+					echo "</td>";
+					echo "<td class=\"ppto-proyecto\">$days</td>";
+				  echo "</tr>";
+			echo "</tbody>";
 			
-			echo "<div id=\"tabla\">";
-			  //echo "<div id=\"orden--1\">".$reg['numero_orden']."</div>";
-			  echo "<div id=\"orden--1\"><a href=\"consultar-orden.php?numero_orden=",urlencode($n_orden)," \">$n_orden</a></div>";
-			  echo "<div id=\"orden--2\">".$fecha_format."</div>";
-			  echo "<div id=\"orden--3\">".$codigoPep."</div>";
-			  //------------------- Aqui trabajo con orden SAP -------------------
-			  echo "<div id=\"orden--4\">".$reg['orden_sap']."<span class=\"yes\"><img src=\"tema/img/no.gif\" alt=\"\"></span><span class=\"edit\"><a href=\"#$n_orden\" data-tooltip=\"Editar\" class=\"various\"><img src=\"tema/img/edit.gif\" alt=\"\">";
-					echo "<div id=\"$n_orden\" name=\"\" style=\"display: none;\">";
-					//Ojo aqui redirecciono con una pagina php diferente para no perder el la pagina donde estoy editando
-					  echo "<form id=\"edit-recep\" method=\"POST\" action=\"grabar-orden-sap-rev.php\">";
-						echo "<h1 style=\"font-size: 1.5em;\">Ingresa número de OC SAP</h1>";
-						// Este campo oculto lleva el nro orden para poder hacer el insert en BD
-						echo "<input type=\"hidden\" name=\"nro_orden_send_hidden\" value=\"$reg[numero_orden]\">";
-						//id=\"$reg[numero_orden]\"
-						echo "<input style=\"width: 100%; padding: 5px;\"; type=\"text\" name=\"nro_orden_send\" value=\"\">";
-						echo "<button style=\"width: 100%;margin-top: 10px; background: transparent linear-gradient(to bottom, #FF1500 0%, #C0000B 100%) repeat scroll 0% 0%; color:#fff; border:none;\" type=\"submit\" value=\"grabar\">Grabar</button>";
-					  echo "</form>";
-					echo "</div></a></span></div>";
-			//------------------- Aqui trabajo con orden Recepcion -------------------
-			  echo "<div id=\"orden--5\">".$reg['orden_recepcion']."<span class=\"no\"><img src=\"tema/img/no.gif\" alt=\"\"></span><span class=\"edit\"><a href=\"#$n_orden2\" data-tooltip=\"Editar\" class=\"various\"><img src=\"tema/img/edit.gif\" alt=\"\">";
-					echo "<div id=\"$n_orden2\" style=\"display: none;\">";
-					//Ojo aqui redirecciono con una pagina php diferente para no perder el la pagina donde estoy editando
-					  echo "<form id=\"edit-recep\" method=\"POST\" action=\"grabar-recepcion-sap-rev.php\">";
-						echo "<h1 style=\"font-size: 1.5em;\">Ingresa número de OC RECEPCION</h1>";
-						// Este campo oculto lleva el nro orden para poder hacer el insert en BD
-						echo "<input type=\"hidden\" name=\"nro_ordenRecep_send_hidden\" value=\"$reg[numero_orden]\" >";
-						echo "<input style=\"width: 100%; padding: 5px;\"; type=\"text\" name=\"nro_recepcion_send\" value=\"\">";
-						echo "<button style=\"width: 100%;margin-top: 10px; background: transparent linear-gradient(to bottom, #FF1500 0%, #C0000B 100%) repeat scroll 0% 0%; color:#fff; border:none;\" type=\"submit\" value=\"grabar\">Grabar</button>";
-					  echo "</form>";
-					echo "</div></a></span></div>";
-			//------------------- Aqui trabajo con la parte de los dias remanentes ------------------------		
-			  //Aqui manipulo la fecha para que si pasa de 5 dias se muestre en rojo
-			  if ($days>=5){
-				echo "<div id=\"orden--6T\" style=\"color:#FF0000\">".$days." dias"."</div>";
-			  } else {
-				  echo "<div id=\"orden--6T\" >".$days." dias"."</div>";
-			  }	
-			  
-			  // ------ Comienzo del subir archivos -----
-			  echo "<div id=\"orden--6S\"><a href=\"#$more_fooo\" data-tooltip=\"Subir archivo\" class=\"various\"><img src=\"tema/img/upload.gif\" alt=\"\"></a>";
-				echo "<div id=\"$more_fooo\" style=\"display: none;\">";				
-				  echo "<form id=\"upload\" action=\"getfile.php\" method=\"POST\" enctype=\"multipart/form-data\">";
-					echo "<h1 style=\"font-size: 1.5em;\">Subir un archivo</h1>";
-					echo "<div class=\"drag-drop\" style=\"height: 100px; width: 100px; background: url(tema/img/up-hover.gif); text-align: center; color: white; position: relative; margin: 0 auto 1em; padding: 1em;\">";
-					  echo "<input style=\"height: 100px;opacity: 0;position: absolute;top: 0;left: 0;width: 100%; cursor:pointer; z-index: 3;\" id=\"file\" name=\"userfile\" type=\"file\">";
-					echo "</div>";
-					echo "<button style=\"width: 95%; text-align:center; margin-top: 10px; background: transparent linear-gradient(to bottom, #FF1500 0%, #C0000B 100%) repeat scroll 0% 0%; color:#fff; border:none;\" type=\"submit\" name=\"upload\" value=\"upload\" class=\"acept\">Aceptar</button>";
-					echo "<input type=\"text\" name=\"nro_orden_form\" value=\"$nro_orden_fooo\" hidden=hidden>";
-				  echo "</form>";
-				echo "</div>";
-			  echo "</div>";
-			  
-			echo "</div>";	
+			
+			
 		}
-		
+		echo "</table>";
+	echo "</section>";	
+	
 		mysqli_free_result($rs); 
 		mysqli_close($conexion);
 		
 		//Falta centrar y darle estilo al selector de paginas
 		
-		echo "<div class=\"caja-100\">";
-			echo "<div class=\"paginator\">";
+		//echo "<div class=\"caja-100\">";
+			//echo "<div class=\"paginator\">";
 		
 		//muestro los distintos índices de las páginas, si es que hay varias páginas 
+		/*
 		if ($total_paginas > 1){ 
 		for ($i=1;$i<=$total_paginas;$i++){ 
 			if ($pagina == $i) 
@@ -363,9 +383,9 @@
 				//si el índice no corresponde con la página mostrada actualmente, coloco el enlace para ir a esa página 				
 				echo "<a href='por-revisar-sap.php?pagina=" . $i . "'>"  . $i .  "</a> " ; 
 			}   
-		}	
-			echo "</div>";				
-		echo "</div>";
+		}*/	
+			//echo "</div>";				
+		//echo "</div>";
 		
 		?>
 		
