@@ -219,6 +219,7 @@
 		</div>
 	</div>	
 	
+	
 	<!-- Aqui se carga toda la informacion del historial -->
 	<section class="grupo">
       <table class="table-sap">
@@ -369,11 +370,11 @@
 		
 		//Falta centrar y darle estilo al selector de paginas
 		
-		//echo "<div class=\"caja-100\">";
-			//echo "<div class=\"paginator\">";
+		echo "<div id=\"campana\" class=\"caja-100\">";
+			echo "<div class=\"paginator\">";
 		
 		//muestro los distintos índices de las páginas, si es que hay varias páginas 
-		/*
+		
 		if ($total_paginas > 1){ 
 		for ($i=1;$i<=$total_paginas;$i++){ 
 			if ($pagina == $i) 
@@ -383,9 +384,9 @@
 				//si el índice no corresponde con la página mostrada actualmente, coloco el enlace para ir a esa página 				
 				echo "<a href='por-revisar-sap.php?pagina=" . $i . "'>"  . $i .  "</a> " ; 
 			}   
-		}*/	
-			//echo "</div>";				
-		//echo "</div>";
+		}
+			echo "</div>";				
+		echo "</div>";
 		
 		?>
 		

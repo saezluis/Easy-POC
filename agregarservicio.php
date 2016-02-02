@@ -342,7 +342,9 @@ exit;
 			<!--
             <li> <a href="#" class="active">Emisor de ódenes de compra</a></li>
 			-->
+			<!--
             <li> <a href="perfil-sap.php" >Historial de órdenes</a></li>
+			-->
 			<li> </li>
 			<li> </li>
 			<li> </li>

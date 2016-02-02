@@ -19,7 +19,7 @@
 	
 	$rows = $_REQUEST['rows'];	
 	$nro_solicitud_send = $_REQUEST['nro_solicitud_send'];
-	
+	$campana_send_recive = $_REQUEST['campana_send_hid'];
 	
 	$vistos_buenos = array();	
 	$nro_VB = array();
@@ -57,6 +57,37 @@
 		}
 	}
 	
+	if($nro_solicitud_send==''){
+		$stuff='what-ever';
+	}else{
+		buscarNroSolicitud($nro_solicitud_send,$campana_send_recive);
+	}
+	
+	
+	function buscarNroSolicitud($nro_solicitud_get,$campana_send){
+		include "config.php";
+		global $conexion;
+		global $acentos;
+		
+		/*
+		echo "Nro solicitud get: ".$nro_solicitud_get;
+		echo "<br>";
+		echo "<br>";*/
+		
+		$registrosCAC=mysqli_query($conexion,"select * from cac WHERE id_campana = '$campana_send' ")or die("Problemas en el select registrosCAC:".mysqli_error($conexion));
+		
+		//$num_rowsCAC = mysqli_num_rows($registrosCAC);
+		
+		//echo "num rows que esta devolviendo la wea: ".$num_rowsCAC;
+		/*
+		if($num_rowsCAC!=0){
+			mysqli_query($conexion, "UPDATE cac SET nro_solicitud = '$nro_solicitud_get' WHERE id_campana = $campana_send ") or	die("Problemas en el update:".mysqli_error($conexion));
+		}*/
+		
+		while($reg=mysqli_fetch_array($registrosCAC)){
+			mysqli_query($conexion, "UPDATE cac SET nro_solicitud = '$nro_solicitud_get' WHERE id_campana = $campana_send ") or	die("Problemas en el update:".mysqli_error($conexion));
+		}
+	}
 	
 	//-------- Presupuesto Proyectado
 	$ppto_real_name_final = array();	
@@ -82,14 +113,11 @@
 		if($x!=0){
 			buscarOC($nroOC[$x],$ppt[$x]);			
 			$estatus_OC = descartarOC($nroOC[$x]);
-			if($estatus_OC!='T'){				
-				insertPptoReal($ppt[$x],$nroOC[$x],$nro_solicitud_send);
+			if($estatus_OC!='T'){
+				insertPptoReal($ppt[$x],$nroOC[$x],$nro_solicitud_send,$campana_send_recive);
 			}
 		}
-		
 	}	
-	
-	
 	
 	
 	function descartarOC($nro_oc_buscar){
@@ -137,18 +165,21 @@
 		
 	}
 	
-	function insertPptoReal($ppto_real,$nro_oc,$nro_solicitud){
+	
+	
+	function insertPptoReal($ppto_real,$nro_oc,$nro_solicitud,$id_camp){
 		
 		include "config.php";
 		global $conexion;
 		global $acentos;
+		//global $campana_get;
 		
-		mysqli_query($conexion,"INSERT INTO cac(ppto_real,nro_oc,nro_solicitud) values ('$ppto_real','$nro_oc','$nro_solicitud')") or die("Problemas con el insert de los servicios");
+		mysqli_query($conexion,"INSERT INTO cac(ppto_real,nro_oc,nro_solicitud,id_campana) values ('$ppto_real','$nro_oc','$nro_solicitud',$id_camp)") or die("Problemas con el insert de los servicios");
 		
 	}
 	
-	
 	$campana_get = $_REQUEST['campana_send'];
+	
 	
 	echo "<form method=\"post\" action=\"costos-accion.php\">";	
 		echo "<a id=\"dynLink\" href=\"#\" onclick=\"$(this).closest('form').submit()\"></a>";	

@@ -19,12 +19,12 @@
 	
 	
 	<script type = "text/javascript" >
-	
+		/*
 		history.pushState(null, null, 'historial-ordenes.php');
 		window.addEventListener('popstate', function(event) {
 			history.pushState(null, null, 'historial-ordenes.php');
 		});
-		
+		*/
     </script>
 	
   </head>
@@ -93,10 +93,14 @@
         <h1> <a href="#" class="logo"> <img src="tema/img/logo.jpg" alt="POC"></a></h1>
       </div>
       <div class="caja base-50 no-padding">
+		<!--
       	<a class="logout" href="logout.php" >Logout</a>
+		-->
         <nav>
-          <ul>			
+          <ul>
+			<!--
             <li> <a href="emision.php">Emisor de órdenes de compra</a></li>
+			-->
 			<?php
             echo "<li><h4>Usuario: $nombre $apellido</h4></li>";
 			?>
@@ -321,11 +325,11 @@
 			  
 			  //OJO: Aqui solo tengo que mostrar la OC, osea hacer link al PDF que ya esta en uploads
 			  
-			  if (in_array($nro_orden_comp,@$items)){  			  
-			  echo "<div id=\"orden--6S\"><a href=\"./uploads/$n_orden.pdf\" data-tooltip=\"Ver Documento\" class=\"various\" ><img src=\"tema/img/ver-doc.gif\" alt=\"\"></a></div>";
-		  }else{
+			  //if (in_array($nro_orden_comp,@$items))
+			  //echo "<div id=\"orden--6S\"><a href=\"./uploads/$n_orden.pdf\" data-tooltip=\"Ver Documento\" class=\"various\" ><img src=\"tema/img/ver-doc.gif\" alt=\"\"></a></div>";
+		  //else
 			  echo "<div id=\"orden--6S\"><a href=\"modificar-oc-detalle.php?oc_send=",urlencode($n_orden)," \">Editar</a></div>";
-		  }
+		  //
 			  
 			echo "</div>";	
 		}
@@ -354,6 +358,8 @@
 		?>
 		
       </div>
+	  <br>
+	<a href="seleccion-user.php"><input type="button" value="Volver"></a>  
     </div>
 	
 	

@@ -51,9 +51,10 @@ exit;
         <p>Seleccione una opción</p>
         <div id="seleBoss">
           <ul>
-            <li><a href="costos-accion.php">Costos acción / campaña</a></li>
-            <li><a href="perfil-boss.php">Revisar OC</a></li>
-			<li><a href="logout.php">Cerrar sesión</a></li>
+            <li><a href="emision.php">Emisor de OC</a></li>
+            <li><a href="historial-ordenes.php">Historial de OC</a></li>
+			<li><a href="mi-perfil.php">Mi perfil</a></li>
+			<li><a href="logout.php">Cerrar Sesión</a></li>
           </ul>
         </div>
       </div>

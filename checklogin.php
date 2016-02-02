@@ -102,7 +102,7 @@
 				//header("Location:emision.php");
 				
 				echo '<script type="text/javascript">';
-				echo 'window.location.href="emision.php";';
+				echo 'window.location.href="seleccion-user.php";';
 				echo '</script>';
 				
 			}

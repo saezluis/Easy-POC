@@ -105,6 +105,8 @@ exit;
 		include "config.php";
 		
 		//inicializacion de variales
+		$rows="";
+		
 		$id_user="";
 		$nombre="";
 		$apellido="";
@@ -129,11 +131,22 @@ exit;
 		
 		@$id_campana_get2 = @$_REQUEST['campana'];
 		
-		$registrosOC=mysqli_query($conexion,"SELECT * FROM ordenes WHERE campana = '$id_campana_get2'");
+		if(@$id_campana_get2==''){
+			$stuff='what-ever';
+			//echo "campaña viene vacia";
+		}else{
+			//buscarNroSolicitud($nro_solicitud_send,$campana_send_recive);
+			//echo "campaña si trae ahora valores";
+			$registrosOC = mysqli_query($conexion,"SELECT * FROM ordenes WHERE campana = '$id_campana_get2'");
 		
-		$registrosOC2=mysqli_query($conexion,"SELECT * FROM ordenes WHERE campana = '$id_campana_get2'");
+			$registrosOC2 = mysqli_query($conexion,"SELECT * FROM ordenes WHERE campana = '$id_campana_get2'");
 		
-		$rows = mysqli_num_rows($registrosOC);
+			$registrosCAC_cam = mysqli_query($conexion,"SELECT * FROM cac WHERE id_campana = '$id_campana_get2'");
+		
+			$rows = mysqli_num_rows($registrosOC);
+		}
+		
+		
 		
 		/*echo "Esta devolviendo este nro de OC: ".$rows;
 		echo "<br>";
@@ -145,7 +158,9 @@ exit;
         <h1> <a href="#" class="logo"> <img src="tema/img/logo.jpg" alt="POC"></a></h1>
       </div>
       <div class="caja base-50 no-padding">
+		<!--
       	<a class="logout" href="logout.php" >Logout</a>
+		-->
         <nav>
           <ul>
 			<!--
@@ -225,7 +240,19 @@ exit;
 		  
           <div class="caja base-20">
             <label>N° Solicitud</label>
-			<input type="text" id="nro_solicitud" class="resizedTextbox">				
+			<?php
+				@$id_campana_get = @$_REQUEST['campana'];
+				if(@$reg=mysqli_fetch_array($registrosCAC_cam)){
+					@$id_campana_cac = $reg['id_campana'];
+				}
+					if($id_campana_get==@$id_campana_cac){
+						//@$registrosCampa=mysqli_query($conexion,"SELECT * from campana WHERE id_campana = '$id_campana_get'") or die("Problemas en el select de registros campa:".mysqli_error($conexion));						
+							@$nro_solicitud_show = $reg['nro_solicitud'];
+							echo "<input type=\"text\" id=\"nro_solicitud\" value=\"$nro_solicitud_show\" class=\"resizedTextbox\">";						
+					}else{
+						echo "<input type=\"text\" id=\"nro_solicitud\" value=\"\" class=\"resizedTextbox\">";
+					}					
+			?>
           </div>
 		  
            
@@ -233,7 +260,7 @@ exit;
            <div class="caja base-20">
             <label>Responsable</label>
 				<?php
-					if($reg=mysqli_fetch_array($registrosOC)){
+					if(@$reg=mysqli_fetch_array(@$registrosOC)){
 						$id_user = $reg['id_user'];
 						$jefe_autorizacion = $reg['jefe_autorizacion'];
 					}
@@ -287,7 +314,8 @@ exit;
 		        </thead>
 		        <tbody>		          
 					<?php
-						while($reg=mysqli_fetch_array($registrosOC2)){
+						$campana_send="";
+						while(@$reg=mysqli_fetch_array(@$registrosOC2)){
 							
 							$numero_orden = $reg['numero_orden'];
 							$descripcion_oc = $reg['descripcion'];
@@ -398,7 +426,7 @@ exit;
 		              <th> </th>
 		              <th>Total</th>
 						<?php
-							echo "<th class=\"tot-1\" style=\"width:7%; font-size:11px !important;\"  >$ $suma_PPTO_format</th>";
+							echo "<th class=\"tot-1\" style=\"width:7%; font-size:11px !important;\">$ $suma_PPTO_format</th>";
 							echo "<th class=\"tot-1\" style=\"width:7%; font-size:11px !important;\">$ $ppto_real_suma_format</th>";
 							echo "<th class=\"tot-1\" style=\"width:7%; font-size:11px !important;\">$ $diferencia_total_sum_format</th>";
 						?>
@@ -414,6 +442,7 @@ exit;
 						echo "<input type=\"text\" value=\"Misato\" name=\"vb0\" hidden=hidden />";
 						
 						echo "<input type=\"text\" id=\"nroSolicitudBox\" value=\"\" name=\"nro_solicitud_send\" hidden=hidden />";
+						echo "<input type=\"text\" value=\"$campana_send\" name=\"campana_send_hid\" hidden=hidden />";
 						
 						echo "<th></th>"; //<button type=\"submit\">actualizar</button>
 					  ?>
@@ -424,8 +453,11 @@ exit;
 		      </section>
 		    </section>
         </form>		
-      </div>
+      </div>	
+	  <br>
+	 <a href="seleccion-boss.php"><input type="button" value="Volver"></a>	
     </div>
+	  
 	
         
     <div id="footer" class="total">

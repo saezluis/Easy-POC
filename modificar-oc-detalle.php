@@ -103,7 +103,10 @@
       <div class="caja base-50 no-padding">
         <h1> <a href="administrador.php"" class="logo"> <img src="tema/img/logo.jpg" alt="POC"></a></h1>
       </div>
-		<div class="caja base-50 no-padding"><a href="logout.php" class="logout">Logout</a>
+		<div class="caja base-50 no-padding">
+		<!--
+		<a href="logout.php" class="logout">Logout</a>
+		-->
 			<nav>
 				<ul>            
 					<?php

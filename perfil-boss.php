@@ -4,6 +4,7 @@
   if(!isset($_SESSION['username'])){
     header("location:login.php");
   }
+  
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -17,14 +18,28 @@
     <link rel="stylesheet" href="tema/js/source/jquery.fancybox.css?v=2.1.5">
     <script src="tema/js/source/jquery.fancybox.pack.js?v=2.1.5"></script>
 	
+	<style>
+	
+	.redText { 
+			background-color:red;
+		}
+	
+	.textoRojo {
+		color:red !important;
+	}
+	
+	</style>
+	
   </head>
   <body>
+  	
+	
 	<?php
 		
 		include "config.php";
 	
 		$conexion=mysqli_connect($host,$username,$password,$db_name) or die("Problemas con la conexión");
-				
+		$acentos = $conexion->query("SET NAMES 'utf8'");
 		
 		$registros=mysqli_query($conexion,"select * from ordenes where visto_bueno = \"no\"") or
 		die("Problemas en el select:".mysqli_error($conexion));
@@ -62,7 +77,9 @@
         <h1> <a href="#" class="logo"> <img src="tema/img/logo.jpg" alt="POC"></a></h1>
       </div>
       <div class="caja base-50 no-padding">
+		<!--
       	<a class="logout" href="logout.php" >Logout</a>
+		-->
         <nav>
           <ul>
             <li> <a href="perfil-boss-vb-si.php">Historial de órdenes de compra con VºBº</a></li>
@@ -177,51 +194,63 @@
           <div id="titulo--orden-3">Detalle</div>
           <div id="titulo--orden-4">OC SAP</div>
           <div id="titulo--orden-5">OC RECEPCIÓN</div>
-          <div id="titulo--orden-6T"> <img src="tema/img/time.gif" alt=""></div>
+          <div id="titulo--orden-6T"><img src="images/email_icon.png" height="30px" width="30px" title="Notificación vía email"></div>
           <div id="titulo--orden-6S">VºBº</div>
         </div>   		        
 		
 		<?php
 		
+		$num_rows = "";
+		
 		while ($reg=mysqli_fetch_array($rs))
 		{
-		  $n_orden = $reg['numero_orden'];
-		  echo "<div id=\"tabla\">";
-		  //echo "<div id=\"orden--1\">".$reg['numero_orden']."</div>";	
-		  echo "<div id=\"orden--1\"><a href=\"consultar-orden.php?numero_orden=",urlencode($n_orden)," \">$n_orden</a></div>";
-		  
-		  $visto_bd = $reg['visto_bueno'];		  
-		  
-		  //Aqui se calculan los dias que van transcurriendo desde la emision de la OC
-		  $fecha = $reg['fecha'];		  
-		  $todate = date("Y-m-d",strtotime($fecha));		  
-		  $fecha_format = date("d-m-Y",strtotime($fecha));		  		  		  
-		  date_default_timezone_set('America/Santiago');
-		  $fromdate = date('Y-m-d', time());		  
-		  $calculate_seconds = strtotime($fromdate) - strtotime($todate); // Numero de segundos entre las dos fechas
-		  $days = floor($calculate_seconds / (24 * 60 * 60 )); // Conversion a dias	
-		  
-		  echo "<div id=\"orden--2\">".$fecha_format."</div>";
-		  echo "<div id=\"orden--3\">".$reg['descripcion']."</div>";
-		  echo "<div id=\"orden--4\">".$reg['orden_sap']."<span class=\"yes\"><img src=\"tema/img/$visto_bd.gif\" alt=\"\"></span>"."</div>";
-		  echo "<div id=\"orden--5\">".$reg['orden_recepcion']."<span class=\"no\"><img src=\"tema/img/$visto_bd.gif\" alt=\"\"></span>"."</div>";		  
-		  //Aqui manipulo la fecha para que si pasa de 5 dias se muestre en rojo
-		  if ($days>=5){
-			echo "<div id=\"orden--6T\" style=\"color:#FF0000 \">".$days." dias"."</div>";
-		  } else {
-			  echo "<div id=\"orden--6T\" >".$days." dias"."</div>";
-		  }		  
-		  echo "<div id=\"orden--6S\">";
-            echo "<form method=\"POST\" id=\"$n_orden\" class=\"choose\" action=\"update-perfil-boss.php\" >";
-              echo "<select name=\"revision\" form=\"$n_orden\" onchange=\"this.form.submit()\">";			  
-                echo "<option value=\"elija\">Elija</option>";
-                echo "<option value=\"si.$n_orden\">Si</option>";
-                echo "<option value=\"no.$n_orden\">No</option>";
-              echo "</select>";
-            echo "</form>";
-          echo "</div>";		  
-		  echo "</div>";	
-		  }
+			  $n_orden = $reg['numero_orden'];
+			  
+			  $registrosOrdenesNeg=mysqli_query($conexion,"select * from ordenes_negadas WHERE id_orden = $n_orden") or die("Problemas en el select:".mysqli_error($conexion));
+			  
+			  $num_rows = mysqli_num_rows($registrosOrdenesNeg);	  
+			  
+			  
+			  echo "<div id=\"tabla\">";
+			  //echo "<div id=\"orden--1\">".$reg['numero_orden']."</div>";	
+			  echo "<div id=\"orden--1\"><a href=\"consultar-orden.php?numero_orden=",urlencode($n_orden)," \">$n_orden</a></div>";
+			  
+			  $visto_bd = $reg['visto_bueno'];
+			  
+			  //Aqui se calculan los dias que van transcurriendo desde la emision de la OC
+			  $fecha = $reg['fecha'];		  
+			  $todate = date("Y-m-d",strtotime($fecha));		  
+			  $fecha_format = date("d-m-Y",strtotime($fecha));		  		  		  
+			  date_default_timezone_set('America/Santiago');
+			  $fromdate = date('Y-m-d', time());		  
+			  $calculate_seconds = strtotime($fromdate) - strtotime($todate); // Numero de segundos entre las dos fechas
+			  $days = floor($calculate_seconds / (24 * 60 * 60 )); // Conversion a dias	
+			  
+			  $id_user = $reg['id_user'];
+			  
+			  echo "<div id=\"orden--2\">".$fecha_format."</div>";
+			  echo "<div id=\"orden--3\">".$reg['descripcion']."</div>";
+			  echo "<div id=\"orden--4\">".$reg['orden_sap']."<span class=\"yes\"><img src=\"tema/img/$visto_bd.gif\" alt=\"\"></span>"."</div>";
+			  echo "<div id=\"orden--5\">".$reg['orden_recepcion']."<span class=\"no\"><img src=\"tema/img/$visto_bd.gif\" alt=\"\"></span>"."</div>";		  
+			  //Esto muestra si hay o no notificacion via email al usuario
+			  if($num_rows==1){
+				echo "<div id=\"orden--6T\" ><a class=\"textoRojo\" href=\"ver-razon-orden-neg.php?numero_orden=",urlencode($n_orden)," \">Si</a></div>";
+			  }else{
+			    echo "<div id=\"orden--6T\" >No</div>";
+			  }
+			  
+			  echo "<div id=\"orden--6S\">";
+				echo "<form method=\"POST\" id=\"$n_orden\" class=\"choose\" action=\"update-perfil-boss.php\" >";				  
+				  echo "<select name=\"revision\" form=\"$n_orden\" onchange=\"this.form.submit();\">";			  
+					echo "<option class=\"redText\" value=\"\">$visto_bd</option>";
+					echo "<option value=\"si.$n_orden\">Si</option>";
+					echo "<option value=\"no.$n_orden\">No</option>";
+				  echo "</select>";
+				  echo "<input type=\"text\" name=\"id_user_send\" value=\"$id_user\" hidden=hidden >";			  
+				echo "</form>";
+			  echo "</div>";		  
+			  echo "</div>";
+		}
 		
 				
 		mysqli_free_result($rs); 
@@ -246,7 +275,9 @@
 		
 		?>
 		
-      </div>	  	  
+      </div>	 
+ 	  <br>
+	 <a href="seleccion-boss.php"><input type="button" value="Volver"></a>	
     </div>					
 	
     <div id="footer" class="total">
@@ -257,5 +288,8 @@
         </div>
       </div>
     </div>
+	
+	
+	
   </body>
 </html>

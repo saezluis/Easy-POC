@@ -1682,7 +1682,7 @@ header .counter {
   text-align: center;
   line-height: 25px;
   top: 65px;
-  right: 35px; }
+  right: 200px; /*35*/}
 header h2 {
   font-size: 1.2em;
   margin: 0; }
@@ -3190,3 +3190,20 @@ form.add {
     border: 1px solid #cf0508;
     padding: 5px;
     font-size: 0.8em; }  
+	
+form#formulario__mail {
+  width: 50%;
+  float: left;
+  margin-top: 1.8em;
+  padding: 10px;
+  background: rgba(232, 232, 232, 0.5); }
+  form#formulario__mail .marFo {
+    margin-right: 13px; }
+  form#formulario__mail .wrap__total {
+    margin-top: 1em;
+    overflow: hidden; }
+    form#formulario__mail .wrap__total .wrap__input {
+      width: 50%;
+      float: left; }
+    form#formulario__mail .wrap__total .asunTForm {
+      width: 88%; }

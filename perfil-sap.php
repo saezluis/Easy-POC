@@ -85,7 +85,7 @@
 			<!--
             <li> <a href="emision.php">Emisor de órdenes de compra</a></li>
 			-->
-            <li> <a href="por-revisar-sap.php" class="active" >Por revisar</a></li>
+            <li> <a href="por-revisar-sap.php" class="active" >OC Por revisar</a></li>
           </ul>
         </nav>
         <?php echo "<div class=\"counter\">$num_rows</div>"; ?>
@@ -95,7 +95,7 @@
       </div>
     </header>
     <div id="data--input" class="grupo">
-      <h3>Mis órdenes de compra</h3>
+      <h3>Historial de órdenes de compra</h3>
     </div>
     <div id="buscar" class="grupo">
       <div class="caja-80">
@@ -353,7 +353,7 @@
 					
 					echo "<td class=\"ppto-proyecto\">$days</td>";
 					echo "<td class=\"ppto-real\">";
-					echo "<form method=\"POST\" action=\"enviar-data-perfil-sap.php\">";
+					echo "<form method=\"POST\" action=\"send-form.php\">";
 					  echo "<button type=\"submit\" value=\"Enviar\" class=\"gou\">Enviar</button>";
 					  echo "<input type=\"text\" value=\"$n_orden\" name=\"nro_OC_send\" hidden=hidden >";
 					echo "</form>";  
@@ -361,9 +361,37 @@
 				  echo "</tr>";
 				echo "</tbody>";
 			}
+			
+			echo  "</table>";
+		echo "</section>";
+			
+			mysqli_free_result($rs); 
+		mysqli_close($conexion);
+		
+		//Falta centrar y darle estilo al selector de paginas
+		
+		echo "<div id=\"campana\" class=\"caja-100\">";
+			echo "<div class=\"paginator\">";
+		
+		//muestro los distintos índices de las páginas, si es que hay varias páginas 
+		
+		if ($total_paginas > 1){ 
+		for ($i=1;$i<=$total_paginas;$i++){ 
+			if ($pagina == $i) 
+				//si muestro el índice de la página actual, no coloco enlace 
+				echo "<span class=\"pag--cube\">" . $pagina . "</span>" . " "; 
+			else 
+				//si el índice no corresponde con la página mostrada actualmente, coloco el enlace para ir a esa página 				
+				echo "<a href='por-revisar-sap.php?pagina=" . $i . "'>"  . $i .  "</a> " ; 
+			}   
+		}
+			echo "</div>";				
+		echo "</div>";
+		
 		?>
-      </table>
-    </section>
+     
+	
+	
 	
 	
     <div id="footer" class="total">

@@ -120,10 +120,12 @@ exit;
 	</style>
 	
 	<script type = "text/javascript" >
+		/*
 		history.pushState(null, null, 'emision.php');
 		window.addEventListener('popstate', function(event) {
 			history.pushState(null, null, 'emision.php');
-		});
+		});*/
+		
     </script>
 	
 	<script type="text/javascript">
@@ -253,7 +255,9 @@ exit;
         <h1> <a href="#" class="logo"> <img src="tema/img/logo.jpg" alt="POC"></a></h1>
       </div>
       <div class="caja base-50 no-padding">
+		<!--
       	<a class="logout" href="logout.php" >Logout</a>
+		-->
         <nav>
           <ul>
 			<!--
@@ -261,8 +265,9 @@ exit;
 			-->
 			<!--
             <li> <a href="perfil-sap.php" >Historial de órdenes</a></li>
-			-->
+			
 			<li> <a href="historial-ordenes.php" >Historial de órdenes</a></li>
+			-->
 			<br>
 			<?php
 				echo "<li><h4>Usuario: $nombre $apellido</h4></li>";
@@ -493,6 +498,8 @@ exit;
           </div>			            		 
         </form>		
       </div>
+	  <br>
+	<a href="seleccion-user.php"><input type="button" value="Volver"></a>
     </div>
 	
 	
@@ -500,7 +507,9 @@ exit;
          para ello el action del formulario debe ir a una segunda pagina donde guardara los datos y
 	     luego debe rellenar la "Orden de compra Marketing"
 	-->
-        
+    
+    
+	
     <div id="footer" class="total">
       <div class="grupo">
         <div id="logo-footer" class="caja-50"><img src="tema/img/logo-footer.png" alt=""></div>
