@@ -179,6 +179,7 @@ exit;
 	
 		$numero_orden = $_GET['numero_orden'];
 
+		$username_from_sesion = $_SESSION['username'];
 		//echo "Landing";
 		//echo "<br>";
 		//echo "<br>";
@@ -540,6 +541,62 @@ $consulta_orden=mysqli_query($conexion,"select * from ordenes where numero_orden
         </div>
       </div>
     </div>
-	<br><br><br><br><br><br><br><br>
+	<!-- <br><br><br><br><br><br><br><br> -->
+	<div id="firmas">
+    <div class="grupo">
+		<?php
+		// verificar firma de acuerdo a usuario que viene de la session variable		
+		if($username_from_sesion=='user'){
+			echo "<div id=\"firma-1\"><img src=\"tema/img/firma-luis.jpg\"></div>";
+		}		
+		if($username_from_sesion=='enriqueta.bierwirth@easy.cl'){
+			echo "<div id=\"firma-1\"><img src=\"tema/img/enriqueta-bierwirth.jpg\"></div>";
+		}
+		if($username_from_sesion=='andrea.echagueflores@easy.cl'){
+			echo "<div id=\"firma-1\"><img src=\"tema/img/andrea-echague.jpg\"></div>";
+		}
+		if($username_from_sesion=='gonzalo.elizaldepena@easy.cl'){
+			echo "<div id=\"firma-1\"><img src=\"tema/img/gonzalo-elizalde.jpg\"></div>";
+		}
+		if($username_from_sesion=='francisca.hinojosa@easy.cl'){
+			echo "<div id=\"firma-1\"><img src=\"tema/img/fran-hinojosa.jpg\"></div>";
+		}
+		if($username_from_sesion=='cristian.ortizdiaz@cencosud.cl'){
+			echo "<div id=\"firma-1\"><img src=\"tema/img/cristian-ortiz.jpg\"></div>";
+		}
+		if($username_from_sesion=='jorge.lielmil@easy.cl'){
+			echo "<div id=\"firma-1\"><img src=\"tema/img/jorge-lielmil.jpg\"></div>";
+		}
+		if($username_from_sesion=='rose.villalon@cencosud.cl'){
+			echo "<div id=\"firma-1\"><img src=\"tema/img/rose.jpg\"></div>";
+		}
+		if($username_from_sesion=='andrea.montes@easy.cl'){
+			echo "<div id=\"firma-1\"><img src=\"tema/img/andrea-montes.jpg\"></div>";
+		}
+		if($username_from_sesion=='daniela.salazarrojas@cencosud.cl'){
+			echo "<div id=\"firma-1\"><img src=\"tema/img/daniela-salazar.jpg\"></div>";
+		}
+		if($username_from_sesion=='macarena.borquez@cencosud.cl'){
+			echo "<div id=\"firma-1\"><img src=\"tema/img/macarena-borquez.jpg\"></div>";
+		}
+		
+			if($jefe_autorizacion=='Cristian Ortiz'){
+				echo "<div id=\"firma-1\"><img src=\"tema/img/cristian-ortiz.jpg\"></div>";
+			}
+			if($jefe_autorizacion=='Andrea Montes'){
+				echo "<div id=\"firma-1\"><img src=\"tema/img/andrea-montes.jpg\"></div>";
+			}
+			if($jefe_autorizacion=='Roberto Moore'){
+				echo "<div id=\"firma-2\"><img src=\"tema/img/firma-2.jpg\"></div>";
+			}
+			if($jefe_autorizacion=='Rose Marie Villalón'){
+				echo "<div id=\"firma-1\"><img src=\"tema/img/rose.jpg\"></div>";
+			}
+			if($jefe_autorizacion=='Macarena Borquez'){
+				echo "<div id=\"firma-1\"><img src=\"tema/img/macarena-borquez.jpg\"></div>";
+			}
+		?>
+    </div>
+  </div>
 </body>
 </html>

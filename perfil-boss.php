@@ -228,8 +228,14 @@
 			  
 			  $id_user = $reg['id_user'];
 			  
+			  $detalle = $reg['descripcion'];
+			
+			$detalle_corto = substr($detalle,0,50);
+			
+			$detalle_corto_final = $detalle_corto."...";
+			  
 			  echo "<div id=\"orden--2\">".$fecha_format."</div>";
-			  echo "<div id=\"orden--3\">".$reg['descripcion']."</div>";
+			  echo "<div id=\"orden--3\">".$detalle_corto_final."</div>";
 			  echo "<div id=\"orden--4\">".$reg['orden_sap']."<span class=\"yes\"><img src=\"tema/img/$visto_bd.gif\" alt=\"\"></span>"."</div>";
 			  echo "<div id=\"orden--5\">".$reg['orden_recepcion']."<span class=\"no\"><img src=\"tema/img/$visto_bd.gif\" alt=\"\"></span>"."</div>";		  
 			  //Esto muestra si hay o no notificacion via email al usuario

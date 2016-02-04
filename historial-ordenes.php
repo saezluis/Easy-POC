@@ -289,13 +289,20 @@
 			$nro_orden_foo = $reg['numero_orden'];
 			$more_foo = $more_foo + 1;
 			
+			$detalle = $reg['descripcion'];
+			
+			$detalle_corto = substr($detalle,0,50);
+			
+			$detalle_corto_final = $detalle_corto."...";
+			//Hello
+			
 			echo "<div id=\"tabla\">";
 				
 			  echo "<div id=\"orden--1\"><a href=\"consultar-orden.php?numero_orden=",urlencode($n_orden)," \">$n_orden</a></div>";
 			  //echo "<div id=\"orden--1\">".$reg['numero_orden']."</div>";
 			  
 			  echo "<div id=\"orden--2\">".$fecha_format."</div>";
-			  echo "<div id=\"orden--3\">".$reg['descripcion']."</div>";
+			  echo "<div id=\"orden--3\">".$detalle_corto_final."</div>";
 			  //------------------- Aqui trabajo con orden SAP -------------------
 			  echo "<div id=\"orden--4\">".$reg['orden_sap'].""; //<span class=\"yes\"><img src=\"tema/img/yes.gif\" alt=\"\"></span><span class=\"edit\"><a href=\"#$n_orden\" data-tooltip=\"Editar\" class=\"various\"><img src=\"tema/img/edit.gif\" alt=\"\">
 					echo "<div id=\"$n_orden\" name=\"\" style=\"display: none;\">";

@@ -74,7 +74,142 @@
 		margin: 0;
 		text-align: left !important;
 	}
+	
+	.cajitaTexto {
+		width: 200px !important;
+	}
 	</style>
+	
+	<script>
+		
+		Number.prototype.formatMoney = function(places, symbol, thousand, decimal) {
+		places = !isNaN(places = Math.abs(places)) ? places : 2;
+		symbol = symbol !== undefined ? symbol : "$";
+		thousand = thousand || ",";
+		decimal = decimal || ".";
+		var number = this, 
+	    negative = number < 0 ? "-" : "",
+	    i = parseInt(number = Math.abs(+number || 0).toFixed(places), 10) + "",
+	    j = (j = i.length) > 3 ? j % 3 : 0;
+		return symbol + negative + (j ? i.substr(0, j) + thousand : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + thousand) + (places ? decimal + Math.abs(number - i).toFixed(places).slice(2) : "");
+		};
+		
+		function calcular(select) {
+		
+			var totalget = document.getElementById("valorTotalNeto").value;
+			
+			if(select.options[select.selectedIndex].id == "elija"){
+				document.getElementById("totalfinalcampo").value = '';
+			}
+			
+			if(select.options[select.selectedIndex].id == "iva"){
+			
+				var calculariva = (parseFloat(totalget) * 19) / 100;
+				//var calculariva = (totalget * 19) / 100;
+				var totalfinal = parseFloat(totalget) + calculariva;
+				
+				var calcularivaFormat = parseFloat(calculariva).formatMoney(0,"",".",".");
+				var totalfinalFormat = parseFloat(totalfinal).formatMoney(0,"",".",".");
+				
+				document.getElementById("totalfinalcampo").value = totalfinalFormat;
+				document.getElementById("campo_subtotal").value = calcularivaFormat;
+				//document.getElementById("campo_subtotal_copy").value = calcularivaFormat;
+				//alert('click en iva');
+				//
+				//alert(totalget);
+				//var nameValue = document.getElementById("uniqueID").value;
+				//Me interesa establecer el valor del campo luego del calculo del IVA
+				//document.getElementById("campo2-c").value = '';
+				//document.getElementById("tipo_impuesto").value = document.getElementById("iva").value;
+				
+			} 
+			/*
+			if(select.options[select.selectedIndex].id == "boleta"){
+				//alert('click en boleta');
+				var calcularboleta = (parseFloat(totalget) * 10) / 100;
+				var totalfinal = parseFloat(totalget) + calcularboleta;
+				document.getElementById("totalfinalcampo").value = Math.round(totalfinal);
+				document.getElementById("campo_subtotal").value = Math.round(calcularboleta);
+				document.getElementById("campo_subtotal_copy").value = Math.round(calcularboleta);
+				//var nameValue = document.getElementById("uniqueID").value;
+				document.getElementById("tipo_impuesto").value = document.getElementById("boleta").value;
+			} 
+			*/
+			if(select.options[select.selectedIndex].id == "exento"){
+				//alert('click en exento');
+				
+				var totalgetFormat = parseFloat(totalget).formatMoney(0,"",".",".");
+				
+				document.getElementById("totalfinalcampo").value = totalgetFormat;
+				document.getElementById("campo_subtotal").value = "0";
+				//document.getElementById("campo_subtotal_copy").value = "0";
+				//var nameValue = document.getElementById("uniqueID").value;
+				//document.getElementById("tipo_impuesto").value = document.getElementById("exento").value;
+			} 
+			//alert(select.options[select.selectedIndex].getAttribute("iva"));
+			//obtener valores del formulario
+			//var nameValue = document.getElementById("uniqueID").value;
+			
+		}
+		
+		function recalcularIVA() {
+			
+			var totalget = document.getElementById("valorTotalNeto").value;
+			
+			var calculariva = (parseFloat(totalget) * 19) / 100;
+				//var calculariva = (totalget * 19) / 100;
+			var totalfinal = parseFloat(totalget) + calculariva;
+				
+			var calcularivaFormat = parseFloat(calculariva).formatMoney(0,"",".",".");
+			var totalfinalFormat = parseFloat(totalfinal).formatMoney(0,"",".",".");
+				
+			document.getElementById("totalfinalcampo").value = totalfinalFormat;
+			document.getElementById("campo_subtotal").value = calcularivaFormat;
+		
+		}
+		
+		function exentoIVA() {
+			
+			var totalget = document.getElementById("valorTotalNeto").value;
+			
+			var totalgetFormat = parseFloat(totalget).formatMoney(0,"",".",".");
+				
+			document.getElementById("totalfinalcampo").value = totalgetFormat;
+			document.getElementById("campo_subtotal").value = "0";
+		}
+		
+	
+	</script>
+	
+	
+	
+	<script>
+		
+		$( document ).ready(function() {
+			//function calcularValorNeto() {
+			
+				var cantidadCampo = document.getElementById("cantidadCampo").value;
+				var montoNeto = document.getElementById("montoNeto").value;
+				
+				var subTotal = cantidadCampo * montoNeto;
+				document.getElementById("valorTotalNeto").value = subTotal;
+			
+			//}
+		});
+		
+	</script>
+	
+	<script>
+	
+		function recalcular(){
+				var cantidadCampo = document.getElementById("cantidadCampo").value;
+				var montoNeto = document.getElementById("montoNeto").value;
+				
+				var subTotal = cantidadCampo * montoNeto;
+				document.getElementById("valorTotalNeto").value = subTotal;			
+		}
+		
+	</script>
 	
   </head>
   <body>
@@ -135,6 +270,12 @@
 					$area_pago = $reg['area_pago'];
 					$control_presupuesto = $reg['control_presupuesto'];
 					$registro_gasto = $reg['registro_gasto'];
+					
+					$monto_neto = $reg['monto_neto'];
+					$tipo_impuesto = $reg['tipo_impuesto'];
+					
+					$sub_total = $reg['sub_total'];
+					$total_final = $reg['total_final'];
 					
 					$registrosProveedor=mysqli_query($conexion,"select * from proveedor WHERE id_proveedor=$id_proveedor") or die("Problemas en el select:".mysqli_error($conexion));
 					
@@ -361,12 +502,32 @@
 						
 						echo "<div class=\"caja base-25\">";
 							echo "<label>Cantidad</label>";
-							echo "<input type=\"text\" value=\"$cantidad\" name=\"cantidad\">";
+							if($tipo_impuesto=='IVA'){
+								$segundaFuncion = 'recalcularIVA();';
+							}
+							if($tipo_impuesto=='EXENTO DE IVA'){
+								$segundaFuncion = 'exentoIVA();';
+							}
+							if($tipo_impuesto==''){
+								$segundaFuncion = '';
+							}
+							echo "<input id=\"cantidadCampo\" type=\"text\" value=\"$cantidad\" name=\"cantidad\" onchange=\"recalcular(); $segundaFuncion \" >";
 						echo "</div>";
+						
 						echo "<div class=\"caja base-25\">";
 							echo "<label>Monto Neto</label>";
-							echo "<input type=\"text\" value=\"$monto\" name=\"monto\" >";
+							if($tipo_impuesto=='IVA'){
+								$segundaFuncion = 'recalcularIVA();';
+							}
+							if($tipo_impuesto=='EXENTO DE IVA'){
+								$segundaFuncion = 'exentoIVA();';
+							}
+							if($tipo_impuesto==''){
+								$segundaFuncion = '';
+							}
+							echo "<input id=\"montoNeto\" type=\"text\" value=\"$monto\" name=\"monto\" onchange=\"recalcular(); $segundaFuncion \" >";
 						echo "</div>";
+						
 						echo "<div class=\"caja base-50\">";
 							echo "<label>Descripción Servicio</label>";
 							echo "<input type=\"text\" value=\"$descripcion\" name=\"descripcion\" >";
@@ -375,7 +536,38 @@
 						echo "<input type=\"text\" value=\"$nro_servicio\" name=\"nro_servicio\" hidden=hidden >";
 					
 					}
-					  
+						
+						echo "<div class=\"caja base-20\">";
+							echo "<label>Valor Total Neto</label>";
+							echo "<input id=\"valorTotalNeto\" type=\"text\" value=\"\" name=\"valor_t_neto\" readonly>";
+						echo "</div>";
+						
+						echo "<div class=\"caja base-15\">";
+							echo "<label>Exento / IVA</label>";
+								echo "<select name=\"tipoImpuesto\" onchange=\"calcular(this)\">";
+									if($tipo_impuesto=='IVA'){										
+										echo "<option value=\"-1\" >Seleccione</option>";
+										echo "<option value=\"IVA\" id=\"iva\" selected=selected >IVA</option>";
+										echo "<option value=\"EXENTO DE IVA\" id=\"exento\" >Exento</option>";
+									}
+									if($tipo_impuesto=='EXENTO DE IVA'){
+										echo "<option value=\"-1\" >Seleccione</option>";
+										echo "<option value=\"IVA\" id=\"iva\" >IVA</option>";
+										echo "<option value=\"EXENTO DE IVA\" id=\"exento\" selected=selected >Exento</option>";
+									}	
+								echo "</select>";
+						echo "</div>";
+						
+						echo "<div class=\"caja base-20\">";
+							echo "<label>Exento / IVA</label>";
+							echo "<input id=\"campo_subtotal\" type=\"text\" value=\"$sub_total\" name=\"subTotal\">";
+						echo "</div>";
+						
+						echo "<div class=\"caja base-45\">";
+							echo "<label>Total</label>";
+							echo "<input id=\"totalfinalcampo\" class=\"cajitaTexto\" type=\"text\" value=\"$total_final\" name=\"totalFinal\">";
+						echo "</div>";
+						
 					  echo "<div style=\"float:left; padding:15px 0 0 15px; margin-top:15px;\" class=\"cancela-guarda\">";
 						echo "<input type=\"submit\" value=\"stuff\" style=\"margin-right:10px;\" hidden=hidden >";
 						echo "<input type=\"submit\" value=\"Modificar\" style=\"margin-right:10px;\" formaction=\"modificar-oc-procesar.php\" >";

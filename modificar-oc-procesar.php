@@ -13,6 +13,7 @@
 	
 	$fecha_oc = date("Y-m-d", strtotime($newDate_oc));	
 	
+	/*
 	echo $nro_oc;
 	echo "<br>";
 	echo $nro_presupuesto_proveedor;
@@ -21,11 +22,14 @@
 	echo "<br>";
 	echo $fecha_oc;
 	echo "<br><br>";
+	*/
 	
 	$id_proveedor = $_REQUEST['id_proveedor'];
 	
+	/*
 	echo $id_proveedor;
 	echo "<br>";
+	*/
 	
 	$campana = $_REQUEST['campana'];
 	$autorizante = $_REQUEST['autorizante'];
@@ -33,6 +37,7 @@
 	$control_presupuesto = $_REQUEST['control_presupuesto'];
 	$registro_gasto = $_REQUEST['registro_gasto']; 
 	
+	/*
 	echo "<br><br>";
 	
 	echo $campana;
@@ -47,12 +52,14 @@
 	echo "<br>";
 	
 	echo "<br><br>";
+	*/
 	
 	$cantidad = $_REQUEST['cantidad'];
 	$monto = $_REQUEST['monto'];
 	$descripcion = $_REQUEST['descripcion'];
 	$nro_servicio = $_REQUEST['nro_servicio'];
 	
+	/*
 	echo $cantidad;
 	echo "<br>";
 	echo $monto;
@@ -61,10 +68,26 @@
 	echo "<br>";
 	echo $nro_servicio;
 	echo "<br>";
+	*/
 	
 	$monto_neto = $cantidad * $monto;
-	echo "Monto neto: ".$monto_neto;
+	//echo "Monto neto: ".$monto_neto;
 	
+	$valor_t_neto = $_REQUEST['valor_t_neto'];
+	$tipoImpuesto = $_REQUEST['tipoImpuesto'];
+	$subTotal = $_REQUEST['subTotal'];
+	$totalFinal = $_REQUEST['totalFinal'];
+	
+	/*
+	echo "valor_t_neto: ".$valor_t_neto;
+	echo "<br>";
+	echo "tipoImpuesto: ".$tipoImpuesto;
+	echo "<br>";
+	echo "subTotal: ".$subTotal;
+	echo "<br>";
+	echo "totalFinal: ".$totalFinal;
+	echo "<br>";
+	*/
 	
 	mysqli_query($conexion, "UPDATE ordenes SET fecha='$fecha_oc',
 												  campana='$campana',
@@ -76,7 +99,10 @@
 												  id_proveedor='$id_proveedor',
 												  descripcion='$descripcion',
 												  registro_gasto='$registro_gasto',
-												  control_presupuesto='$control_presupuesto'
+												  control_presupuesto='$control_presupuesto',												  
+												  tipo_impuesto='$tipoImpuesto',
+												  sub_total='$subTotal',
+												  total_final='$totalFinal'
 												  
 									WHERE numero_orden='$nro_oc' ") or
 									die("Problemas en el select:".mysqli_error($conexion));
