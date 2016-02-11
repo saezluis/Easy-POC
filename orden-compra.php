@@ -549,6 +549,13 @@ $consulta_proveedor=mysqli_query($conexion,"select * from proveedor where nombre
 			echo "<div id=\"firma-1\"><img src=\"tema/img/macarena-borquez.jpg\"></div>";
 		}	
 		
+		if($username_from_sesion=='diana.friedmanruiz@cencosud.cl'){
+			echo "<div id=\"firma-1\"><img src=\"tema/img/diana-friedman.jpg\"></div>";
+		}
+		if($username_from_sesion=='ruby.plaza@easy.cl'){
+			echo "<div id=\"firma-1\"><img src=\"tema/img/ruby-plaza.jpg\"></div>";
+		}
+		
 			if($jefe_a=='Cristian Ortiz'){
 				echo "<div id=\"firma-1\"><img src=\"tema/img/cristian-ortiz.jpg\"></div>";
 			}
