@@ -188,12 +188,130 @@
 		$( document ).ready(function() {
 			//function calcularValorNeto() {
 			
-				var cantidadCampo = document.getElementById("cantidadCampo").value;
-				var montoNeto = document.getElementById("montoNeto").value;
+				var cantidadCampo1 = document.getElementById("cantidadCampo1").value;
+				var montoNeto1 = document.getElementById("montoNeto1").value;
 				
-				var subTotal = cantidadCampo * montoNeto;
+				//----------------------------------------------------------------------- Campo 2
+				if (document.getElementById('cantidadCampo2') != null) {
+					var cantidadCampo2 = document.getElementById("cantidadCampo2").value;
+				}
+				else {
+					var cantidadCampo2 = null;
+				}
+				
+				if (document.getElementById('montoNeto2') != null) {
+					var montoNeto2 = document.getElementById("montoNeto2").value;
+				}
+				else {
+					var montoNeto2 = null;
+				}
+				
+				//----------------------------------------------------------------------- Campo 3
+				if (document.getElementById('cantidadCampo3') != null) {
+					var cantidadCampo3 = document.getElementById("cantidadCampo3").value;
+				}
+				else {
+					var cantidadCampo3 = null;
+				}
+				
+				if (document.getElementById('montoNeto3') != null) {
+					var montoNeto3 = document.getElementById("montoNeto3").value;
+				}
+				else {
+					var montoNeto3 = null;
+				}
+				
+				//----------------------------------------------------------------------- Campo 4
+				if (document.getElementById('cantidadCampo4') != null) {
+					var cantidadCampo4 = document.getElementById("cantidadCampo4").value;
+				}
+				else {
+					var cantidadCampo4 = null;
+				}
+				
+				if (document.getElementById('montoNeto4') != null) {
+					var montoNeto4 = document.getElementById("montoNeto4").value;
+				}
+				else {
+					var montoNeto4 = null;
+				}
+				
+				//----------------------------------------------------------------------- Campo 5
+				if (document.getElementById('cantidadCampo5') != null) {
+					var cantidadCampo5 = document.getElementById("cantidadCampo5").value;
+				}
+				else {
+					var cantidadCampo5 = null;
+				}
+				
+				if (document.getElementById('montoNeto5') != null) {
+					var montoNeto5 = document.getElementById("montoNeto5").value;
+				}
+				else {
+					var montoNeto5 = null;
+				}
+				
+				//----------------------------------------------------------------------- Campo 6
+				if (document.getElementById('cantidadCampo6') != null) {
+					var cantidadCampo6 = document.getElementById("cantidadCampo6").value;
+				}
+				else {
+					var cantidadCampo6 = null;
+				}
+				
+				if (document.getElementById('montoNeto6') != null) {
+					var montoNeto6 = document.getElementById("montoNeto6").value;
+				}
+				else {
+					var montoNeto6 = null;
+				}
+				
+				//----------------------------------------------------------------------- Campo 7
+				if (document.getElementById('cantidadCampo7') != null) {
+					var cantidadCampo7 = document.getElementById("cantidadCampo7").value;
+				}
+				else {
+					var cantidadCampo7 = null;
+				}
+				
+				if (document.getElementById('montoNeto7') != null) {
+					var montoNeto7 = document.getElementById("montoNeto7").value;
+				}
+				else {
+					var montoNeto7 = null;
+				}
+				
+	            //------------------------------------------------------------------------ Verificaciones
+				if(cantidadCampo1!=''){
+					var subTotal = cantidadCampo1 * montoNeto1;
+				}
+				
+				if(cantidadCampo2 != null){
+					var subTotal = (cantidadCampo1 * montoNeto1) + (cantidadCampo2 * montoNeto2);
+				}
+				
+				if(cantidadCampo3 != null){
+					var subTotal = (cantidadCampo1 * montoNeto1) + (cantidadCampo2 * montoNeto2) + (cantidadCampo3 * montoNeto3);
+				}
+				
+				if(cantidadCampo4 != null){
+					var subTotal = (cantidadCampo1 * montoNeto1) + (cantidadCampo2 * montoNeto2) + (cantidadCampo3 * montoNeto3) + (cantidadCampo4 * montoNeto4);
+				}
+				
+				if(cantidadCampo5 != null){
+					var subTotal = (cantidadCampo1 * montoNeto1) + (cantidadCampo2 * montoNeto2) + (cantidadCampo3 * montoNeto3) + (cantidadCampo4 * montoNeto4) + (cantidadCampo5 * montoNeto5);
+				}
+				
+				if(cantidadCampo6 != null){
+					var subTotal = (cantidadCampo1 * montoNeto1) + (cantidadCampo2 * montoNeto2) + (cantidadCampo3 * montoNeto3) + (cantidadCampo4 * montoNeto4) + (cantidadCampo5 * montoNeto5) + (cantidadCampo6 * montoNeto6);
+				}
+				
+				if(cantidadCampo7 != null){
+					var subTotal = (cantidadCampo1 * montoNeto1) + (cantidadCampo2 * montoNeto2) + (cantidadCampo3 * montoNeto3) + (cantidadCampo4 * montoNeto4) + (cantidadCampo5 * montoNeto5) + (cantidadCampo6 * montoNeto6) + (cantidadCampo7 * montoNeto7);
+				}
+				
 				document.getElementById("valorTotalNeto").value = subTotal;
-			
+				
 			//}
 		});
 		
@@ -202,10 +320,129 @@
 	<script>
 	
 		function recalcular(){
-				var cantidadCampo = document.getElementById("cantidadCampo").value;
-				var montoNeto = document.getElementById("montoNeto").value;
+		
+				var cantidadCampo1 = document.getElementById("cantidadCampo1").value;
+				var montoNeto1 = document.getElementById("montoNeto1").value;
 				
-				var subTotal = cantidadCampo * montoNeto;
+				//----------------------------------------------------------------------- Campo 2
+				if (document.getElementById('cantidadCampo2') != null) {
+					var cantidadCampo2 = document.getElementById("cantidadCampo2").value;
+				}
+				else {
+					var cantidadCampo2 = null;
+				}
+				
+				if (document.getElementById('montoNeto2') != null) {
+					var montoNeto2 = document.getElementById("montoNeto2").value;
+				}
+				else {
+					var montoNeto2 = null;
+				}
+				
+				//----------------------------------------------------------------------- Campo 3
+				if (document.getElementById('cantidadCampo3') != null) {
+					var cantidadCampo3 = document.getElementById("cantidadCampo3").value;
+				}
+				else {
+					var cantidadCampo3 = null;
+				}
+				
+				if (document.getElementById('montoNeto3') != null) {
+					var montoNeto3 = document.getElementById("montoNeto3").value;
+				}
+				else {
+					var montoNeto3 = null;
+				}
+				
+				//----------------------------------------------------------------------- Campo 4
+				if (document.getElementById('cantidadCampo4') != null) {
+					var cantidadCampo4 = document.getElementById("cantidadCampo4").value;
+				}
+				else {
+					var cantidadCampo4 = null;
+				}
+				
+				if (document.getElementById('montoNeto4') != null) {
+					var montoNeto4 = document.getElementById("montoNeto4").value;
+				}
+				else {
+					var montoNeto4 = null;
+				}
+				
+				//----------------------------------------------------------------------- Campo 5
+				if (document.getElementById('cantidadCampo5') != null) {
+					var cantidadCampo5 = document.getElementById("cantidadCampo5").value;
+				}
+				else {
+					var cantidadCampo5 = null;
+				}
+				
+				if (document.getElementById('montoNeto5') != null) {
+					var montoNeto5 = document.getElementById("montoNeto5").value;
+				}
+				else {
+					var montoNeto5 = null;
+				}
+				
+				//----------------------------------------------------------------------- Campo 6
+				if (document.getElementById('cantidadCampo6') != null) {
+					var cantidadCampo6 = document.getElementById("cantidadCampo6").value;
+				}
+				else {
+					var cantidadCampo6 = null;
+				}
+				
+				if (document.getElementById('montoNeto6') != null) {
+					var montoNeto6 = document.getElementById("montoNeto6").value;
+				}
+				else {
+					var montoNeto6 = null;
+				}
+				
+				//----------------------------------------------------------------------- Campo 7
+				if (document.getElementById('cantidadCampo7') != null) {
+					var cantidadCampo7 = document.getElementById("cantidadCampo7").value;
+				}
+				else {
+					var cantidadCampo7 = null;
+				}
+				
+				if (document.getElementById('montoNeto7') != null) {
+					var montoNeto7 = document.getElementById("montoNeto7").value;
+				}
+				else {
+					var montoNeto7 = null;
+				}
+				
+				//------------------------------------------------------------------------ Verificaciones
+				if(cantidadCampo1!=''){
+					var subTotal = cantidadCampo1 * montoNeto1;
+				}
+				
+				if(cantidadCampo2 != null){
+					var subTotal = (cantidadCampo1 * montoNeto1) + (cantidadCampo2 * montoNeto2);
+				}
+				
+				if(cantidadCampo3 != null){
+					var subTotal = (cantidadCampo1 * montoNeto1) + (cantidadCampo2 * montoNeto2) + (cantidadCampo3 * montoNeto3);
+				}
+				
+				if(cantidadCampo4 != null){
+					var subTotal = (cantidadCampo1 * montoNeto1) + (cantidadCampo2 * montoNeto2) + (cantidadCampo3 * montoNeto3) + (cantidadCampo4 * montoNeto4);
+				}
+				
+				if(cantidadCampo5 != null){
+					var subTotal = (cantidadCampo1 * montoNeto1) + (cantidadCampo2 * montoNeto2) + (cantidadCampo3 * montoNeto3) + (cantidadCampo4 * montoNeto4) + (cantidadCampo5 * montoNeto5);
+				}
+				
+				if(cantidadCampo6 != null){
+					var subTotal = (cantidadCampo1 * montoNeto1) + (cantidadCampo2 * montoNeto2) + (cantidadCampo3 * montoNeto3) + (cantidadCampo4 * montoNeto4) + (cantidadCampo5 * montoNeto5) + (cantidadCampo6 * montoNeto6);
+				}
+				
+				if(cantidadCampo7 != null){
+					var subTotal = (cantidadCampo1 * montoNeto1) + (cantidadCampo2 * montoNeto2) + (cantidadCampo3 * montoNeto3) + (cantidadCampo4 * montoNeto4) + (cantidadCampo5 * montoNeto5) + (cantidadCampo6 * montoNeto6) + (cantidadCampo7 * montoNeto7);
+				}
+				
 				document.getElementById("valorTotalNeto").value = subTotal;			
 		}
 		
@@ -214,6 +451,7 @@
   </head>
   <body>
 	<?php
+		$z=0;
 		$nro_oc = $_GET['oc_send'];
 		
 		include "config.php";
@@ -500,6 +738,16 @@
 						$cantidad = $regSe['cantidad'];
 						$monto = $regSe['monto'];
 						
+						$z = $z + 1;
+						$name_cantidad = 'cantidad'.$z;
+						$name_monto = 'monto'.$z;
+						$name_descripcion = 'descripcion'.$z;
+						
+						$name_cantidadCampo = 'cantidadCampo'.$z;
+						$name_montoNeto = 'montoNeto'.$z;
+						
+						$name_nroServicio = 'nroServicio'.$z;
+						
 						echo "<div class=\"caja base-25\">";
 							echo "<label>Cantidad</label>";
 							if($tipo_impuesto=='IVA'){
@@ -511,7 +759,7 @@
 							if($tipo_impuesto==''){
 								$segundaFuncion = '';
 							}
-							echo "<input id=\"cantidadCampo\" type=\"text\" value=\"$cantidad\" name=\"cantidad\" onchange=\"recalcular(); $segundaFuncion \" >";
+							echo "<input id=\"$name_cantidadCampo\" type=\"text\" value=\"$cantidad\" name=\"$name_cantidad\" onchange=\"recalcular(); $segundaFuncion \" >";
 						echo "</div>";
 						
 						echo "<div class=\"caja base-25\">";
@@ -525,17 +773,26 @@
 							if($tipo_impuesto==''){
 								$segundaFuncion = '';
 							}
-							echo "<input id=\"montoNeto\" type=\"text\" value=\"$monto\" name=\"monto\" onchange=\"recalcular(); $segundaFuncion \" >";
+							echo "<input id=\"$name_montoNeto\" type=\"text\" value=\"$monto\" name=\"$name_monto\" onchange=\"recalcular(); $segundaFuncion \" >";
 						echo "</div>";
 						
 						echo "<div class=\"caja base-50\">";
 							echo "<label>Descripción Servicio</label>";
-							echo "<input type=\"text\" value=\"$descripcion\" name=\"descripcion\" >";
+							echo "<input type=\"text\" value=\"$descripcion\" name=\"$name_descripcion\" >";
 						echo "</div>";
 						
-						echo "<input type=\"text\" value=\"$nro_servicio\" name=\"nro_servicio\" hidden=hidden >";
+						echo "<input type=\"text\" value=\"$nro_servicio\" name=\"$name_nroServicio\" hidden=hidden >";
 					
 					}
+						//enviar por fuera del while el nro de rows que tiene servicios
+						$rows = mysqli_num_rows($registroServicios);
+						
+						echo "<input type=\"text\" value=\"$rows\" name=\"rows_servicio\" hidden=hidden >";
+						
+						echo "<input type=\"text\" value=\"Gendo\" name=\"cantidad0\" hidden=hidden />";
+						echo "<input type=\"text\" value=\"Shinji\" name=\"monto0\" hidden=hidden />";
+						echo "<input type=\"text\" value=\"Asuka\" name=\"descripcion0\" hidden=hidden />";
+						echo "<input type=\"text\" value=\"Rey\" name=\"nroServicio0\" hidden=hidden />";
 						
 						echo "<div class=\"caja base-20\">";
 							echo "<label>Valor Total Neto</label>";
@@ -560,12 +817,12 @@
 						
 						echo "<div class=\"caja base-20\">";
 							echo "<label>Exento / IVA</label>";
-							echo "<input id=\"campo_subtotal\" type=\"text\" value=\"$sub_total\" name=\"subTotal\">";
+							echo "<input id=\"campo_subtotal\" type=\"text\" value=\"$sub_total\" name=\"subTotal\" readonly>";
 						echo "</div>";
 						
 						echo "<div class=\"caja base-45\">";
 							echo "<label>Total</label>";
-							echo "<input id=\"totalfinalcampo\" class=\"cajitaTexto\" type=\"text\" value=\"$total_final\" name=\"totalFinal\">";
+							echo "<input id=\"totalfinalcampo\" class=\"cajitaTexto\" type=\"text\" value=\"$total_final\" name=\"totalFinal\" readonly>";
 						echo "</div>";
 						
 					  echo "<div style=\"float:left; padding:15px 0 0 15px; margin-top:15px;\" class=\"cancela-guarda\">";
