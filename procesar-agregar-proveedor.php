@@ -26,5 +26,5 @@
 	
 	echo "<h3>Registro ingresado con éxito</h3>";
 	echo "<br>";
-	echo "<a href=\"administrador.php\">Volver</a>";
+	echo "<a href=\"gestionar-proveedores.php\">Volver</a>";
 ?>

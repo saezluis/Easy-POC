@@ -14,14 +14,14 @@
   <body>
 	<?php
 	
-	$rut = $_GET['rut_s'];
+	$id_ceco = $_GET['id_ceco_s'];
 	
 	include "config.php";
 		
 	$conexion=mysqli_connect($host,$username,$password,$db_name) or die("Problemas con la conexión");
 	$acentos = $conexion->query("SET NAMES 'utf8'");
 	
-	$registrosProveedor=mysqli_query($conexion,"select * from proveedor WHERE rut = '$rut'") or
+	$registrosCeco=mysqli_query($conexion,"select * from centro_costo WHERE id_centro_costo = '$id_ceco'") or
 	die("Problemas en el select:".mysqli_error($conexion));
 	
 	?>
@@ -29,11 +29,11 @@
       <div class="caja base-50 no-padding">
         <h1> <a href="opcion-admin.php" class="logo"> <img src="tema/img/logo.jpg" alt="POC"></a></h1>
       </div>
-      <div class="caja base-50 no-padding"><a href="eliminar-proveedor-select.php" class="logout">Volver</a></div>
+      <div class="caja base-50 no-padding"><a href="eliminar-ceco-select.php" class="logout">Volver</a></div>
     </header>
     <div id="data--input" class="grupo">
       <h3>Administrador</h3>
-	  <h4>Eliminar Proveedor</h4>
+	  <h4>Eliminar Centro de Costo</h4>
     </div>
     <section class="grupo">
       <div class="nav-admin">
@@ -54,44 +54,35 @@
 	  -->
       <?php
 		
-		if($reg=mysqli_fetch_array($registrosProveedor)){
-			$rut = $reg['rut'];
-			$nombre_fantasia = $reg['nombre'];
-			$razon_social = $reg['razon_social'];
-			$giro = $reg['giro'];
-			$direccion = $reg['direccion'];
-			$telefono = $reg['telefono'];
-			$contacto = $reg['contacto'];
+		if($reg=mysqli_fetch_array($registrosCeco)){
+		
+			$id_ceco = $reg['id_centro_costo'];
+			
+			$codigo_sap = $reg['codigo'];
+			$descripcion = $reg['descripcion'];
+			$ceco = $reg['ceco'];
+			
 		}
 		
 		echo "<form method=\"post\" class=\"add\">";
-			echo "<label>RUT</label>";
-			echo "<input type=\"text\" value=\"$rut\" readonly>";
+			echo "<label>ID Centro de Costo</label>";
+			echo "<input type=\"text\" value=\"$id_ceco\" readonly>";
 			
-			echo "<label>Nombre fantasía</label>";
-			echo "<input type=\"text\" value=\"$nombre_fantasia\" readonly>";
+			echo "<label>Codigo SAP</label>";
+			echo "<input type=\"text\" value=\"$codigo_sap\" readonly>";
 			
-			echo "<label>Razón social</label>";
-			echo "<input type=\"text\" value=\"$razon_social\" readonly>";
+			echo "<label>Descripción</label>";
+			echo "<input type=\"text\" value=\"$descripcion\" readonly>";
 			
-			echo "<label>Giro</label>";
-			echo "<input type=\"text\" value=\"$giro\" readonly>";
-			
-			echo "<label>Dirección</label>";
-			echo "<input type=\"text\" value=\"$direccion\" readonly>";
-			
-			echo "<label>Teléfono</label>";
-			echo "<input type=\"text\" value=\"$telefono\" readonly>";
-			
-			echo "<label>Contacto</label>";
-			echo "<input type=\"text\" value=\"$contacto\" readonly>";
+			echo "<label>CECO</label>";
+			echo "<input type=\"text\" value=\"$ceco\" readonly>";
 			
 			echo "<br><br>";
 			
-			echo "<input type=\"text\" value=\"$rut\" name=\"rut_s\" hidden=hidden>";
+			echo "<input type=\"text\" value=\"$id_ceco\" name=\"id_ceco\" hidden=hidden>";
 						
-			echo "<input type=\"submit\" value=\"Eliminar\" formaction=\"procesar-eliminar-proveedor.php\" onclick=\"return confirm('¿ Está seguro que desea eliminar el registro ?');\" >";
-			echo "<input type=\"submit\" value=\"Cancelar\" formaction=\"eliminar-proveedor-select.php\">";
+			echo "<input type=\"submit\" value=\"Eliminar\" formaction=\"procesar-eliminar-ceco.php\" onclick=\"return confirm('¿ Está seguro que desea eliminar el registro ?');\" >";
+			echo "<input type=\"submit\" value=\"Cancelar\" formaction=\"eliminar-ceco-select.php\">";
 		echo "</form>";
 	?>
     </section>

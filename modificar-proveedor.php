@@ -26,9 +26,9 @@
 	?>
     <header class="grupo">
       <div class="caja base-50 no-padding">
-        <h1> <a href="administrador.php" class="logo"> <img src="tema/img/logo.jpg" alt="POC"></a></h1>
+        <h1> <a href="opcion-admin.php" class="logo"> <img src="tema/img/logo.jpg" alt="POC"></a></h1>
       </div>
-      <div class="caja base-50 no-padding"><a href="#" class="logout">Logout</a></div>
+      <div class="caja base-50 no-padding"><a href="modificar-proveedor-principal.php" class="logout">Volver</a></div>
     </header>
     <div id="data--input" class="grupo">
       <h3>Administrador</h3>
@@ -91,7 +91,7 @@
 			echo "<input type=\"text\" name=\"id_proveedor\" value=\"$id_proveedor\" hidden=hidden>";
 			
 			echo "<input type=\"submit\" value=\"Guardar\" formaction=\"actualizar-proveedor.php\" >";			
-			echo "<input type=\"submit\" value=\"Cancelar\" formaction=\"administrador.php\">";
+			echo "<input type=\"submit\" value=\"Cancelar\" formaction=\"modificar-proveedor-principal.php\">";
 		echo "</form>";
 	?>
     </section>

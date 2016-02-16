@@ -68,14 +68,16 @@ exit;
 	?>
     <header class="grupo">
       <div class="caja base-50 no-padding">
-        <h1> <a href="administrador.php" class="logo"> <img src="tema/img/logo.jpg" alt="POC"></a></h1>
+        <h1> <a href="opcion-admin.php" class="logo"> <img src="tema/img/logo.jpg" alt="POC"></a></h1>
       </div>
-      <div class="caja base-50 no-padding"><a href="logout.php" class="logout">Logout</a></div>
+	  
+      <div class="caja base-50 no-padding"><a href="gestionar-proveedores.php" class="logout">Volver</a></div>
+	  
     </header>
     <div id="data--input" class="grupo">
       <h3>Administrador</h3>
 	  <h4>Consultar Proveedores</h4>
-	  <h6><a href="administrador.php">Volver</a></h6>
+	  <h6><a href="gestionar-proveedores.php">Volver</a></h6>
     </div>
     <section class="grupo">
       <div class="nav-admin">
@@ -131,145 +133,145 @@ exit;
 			//echo "<td class=\"area\"><a href=\"consultar-orden.php?numero_orden=",urlencode($n_orden)," \">$n_orden</a></td>";			
 				//echo "<li><a href=\"#\" class=\"hofil\">a</a></li>";
 				if($letra=='a'){
-					echo "<li><a class=\"hofil\" href=\"consultar.php?letra=",urlencode($a),"  \">a</a></li>";
+					echo "<li><a class=\"hofil\" href=\"consultar-proveedor.php?letra=",urlencode($a),"  \">a</a></li>";
 				}else{
-					echo "<li><a href=\"consultar.php?letra=",urlencode($a),"  \">a</a></li>";
+					echo "<li><a href=\"consultar-proveedor.php?letra=",urlencode($a),"  \">a</a></li>";
 				}
 				if($letra=='b'){
-					echo "<li><a class=\"hofil\" href=\"consultar.php?letra=",urlencode($b)," \">b</a></li>";
+					echo "<li><a class=\"hofil\" href=\"consultar-proveedor.php?letra=",urlencode($b)," \">b</a></li>";
 				}else{
-					echo "<li><a href=\"consultar.php?letra=",urlencode($b)," \">b</a></li>";
+					echo "<li><a href=\"consultar-proveedor.php?letra=",urlencode($b)," \">b</a></li>";
 				}
 				if($letra=='c'){
-					echo "<li><a class=\"hofil\" href=\"consultar.php?letra=",urlencode($c)," \">c</a></li>";
+					echo "<li><a class=\"hofil\" href=\"consultar-proveedor.php?letra=",urlencode($c)," \">c</a></li>";
 				}else{
-					echo "<li><a href=\"consultar.php?letra=",urlencode($c)," \">c</a></li>";
+					echo "<li><a href=\"consultar-proveedor.php?letra=",urlencode($c)," \">c</a></li>";
 				}
 				if($letra=='d'){
-					echo "<li><a class=\"hofil\" href=\"consultar.php?letra=",urlencode($d)," \">d</a></li>";
+					echo "<li><a class=\"hofil\" href=\"consultar-proveedor.php?letra=",urlencode($d)," \">d</a></li>";
 				}else{
-					echo "<li><a href=\"consultar.php?letra=",urlencode($d)," \">d</a></li>";
+					echo "<li><a href=\"consultar-proveedor.php?letra=",urlencode($d)," \">d</a></li>";
 				}
 				if($letra=='e'){
-					echo "<li><a class=\"hofil\" href=\"consultar.php?letra=",urlencode($e)," \">e</a></li>";
+					echo "<li><a class=\"hofil\" href=\"consultar-proveedor.php?letra=",urlencode($e)," \">e</a></li>";
 				}else{
-					echo "<li><a href=\"consultar.php?letra=",urlencode($e)," \">e</a></li>";
+					echo "<li><a href=\"consultar-proveedor.php?letra=",urlencode($e)," \">e</a></li>";
 				}
 				
 				
 				if($letra=='f'){
-					echo "<li><a class=\"hofil\" href=\"consultar.php?letra=",urlencode($f)," \">f</a></li>";
+					echo "<li><a class=\"hofil\" href=\"consultar-proveedor.php?letra=",urlencode($f)," \">f</a></li>";
 				}else{
-					echo "<li><a href=\"consultar.php?letra=",urlencode($f)," \">f</a></li>";
+					echo "<li><a href=\"consultar-proveedor.php?letra=",urlencode($f)," \">f</a></li>";
 				}
 				if($letra=='g'){
-					echo "<li><a class=\"hofil\" href=\"consultar.php?letra=",urlencode($g)," \">g</a></li>";
+					echo "<li><a class=\"hofil\" href=\"consultar-proveedor.php?letra=",urlencode($g)," \">g</a></li>";
 				}else{
-					echo "<li><a href=\"consultar.php?letra=",urlencode($g)," \">g</a></li>";
+					echo "<li><a href=\"consultar-proveedor.php?letra=",urlencode($g)," \">g</a></li>";
 				}
 				if($letra=='h'){
-					echo "<li><a class=\"hofil\" href=\"consultar.php?letra=",urlencode($h)," \">h</a></li>";
+					echo "<li><a class=\"hofil\" href=\"consultar-proveedor.php?letra=",urlencode($h)," \">h</a></li>";
 				}else{
-					echo "<li><a href=\"consultar.php?letra=",urlencode($h)," \">h</a></li>";
+					echo "<li><a href=\"consultar-proveedor.php?letra=",urlencode($h)," \">h</a></li>";
 				}
 				if($letra=='i'){
-					echo "<li><a class=\"hofil\" href=\"consultar.php?letra=",urlencode($i)," \">i</a></li>";
+					echo "<li><a class=\"hofil\" href=\"consultar-proveedor.php?letra=",urlencode($i)," \">i</a></li>";
 				}else{
-					echo "<li><a href=\"consultar.php?letra=",urlencode($i)," \">i</a></li>";
+					echo "<li><a href=\"consultar-proveedor.php?letra=",urlencode($i)," \">i</a></li>";
 				}
 				if($letra=='j'){
-					echo "<li><a class=\"hofil\" href=\"consultar.php?letra=",urlencode($j)," \">j</a></li>";
+					echo "<li><a class=\"hofil\" href=\"consultar-proveedor.php?letra=",urlencode($j)," \">j</a></li>";
 				}else{
-					echo "<li><a href=\"consultar.php?letra=",urlencode($j)," \">j</a></li>";
+					echo "<li><a href=\"consultar-proveedor.php?letra=",urlencode($j)," \">j</a></li>";
 				}
 				
 				if($letra=='k'){
-					echo "<li><a class=\"hofil\" href=\"consultar.php?letra=",urlencode($k)," \">k</a></li>";
+					echo "<li><a class=\"hofil\" href=\"consultar-proveedor.php?letra=",urlencode($k)," \">k</a></li>";
 				}else{
-					echo "<li><a href=\"consultar.php?letra=",urlencode($k)," \">k</a></li>";
+					echo "<li><a href=\"consultar-proveedor.php?letra=",urlencode($k)," \">k</a></li>";
 				}
 				if($letra=='l'){
-					echo "<li><a class=\"hofil\" href=\"consultar.php?letra=",urlencode($l)," \">l</a></li>";
+					echo "<li><a class=\"hofil\" href=\"consultar-proveedor.php?letra=",urlencode($l)," \">l</a></li>";
 				}else{
-					echo "<li><a href=\"consultar.php?letra=",urlencode($l)," \">l</a></li>";
+					echo "<li><a href=\"consultar-proveedor.php?letra=",urlencode($l)," \">l</a></li>";
 				}
 				if($letra=='m'){
-					echo "<li><a class=\"hofil\" href=\"consultar.php?letra=",urlencode($m)," \">m</a></li>";
+					echo "<li><a class=\"hofil\" href=\"consultar-proveedor.php?letra=",urlencode($m)," \">m</a></li>";
 				}else{
-					echo "<li><a href=\"consultar.php?letra=",urlencode($m)," \">m</a></li>";
+					echo "<li><a href=\"consultar-proveedor.php?letra=",urlencode($m)," \">m</a></li>";
 				}
 				if($letra=='n'){
-					echo "<li><a class=\"hofil\" href=\"consultar.php?letra=",urlencode($n)," \">n</a></li>";
+					echo "<li><a class=\"hofil\" href=\"consultar-proveedor.php?letra=",urlencode($n)," \">n</a></li>";
 				}else{
-					echo "<li><a href=\"consultar.php?letra=",urlencode($n)," \">n</a></li>";
+					echo "<li><a href=\"consultar-proveedor.php?letra=",urlencode($n)," \">n</a></li>";
 				}
 				if($letra=='ñ'){
-					echo "<li><a class=\"hofil\" href=\"consultar.php?letra=",urlencode($nn)," \">ñ</a></li>";
+					echo "<li><a class=\"hofil\" href=\"consultar-proveedor.php?letra=",urlencode($nn)," \">ñ</a></li>";
 				}else{
-					echo "<li><a href=\"consultar.php?letra=",urlencode($nn)," \">ñ</a></li>";
+					echo "<li><a href=\"consultar-proveedor.php?letra=",urlencode($nn)," \">ñ</a></li>";
 				}
 				
 				if($letra=='o'){
-					echo "<li><a class=\"hofil\" href=\"consultar.php?letra=",urlencode($o)," \">o</a></li>";
+					echo "<li><a class=\"hofil\" href=\"consultar-proveedor.php?letra=",urlencode($o)," \">o</a></li>";
 				}else{
-					echo "<li><a href=\"consultar.php?letra=",urlencode($o)," \">o</a></li>";
+					echo "<li><a href=\"consultar-proveedor.php?letra=",urlencode($o)," \">o</a></li>";
 				}
 				if($letra=='p'){
-					echo "<li><a class=\"hofil\" href=\"consultar.php?letra=",urlencode($p)," \">p</a></li>";
+					echo "<li><a class=\"hofil\" href=\"consultar-proveedor.php?letra=",urlencode($p)," \">p</a></li>";
 				}else{
-					echo "<li><a href=\"consultar.php?letra=",urlencode($p)," \">p</a></li>";
+					echo "<li><a href=\"consultar-proveedor.php?letra=",urlencode($p)," \">p</a></li>";
 				}
 				if($letra=='q'){
-					echo "<li><a class=\"hofil\" href=\"consultar.php?letra=",urlencode($q)," \">q</a></li>";
+					echo "<li><a class=\"hofil\" href=\"consultar-proveedor.php?letra=",urlencode($q)," \">q</a></li>";
 				}else{
-					echo "<li><a href=\"consultar.php?letra=",urlencode($q)," \">q</a></li>";
+					echo "<li><a href=\"consultar-proveedor.php?letra=",urlencode($q)," \">q</a></li>";
 				}
 				if($letra=='r'){
-					echo "<li><a class=\"hofil\" href=\"consultar.php?letra=",urlencode($r)," \">r</a></li>";
+					echo "<li><a class=\"hofil\" href=\"consultar-proveedor.php?letra=",urlencode($r)," \">r</a></li>";
 				}else{
-					echo "<li><a href=\"consultar.php?letra=",urlencode($r)," \">r</a></li>";
+					echo "<li><a href=\"consultar-proveedor.php?letra=",urlencode($r)," \">r</a></li>";
 				}
 				if($letra=='s'){
-					echo "<li><a class=\"hofil\" href=\"consultar.php?letra=",urlencode($s)," \">s</a></li>";
+					echo "<li><a class=\"hofil\" href=\"consultar-proveedor.php?letra=",urlencode($s)," \">s</a></li>";
 				}else{
-					echo "<li><a href=\"consultar.php?letra=",urlencode($s)," \">s</a></li>";
+					echo "<li><a href=\"consultar-proveedor.php?letra=",urlencode($s)," \">s</a></li>";
 				}
 				
 				if($letra=='t'){
-					echo "<li><a class=\"hofil\" href=\"consultar.php?letra=",urlencode($t)," \">t</a></li>";
+					echo "<li><a class=\"hofil\" href=\"consultar-proveedor.php?letra=",urlencode($t)," \">t</a></li>";
 				}else{
-					echo "<li><a href=\"consultar.php?letra=",urlencode($t)," \">t</a></li>";
+					echo "<li><a href=\"consultar-proveedor.php?letra=",urlencode($t)," \">t</a></li>";
 				}
 				if($letra=='u'){
-					echo "<li><a class=\"hofil\" href=\"consultar.php?letra=",urlencode($u)," \">u</a></li>";
+					echo "<li><a class=\"hofil\" href=\"consultar-proveedor.php?letra=",urlencode($u)," \">u</a></li>";
 				}else{
-					echo "<li><a href=\"consultar.php?letra=",urlencode($u)," \">u</a></li>";
+					echo "<li><a href=\"consultar-proveedor.php?letra=",urlencode($u)," \">u</a></li>";
 				}
 				if($letra=='v'){
-					echo "<li><a class=\"hofil\" href=\"consultar.php?letra=",urlencode($v)," \">v</a></li>";
+					echo "<li><a class=\"hofil\" href=\"consultar-proveedor.php?letra=",urlencode($v)," \">v</a></li>";
 				}else{
-					echo "<li><a href=\"consultar.php?letra=",urlencode($v)," \">v</a></li>";
+					echo "<li><a href=\"consultar-proveedor.php?letra=",urlencode($v)," \">v</a></li>";
 				}
 				if($letra=='w'){
-					echo "<li><a class=\"hofil\" href=\"consultar.php?letra=",urlencode($w)," \">w</a></li>";
+					echo "<li><a class=\"hofil\" href=\"consultar-proveedor.php?letra=",urlencode($w)," \">w</a></li>";
 				}else{
-					echo "<li><a href=\"consultar.php?letra=",urlencode($w)," \">w</a></li>";
+					echo "<li><a href=\"consultar-proveedor.php?letra=",urlencode($w)," \">w</a></li>";
 				}
 				if($letra=='x'){
-					echo "<li><a class=\"hofil\" href=\"consultar.php?letra=",urlencode($x)," \">x</a></li>";
+					echo "<li><a class=\"hofil\" href=\"consultar-proveedor.php?letra=",urlencode($x)," \">x</a></li>";
 				}else{
-					echo "<li><a href=\"consultar.php?letra=",urlencode($x)," \">x</a></li>";
+					echo "<li><a href=\"consultar-proveedor.php?letra=",urlencode($x)," \">x</a></li>";
 				}
 				
 				if($letra=='y'){
-					echo "<li><a class=\"hofil\" href=\"consultar.php?letra=",urlencode($y)," \">y</a></li>";
+					echo "<li><a class=\"hofil\" href=\"consultar-proveedor.php?letra=",urlencode($y)," \">y</a></li>";
 				}else{
-					echo "<li><a href=\"consultar.php?letra=",urlencode($y)," \">y</a></li>";
+					echo "<li><a href=\"consultar-proveedor.php?letra=",urlencode($y)," \">y</a></li>";
 				}
 				if($letra=='z'){
-					echo "<li><a class=\"hofil\" href=\"consultar.php?letra=",urlencode($z)," \">z</a></li>";
+					echo "<li><a class=\"hofil\" href=\"consultar-proveedor.php?letra=",urlencode($z)," \">z</a></li>";
 				}else{
-					echo "<li><a href=\"consultar.php?letra=",urlencode($z)," \">z</a></li>";
+					echo "<li><a href=\"consultar-proveedor.php?letra=",urlencode($z)," \">z</a></li>";
 				}
 				
 			echo "</ul>";

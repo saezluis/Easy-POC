@@ -503,17 +503,17 @@ $consulta_orden=mysqli_query($conexion,"select * from ordenes where numero_orden
           <p class="neto">VALOR TOTAL NETO $<?php echo "<input class=\"no-hay\" type=\"text\" size=\"10\" value=\"$total_format\"  readonly>"; ?></p>
           <p class="iva">
 		  
-			  <select id="xxx" name="xxxyyy" class="valores-select" readonly>
+			  
 				<?php
-					echo "<option value=\"\">$tipo_impuesto</option>";
+					echo "<input style=\"text-align: right;\" type=\"text\" size=\"5\" value=\"$tipo_impuesto\" readonly>";
 				?>
-			  </select>
+			  
 			  
 				<?php 
 					
 					//$sub_total_format = number_format($sub_total,0, ",", ".");
 					
-					echo "<input class=\"no-hay\" type=\"text\" size=\"10\" value=\"$sub_total\" id=\"campo_subtotal\" readonly>"; 
+					echo "$<input class=\"no-hay\" type=\"text\" size=\"10\" value=\"$sub_total\" id=\"campo_subtotal\" readonly>"; 
 					
 				?> 
 		  

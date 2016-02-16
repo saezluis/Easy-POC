@@ -50,14 +50,14 @@ exit;
   <body>	
     <header class="grupo">
       <div class="caja base-50 no-padding">
-        <h1> <a href="administrador.php" class="logo"> <img src="tema/img/logo.jpg" alt="POC"></a></h1>
+        <h1> <a href="opcion-admin.php" class="logo"> <img src="tema/img/logo.jpg" alt="POC"></a></h1>
       </div>
-      <div class="caja base-50 no-padding"><a href="logout.php" class="logout">Logout</a></div>
+      <div class="caja base-50 no-padding"><a href="gestionar-control.php" class="logout">Volver</a></div>
     </header>
     <div id="data--input" class="grupo">
-      <h3>Administrador</h3>
-	  <h4>Agregar proveedor</h4>
-	  <h6><a href="administrador.php">Volver</a></h6>
+      <h3>Administrador Easy POC</h3>
+	  <h4>Agregar Control Presupuesto</h4>
+	  <h6><a href="gestionar-control.php">Volver</a></h6>
     </div>
     <section class="grupo">
       <div class="nav-admin">
@@ -76,27 +76,17 @@ exit;
 	<!--
       <p class="proBig">Agregar proveedor</p>
 	  -->
-		<form method="POST" action="procesar-agregar.php" class="add">
-			<label>RUT</label>
-			<input name="rut" type="text" required>
-			<label>Nombre fantasía</label>
-			<input name="nombre_fantasia" type="text" required>
-			<label>Razón social</label>
-			<input name="razon_social" type="text" required>
-			<label>Giro</label>
-			<input name="giro" type="text" required>
-			<label>Dirección</label>
-			<input name="direccion" type="text" required>
-			<label>Teléfono</label>
-			<input name="telefono" type="text" required>
-			<label>Contacto</label>
-			<input name="contacto" type="text" required>	
+		<form method="POST" action="procesar-agregar-control.php" class="add">
+			<label>Codigo SAP</label>
+			<input name="codigo_sap" type="text" required>
+			<label>Control Presupuesto</label>
+			<input name="control_presupuesto" type="text" required>
 			<br><br>
 			<input type="submit" value="Agregar">			
 		</form>
 		<br>
 		<form method="POST">
-			<input type="submit" value="Cancelar" formaction="administrador.php">
+			<input type="submit" value="Cancelar" formaction="gestionar-control.php">
 		</form>
     </section>
     <div id="footer" class="total">
