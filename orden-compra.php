@@ -126,6 +126,20 @@ exit;
 		});
     </script>
 	
+	<script type = "text/javascript" >
+	
+		function validarGuardar() {			
+			var impuesto = document.getElementById("campo_subtotal").value;
+			
+			if(impuesto==''){
+				alert("Debe seleccionar un tipo de impuesto");
+				return false;
+			}else{				
+				return true;
+			}			
+		}
+	
+	</script>
 		<!--
 		<link href="print.css" rel="stylesheet" type="text/css" media="print" />
 		-->
@@ -354,8 +368,8 @@ $consulta_proveedor=mysqli_query($conexion,"select * from proveedor where nombre
 		<div class="caja base-50 no-padding">
 			<div id="cot--logo"> <img src="tema/img/logo.gif" alt="POC"></div>
 			<div id="cotiza--datos">
-				<p class="data--sa">Easy s.a.</p>
-				<p class="data--co">96.671.750-5</p>
+				<p class="data--sa">Easy Retail S.A</p>
+				<p class="data--co">76.568.660-1</p>
 				<p class="data--co">Av. Keneddy 09001, piso 5, Las Condes</p>
 				<p class="data--co">9590300</p>
 			</div>
@@ -475,12 +489,12 @@ $consulta_proveedor=mysqli_query($conexion,"select * from proveedor where nombre
 		  
 			  <select id="xxx" name="xxxyyy" class="valores-select" onchange="calcular(this)">
 				<option value="#" id="elija">Elija</option>
-				<option value="IVA" id="iva">IVA</option>
+				<option value="IVA" id="iva" >IVA</option>
 				<option value="10% BOLETA" id="boleta">10% BOLETA</option>
 				<option value="EXENTO DE IVA" id="exento">EXENTO DE IVA</option>
 			  </select>
 			  
-				<?php echo "<input class=\"no-hay\" type=\"text\" size=\"10\" value=\"\" id=\"campo_subtotal\" >"; ?> 
+				<?php echo "<input class=\"no-hay\" type=\"text\" size=\"10\" value=\"\" id=\"campo_subtotal\">"; ?> 
 		  
 		  </p>
 		  
@@ -493,7 +507,7 @@ $consulta_proveedor=mysqli_query($conexion,"select * from proveedor where nombre
 			
 			<?php echo "<input type=\"text\" value=\"\" name=\"tipo_impuesto_send\" id=\"tipo_impuesto\" hidden=hidden>"; ?>
 			
-			<button type="submit" class="imprimir" onClick="alert('OC guardada con éxito'); " >GUARDAR</button> <!-- window.location.href = 'emision.php'; -->
+			<button type="submit" class="imprimir" onclick="return validarGuardar();">GUARDAR</button> <!-- window.location.href = 'emision.php'; -->
 		</form>
 		
 		  <form action="cancelar.php" method="post">

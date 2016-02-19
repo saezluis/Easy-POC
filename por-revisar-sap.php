@@ -174,7 +174,7 @@
 						echo "<button style=\"width: 100%;margin-top: 10px; background: transparent linear-gradient(to bottom, #FF1500 0%, #C0000B 100%) repeat scroll 0% 0%; color:#fff; border:none;\" type=\"submit\" value=\"grabar\">Grabar</button>";
 					  echo "</form>";
 					echo "</div></a></span></div>";
-			  //Aqui manipulo la fecha para que si pasa de 5 dias se muestre en rojo
+					//Aqui manipulo la fecha para que si pasa de 5 dias se muestre en rojo
 			  if ($days>=5){
 				echo "<div id=\"orden--6T\" style=\"color:#FF0000\">".$days." dias"."</div>";
 			  } else {
@@ -237,9 +237,9 @@
         </thead>		
 		
 		<?php
-		$n_orden2 = 1000;
-		$more_fooo = 40;
-		$fooo_or = 50;
+		$n_orden2 = 10000;
+		$more_fooo = 400;
+		$fooo_or = 5000;
 		while ($reg=mysqli_fetch_array($rs))
 		{			
 			//Aqui se calculan los dias que van transcurriendo desde la emision de la OC
@@ -266,25 +266,25 @@
 			$control_presupuesto = $reg['control_presupuesto'];
 			$campana = $reg['campana'];
 			
-			$registrosAreaPago=mysqli_query($conexion,"SELECT * FROM centro_costo WHERE id_centro_costo = $area_pago") or die ("Problemas en el select");
+			$registrosAreaPago=mysqli_query($conexion,"SELECT * FROM centro_costo WHERE id_centro_costo = $area_pago") or die ("Problemas en el select area pago");
 							
 			if($reg2=mysqli_fetch_array($registrosAreaPago)){
 				$codigo_areaP = $reg2['codigo'];
 			}
 							
-			$registrosRegistro=mysqli_query($conexion,"SELECT * FROM registro WHERE id_registro = $registro_gasto") or die ("Problemas en el select");
+			$registrosRegistro=mysqli_query($conexion,"SELECT * FROM registro WHERE id_registro = $registro_gasto") or die ("Problemas en el select registro gasto");
 							
 			if($reg3=mysqli_fetch_array($registrosRegistro)){				
 				$id_sap_RG = $reg3['id'];
 			}
 							
-			$registrosControlPre=mysqli_query($conexion,"SELECT * FROM control_presupuesto WHERE id_controlP = $control_presupuesto") or die ("Problemas en el select");
+			$registrosControlPre=mysqli_query($conexion,"SELECT * FROM control_presupuesto WHERE id_controlP = $control_presupuesto") or die ("Problemas en el select control presupuesto");
 							
 			if($reg4=mysqli_fetch_array($registrosControlPre)){
 				$id_cp = $reg4['id'];
 			}
 			
-			$registrosCampana=mysqli_query($conexion,"SELECT * FROM campana WHERE id_campana = $campana") or die ("Problemas en el select");
+			$registrosCampana=mysqli_query($conexion,"SELECT * FROM campana WHERE id_campana = $campana") or die ("Problemas en el select id campana");
 			
 			if($reg5=mysqli_fetch_array($registrosCampana)){
 				$id_campana = $reg5['id'];

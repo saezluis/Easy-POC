@@ -202,6 +202,12 @@ exit;
             return false;
          }
 		 
+		 if( document.myform.control_presupuesto.value == "-1" )
+         {
+            alert( "Por favor elija un Control Presupuesto" );
+            return false;
+         }
+		 
 		 
          return( true );
       }

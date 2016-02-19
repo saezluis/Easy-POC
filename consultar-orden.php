@@ -374,8 +374,23 @@ $consulta_orden=mysqli_query($conexion,"select * from ordenes where numero_orden
 		<div class="caja base-50 no-padding">
 			<div id="cot--logo"> <img src="tema/img/logo.gif" alt="POC"></div>
 			<div id="cotiza--datos">
-				<p class="data--sa">Easy s.a.</p>
-				<p class="data--co">96.671.750-5</p>
+				<?php 				
+					//echo "<p>\"Esta fecha trae la OC: \".$fecha</p>";
+ 					
+					$fecha_cambio = new DateTime("2016-02-01");
+					$fecha_oc = new DateTime($fecha);
+
+					if ($fecha_oc < $fecha_cambio){
+						//echo "Vieja razon social";
+						echo "<p class=\"data--sa\">Easy s.a.</p>";
+						echo "<p class=\"data--co\">96.671.750-5</p>";
+					}else{
+						//echo "nueva razon social";
+						echo "<p class=\"data--sa\">Easy Retail S.A</p>";
+						echo "<p class=\"data--co\">76.568.660-1</p>";
+					}
+				?>
+				
 				<p class="data--co">Av. Keneddy 09001, piso 5, Las Condes</p>
 				<p class="data--co">9590300</p>
 			</div>
