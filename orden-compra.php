@@ -589,5 +589,17 @@ $consulta_proveedor=mysqli_query($conexion,"select * from proveedor where nombre
 		?>
     </div>
   </div>
+	<div class="grupo">
+		  <div class="caja base-50 no-padding">
+		  	<div class="cc">
+		  		Centro Costo: <span class="cod-divs">12345678901234567890</span>
+		  	</div>
+		  </div>
+		  <div class="caja base-50 no-padding">
+		  	<div class="PEP">
+		  		Código PEP: <span class="cod-divs">12345678901234567890</span>
+		  	</div>
+		  </div>
+	</div>
 </body>
 </html>

@@ -1682,7 +1682,7 @@ header .counter {
   text-align: center;
   line-height: 25px;
   top: 65px;
-  right: 200px; /*35*/}
+  right: 35px; }
 header h2 {
   font-size: 1.2em;
   margin: 0; }
@@ -2401,7 +2401,7 @@ header.cotizacion p.coti--fecha {
     border-right: 1px solid #cccccc !important; }
   #campana #titulo--orden-6S, #campana-print #titulo--orden-6S {
     width: 8%;
-    line-height: 1;
+    line-height: 2;
     border-right: 1px solid #cccccc !important; }
   #campana #desglose-1,
   #campana #desglose-2,
@@ -2996,7 +2996,7 @@ form.registro-campana {
   margin-top: 1em; }
   form.registro-campana section .table {
     border: 1px solid red;
-    table-layout: auto;
+    table-layout: fixed;
     width: 100%; }
     form.registro-campana section .table .cabecc {
       background: #F7F7F7;
@@ -3061,7 +3061,7 @@ section .tot-base {
     border: 1px solid #f7f7f7; }
 
 section .table-sap {
-  table-layout: auto;/*fixed*/
+  table-layout: auto;
   margin-top: 20px;
   width: 100%; }
   section .table-sap .cabecc-sap {
@@ -3123,87 +3123,10 @@ section .tot-base {
 .marggen-tabl {
   margin-top: 4px; }
 
-.nav-admin {
-  width: 100%;
-  margin-top: 1em; }
-  .nav-admin ul {
-    margin: 0;
-    padding: 0;
-    list-style: none; }
-    .nav-admin ul li {
-      display: inline-block;
-      margin-right: 15px; }
-      .nav-admin ul li:last-child {
-        margin-right: 0; }
-      .nav-admin ul li a {
-        text-decoration: none;
-        font-size: 0.9em; }
-      .nav-admin ul li .consultar {
-        background: url(../img/magnificense.png) no-repeat 0/16%;
-        padding-left: 1.2em; }
-      .nav-admin ul li .agregar {
-        background: url(../img/add.png) no-repeat 0/16%;
-        padding-left: 1.2em; }
-      .nav-admin ul li .modificar {
-        background: url(../img/edit.png) no-repeat 0 3px/16%;
-        padding-left: 1.2em; }
-      .nav-admin ul li .eliminar {
-        background: url(../img/delete.png) no-repeat 0/16%;
-        padding-left: 1.2em; }
-
-p {
-  font-size: 0.9em;
-  margin-top: 1em; }
-
-.filtroAbc {
-  width: 100%;
-  height: auto; }
-  .filtroAbc ul {
-    margin: 0;
-    padding: 0;
-    list-style: none; }
-    .filtroAbc ul li {
-      display: inline-block; }
-      .filtroAbc ul li a {
-        padding: 2px 10px;
-        text-decoration: none; }
-        .filtroAbc ul li a:hover {
-          background: #cf0508;
-          color: #fff; }
-      .filtroAbc ul li .hofil {
-        background: #cf0508;
-        color: #fff; }
-
-p.proBig {
-  font-size: 1.3em; }
-
-form.add {
-  width: 35%;
-  height: auto; }
-  form.add label {
-    width: 100%;
-    font-size: 0.9em;
-    margin: 10px 0;
-    display: block; }
-  form.add input[type="text"] {
-    width: 100%;
-    border: 1px solid #cf0508;
-    padding: 5px;
-    font-size: 0.8em; }  
-	
-form#formulario__mail {
-  width: 50%;
-  float: left;
-  margin-top: 1.8em;
-  padding: 10px;
-  background: rgba(232, 232, 232, 0.5); }
-  form#formulario__mail .marFo {
-    margin-right: 13px; }
-  form#formulario__mail .wrap__total {
-    margin-top: 1em;
-    overflow: hidden; }
-    form#formulario__mail .wrap__total .wrap__input {
-      width: 50%;
-      float: left; }
-    form#formulario__mail .wrap__total .asunTForm {
-      width: 88%; }
+.cc, .PEP {
+  color: #4b4b4b;
+  font-size: 0.8em;
+  text-align: left;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  margin-top: 20px; }
