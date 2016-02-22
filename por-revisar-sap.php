@@ -226,6 +226,7 @@
         <thead>
           <tr class="cabecc-sap">
             <th>Nº OC</th>
+			<th>Editar</th>
             <th>Fecha</th>
             <th>Código PEP</th>
             <th>OC SAP</th>
@@ -296,7 +297,12 @@
 			
 			echo "<tbody>";
 				  echo "<tr>";
-					echo "<td class=\"area\"><a href=\"consultar-orden.php?numero_orden=",urlencode($n_orden)," \">$n_orden</a></td>";					
+					echo "<td class=\"area\"><a href=\"consultar-orden.php?numero_orden=",urlencode($n_orden)," \">$n_orden</a></td>";		
+					
+					echo "<td class=\"ppto-proyecto\">";
+					echo "<a href=\"modificar-oc-detalle-sap.php?oc_send=",urlencode($n_orden)," \">Editar</a>";
+					echo "</td>";
+					
 					echo "<td class=\"ceco\">".$fecha_format."</td>";					
 					echo "<td class=\"desc-servicio\">$codigoPep</td>";
 					

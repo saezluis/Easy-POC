@@ -224,7 +224,7 @@
 			  if (in_array($nro_orden_comp,@$items_b)){  			  
 				echo "<div id=\"orden--6S\"><a href=\"./uploads/$n_orden.pdf\" data-tooltip=\"Ver Documento\" class=\"various\" ><img src=\"tema/img/ver-doc.gif\" alt=\"\"></a></div>";
 					}else{
-				echo "<div id=\"orden--6S\"></div>";
+					echo "<div id=\"orden--6S\"></div>";
 			  }
 			  
 			echo "</div>";	 

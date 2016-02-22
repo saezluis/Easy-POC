@@ -246,7 +246,16 @@ if ($_REQUEST['descripcion1']!=""){
 		$sub_total = $reg['sub_total'];
 		$tipo_impuesto = $reg['tipo_impuesto'];
 		
+		$area_pago = $reg['area_pago'];
+		
 	}
+	
+	$registroCentroCosto = mysqli_query($conexion,"SELECT * FROM centro_costo WHERE id_centro_costo = '$area_pago'") or die("Problemas en el select:".mysqli_error($conexion));
+	
+	if($reg=mysqli_fetch_array($registroCentroCosto)){
+		$ceco = $reg['ceco'];
+	}
+	
 	
 	$consulta_proveedor=mysqli_query($conexion,"select * from proveedor where id_proveedor = '$id_proveedor'") or die("Problemas en el select:");	    
 	
@@ -624,12 +633,14 @@ $consulta_orden=mysqli_query($conexion,"select * from ordenes where numero_orden
 	<div class="grupo">
 		  <div class="caja base-50 no-padding">
 		  	<div class="cc">
-		  		Centro Costo: <span class="cod-divs">12345678901234567890</span>
+		  		Centro Costo: <?php echo "<span class=\"cod-divs\">$ceco</span>"; ?>
 		  	</div>
 		  </div>
 		  <div class="caja base-50 no-padding">
 		  	<div class="PEP">
+			<!--
 		  		Código PEP: <span class="cod-divs">12345678901234567890</span>
+			-->
 		  	</div>
 		  </div>
 	</div>

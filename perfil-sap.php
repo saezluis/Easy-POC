@@ -38,7 +38,7 @@
 		$acentos = $conexion->query("SET NAMES 'utf8'");
 				
 		
-		$registros=mysqli_query($conexion,"select * from ordenes WHERE orden_sap IS NOT NULL AND orden_recepcion IS NOT NULL") or
+		$registros=mysqli_query($conexion,"select * from ordenes WHERE orden_sap IS NOT NULL AND orden_recepcion IS NOT NULL AND archivo='si'") or
 		die("Problemas en el select:".mysqli_error($conexion));
 		
 		$revisar=mysqli_query($conexion,"select * from ordenes WHERE visto_bueno = \"no\" AND orden_sap IS NULL OR orden_recepcion IS NULL") or
@@ -224,6 +224,7 @@
         <thead>
           <tr class="cabecc-sap">
             <th>Nº OC</th>
+			<th>Editar</th>
             <th>Fecha</th>
             <th>Código PEP</th>
             <th>OC SAP</th>
@@ -232,6 +233,7 @@
             <th> <img src="tema/img/upload.gif" alt="" class="marggen-tabl"></th>
             <th> <img src="tema/img/time.gif" alt="" class="marggen-tabl"></th>
             <th>Enviar</th>
+			
           </tr>
         </thead>
 		<?php
@@ -265,7 +267,7 @@
 			
 			
 					$n_orden = "";
-					$n_orden = $reg['numero_orden'];						
+					$n_orden = $reg['numero_orden'];
 					$n_orden2 = $n_orden2 + 1;	
 					
 					$nro_orden_comp = $n_orden . ".pdf";
@@ -311,7 +313,12 @@
 				
 				echo "<tbody>";
 				  echo "<tr>";
-					echo "<td class=\"area\"><a href=\"consultar-orden.php?numero_orden=",urlencode($n_orden)," \">$n_orden</a></td>";					
+					echo "<td class=\"area\"><a href=\"consultar-orden.php?numero_orden=",urlencode($n_orden)," \">$n_orden</a></td>";	
+					
+					echo "<td class=\"ppto-proyecto\">";
+					echo "<a href=\"modificar-oc-detalle-sap.php?oc_send=",urlencode($n_orden)," \">Editar</a>";
+					echo "</td>";
+					
 					echo "<td class=\"ceco\">".$fecha_format."</td>";
 					echo "<td class=\"desc-servicio\">".$codigoPep."</td>";
 					
@@ -326,7 +333,7 @@
 								echo "</form>";
 						  echo "</div></a></span></td>";
 					
-					if (in_array($nro_orden_comp,@$items)){  			  
+					if (in_array($nro_orden_comp,@$items)){
 							echo "<td class=\"pep\"><a href=\"./uploads/$n_orden.pdf\" data-tooltip=\"Ver Documento\" class=\"various\" ><img src=\"tema/img/ver-doc.gif\" alt=\"\"></a>";
 						}else{
 							echo "<td class=\"pep\"></td>";
@@ -347,7 +354,7 @@
 					if (in_array($nro_recep_comp,@$items)){
 							echo "<td class=\"pep\"><a href=\"./uploads/$n_orden-or.pdf\" data-tooltip=\"Ver Documento\" class=\"various\" ><img src=\"tema/img/ver-doc.gif\" alt=\"\"></a>";
 						}else{
-							echo "<td class=\"pep\"></td>";
+						echo "<td class=\"pep\"></td>";
 						}			  
 					echo "</td>";
 					
@@ -358,6 +365,9 @@
 					  echo "<input type=\"text\" value=\"$n_orden\" name=\"nro_OC_send\" hidden=hidden >";
 					echo "</form>";  
 					echo "</td>";
+					
+					
+					
 				  echo "</tr>";
 				echo "</tbody>";
 			}
@@ -382,7 +392,8 @@
 				echo "<span class=\"pag--cube\">" . $pagina . "</span>" . " "; 
 			else 
 				//si el índice no corresponde con la página mostrada actualmente, coloco el enlace para ir a esa página 				
-				echo "<a href='por-revisar-sap.php?pagina=" . $i . "'>"  . $i .  "</a> " ; 
+				//echo "<a href='por-revisar-sap.php?pagina=" . $i . "'>"  . $i .  "</a> " ; 
+				echo "<a href='perfil-sap.php?pagina=" . $i . "'>"  . $i .  "</a> " ; 
 			}   
 		}
 			echo "</div>";				
