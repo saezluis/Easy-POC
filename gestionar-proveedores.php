@@ -72,7 +72,7 @@ exit;
       </div>
       <div class="caja base-50 no-padding"><a href="opcion-admin.php" class="logout">Salir</a></div>
     </header>
-    <div id="data--input" class="grupo" style="background: url(tema/img/proveedores.jpg) no-repeat; background-position: right; !important;">
+    <div id="data--input" class="grupo" style="background: url(tema/img/strip.jpg) no-repeat; background-position: right; !important;">
       <h3>Administrador Easy POC</h3>
 	  <h4>Gestionar Proveedores</h4>
     </div>
