@@ -54,7 +54,7 @@
 		$registros=mysqli_query($conexion,"select * from ordenes WHERE id_user = $id_member") or
 		die("Problemas en el select:".mysqli_error($conexion));
 		
-		$revisar=mysqli_query($conexion,"select * from ordenes where visto_bueno = \"no\" AND orden_sap IS NULL OR orden_recepcion IS NULL") or
+		$revisar=mysqli_query($conexion,"select * from ordenes where visto_bueno = \"no\" AND orden_sap IS NULL OR orden_recepcion IS NULL AND anular!='si' ") or
 		die("Problemas en el select:".mysqli_error($conexion));
 		
 		$num_rows = mysqli_num_rows($revisar);		
@@ -81,7 +81,7 @@
 		$total_paginas = ceil($num_total_registros / $TAMANO_PAGINA); 
 		
 		//AND orden_sap IS NOT NULL AND orden_recepcion IS NOT NULL
-		$ssql = "select * from ordenes WHERE id_user = $id_member  limit " . $inicio . "," . $TAMANO_PAGINA; 
+		$ssql = "select * from ordenes WHERE id_user = $id_member  AND anular!='si' limit " . $inicio . "," . $TAMANO_PAGINA; 
 		$rs = mysqli_query($conexion,$ssql); 
 		
 		//-------------- FIN Paginador ------------------	

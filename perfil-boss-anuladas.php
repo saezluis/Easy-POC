@@ -41,7 +41,7 @@
 		$conexion=mysqli_connect($host,$username,$password,$db_name) or die("Problemas con la conexión");
 		$acentos = $conexion->query("SET NAMES 'utf8'");
 		
-		$registros=mysqli_query($conexion,"select * from ordenes where visto_bueno = \"no\"") or
+		$registros=mysqli_query($conexion,"select * from ordenes where anular = \"si\" ") or
 		die("Problemas en el select:".mysqli_error($conexion));
 						
 
@@ -64,7 +64,7 @@
 		//calculo el total de páginas 
 		$total_paginas = ceil($num_total_registros / $TAMANO_PAGINA); 
 		
-		$ssql = "select * from ordenes where visto_bueno = \"no\" limit " . $inicio . "," . $TAMANO_PAGINA; 
+		$ssql = "select * from ordenes where anular = \"si\" limit " . $inicio . "," . $TAMANO_PAGINA; 
 		$rs = mysqli_query($conexion,$ssql); 
 		
 		//-------------- FIN Paginador ------------------
@@ -84,17 +84,17 @@
           <ul>
             <li> <a href="perfil-boss-vb-si.php">Historial de órdenes de compra con VºBº</a></li>
 			
-            <li> <a href="perfil-boss-anuladas.php" >Historial de ordenes anuladas</a></li> 
+            
           </ul>
         </nav>
 		<!--	<div class="counter">15</div>	-->
       </div>
       <div class="caja base-100 no-padding">
-        <h2>En esta sección podrás encontrar el historial de todas tus órdenes de compra emitidas.</h2>
+        <h2>En esta sección podrás encontrar el historial de todas las órdenes de compra anuladas.</h2>
       </div>
     </header>
     <div id="data--input" class="grupo">
-      <h3>Mis órdenes de compra <img src="tema/img/no.gif"> </h3>
+      <h3>Órdenes de compra anuladas<img src="tema/img/no.gif"> </h3>
     </div>
     <div id="buscar" class="grupo">
       <div class="caja-80">
@@ -134,7 +134,7 @@
 					<th>OC RECEPCIÓN</th>
 					<th>Notificacion Via Email</th>
 					<th>V°B°</th>					
-					<th>Anular</th>
+					<th>Restaurar</th>
 				</tr>
 			</thead>
 			<?php
@@ -202,8 +202,8 @@
 							echo "</td>";
 							
 							echo "<td class=\"ppto-real\">";
-							echo "<form method=\"POST\" action=\"anular-form.php\">";
-							  echo "<button type=\"submit\" class=\"gou\">Anular</button>";
+							echo "<form method=\"POST\" action=\"restaurar-form.php\">";
+							  echo "<button type=\"submit\" class=\"gou\">Restaurar</button>";
 							  echo "<input type=\"text\" value=\"$n_orden\" name=\"nro_OC_send\" hidden=hidden >";
 							echo "</form>";  
 							echo "</td>";
@@ -229,7 +229,7 @@
 					<th>OC RECEPCIÓN</th>
 					<th>Notificacion Via Email</th>
 					<th>V°B°</th>					
-					<th>Anular</th>
+					<th>Restaurar</th>
 				</tr>
 			</thead>
 			<?php
@@ -298,8 +298,8 @@
 						echo "</td>";
 						
 						echo "<td class=\"ppto-real\">";
-						echo "<form method=\"POST\" action=\"anular-form.php\">";
-							  echo "<button type=\"submit\" class=\"gou\">Anular</button>";
+						echo "<form method=\"POST\" action=\"restaurar-form.php\">";
+							  echo "<button type=\"submit\" class=\"gou\">Restaurar</button>";
 							  echo "<input type=\"text\" value=\"$n_orden\" name=\"nro_OC_send\" hidden=hidden >";
 							echo "</form>";  
 						echo "</td>";

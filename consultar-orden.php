@@ -250,6 +250,12 @@ if ($_REQUEST['descripcion1']!=""){
 		
 	}
 	
+	$registrosUser = mysqli_query($conexion,"SELECT * FROM members WHERE id = '$id_user'") or die("Problemas en el select de user".mysqli_error($conexion));
+	if($reg=mysqli_fetch_array($registrosUser)){		
+		$username = $reg['username'];
+	}
+	
+	
 	$registroCentroCosto = mysqli_query($conexion,"SELECT * FROM centro_costo WHERE id_centro_costo = '$area_pago'") or die("Problemas en el select:".mysqli_error($conexion));
 	
 	if($reg=mysqli_fetch_array($registroCentroCosto)){
@@ -570,45 +576,47 @@ $consulta_orden=mysqli_query($conexion,"select * from ordenes where numero_orden
 	    <div class="grupo">
 			<?php
 			// verificar firma de acuerdo a usuario que viene de la session variable		
-			if($username_from_sesion=='user'){
+			if($username=='user'){
 				echo "<div id=\"firma-1\"><img src=\"tema/img/firma-luis.jpg\"></div>";
-			}		
-			if($username_from_sesion=='enriqueta.bierwirth@easy.cl'){
+			}
+			if($username=='enriqueta.bierwirth@easy.cl'){
 				echo "<div id=\"firma-1\"><img src=\"tema/img/enriqueta-bierwirth.jpg\"></div>";
 			}
-			if($username_from_sesion=='andrea.echagueflores@easy.cl'){
+			if($username=='andrea.echagueflores@easy.cl'){
 				echo "<div id=\"firma-1\"><img src=\"tema/img/andrea-echague.jpg\"></div>";
 			}
-			if($username_from_sesion=='gonzalo.elizaldepena@easy.cl'){
+			if($username=='gonzalo.elizaldepena@easy.cl'){
 				echo "<div id=\"firma-1\"><img src=\"tema/img/gonzalo-elizalde.jpg\"></div>";
 			}
-			if($username_from_sesion=='francisca.hinojosa@easy.cl'){
+			if($username=='francisca.hinojosa@easy.cl'){
 				echo "<div id=\"firma-1\"><img src=\"tema/img/fran-hinojosa.jpg\"></div>";
 			}
-			if($username_from_sesion=='cristian.ortizdiaz@cencosud.cl'){
+			if($username=='cristian.ortizdiaz@cencosud.cl'){
 				echo "<div id=\"firma-1\"><img src=\"tema/img/cristian-ortiz.jpg\"></div>";
 			}
-			if($username_from_sesion=='jorge.lielmil@easy.cl'){
+			if($username=='jorge.lielmil@easy.cl'){
 				echo "<div id=\"firma-1\"><img src=\"tema/img/jorge-lielmil.jpg\"></div>";
 			}
-			if($username_from_sesion=='rose.villalon@cencosud.cl'){
+			if($username=='rose.villalon@cencosud.cl'){
 				echo "<div id=\"firma-1\"><img src=\"tema/img/rose.jpg\"></div>";
 			}
-			if($username_from_sesion=='andrea.montes@easy.cl'){
+			if($username=='andrea.montes@easy.cl'){
 				echo "<div id=\"firma-1\"><img src=\"tema/img/andrea-montes.jpg\"></div>";
 			}
-			if($username_from_sesion=='daniela.salazarrojas@cencosud.cl'){
+			if($username=='daniela.salazarrojas@cencosud.cl'){
 				echo "<div id=\"firma-1\"><img src=\"tema/img/daniela-salazar.jpg\"></div>";
 			}
-			if($username_from_sesion=='macarena.borquez@cencosud.cl'){
+			if($username=='macarena.borquez@cencosud.cl'){
 				echo "<div id=\"firma-1\"><img src=\"tema/img/macarena-borquez.jpg\"></div>";
 			}
-			
-			if($username_from_sesion=='diana.friedmanruiz@cencosud.cl'){
+			if($username=='diana.friedmanruiz@cencosud.cl'){
 				echo "<div id=\"firma-1\"><img src=\"tema/img/diana-friedman.jpg\"></div>";
 			}
-			if($username_from_sesion=='ruby.plaza@easy.cl'){
+			if($username=='ruby.plaza@easy.cl'){
 				echo "<div id=\"firma-1\"><img src=\"tema/img/ruby-plaza.jpg\"></div>";
+			}
+			if($username=='laura.espinozamonroy@cencosud.cl'){
+				echo "<div id=\"firma-1\"><img src=\"tema/img/laura-espinoza.jpg\"></div>";
 			}
 			
 			

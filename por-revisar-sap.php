@@ -28,14 +28,14 @@
 		$conexion=mysqli_connect($host,$username,$password,$db_name) or die("Problemas con la conexión");
 				
 		
-		$registros=mysqli_query($conexion,"select * from ordenes where orden_sap IS NULL OR orden_recepcion IS NULL") or
+		$registros=mysqli_query($conexion,"select * from ordenes where orden_sap IS NULL OR orden_recepcion IS NULL OR archivo = 'no' ") or
 		die("Problemas en el select:".mysqli_error($conexion));
 							
 		
 		//-------------- INICIO Paginador ------------------
 		
 		//Limito la busqueda a 10 registros por pagina
-		$TAMANO_PAGINA = 10; 
+		$TAMANO_PAGINA = 20; 
 		
 		//examino la página a mostrar y el inicio del registro a mostrar 
 		@$pagina = $_GET["pagina"]; 
