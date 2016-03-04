@@ -24,11 +24,23 @@
 		include "config.php";
 		
 		$conexion=mysqli_connect($host,$username,$password,$db_name) or die("Problemas con la conexión");
-						
-		$registros=mysqli_query($conexion,"select * from ordenes where visto_bueno = \"si\"") or
+		$acentos = $conexion->query("SET NAMES 'utf8'");
+		
+		$username = $_SESSION['username'];
+		
+		$registrosMembers = mysqli_query($conexion, "SELECT * FROM members WHERE username = '$username' ") or die("Problemas con la conexión de members");
+		
+		if($reg=mysqli_fetch_array($registrosMembers)){
+			$nombre_user = $reg['nombre'];
+			$apellido_user = $reg['apellido'];
+			$nombre_final = $nombre_user." ".$apellido_user;
+		}
+		
+		$registros=mysqli_query($conexion,"select * from ordenes where visto_bueno = \"si\" AND jefe_autorizacion = '$nombre_final' ") or
 		die("Problemas en el select:".mysqli_error($conexion));
 		
-				
+		
+		
 
 		//-------------- INICIO Paginador ------------------
 		
@@ -49,7 +61,7 @@
 		//calculo el total de páginas 
 		$total_paginas = ceil($num_total_registros / $TAMANO_PAGINA); 
 		
-		$ssql = "select * from ordenes where visto_bueno = \"si\" limit " . $inicio . "," . $TAMANO_PAGINA; 
+		$ssql = "select * from ordenes where visto_bueno = \"si\" AND jefe_autorizacion = '$nombre_final' limit " . $inicio . "," . $TAMANO_PAGINA; 
 		$rs = mysqli_query($conexion,$ssql); 
 		
 		//-------------- FIN Paginador ------------------
@@ -62,7 +74,9 @@
         <h1> <a href="#" class="logo"> <img src="tema/img/logo.jpg" alt="POC"></a></h1>
       </div>
       <div class="caja base-50 no-padding">
+	  <!--
       	<a class="logout" href="logout.php" >Logout</a>
+		-->
         <nav>
           <ul>
             <li> <a href="perfil-boss.php">Historial de órdenes de compra sin VºBº</a></li>
@@ -78,6 +92,7 @@
     </header>
     <div id="data--input" class="grupo">
       <h3>Mis órdenes de compra <img src="tema/img/si.gif"></h3>
+	   <h4> Perfil boss para usuario: <?php echo $nombre_final; ?> </h4>
     </div>
     <div id="buscar" class="grupo">
       <div class="caja-80">
@@ -249,7 +264,9 @@
       </div>	  	  
     </div>
 		
-	
+	<br>
+	 <a href="seleccion-boss.php"><input type="button" value="Volver"></a>	
+	 
     <div id="footer" class="total">
       <div class="grupo">
         <div id="logo-footer" class="caja-50"><img src="tema/img/logo-footer.png" alt=""></div>

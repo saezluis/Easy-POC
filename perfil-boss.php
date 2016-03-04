@@ -37,11 +37,22 @@
 	<?php
 		
 		include "config.php";
-	
+		
 		$conexion=mysqli_connect($host,$username,$password,$db_name) or die("Problemas con la conexión");
 		$acentos = $conexion->query("SET NAMES 'utf8'");
 		
-		$registros=mysqli_query($conexion,"select * from ordenes where visto_bueno = \"no\"") or
+		//Tiene que quedar generico el select de jefe_autorizacion de acuerdo al username que llegue de la variable de sesion
+		$username = $_SESSION['username'];
+		
+		$registrosMembers = mysqli_query($conexion, "SELECT * FROM members WHERE username = '$username' ") or die("Problemas con la conexión de members");
+		
+		if($reg=mysqli_fetch_array($registrosMembers)){
+			$nombre_user = $reg['nombre'];
+			$apellido_user = $reg['apellido'];
+			$nombre_final = $nombre_user." ".$apellido_user;
+		}
+		
+		$registros=mysqli_query($conexion,"SELECT * FROM ordenes WHERE visto_bueno = \"no\" AND jefe_autorizacion = '$nombre_final' AND anular = '' ") or
 		die("Problemas en el select:".mysqli_error($conexion));
 						
 
@@ -64,7 +75,7 @@
 		//calculo el total de páginas 
 		$total_paginas = ceil($num_total_registros / $TAMANO_PAGINA); 
 		
-		$ssql = "select * from ordenes where visto_bueno = \"no\" limit " . $inicio . "," . $TAMANO_PAGINA; 
+		$ssql = "SELECT * FROM ordenes WHERE visto_bueno = \"no\" AND jefe_autorizacion = '$nombre_final' AND anular = '' limit " . $inicio . "," . $TAMANO_PAGINA; 
 		$rs = mysqli_query($conexion,$ssql); 
 		
 		//-------------- FIN Paginador ------------------
@@ -95,6 +106,7 @@
     </header>
     <div id="data--input" class="grupo">
       <h3>Mis órdenes de compra <img src="tema/img/no.gif"> </h3>
+	  <h4> Perfil boss para usuario: <?php echo $nombre_final; ?> </h4>
     </div>
     <div id="buscar" class="grupo">
       <div class="caja-80">

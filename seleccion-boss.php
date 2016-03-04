@@ -53,6 +53,7 @@ exit;
           <ul>
             <li><a href="costos-accion.php">Costos acción / campaña</a></li>
             <li><a href="perfil-boss.php">Revisar OC</a></li>
+			<li><a href="perfil-boss-admin.php">Mi Perfil</a></li>
 			<li><a href="logout.php">Cerrar sesión</a></li>
           </ul>
         </div>

@@ -79,7 +79,9 @@
         <h1> <a href="#" class="logo"> <img src="tema/img/logo.jpg" alt="POC"></a></h1>
       </div>
       <div class="caja base-50 no-padding">
+		<!--
       	<a class="logout" href="logout.php" >Logout</a>
+		-->
         <nav>
           <ul>
 			<!--
@@ -88,7 +90,7 @@
             <li> <a href="por-revisar-sap.php" class="active" >OC Por revisar</a></li>
           </ul>
         </nav>
-        <?php echo "<div class=\"counter\">$num_rows</div>"; ?>
+        <?php echo "<div class=\"counter\" style=\"right: 195px; !important; \">$num_rows</div>"; ?>
       </div>
       <div class="caja base-100 no-padding">
         <h2>En esta sección podrás encontrar el historial de todas tus órdenes de compra emitidas.</h2>
@@ -468,7 +470,8 @@
      
 	
 	
-	
+	<br>
+	 <a href="seleccion-sap.php"><input type="button" value="Volver"></a>	
 	
     <div id="footer" class="total">
       <div class="grupo">

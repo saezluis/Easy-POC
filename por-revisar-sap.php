@@ -63,7 +63,9 @@
         <h1> <a href="#" class="logo"> <img src="tema/img/logo.jpg" alt="POC"></a></h1>
       </div>
       <div class="caja base-50 no-padding">
+		<!--
       	<a class="logout" href="logout.php" >Logout</a>
+		-->
         <nav>
           <ul>
             <li> <a href="perfil-sap.php" >Historial de órdenes</a></li>
@@ -445,6 +447,8 @@
     </div>
 	
 <!-- 	<a class="logout" href="logout.php" >Logout</a> -->
+	<br>
+	 <a href="seleccion-sap.php"><input type="button" value="Volver"></a>	
 	
     <div id="footer" class="total">
       <div class="grupo">

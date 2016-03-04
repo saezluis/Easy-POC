@@ -517,11 +517,12 @@ $consulta_proveedor=mysqli_query($conexion,"select * from proveedor where nombre
 			<button type="submit" class="imprimir" onclick="return validarGuardar();">GUARDAR</button> <!-- window.location.href = 'emision.php'; -->
 		</form>
 		
+		<!--
 		  <form action="cancelar.php" method="post">
-			<?php echo "<input type=\"text\" name=\"ultimoid\" value=\"$last_id\" hidden=hidden>"; ?>		  
+			<?php //echo "<input type=\"text\" name=\"ultimoid\" value=\"$last_id\" hidden=hidden>"; ?>		  
 			<button type="submit" class="imprimir" >CANCELAR</button>
 			</form>
-			
+			-->
 			
 
         </div>
@@ -575,6 +576,9 @@ $consulta_proveedor=mysqli_query($conexion,"select * from proveedor where nombre
 		}
 		if($username_from_sesion=='ruby.plaza@easy.cl'){
 			echo "<div id=\"firma-1\"><img src=\"tema/img/ruby-plaza.jpg\"></div>";
+}		
+		if($username_from_sesion=='laura.espinozamonroy@cencosud.cl'){
+				echo "<div id=\"firma-1\"><img src=\"tema/img/laura-espinoza.jpg\"></div>";
 		}
 		
 			if($jefe_a=='Cristian Ortiz'){

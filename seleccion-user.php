@@ -52,7 +52,7 @@ exit;
         <div id="seleBoss">
           <ul>
             <li><a href="emision.php">Emisor de OC</a></li>
-            <li><a href="historial-ordenes.php">Historial de OC</a></li>
+            <li><a href="historial-ordenes.php">Historial de OC</a></li>			
 			<li><a href="mi-perfil.php">Mi perfil</a></li>
 			<li><a href="logout.php">Cerrar Sesión</a></li>
           </ul>
