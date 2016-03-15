@@ -45,7 +45,7 @@
 		//-------------- INICIO Paginador ------------------
 		
 		//Limito la busqueda a 10 registros por pagina
-		$TAMANO_PAGINA = 10; 
+		$TAMANO_PAGINA = 20; 
 		
 		//examino la página a mostrar y el inicio del registro a mostrar 
 		@$pagina = $_GET["pagina"]; 
