@@ -122,7 +122,22 @@
 				//document.getElementById("campo2-c").value = '';
 				//document.getElementById("tipo_impuesto").value = document.getElementById("iva").value;
 				
-			} 
+			}
+			
+			if(select.options[select.selectedIndex].id == "boleta"){
+				//alert('click en boleta');
+				var calcularboleta = (parseFloat(totalget) * 10) / 100;
+				var totalfinal = parseFloat(totalget) - calcularboleta;
+				
+				var calcularboletaFormat = parseFloat(calcularboleta).formatMoney(0,"",".",".");
+				var totalfinalFormat = parseFloat(totalfinal).formatMoney(0,"",".",".");
+				
+				document.getElementById("totalfinalcampo").value = (totalfinalFormat);
+				document.getElementById("campo_subtotal").value = (calcularboletaFormat);
+				//document.getElementById("campo_subtotal_copy").value = (calcularboletaFormat);
+				//var nameValue = document.getElementById("uniqueID").value;
+				//document.getElementById("tipo_impuesto").value = document.getElementById("boleta").value;
+			}
 			/*
 			if(select.options[select.selectedIndex].id == "boleta"){
 				//alert('click en boleta');
@@ -753,6 +768,9 @@
 							if($tipo_impuesto=='IVA'){
 								$segundaFuncion = 'recalcularIVA();';
 							}
+							if($tipo_impuesto=='10% BOLETA'){
+								$segundaFuncion = 'recalcularBoleta();';
+							}	
 							if($tipo_impuesto=='EXENTO DE IVA'){
 								$segundaFuncion = 'exentoIVA();';
 							}
@@ -767,6 +785,9 @@
 							if($tipo_impuesto=='IVA'){
 								$segundaFuncion = 'recalcularIVA();';
 							}
+							if($tipo_impuesto=='10% BOLETA'){
+								$segundaFuncion = 'recalcularBoleta();';
+							}	
 							if($tipo_impuesto=='EXENTO DE IVA'){
 								$segundaFuncion = 'exentoIVA();';
 							}
@@ -802,14 +823,22 @@
 						echo "<div class=\"caja base-15\">";
 							echo "<label>Exento / IVA</label>";
 								echo "<select name=\"tipoImpuesto\" onchange=\"calcular(this)\">";
-									if($tipo_impuesto=='IVA'){										
+									if($tipo_impuesto=='IVA'){
 										echo "<option value=\"-1\" >Seleccione</option>";
 										echo "<option value=\"IVA\" id=\"iva\" selected=selected >IVA</option>";
+										echo "<option value=\"10% BOLETA\" id=\"boleta\" >Boleta</option>";
+										echo "<option value=\"EXENTO DE IVA\" id=\"exento\" >Exento</option>";
+									}
+									if($tipo_impuesto=='10% BOLETA'){
+										echo "<option value=\"-1\" >Seleccione</option>";
+										echo "<option value=\"IVA\" id=\"iva\">IVA</option>";
+										echo "<option value=\"10% BOLETA\" id=\"boleta\" selected=selected>Boleta</option>";
 										echo "<option value=\"EXENTO DE IVA\" id=\"exento\" >Exento</option>";
 									}
 									if($tipo_impuesto=='EXENTO DE IVA'){
 										echo "<option value=\"-1\" >Seleccione</option>";
 										echo "<option value=\"IVA\" id=\"iva\" >IVA</option>";
+										echo "<option value=\"10% BOLETA\" id=\"boleta\" >Boleta</option>";
 										echo "<option value=\"EXENTO DE IVA\" id=\"exento\" selected=selected >Exento</option>";
 									}	
 								echo "</select>";

@@ -639,16 +639,61 @@ $consulta_orden=mysqli_query($conexion,"select * from ordenes where numero_orden
 	    </div> 
   </div>
 	<div class="grupo">
-		  <div class="caja base-50 no-padding">
+		  <div class="caja base-30 no-padding">
 		  	<div class="cc">
 		  		Centro Costo: <?php echo "<span class=\"cod-divs\">$ceco</span>"; ?>
 		  	</div>
 		  </div>
-		  <div class="caja base-50 no-padding">
+		  <div class="caja base-70 no-padding">
 		  	<div class="PEP">
 			<!--
 		  		Código PEP: <span class="cod-divs">12345678901234567890</span>
 			-->
+			<?php
+			
+				$registrosLastOrden = mysqli_query($conexion, "SELECT * FROM ordenes WHERE numero_orden = '$numero_orden' ") or die("Problemas en el select de ultima orden".mysqli_error($conexion));
+				
+				if($regLastCO = mysqli_fetch_array($registrosLastOrden)){
+					$registro_gasto_LOC = $regLastCO['registro_gasto'];
+					
+					$area_pago_nro = $regLastCO['area_pago'];
+					$control_presupuesto_nro = $regLastCO['control_presupuesto'];
+					$campana_nro = $regLastCO['campana'];
+				}
+				
+				$registrosRegistroGastoLOC = mysqli_query($conexion, "SELECT * FROM registro WHERE id_registro = '$registro_gasto_LOC' ") or die("Problemas en el select de registro gasto".mysqli_error($conexion));
+				
+				if($regRG = mysqli_fetch_array($registrosRegistroGastoLOC)){
+					$registro_gasto_nombre = $regRG['registro_gasto'];
+					$articulo_sap_nro = $regRG['articulo_sap'];
+					$sap_fico_nro = $regRG['sap_fico'];
+					$cuenta_sap_nro = $regRG['cuenta_sap'];
+					$registro_gasto_ID = $regRG['id'];					
+				}	
+				
+				$registrosCentroCosto = mysqli_query($conexion, "SELECT * FROM centro_costo WHERE id_centro_costo = '$area_pago_nro' ") or die("Problemas en el select de centro costo".mysqli_error($conexion));
+				
+				if($regCC = mysqli_fetch_array($registrosCentroCosto)){
+					$sector_nro = $regCC['sector'];
+					$codigo_ceco = $regCC['codigo'];
+				}
+				
+				$registrosControlPresupuesto = mysqli_query($conexion, "SELECT * FROM control_presupuesto WHERE id_controlP = '$control_presupuesto_nro' ") or die("Problemas en el select de control presupuesto".mysqli_error($conexion));
+				
+				if($regCP = mysqli_fetch_array($registrosControlPresupuesto)){
+					$id_controlP = $regCP['id'];
+				}
+				
+				$registrosCampana = mysqli_query($conexion, "SELECT * FROM campana WHERE id_campana = '$campana_nro' ") or die("Problemas en el select de campana".mysqli_error($conexion));
+				
+				if($regCamp = mysqli_fetch_array($registrosCampana)){
+					$id_camp = $regCamp['id'];					
+				}
+				
+				//echo "Cuenta SAP: <span class=\"cod-divs\"> $registro_gasto_nombre-$articulo_sap_nro-$sap_fico_nro-$cuenta_sap_nro</span>  Código SAP: <span class=\"cod-divs\">500-EC-CA-VE-AD</span>";
+				echo "Cuenta SAP: <span class=\"cod-divs\"> $registro_gasto_nombre-$articulo_sap_nro-$sap_fico_nro-$cuenta_sap_nro</span>  Código SAP: <span class=\"cod-divs\">$sector_nro-$codigo_ceco-$id_controlP-$registro_gasto_ID-$id_camp</span>";
+				
+			?>
 		  	</div>
 		  </div>
 	</div>

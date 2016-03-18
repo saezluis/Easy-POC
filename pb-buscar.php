@@ -1,10 +1,8 @@
 <?php
-  //header('Cache-Control: no cache'); //no cache
-  //session_cache_limiter('private_no_expire'); // works
-  //session_cache_limiter('public'); // works too
-
   session_start();
-
+  header('Cache-Control: no cache'); //no cache
+  session_cache_limiter('private_no_expire');
+  
   if(!isset($_SESSION['username'])){
     header("location:login.php");
   }
@@ -115,18 +113,26 @@ lds      </div>
     <div id="buscar" class="grupo">
       <div class="caja-80">
 	  <!-- Mod Mod Mod Mod Mod Mod Mod Mod Mod Mod Mod Mod Mod Mod -->
+	  <!--
         <form id="" method="POST" action="pb-buscar.php" class="seek"> 
           <input type="search" name="palabra" placeholder="ingresa número de OC">
+		  <input type="text" value="1" name="perfil_boss" hidden=hidden>
+		  
           <button type="submit" value="Buscar" name="buscar">buscar</button>
         </form>
 		<form id="" method="POST" action="pb-buscar.php" class="seek"> 
           <input type="search" name="rut_proveedor" placeholder="ingresa RUT proveedor">
+		  <input type="text" value="1" name="perfil_boss" hidden=hidden>
+		  
           <button type="submit" value="Busca_pro" name="buscar_pro" style="margin-right: 70px;">buscar</button>
         </form>
 		<form id="" method="POST" action="pb-buscar.php" class="seek"> 
           <input type="search" name="nombre_proveedor" placeholder="ingresa nombre proveedor" size="35">
+		  <input type="text" value="1" name="perfil_boss" hidden=hidden>
+		  
           <button type="submit" value="Busca_Npro" name="buscar_Npro" style="margin-right: 70px;">buscar</button>
         </form>
+		-->
 	  <!-- Mod Mod Mod Mod Mod Mod Mod Mod Mod Mod Mod Mod Mod Mod -->	
       </div>
     </div>
@@ -134,13 +140,11 @@ lds      </div>
 	
 	<?php    	
 	//  ----------   A partir de este codigo se realiza la busqueda  ----------
-	/*
-	if(isset($_POST['buscar'])){   
-	
-		$buscar = @$_POST["palabra"];
+		
+		$buscar = @$_REQUEST["palabra"];
 		
 		if($buscar!=''){
-		
+			
 			//Ojo esto es para buscar una orden en especifica
 			$consulta_mysql = mysqli_query($conexion,"SELECT * FROM ordenes WHERE numero_orden = '$buscar' AND jefe_autorizacion = '$nombre_final' AND visto_bueno = \"no\" ") or die("Problemas en el select:".mysqli_error($conexion));
 			
@@ -246,17 +250,14 @@ lds      </div>
 				echo "</section>";
 			}
 			
-		}else{
+		}/*
+		else{
 			echo "<section class=\"grupo\">";
 				echo "<h3>Debe introducir un número de OC</h3>";
 			echo "</section>";
-		}
-	} 
-	
-	
-	if(isset($_POST['rut_proveedor'])){
-	
-		$buscar_pro = @$_POST["rut_proveedor"];
+		}*/
+
+		$buscar_pro = @$_REQUEST["rut_proveedor"];
 		
 		if($buscar_pro!=''){
 		
@@ -374,16 +375,16 @@ lds      </div>
 				echo "</section>";
 			}
 			
-		}else{
+		}
+		/*
+		else{
 			echo "<section class=\"grupo\">";
 				echo "<h3>Debe introducir un número de Rut</h3>";
 			echo "</section>";
-		}
-	} 
+		}*/
+	 
 	
-	if(isset($_POST['nombre_proveedor'])){   
-	
-		$buscar_nombre = @$_POST["nombre_proveedor"];
+		$buscar_nombre = @$_REQUEST["nombre_proveedor"];
 		
 		if($buscar_nombre!=''){
 		
@@ -501,136 +502,21 @@ lds      </div>
 				echo "</section>";
 			}
 			
-		}else{
+		}
+		/*
+		else{
 			echo "<section class=\"grupo\">";
 				echo "<h3>Debe introducir un nombre de proveedor</h3>";
 			echo "</section>";
-		}
-	}
+		}*/
 	
-	*/
 	
 	?>
 	
 	<br>	
 	
-		<section class="grupo">
-		<table class="table-sap">
-			<thead>
-				<tr class="cabecc-sap">
-					<th>Nº OC - Ver OC</th>
-					<th>Editar</th>
-					<th>Fecha Emisión</th>
-					<th>OC SAP</th>
-					<th>OC RECEPCIÓN</th>
-					<th>Notificacion Via Email</th>
-					<th>V°B°</th>					
-					<th>Anular</th>
-				</tr>
-			</thead>
-			<?php
-			
-			while ($reg=mysqli_fetch_array($rs))
-			{
-			  $n_orden = $reg['numero_orden'];
-			  
-			  $registrosOrdenesNeg=mysqli_query($conexion,"select * from ordenes_negadas WHERE id_orden = $n_orden") or die("Problemas en el select:".mysqli_error($conexion));
-			  
-			  $num_rows = mysqli_num_rows($registrosOrdenesNeg);	  
-			  
-			  $visto_bd = $reg['visto_bueno'];
-			  
-			  //Aqui se calculan los dias que van transcurriendo desde la emision de la OC
-			  $fecha = $reg['fecha'];		  
-			  $todate = date("Y-m-d",strtotime($fecha));		  
-			  $fecha_format = date("d-m-Y",strtotime($fecha));		  		  		  
-			  date_default_timezone_set('America/Santiago');
-			  $fromdate = date('Y-m-d', time());		  
-			  $calculate_seconds = strtotime($fromdate) - strtotime($todate); // Numero de segundos entre las dos fechas
-			  $days = floor($calculate_seconds / (24 * 60 * 60 )); // Conversion a dias	
-			  
-			  $id_user = $reg['id_user'];
-			  
-			  $detalle = $reg['descripcion'];
-			
-			$detalle_corto = substr($detalle,0,50);
-			
-			$detalle_corto_final = $detalle_corto."...";
-			
-			echo "<tbody>";
-					  echo "<tr>";
-						echo "<td class=\"area\"><a href=\"consultar-orden.php?numero_orden=",urlencode($n_orden)," \">$n_orden</a></td>";	
-						
-						echo "<td class=\"ppto-proyecto\">";						
-							echo "<a href=\"modificar-oc-detalle-sap.php?oc_send=",urlencode($n_orden)," \">Editar</a>";						
-						echo "</td>";
-						
-						echo "<td class=\"ceco\">".$fecha_format."</td>";
-						
-						//-------------- OC SAP
-						echo "<td class=\"ocrecepcion\">".$reg['orden_sap']."</td>";												
-						
-						//-------------- OC RECEPCION
-						echo "<td class=\"ocsap\">".$reg['orden_recepcion']."</td>";
-												
-						
-						echo "<td class=\"desc-servicio\">";						
-							if($num_rows==1){
-								echo "<a class=\"textoRojo\" href=\"ver-razon-orden-neg.php?numero_orden=",urlencode($n_orden)," \">Si</a>";
-							}else{
-								echo "No";
-							}						
-						echo "</td>";
-						
-						echo "<td class=\"ppto-proyecto\">";						
-							echo "<form method=\"POST\" id=\"$n_orden\" class=\"choose\" action=\"update-perfil-boss.php\" >";				  
-								echo "<select name=\"revision\" form=\"$n_orden\" onchange=\"this.form.submit();\">";			  
-									echo "<option class=\"redText\" value=\"\">$visto_bd</option>";
-									echo "<option value=\"si.$n_orden\">Si</option>";
-									echo "<option value=\"no.$n_orden\">No</option>";
-								echo "</select>";
-								echo "<input type=\"text\" name=\"id_user_send\" value=\"$id_user\" hidden=hidden >";			  
-							echo "</form>";				
-						echo "</td>";
-						
-						echo "<td class=\"ppto-real\">";
-						echo "<form method=\"POST\" action=\"anular-form.php\">";
-							  echo "<button type=\"submit\" class=\"gou\">Anular</button>";
-							  echo "<input type=\"text\" value=\"$n_orden\" name=\"nro_OC_send\" hidden=hidden >";
-							echo "</form>";  
-						echo "</td>";
-					  echo "</tr>";
-				echo "</tbody>";	
-			}
-			?>
-			
-		</table>
-	</section>	
-				
-			<?php
-					
-			echo "<div id=\"campana\" class=\"caja-100\">";
-			echo "<div class=\"paginator\">";
-		
-			//muestro los distintos índices de las páginas, si es que hay varias páginas 
-			if ($total_paginas > 1){ 
-			for ($i=1;$i<=$total_paginas;$i++){ 
-				if ($pagina == $i) 
-					//si muestro el índice de la página actual, no coloco enlace 
-					echo "<span class=\"pag--cube\">" . $pagina . "</span>" . " "; 
-				else 
-					//si el índice no corresponde con la página mostrada actualmente, coloco el enlace para ir a esa página 				
-					echo "<a href='perfil-boss.php?pagina=" . $i . "'>"  . $i .  "</a> " ; 
-				}   
-			}	
-				echo "</div>";				
-			echo "</div>";
-		
-			?>
-		
-		
  	  <br>
-	 <a href="seleccion-boss.php"><input type="button" value="Volver"></a>	
+	 <a href="perfil-boss.php"><input type="button" value="Volver"></a>	
     				
 	
     <div id="footer" class="total">

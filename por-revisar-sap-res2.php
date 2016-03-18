@@ -87,17 +87,17 @@
     </div>
     <div id="buscar" class="grupo">
       <div class="caja-80">
-        <form id="" method="POST" action="prs-buscar.php" class="seek"> 
+        <form id="" method="POST" action="" class="seek"> 
           <input type="search" name="palabra" placeholder="ingresa número de OC">
           <button type="submit" value="buscar OC" name="buscar">buscar</button>
         </form>
 		
-		<form id="" method="POST" action="prs-buscar.php" class="seek"> 
+		<form id="" method="POST" action="" class="seek"> 
           <input type="search" name="rut_proveedor" placeholder="ingresa RUT proveedor">
           <button type="submit" value="Busca_pro" name="buscar_pro" style="margin-right: 70px;">buscar</button>
         </form>
 		
-		<form id="" method="POST" action="prs-buscar.php" class="seek"> 
+		<form id="" method="POST" action="" class="seek"> 
           <input type="search" name="nombre_proveedor" placeholder="ingresa nombre proveedor" size="35">
           <button type="submit" value="Busca_Npro" name="buscar_Npro" style="margin-right: 70px;">buscar</button>
         </form>
@@ -105,8 +105,7 @@
 		</div>
     </div>
 
-<?php    
-	/*
+<?php    	
 	//  ----------   A partir de este codigo se realiza la busqueda  OJO ----------
 	if(isset($_POST['buscar'])){   
 	
@@ -286,8 +285,8 @@
 		}
 		
 	}
-	*/
-	/*
+	
+	
 	if(isset($_POST['rut_proveedor'])){   
 	
 		$buscar_rut = $_POST["rut_proveedor"];
@@ -471,7 +470,7 @@
 			echo "</section>";
 		}
 	}
-	*/
+	
 	
 	if(isset($_POST['nombre_proveedor'])){   
 	
